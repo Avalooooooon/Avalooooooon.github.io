@@ -2,15 +2,15 @@ document.addEventListener("DOMContentLoaded", function () {
   volantis.requestAnimationFrame(() => {
     VolantisApp.init();
     VolantisApp.subscribe();
-    volantisFancyBox.loadFancyBox();
+    VolantisFancyBox.init();
     highlightKeyWords.startFromURL();
     locationHash();
 
     volantis.pjax.push(() => {
       VolantisApp.pjaxReload();
+      VolantisFancyBox.init();
       sessionStorage.setItem("domTitle", document.title);
-      highlightKeyWords.startFromURL()
-      volantisFancyBox.pjaxReload()
+      highlightKeyWords.startFromURL();
     }, 'app.js');
     volantis.pjax.send(() => {
       volantis.dom.switcher.removeClass('active'); // 关闭移动端激活的搜索框
@@ -29,10 +29,10 @@ const locationHash = () => {
     if (target) {
       setTimeout(() => {
         if (window.location.hash.startsWith('#fn')) { // hexo-reference https://github.com/volantis-x/hexo-theme-volantis/issues/647
-          volantis.scroll.to(target,{addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant'})
+          volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
         } else {
           // 锚点中上半部有大片空白 高度大概是 volantis.dom.header.offsetHeight
-          volantis.scroll.to(target,{addTop: 5, behavior: 'instant'})
+          volantis.scroll.to(target, { addTop: 5, behavior: 'instant' })
         }
       }, 1000)
     }
@@ -62,7 +62,7 @@ const VolantisApp = (() => {
         fn.setHeaderSearch();
       }
     }
-    volantis.scroll.push(fn.scrollEventCallBack,"scrollEventCallBack")
+    volantis.scroll.push(fn.scrollEventCallBack, "scrollEventCallBack")
   }
 
   fn.event = () => {
@@ -87,7 +87,7 @@ const VolantisApp = (() => {
 
   // 校正页面定位（被导航栏挡住的区域）
   fn.scrolltoElement = (elem, correction = scrollCorrection) => {
-    volantis.scroll.to(elem,{
+    volantis.scroll.to(elem, {
       top: elem.offsetTop - correction
     })
   }
@@ -181,7 +181,7 @@ const VolantisApp = (() => {
         fn.scrolltoElement(volantis.dom.commentTarget);
         e.stopImmediatePropagation();
       });
-    } else volantis.dom.comment.style.display='none'; // 关闭了评论，则隐藏评论按钮
+    } else volantis.dom.comment.style.display = 'none'; // 关闭了评论，则隐藏评论按钮
 
     // 移动端toc目录按钮 【移动端】
     if (volantis.isMobile) {
@@ -202,7 +202,7 @@ const VolantisApp = (() => {
           }
           volantis.dom.toc.removeClass('active');
         });
-      } else volantis.dom.toc.style.display='none'; // 隐藏toc目录按钮
+      } else volantis.dom.toc.style.display = 'none'; // 隐藏toc目录按钮
     }
   }
 
@@ -356,7 +356,7 @@ const VolantisApp = (() => {
         let targetID = decodeURI(e.target.hash.split('#')[1]).replace(/\ /g, '-');
         let target = document.getElementById(targetID);
         if (target) {
-          volantis.scroll.to(target,{addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant'})
+          volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
         }
       });
     })
@@ -485,55 +485,111 @@ const VolantisApp = (() => {
 })()
 Object.freeze(VolantisApp);
 
-const volantisFancyBox = (() => {
+const VolantisFancyBox = (() => {
   const fn = {};
 
-  fn.initFB = () => {
-    const group = new Set();
-    group.add('default'); // 默认类
-    group.add('Twikoo'); // TwiKoo 类
+  fn.loadFancyBox = (done) => {
+    volantis.css(" https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css");
+    volantis.js('https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js').then(() => {
+      if (done) done();
+    })
+  }
 
-    if (!document.querySelector(".md .gallery img, .fancybox")) return;
-    document.querySelectorAll(".md .gallery").forEach(function (ele) {
+  /**
+   * 加载及处理
+   * 
+   * @param {*} checkMain 是否只处理文章区域的文章
+   * @param {*} done      FancyBox 加载完成后的动作，默认执行分组绑定
+   * @returns 
+   */
+  fn.init = (checkMain = true, done = fn.groupBind) => {
+    if (!document.querySelector(".md .gallery img, .fancybox") && checkMain) return;
+    if (typeof Fancybox === "undefined") {
+      fn.loadFancyBox(done);
+    } else {
+      done();
+    }
+  }
+
+  /**
+   * 图片元素预处理
+   * 
+   * @param {*} selectors 选择器
+   * @param {*} name      分组
+   */
+  fn.elementHandling = (selectors, name) => {
+    const nodeList = document.querySelectorAll(selectors);
+    nodeList.forEach($item => {
+      if ($item.hasAttribute('fancybox')) return;
+      $item.setAttribute('fancybox', '');
+      const $link = document.createElement('a');
+      $link.setAttribute('href', $item.src);
+      $link.setAttribute('data-caption', $item.alt);
+      $link.setAttribute('data-fancybox', name);
+      $link.classList.add('fancybox');
+      $link.append($item.cloneNode());
+      $item.replaceWith($link);
+    })
+  }
+
+  /**
+   * 原生绑定
+   * 
+   * @param {*} selectors 选择器
+   */
+  fn.bind = (selectors) => {
+    fn.init(false, () => {
+      Fancybox.bind(selectors, {
+        groupAll: true,
+        Hash: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: function (fancybox, carousel, slide) {
+          return slide.$trigger.alt || null
+        }
+      });
+    });
+  }
+
+  /**
+   * 分组绑定
+   * 
+   * @param {*} groupName 分组名称
+   */
+  fn.groupBind = (groupName = null) => {
+    const group = new Set();
+
+    document.querySelectorAll(".gallery").forEach(ele => {
       if (ele.querySelector("img")) {
         group.add(ele.getAttribute('data-group') || 'default');
       }
     })
 
-    Fancybox.destroy();
+    if (!!groupName) group.add(groupName);
+
     for (const iterator of group) {
       if (!!iterator) Fancybox.bind('[data-fancybox="' + iterator + '"]', {
-        Hash: false
+        Hash: false,
+        Thumbs: {
+          autoStart: false,
+        }
       });
     }
   }
 
-  fn.loadFancyBox = (done) => {
-    if (!document.querySelector(".md .gallery img, .fancybox")) return;
-    volantis.css(" https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css");
-    volantis.js('https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js').then(() => {
-      fn.initFB();
-      if (done) done();
-    })
-  }
-
   return {
-    loadFancyBox: (done = null) => {
-      fn.loadFancyBox(done);
+    init: fn.init,
+    bind: (selectors) => {
+      fn.bind(selectors)
     },
-    initFancyBox: () => {
-      fn.initFB()
-    },
-    pjaxReload: () => {
-      if (typeof Fancybox === "undefined") {
-        fn.loadFancyBox();
-      } else {
-        fn.initFB();
-      }
+    groupBind: (selectors, groupName = 'default') => {
+      fn.elementHandling(selectors, groupName);
+      fn.init(false, fn.groupBind(groupName));
     }
   }
 })()
-Object.freeze(volantisFancyBox);
+Object.freeze(VolantisFancyBox);
 
 // highlightKeyWords 与 搜索功能搭配 https://github.com/next-theme/hexo-theme-next/blob/eb194a7258058302baf59f02d4b80b6655338b01/source/js/third-party/search/local-search.js
 
@@ -580,7 +636,7 @@ const highlightKeyWords = (() => {
       target = document.getElementById("keyword-mark-" + fn.markNextId);
     }
     if (target) {
-      volantis.scroll.to(target,{addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
+      volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
     }
     // Current target
     return target
@@ -595,7 +651,7 @@ const highlightKeyWords = (() => {
       target = document.getElementById("keyword-mark-" + fn.markNextId);
     }
     if (target) {
-      volantis.scroll.to(target, {addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
+      volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
     }
     // Current target
     return target

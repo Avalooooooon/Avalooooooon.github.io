@@ -2170,6 +2170,9 @@ img.lazyload:not(.placeholder).loaded {
 .article-title[pin] {
   margin-right: 36px;
 }
+.article-desc {
+  word-break: break-word;
+}
 .post-v3 {
   overflow: hidden;
   text-align: justify;
@@ -5470,6 +5473,85 @@ p.p.purple {
 span.p.gray,
 p.p.gray {
   color: #999;
+}
+.swiper-container {
+  width: 100%;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  --gap-p: 2rem;
+}
+.swiper-container:not(.swiper-container-initialized) {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+}
+div.swiper-slide {
+  text-align: center;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -webkit-box;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -webkit-flex;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  align-self: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -khtml-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  width: 50%;
+}
+div.swiper-slide img {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+.swiper-container[width='max'] div.swiper-slide {
+  width: 100%;
+}
+.swiper-container[width='min'] div.swiper-slide {
+  width: 25%;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  padding: 1rem 0.5rem;
+  margin-top: -2rem !important;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: rgba(255,255,255,0.25);
+  transition: background 0.2s ease-out;
+  -webkit-transition: background 0.2s ease-out;
+  -khtml-transition: background 0.2s ease-out;
+  -moz-transition: background 0.2s ease-out;
+  -o-transition: background 0.2s ease-out;
+  -ms-transition: background 0.2s ease-out;
+  --swiper-theme-color: #000 !important;
+}
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+}
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: #fff !important;
+  --swiper-theme-color: #ff5722 !important;
 }
 .md .table {
   overflow: auto;
