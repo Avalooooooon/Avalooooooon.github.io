@@ -20,7 +20,7 @@
   <meta content="一之碎片" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1639899989057" as="style">
+  <link rel="preload" href="/css/style.css?time=1639900058151" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -34,13 +34,13 @@
 <meta property="og:site_name" content="一之碎片">
 <meta property="og:description" content="Part1 环境搭建安装nodejs12node -v npm -v  #查看版本 安装git1git --version #查看版本 创建博客文件夹并安装hexo12npm install -g hexo-clihexo -v 可能出现的问题运行npm install -g hexo-cli时，可能提示没有权限。这里强烈建议不要用sudo方式强行获得权限。解决方法：第一步，赋予目录权限；第二步，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2021-12-19T06:53:04.000Z">
 <meta property="article:modified_time" content="2021-12-19T07:07:29.231Z">
 <meta property="article:author" content="一之碎片">
 <meta property="article:tag" content="hexo macOS Volantis">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
   <!-- feed -->
   <!-- import meta -->
   <!-- link -->
@@ -69,17 +69,17 @@ article + article,
   --color-card: #fff;
   --color-text: #444;
   --color-block: #f6f6f6;
-  --color-inlinecode: #c74f00;
+  --color-inlinecode: #d56d28;
   --color-codeblock: #fff7ea;
-  --color-h1: #3a3a3a;
-  --color-h2: #3a3a3a;
-  --color-h3: #333;
+  --color-h1: #444;
+  --color-h2: #444;
+  --color-h3: #444;
   --color-h4: #444;
-  --color-h5: #555;
-  --color-h6: #666;
+  --color-h5: #444;
+  --color-h6: #444;
   --color-p: #444;
   --color-list: #666;
-  --color-list-hl: #36ac91;
+  --color-list-hl: #73a1c7;
   --color-meta: #888;
   --color-read-bkg: #e0d8c8;
   --color-read-post: #f8f1e2;
@@ -100,17 +100,17 @@ html {
   font-size: 16px;
 }
 html >::-webkit-scrollbar {
-  height: 4px;
-  width: 4px;
+  height: 5px;
+  width: 5px;
 }
 html >::-webkit-scrollbar-track-piece {
   background: transparent;
 }
 html >::-webkit-scrollbar-thumb {
-  background: #44d7b6;
+  background: #64b5f6;
   cursor: pointer;
-  border-radius: 2px;
-  -webkit-border-radius: 2px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
 }
 html >::-webkit-scrollbar-thumb:hover {
   background: #ff5722;
@@ -136,7 +136,7 @@ body.modal-active {
   }
 }
 a {
-  color: #1b79c4;
+  color: #2196f3;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.28s ease;
@@ -258,103 +258,6 @@ button {
   position: relative;
   overflow: hidden;
   margin-bottom: -100px;
-}
-.cover-wrapper .cover-bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-position: center;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-}
-.cover-wrapper .cover-bg.lazyload:not(.loaded) {
-  opacity: 0;
-  -webkit-opacity: 0;
-  -moz-opacity: 0;
-}
-.cover-wrapper .cover-bg.lazyload.loaded {
-  animation-delay: 0s;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
-  animation-name: fadeIn;
-}
-@-moz-keyframes fadeIn {
-  0% {
-    opacity: 0;
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
-    filter: blur(12px);
-    transform: scale(1.02);
-    -webkit-transform: scale(1.02);
-    -khtml-transform: scale(1.02);
-    -moz-transform: scale(1.02);
-    -o-transform: scale(1.02);
-    -ms-transform: scale(1.02);
-  }
-  100% {
-    opacity: 1;
-    -webkit-opacity: 1;
-    -moz-opacity: 1;
-  }
-}
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
-    filter: blur(12px);
-    transform: scale(1.02);
-    -webkit-transform: scale(1.02);
-    -khtml-transform: scale(1.02);
-    -moz-transform: scale(1.02);
-    -o-transform: scale(1.02);
-    -ms-transform: scale(1.02);
-  }
-  100% {
-    opacity: 1;
-    -webkit-opacity: 1;
-    -moz-opacity: 1;
-  }
-}
-@-o-keyframes fadeIn {
-  0% {
-    opacity: 0;
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
-    filter: blur(12px);
-    transform: scale(1.02);
-    -webkit-transform: scale(1.02);
-    -khtml-transform: scale(1.02);
-    -moz-transform: scale(1.02);
-    -o-transform: scale(1.02);
-    -ms-transform: scale(1.02);
-  }
-  100% {
-    opacity: 1;
-    -webkit-opacity: 1;
-    -moz-opacity: 1;
-  }
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
-    filter: blur(12px);
-    transform: scale(1.02);
-    -webkit-transform: scale(1.02);
-    -khtml-transform: scale(1.02);
-    -moz-transform: scale(1.02);
-    -o-transform: scale(1.02);
-    -ms-transform: scale(1.02);
-  }
-  100% {
-    opacity: 1;
-    -webkit-opacity: 1;
-    -moz-opacity: 1;
-  }
 }
 .cover-wrapper .cover-body {
   z-index: 1;
@@ -761,7 +664,7 @@ button {
 .cover-wrapper.dock .menu .list-h a.active i+p,
 .cover-wrapper.featured .menu .list-h a.active i+p,
 .cover-wrapper.focus .menu .list-h a.active i+p {
-  color: #44d7b6;
+  color: #64b5f6;
 }
 .cover-wrapper.dock .menu .list-h a.active img+p,
 .cover-wrapper.featured .menu .list-h a.active img+p,
@@ -806,7 +709,7 @@ button {
     background: transparent;
   }
   .cover-wrapper.dock .menu .list-h::-webkit-scrollbar-thumb {
-    background: #44d7b6;
+    background: #64b5f6;
     cursor: pointer;
     border-radius: 0;
     -webkit-border-radius: 0;
@@ -819,6 +722,217 @@ button {
   .cover-wrapper.dock .menu {
     background: rgba(255,255,255,0.5);
     backdrop-filter: saturate(200%) blur(20px);
+  }
+}
+.cover-wrapper #parallax-window {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+.parallax-mirror {
+  animation-delay: 0s;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-name: fadeIn;
+}
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-mode: 'dark';
+  }
+  :root:not([color-scheme]) {
+    --color-site-body: #000;
+    --color-read-bkg: #171721;
+    --color-read-post: #4b4b6c;
+    --color-site-bg: #171721;
+    --color-site-inner: #eee;
+    --color-site-footer: #aaa;
+    --color-card: #4b4b6c;
+    --color-text: #eee;
+    --color-block: #3a3a3a;
+    --color-codeblock: #343a3c;
+    --color-inlinecode: #d56d28;
+    --color-h1: #eee;
+    --color-h2: #eee;
+    --color-h3: #ddd;
+    --color-h4: #ddd;
+    --color-h5: #ddd;
+    --color-h6: #ddd;
+    --color-p: #bbb;
+    --color-list: #aaa;
+    --color-list-hl: #9453a0;
+    --color-meta: #888;
+    --color-link: #888;
+  }
+  :root:not([color-scheme]) img {
+    filter: brightness(70%) !important;
+  }
+  :root:not([color-scheme]) #wrapper .title {
+    color: var(--color-meta) !important;
+  }
+  :root:not([color-scheme]) .l_header ul.nav-list-h>li>a,
+  :root:not([color-scheme]) ul.list-v >li>a {
+    color: var(--color-list) !important;
+  }
+  :root:not([color-scheme]) .blur {
+    background: var(--color-site-bg) !important;
+  }
+  :root:not([color-scheme]) .nav-main .u-search-input {
+    background: var(--color-card) !important;
+  }
+  :root:not([color-scheme]) #l_main .article .prev-next>a {
+    background: var(--color-block) !important;
+  }
+  :root:not([color-scheme]) #l_main .article .prev-next>a:hover {
+    background: var(--color-card) !important;
+  }
+  :root:not([color-scheme]) .article blockquote {
+    background: var(--color-block) !important;
+  }
+  :root:not([color-scheme]) .article-title a {
+    color: var(--color-h1) !important;
+  }
+  :root:not([color-scheme]) details>summary {
+    color: var(--color-p) !important;
+    background: var(--color-site-bg) !important;
+  }
+  :root:not([color-scheme]) details {
+    border: 1px solid var(--color-site-bg) !important;
+    background: var(--color-site-bg) !important;
+  }
+  :root:not([color-scheme]) #u-search .modal,
+  :root:not([color-scheme]) #u-search .modal-header,
+  :root:not([color-scheme]) #u-search .modal-body {
+    background: var(--color-card) !important;
+  }
+  :root:not([color-scheme]) #u-search .modal-body .modal-results .result:hover {
+    background: var(--color-block) !important;
+  }
+}
+[color-scheme='dark'] {
+  --color-site-body: #000;
+  --color-read-bkg: #171721;
+  --color-read-post: #4b4b6c;
+  --color-site-bg: #171721;
+  --color-site-inner: #eee;
+  --color-site-footer: #aaa;
+  --color-card: #4b4b6c;
+  --color-text: #eee;
+  --color-block: #3a3a3a;
+  --color-codeblock: #343a3c;
+  --color-inlinecode: #d56d28;
+  --color-h1: #eee;
+  --color-h2: #eee;
+  --color-h3: #ddd;
+  --color-h4: #ddd;
+  --color-h5: #ddd;
+  --color-h6: #ddd;
+  --color-p: #bbb;
+  --color-list: #aaa;
+  --color-list-hl: #9453a0;
+  --color-meta: #888;
+  --color-link: #888;
+}
+[color-scheme='dark'] img {
+  filter: brightness(70%) !important;
+}
+[color-scheme='dark'] #wrapper .title {
+  color: var(--color-meta) !important;
+}
+[color-scheme='dark'] .l_header ul.nav-list-h>li>a,
+[color-scheme='dark'] ul.list-v >li>a {
+  color: var(--color-list) !important;
+}
+[color-scheme='dark'] .blur {
+  background: var(--color-site-bg) !important;
+}
+[color-scheme='dark'] .nav-main .u-search-input {
+  background: var(--color-card) !important;
+}
+[color-scheme='dark'] #l_main .article .prev-next>a {
+  background: var(--color-block) !important;
+}
+[color-scheme='dark'] #l_main .article .prev-next>a:hover {
+  background: var(--color-card) !important;
+}
+[color-scheme='dark'] .article blockquote {
+  background: var(--color-block) !important;
+}
+[color-scheme='dark'] .article-title a {
+  color: var(--color-h1) !important;
+}
+[color-scheme='dark'] details>summary {
+  color: var(--color-p) !important;
+  background: var(--color-site-bg) !important;
+}
+[color-scheme='dark'] details {
+  border: 1px solid var(--color-site-bg) !important;
+  background: var(--color-site-bg) !important;
+}
+[color-scheme='dark'] #u-search .modal,
+[color-scheme='dark'] #u-search .modal-header,
+[color-scheme='dark'] #u-search .modal-body {
+  background: var(--color-card) !important;
+}
+[color-scheme='dark'] #u-search .modal-body .modal-results .result:hover {
+  background: var(--color-block) !important;
+}
+@media screen and (max-width: 500px) {
+  [color-scheme='dark'] .l_header .m_search {
+    background: var(--color-site-bg) !important;
   }
 }
 @font-face {
@@ -1034,7 +1148,7 @@ button {
   -moz-transition: all 0.28s ease;
   -o-transition: all 0.28s ease;
   -ms-transition: all 0.28s ease;
-  color: #44d7b6;
+  color: #64b5f6;
 }
 .l_header .switcher >li >a:hover {
   border: none;
@@ -1214,7 +1328,7 @@ ul.m-pc >li>a {
 }
 ul.m-pc >li>a:active,
 ul.m-pc >li>a.active {
-  border-bottom: 2px solid #44d7b6;
+  border-bottom: 2px solid #64b5f6;
 }
 ul.m-pc li:hover >ul.list-v,
 ul.list-v li:hover >ul.list-v {
@@ -1353,7 +1467,7 @@ ul.list-v >li>a:hover {
 }
 .l_header ul.nav-list-h>li >a:active,
 .l_header ul.nav-list-h>li >a.active {
-  color: #44d7b6;
+  color: #64b5f6;
 }
 .l_header ul.nav-list-h>li:hover>a {
   color: var(--color-list-hl);
@@ -1657,10 +1771,21 @@ ul.list-v >li>a:hover {
     padding: 0px;
   }
 }
+@media screen and (prefers-color-scheme: dark) and (max-width: 500px) {
+  .l_header .m_search {
+    background: var(--color-site-bg) !important;
+  }
+}
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1639899989057" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1639899989057"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1639900058151" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1639900058151"></noscript>
+    <script>
+      var userColorScheme=localStorage.getItem("color-scheme")
+      if(userColorScheme){
+        document.documentElement.setAttribute("color-scheme", userColorScheme);
+      }
+    </script>
   
 <script>
 if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
@@ -2081,7 +2206,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <!-- Custom Files head end-->
 </head>
   <body itemscope itemtype="http://schema.org/WebPage">
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow blur floatable show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2098,9 +2223,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
         <a class="title flat-box" target="_self" href='/'>
           
-            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png' alt="This is a picture without description" />
+          
+            <i class='https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png'></i>
           
           
+            一之碎片
           
         </a>
       
@@ -2114,13 +2241,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover" 
-                href="/" title="博客"
+                href="/index" title="主页"
                   
                   
                   
-                    active-action="action-home"
+                    active-action="action-index"
                   >
-                  <i class='fas fa-rss fa-fw'></i>博客
+                  <i class='fas fa-info-circle fa-fw'></i>主页
                 </a>
                 
               </li>
@@ -2128,6 +2255,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
           
             
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                 href="/" onclick="return false;" title="索引"
+                  
+                  
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>索引
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover" 
@@ -2143,8 +2283,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               </li>
             
           
-          
-            
+                    
+                      
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover" 
@@ -2160,19 +2300,25 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               </li>
             
           
-          
-            
+                    
+                      
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover" 
-                href="/archives/" title="归档"
+                href="/archives/" title="时间轴"
                   
                   
                   
                     active-action="action-archives"
                   >
-                  <i class='fas fa-archive fa-fw'></i>归档
+                  <i class='fas fa-archive fa-fw'></i>时间轴
                 </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
                 
               </li>
             
@@ -2182,14 +2328,67 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover" 
-                href="/friends/" title="友链"
+                 href="/" onclick="return false;" title="社交"
+                  
+                  
+                  >
+                  <i class='fas fa-link fa-fw'></i>社交
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/" title="留言板"
+                  
+                  
+                  
+                    active-action="action-https:githubcomvolantis-xhexo-theme-volantis"
+                  >
+                  <i class='fas fa-link fa-fw'></i>留言板
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                href="/friends/" title="友人帐"
                   
                   
                   
                     active-action="action-friends"
                   >
-                  <i class='fas fa-link fa-fw'></i>友链
+                  <i class='fas fa-link fa-fw'></i>友人帐
                 </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                href="/about" title="关于我"
+                  
+                  
+                  
+                    active-action="action-about"
+                  >
+                  <i class='fas fa-link fa-fw'></i>关于我
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
                 
               </li>
             
@@ -2199,14 +2398,103 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover" 
-                href="/about/" title="关于"
+                 href="/" onclick="return false;" title="直达"
                   
                   
-                  
-                    active-action="action-about"
                   >
-                  <i class='fas fa-info-circle fa-fw'></i>关于
+                  <i class='fas fa-info-circle fa-fw'></i>直达
                 </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/" title="Github"
+                  
+                  
+                  
+                    active-action="action-https:githubcomvolantis-xhexo-theme-volantis"
+                  >
+                  <i class='fas fa-link fa-fw'></i>Github
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/releases/" title="更新日志"
+                  
+                  
+                  
+                    active-action="action-https:githubcomvolantis-xhexo-theme-volantisreleases"
+                  >
+                  <i class='fas fa-link fa-fw'></i>更新日志
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                 href="/" onclick="return false;" title="音乐"
+                  
+                  
+                  >
+                  <i class='fas fa-ellipsis-v fa-fw'></i>音乐
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/" title="主题源码"
+                  
+                  
+                  
+                    active-action="action-https:githubcomvolantis-xhexo-theme-volantis"
+                  >
+                  <i class='fas fa-link fa-fw'></i>主题源码
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/releases/" title="更新日志"
+                  
+                  
+                  
+                    active-action="action-https:githubcomvolantis-xhexo-theme-volantisreleases"
+                  >
+                  <i class='fas fa-link fa-fw'></i>更新日志
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
                 
               </li>
             
@@ -2235,13 +2523,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover" 
-                href="/" title="博客"
+                href="/index" title="主页"
                   
                   
                   
-                    active-action="action-home"
+                    active-action="action-index"
                   >
-                  <i class='fas fa-rss fa-fw'></i>博客
+                  <i class='fas fa-info-circle fa-fw'></i>主页
                 </a>
                 
               </li>
@@ -2249,6 +2537,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
             
               
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                 href="/" onclick="return false;" title="索引"
+                  
+                  
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>索引
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover" 
@@ -2264,8 +2565,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               </li>
             
           
-            
-              
+                    
+                      
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover" 
@@ -2281,19 +2582,25 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               </li>
             
           
-            
-              
+                    
+                      
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover" 
-                href="/archives/" title="归档"
+                href="/archives/" title="时间轴"
                   
                   
                   
                     active-action="action-archives"
                   >
-                  <i class='fas fa-archive fa-fw'></i>归档
+                  <i class='fas fa-archive fa-fw'></i>时间轴
                 </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
                 
               </li>
             
@@ -2303,14 +2610,67 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover" 
-                href="/friends/" title="友链"
+                 href="/" onclick="return false;" title="社交"
+                  
+                  
+                  >
+                  <i class='fas fa-link fa-fw'></i>社交
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/" title="留言板"
+                  
+                  
+                  
+                    active-action="action-https:githubcomvolantis-xhexo-theme-volantis"
+                  >
+                  <i class='fas fa-link fa-fw'></i>留言板
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                href="/friends/" title="友人帐"
                   
                   
                   
                     active-action="action-friends"
                   >
-                  <i class='fas fa-link fa-fw'></i>友链
+                  <i class='fas fa-link fa-fw'></i>友人帐
                 </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                href="/about" title="关于我"
+                  
+                  
+                  
+                    active-action="action-about"
+                  >
+                  <i class='fas fa-link fa-fw'></i>关于我
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
                 
               </li>
             
@@ -2320,14 +2680,103 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover" 
-                href="/about/" title="关于"
+                 href="/" onclick="return false;" title="直达"
                   
                   
-                  
-                    active-action="action-about"
                   >
-                  <i class='fas fa-info-circle fa-fw'></i>关于
+                  <i class='fas fa-info-circle fa-fw'></i>直达
                 </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/" title="Github"
+                  
+                  
+                  
+                    active-action="action-https:githubcomvolantis-xhexo-theme-volantis"
+                  >
+                  <i class='fas fa-link fa-fw'></i>Github
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/releases/" title="更新日志"
+                  
+                  
+                  
+                    active-action="action-https:githubcomvolantis-xhexo-theme-volantisreleases"
+                  >
+                  <i class='fas fa-link fa-fw'></i>更新日志
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                 href="/" onclick="return false;" title="音乐"
+                  
+                  
+                  >
+                  <i class='fas fa-ellipsis-v fa-fw'></i>音乐
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/" title="主题源码"
+                  
+                  
+                  
+                    active-action="action-https:githubcomvolantis-xhexo-theme-volantis"
+                  >
+                  <i class='fas fa-link fa-fw'></i>主题源码
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/releases/" title="更新日志"
+                  
+                  
+                  
+                    active-action="action-https:githubcomvolantis-xhexo-theme-volantisreleases"
+                  >
+                  <i class='fas fa-link fa-fw'></i>更新日志
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
                 
               </li>
             
@@ -2352,14 +2801,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
       <div id="none" class='cover-wrapper post dock' style="display: none;">
         
-  <div class='cover-bg lazyload placeholder' data-bg="https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture"></div>
+  <div id="parallax-window"></div>
 
 <div class='cover-body'>
   <div class='top'>
     
     
-      <p class="title">Volantis</p>
+      <p class="title">一之碎片</p>
     
+    
+      <p class="subtitle">「宠辱不惊 相由心生」</p>
     
   </div>
   <div class='bottom'>
@@ -2367,46 +2818,39 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div class='list-h'>
         
           
-            <a href="/v4/getting-started/"
+            <a href="/index"
               
               
-              active-action="action-v4getting-started">
-              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg' alt="This is a picture without description" ><p>文档</p>
-            </a>
-          
-            <a href="/faqs/"
-              
-              
-              active-action="action-faqs">
-              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg' alt="This is a picture without description" ><p>帮助</p>
-            </a>
-          
-            <a href="/examples/"
-              
-              
-              active-action="action-examples">
-              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg' alt="This is a picture without description" ><p>示例</p>
-            </a>
-          
-            <a href="/contributors/"
-              
-              
-              active-action="action-contributors">
-              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg' alt="This is a picture without description" ><p>社区</p>
+              active-action="action-index">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg' alt="This is a picture without description" ><p>主页</p>
             </a>
           
             <a href="/archives/"
               
               
               active-action="action-archives">
-              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg' alt="This is a picture without description" ><p>博客</p>
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg' alt="This is a picture without description" ><p>归档</p>
+            </a>
+          
+            <a href="/contributors/"
+              
+              
+              active-action="action-contributors">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg' alt="This is a picture without description" ><p>留言</p>
+            </a>
+          
+            <a href="/v4/getting-started/"
+              
+              
+              active-action="action-v4getting-started">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg' alt="This is a picture without description" ><p>文档</p>
             </a>
           
             <a target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/"
               
               
               active-action="action-https:githubcomvolantis-xhexo-theme-volantis">
-              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg' alt="This is a picture without description" ><p>源码</p>
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg' alt="This is a picture without description" ><p>友链</p>
             </a>
           
         
@@ -2425,7 +2869,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow blur article-type-post" id="post" itemscope itemprop="blogPost">
   <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2021/12/19/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="一之碎片">
@@ -2435,7 +2879,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
     <span hidden>
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
     </span>
   
   <div class="article-meta" id="top">
@@ -2451,8 +2895,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
 <div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
   <a itemprop="url" class='author' href="/" rel="nofollow">
-    <img itemprop="image" src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" >
-    <p itemprop="name">请设置文章作者</p>
+    " class="lazyload" data-srcset="" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==<img itemprop="image" src="" alt="This is a picture without description" >
+    <p itemprop="name">一之碎片</p>
   </a>
 </div>
 
@@ -2696,7 +3140,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
 
   
-  <article class="post white-box reveal shadow" id="comments">
+  <article class="post white-box reveal shadow blur" id="comments">
     <span hidden>
       <meta itemprop="discussionUrl" content="/2021/12/19/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/#comments">
     </span>
@@ -2721,7 +3165,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-  <section class="widget toc-wrapper shadow desktop mobile pjax" id="toc-div" >
+  <section class="widget toc-wrapper shadow blur desktop mobile pjax" id="toc-div" >
     
   <header>
     
@@ -2731,7 +3175,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Part1-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">Part1 环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85nodejs"><span class="toc-text">安装nodejs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85git"><span class="toc-text">安装git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%96%87%E4%BB%B6%E5%A4%B9%E5%B9%B6%E5%AE%89%E8%A3%85hexo"><span class="toc-text">创建博客文件夹并安装hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAGithub%E5%BA%93%E5%B9%B6%E7%BB%91%E5%AE%9ASSH"><span class="toc-text">创建Github库并绑定SSH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86hexo%E6%89%98%E7%AE%A1%E5%88%B0%E4%B8%AA%E4%BA%BAGithub"><span class="toc-text">将hexo托管到个人Github</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%96%87%E7%AB%A0"><span class="toc-text">写文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part2-%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-text">Part2 基本配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E2%80%94%E2%80%94-config-yml"><span class="toc-text">hexo基本配置——_config.yml</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%AB%99"><span class="toc-text">网站</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E5%9D%80"><span class="toc-text">网址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Front-matter"><span class="toc-text">Front-matter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Layout"><span class="toc-text">Layout</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#page"><span class="toc-text">page</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#draft"><span class="toc-text">draft</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part3-%E4%B8%AA%E6%80%A7%E5%8C%96"><span class="toc-text">Part3 个性化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part4-hexo%E9%99%84%E5%8A%A0%E5%8A%9F%E8%83%BD"><span class="toc-text">Part4 hexo附加功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F"><span class="toc-text">评论系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part5-git%E5%88%86%E6%94%AF%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%B7%A5%E4%BD%9C"><span class="toc-text">Part5 git分支进行多终端工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Part1-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">1.</span> <span class="toc-text">Part1 环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85nodejs"><span class="toc-number">1.1.</span> <span class="toc-text">安装nodejs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85git"><span class="toc-number">1.2.</span> <span class="toc-text">安装git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%96%87%E4%BB%B6%E5%A4%B9%E5%B9%B6%E5%AE%89%E8%A3%85hexo"><span class="toc-number">1.3.</span> <span class="toc-text">创建博客文件夹并安装hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAGithub%E5%BA%93%E5%B9%B6%E7%BB%91%E5%AE%9ASSH"><span class="toc-number">1.4.</span> <span class="toc-text">创建Github库并绑定SSH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86hexo%E6%89%98%E7%AE%A1%E5%88%B0%E4%B8%AA%E4%BA%BAGithub"><span class="toc-number">1.5.</span> <span class="toc-text">将hexo托管到个人Github</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%96%87%E7%AB%A0"><span class="toc-number">1.6.</span> <span class="toc-text">写文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part2-%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">Part2 基本配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E2%80%94%E2%80%94-config-yml"><span class="toc-number">2.1.</span> <span class="toc-text">hexo基本配置——_config.yml</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%AB%99"><span class="toc-number">2.1.1.</span> <span class="toc-text">网站</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E5%9D%80"><span class="toc-number">2.1.2.</span> <span class="toc-text">网址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Front-matter"><span class="toc-number">2.1.3.</span> <span class="toc-text">Front-matter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Layout"><span class="toc-number">2.1.4.</span> <span class="toc-text">Layout</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#page"><span class="toc-number">2.1.5.</span> <span class="toc-text">page</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#draft"><span class="toc-number">2.1.6.</span> <span class="toc-text">draft</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part3-%E4%B8%AA%E6%80%A7%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">Part3 个性化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part4-hexo%E9%99%84%E5%8A%A0%E5%8A%9F%E8%83%BD"><span class="toc-number">4.</span> <span class="toc-text">Part4 hexo附加功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.1.</span> <span class="toc-text">评论系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part5-git%E5%88%86%E6%94%AF%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%B7%A5%E4%BD%9C"><span class="toc-number">5.</span> <span class="toc-text">Part5 git分支进行多终端工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">6.</span> <span class="toc-text">参考链接</span></a></li></ol>
     </div>
   </section>
 
@@ -2824,6 +3268,40 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="social-wrapper" itemprop="about" itemscope itemtype="http://schema.org/Thing">
           
             
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer" itemprop="url">
+                
+              </a>
+            
+          
+            
+              <a href="mailto:me@xaoxuu.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer" itemprop="url">
+                
+              </a>
+            
+          
+            
+              <a href="https://github.com/xaoxuu"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer" itemprop="url">
+                
+              </a>
+            
+          
+            
+              <a href="https://music.163.com/#/user/home?id=63035382"
+                class="social fas fa-headphones-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer" itemprop="url">
+                
+              </a>
+            
           
             
           
@@ -2885,6 +3363,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.css("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css");
   
   
+  volantis.css("https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css");
+  
   
 </script>
 
@@ -2897,8 +3377,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1639899989057')
-      volantis.js('/js/thirdparty/message.js?time=1639899989057', () => {
+      volantis.css('/css/message.css?time=1639900058151')
+      volantis.js('/js/thirdparty/message.js?time=1639900058151', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -2943,8 +3423,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1639899989057')
-      volantis.js('/js/thirdparty/message.js?time=1639899989057', () => {
+      volantis.css('/css/message.css?time=1639900058151')
+      volantis.js('/js/thirdparty/message.js?time=1639900058151', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3003,8 +3483,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1639899989057')
-      volantis.js('/js/thirdparty/message.js?time=1639899989057', () => {
+      volantis.css('/css/message.css?time=1639900058151')
+      volantis.js('/js/thirdparty/message.js?time=1639900058151', () => {
         hideMessage(done);
       });
     } else {
@@ -3242,12 +3722,128 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       volantis.APlayerController = {};
     
-    volantis.js('/js/plugins/rightMenu.js?time=1639899989057')
+    volantis.js('/js/plugins/rightMenu.js?time=1639900058151')
   </script>
 
 
 
 <!-- rightmenu要在darkmode之前（ToggleButton） darkmode要在comments之前（volantis.dark.push）-->
+
+  <script>
+const rootElement = document.documentElement;
+const darkModeStorageKey = "color-scheme";
+const rootElementDarkModeAttributeName = "color-scheme";
+const setLS = (k, v) => {
+    localStorage.setItem(k, v);
+};
+const removeLS = (k) => {
+    localStorage.removeItem(k);
+};
+const getLS = (k) => {
+    return localStorage.getItem(k);
+};
+const getModeFromCSSMediaQuery = () => {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+const resetRootDarkModeAttributeAndLS = () => {
+  rootElement.removeAttribute(rootElementDarkModeAttributeName);
+  removeLS(darkModeStorageKey);
+};
+const validColorModeKeys = {
+  dark: true,
+  light: true,
+};
+const applyCustomDarkModeSettings = (mode) => {
+  const currentSetting = mode || getLS(darkModeStorageKey);
+  getCustomDarkMode();
+  if (currentSetting === getModeFromCSSMediaQuery()) {
+    resetRootDarkModeAttributeAndLS();
+  } else if (validColorModeKeys[currentSetting]) {
+    rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting);
+  } else {
+    resetRootDarkModeAttributeAndLS();
+  }
+};
+const invertDarkModeObj = {
+  dark: "light",
+  light: "dark",
+};
+/**
+ * get target mode
+ */
+ const getCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  if(currentSetting=="dark"){
+    volantis.dark.mode="light";
+  }else{
+    volantis.dark.mode="dark";
+  }
+  // console.log(volantis.dark.mode)
+};
+const toggleCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  setLS(darkModeStorageKey, currentSetting);
+  return currentSetting;
+};
+/**
+ * 暗黑模式触发器
+ */
+volantis.dark.toggle=()=>{
+  const mode = toggleCustomDarkMode();
+  applyCustomDarkModeSettings(mode);
+  // 使用 volantis.dark.push 方法传入volantis.dark.toggle回调函数 参见layout/_partial/scripts/global.ejs
+  volantis.dark.method.toggle.start();
+}
+/**
+ * bind event for toggle button
+ */
+
+function bindToggleButton() {
+  var btn= document.querySelectorAll("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn")
+  btn.forEach(function (e) {
+    volantis.dom.$(e).on('click',volantis.dark.toggle);
+  })
+}
+applyCustomDarkModeSettings();
+document.addEventListener("DOMContentLoaded", ()=>{
+  volantis.requestAnimationFrame(bindToggleButton)
+});
+volantis.pjax.push(bindToggleButton);
+
+const darkModelListeners={
+  dark:(mediaQueryList )=>{
+    if(mediaQueryList.matches){
+      volantis.dark.mode = "dark";
+    }
+    volantis.dark.method.toggle.start();
+  },
+  light:(mediaQueryList)=>{
+    if(mediaQueryList.matches){
+      volantis.dark.mode = "light";
+    }
+    volantis.dark.method.toggle.start();
+  }
+}
+window.matchMedia('(prefers-color-scheme: dark)').addListener(darkModelListeners.dark)
+window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListeners.light)
+</script>
+
 
 
 
@@ -3256,19 +3852,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1639899989057")
+        volantis.js("/js/plugins/sites.js?time=1639900058151")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1639899989057")
+        volantis.js("/js/plugins/friends.js?time=1639900058151")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1639899989057")
+        volantis.js("/js/plugins/contributors.js?time=1639900058151")
       }
     
   };
@@ -3342,12 +3938,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   function pjax_artalk() {
     if(!document.querySelectorAll("#artalk_container")[0])return;
     let path = pdata.commentPath;
-    let placeholder = pdata.commentPlaceholder || "来啊，快活啊 ( ゜- ゜)" || "";
+    let placeholder = pdata.commentPlaceholder || "( =•ω•= )m" || "";
     if (path.length == 0) {
       path = '' || decodeURI(window.location.pathname);
     }
 
-    volantis.artalk = new Artalk(Object.assign({"js":"https://cdn.jsdelivr.net/npm/artalk@2.1.3/dist/Artalk.js","css":"https://cdn.jsdelivr.net/npm/artalk@2.1.3/dist/Artalk.css","server":"http://127.0.0.1:8080/api","path":null,"placeholder":"来啊，快活啊 ( ゜- ゜)","noComment":"快来成为第一个评论的人吧~","pagination":{"readMore":true,"autoLoad":false,"pageSize":10}}, {
+    volantis.artalk = new Artalk(Object.assign({"js":"https://cdn.jsdelivr.net/npm/artalk@2.1.3/dist/Artalk.js","css":"https://cdn.jsdelivr.net/npm/artalk@2.1.3/dist/Artalk.css","server":"http://127.0.0.1:8080/api","path":null,"placeholder":"( =•ω•= )m","noComment":"快来成为第一个评论的人吧~","pagination":{"readMore":true,"autoLoad":true,"pageSize":10}}, {
       el: '#artalk_container',
       pageKey: path,
       pageTitle: document.title,
@@ -3390,7 +3986,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-<script src="/js/app.js?time=1639899989057.js"></script>
+<script src="/js/app.js?time=1639900058151.js"></script>
 
 
 <!-- optional -->
@@ -3403,7 +3999,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1639899989057");
+    return volantis.js("/js/search/hexo.js?time=1639900058151");
   }
 
   function loadSearchService() {
@@ -3440,9 +4036,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
 
 
   <script>
+
+  volantis.css("https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/default.min.css");
 
 
 
@@ -3465,6 +4067,61 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
+
+
+  <script>
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp"];
+  let index = 0;
+  let IntervalParallax = null;
+
+  function parallax(){
+    let ParallaxWindow = document.querySelector("#parallax-window");
+    
+    Parallax.window = ParallaxWindow;
+    Parallax.options.fade = 1500;
+    Parallax.cache = 1;
+    next_parallax();
+    Parallax.init();
+    if (imgs.length>1) {
+      IntervalParallax = setInterval(function () {
+        next_parallax();
+      }, '10000');
+    }
+  }
+
+  function next_parallax() {
+    if (typeof Parallax == "undefined") {
+      return
+    }
+    
+      if (!document.querySelector("#full")&&!document.querySelector("#half")) {
+        return
+      }
+    
+    if (imgs.length>=1) {
+      Parallax.options.src = imgs[index % imgs.length];
+      Parallax.start();
+      index++;
+      if (Parallax.cache) {
+        fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
+        if (index == imgs.length) {
+          Parallax.cache = 0;
+        }
+      }
+    }
+  }
+  var runningOnBrowser = typeof window !== "undefined";
+  var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+  if (!isBot) {
+    volantis.js('/js/plugins/parallax.js?time=1639900058151').then(()=>{
+      parallax()
+    })
+    volantis.pjax.send(()=>{
+      clearInterval(IntervalParallax)
+    },"clearIntervalParallax");
+    volantis.pjax.push(parallax);
+  }
+</script>
 
 
 
@@ -3690,7 +4347,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":3,"item":{"@id":"https://avalooooooon.github.io/2021/12/19/建站记录/","name":"建站记录"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"建站记录","description":"","datePublished":"2021-12-19T06:53:04.000Z","dateModified":"2021-12-19T07:07:29.231Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://avalooooooon.github.io/2021/12/19/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://avalooooooon.github.io/2021/12/19/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/","wordCount":0,"keywords":"hexo macOS Volantis","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":3,"item":{"@id":"https://avalooooooon.github.io/2021/12/19/建站记录/","name":"建站记录"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"建站记录","description":"","datePublished":"2021-12-19T06:53:04.000Z","dateModified":"2021-12-19T07:07:29.231Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://avalooooooon.github.io/2021/12/19/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://avalooooooon.github.io/2021/12/19/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/","wordCount":0,"keywords":"hexo macOS Volantis","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->
