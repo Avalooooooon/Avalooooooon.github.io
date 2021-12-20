@@ -20,7 +20,7 @@
   <meta content="一之碎片" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1639984569681" as="style">
+  <link rel="preload" href="/css/style.css?time=1639986100503" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -1778,8 +1778,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1639984569681" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1639984569681"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1639986100503" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1639986100503"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2957,32 +2957,39 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <blockquote>
 <p>更强大的是，Typora 支持在拖动或 <code>Ctrl + V</code> 网络图片后自动将其保存到本地。可以在<code>文件 - 偏好设置 - 编辑器 - 图片插入</code>中选择复制到哪个路径，什么情况下需要复制。</p>
 </blockquote>
-<h3 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h3><p>已经把设置改了，现在导出也会保留连续空格。<br>输入连续空格后，会在编辑器视图里保留这些空格，但打印或导出时，这些空格会被省略成一个。<br>在源代码模式下，为每个空格前加一个 <code>\</code> 转义符，或者直接使用 HTML 风格的 <code>&amp;nbsp;</code>(No-Break SPace) 来保持连续的空格。</p>
-</div><h2 id="表情插入"><a href="#表情插入" class="headerlink" title="表情插入"></a>表情插入</h2><div class="story post-story"><p>emoji：用<code>:emoji:</code>的形式打出emoji，如:horse:显示为:horse:。</p>
+<h3 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h3><p>已经把设置改了，现在导出也会保留连续空格。<br>输入连续空格后，会在编辑器视图里保留这些空格，但打印或导出时，这些空格会被省略成一个。<br>在源代码模式下，为每个空格前加一个 <code>\</code> 转义符，或者直接使用 HTML 风格的 <code>&amp;nbsp;</code>(No-Break Space) 来保持连续的空格。</p>
+</div><h2 id="表情插入"><a href="#表情插入" class="headerlink" title="表情插入"></a>表情插入</h2><div class="story post-story"><p>emoji：用<code>:emoji:</code>的形式打出。</p>
 </div><h2 id="链接引用和脚注"><a href="#链接引用和脚注" class="headerlink" title="链接引用和脚注"></a>链接引用和脚注</h2><div class="story post-story"><p>链接引用类似于我们常在论文末尾看到的「参考文献」的写法，你可以通过<code>[]:</code> 的语法来为你的文档加上链接引用。</p>
 <p>脚注即某段话结尾右上角标有数字标记，页面底部进行注释的写法。你可以在需要插入脚注标号的位置写 <code>[^ number ]</code> ，再在下方通过<code> [^ number ]:</code> 在文档中插入脚注。</p>
 <blockquote>
 <p><strong>注意: 不要遗漏了脚注编号 <code>number</code> 前后的空格 !</strong></p>
 </blockquote>
-<p>示例[^ 这是一个脚注 ][^ 这是一个脚注 ] </p>
+<p>示例[^ 这是一个脚注 ][^ 这是一个脚注 ]<br>[^ 这是一个脚注 ]:脚注内容</p>
 </div><h2 id="YAML-front-matter"><a href="#YAML-front-matter" class="headerlink" title="YAML front-matter"></a>YAML front-matter</h2><div class="story post-story"><p>Typora 支持在文档头部加上基于 YAML 的 front-matter 信息，这一特性适用于把 Markdown 文档分类归档上传到用 Hexo 框架搭建的博客中。</p>
 </div><h2 id="LaTeX"><a href="#LaTeX" class="headerlink" title="LaTeX"></a>LaTeX</h2><div class="story post-story"><p>Typora 原生支持 LaTeX 语法，有两种方式输入 LaTeX 风格的数学公式：<br>行内公式（inline）：用$…$ 括起公式，公式会出现在行内。<br>块间公式（display）：用$$…$$ 括起公式（注意 $$ 后需要换行），公式会默认显示在行中间。</p>
-<p><img src="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/5f82606e6d89fe1eb24705c4ca6b895d-8802831.png" class="lazyload" data-srcset="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/5f82606e6d89fe1eb24705c4ca6b895d-8802831.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="链接引用和脚注"></p>
-</div><h2 id="其它使用范例"><a href="#其它使用范例" class="headerlink" title="其它使用范例"></a>其它使用范例</h2><div class="story post-story"><h3 id="typora-画流程图、时序图-顺序图-、甘特图"><a href="#typora-画流程图、时序图-顺序图-、甘特图" class="headerlink" title="typora 画流程图、时序图(顺序图)、甘特图"></a>typora 画流程图、时序图(顺序图)、甘特图</h3><p>1、横向流程图源码格式：<br>``` mermaid<br>graph LR<br>A[方形] –&gt;B(圆角)<br>    B –&gt; C{条件a}<br>    C –&gt;|a=1| D[结果1]<br>    C –&gt;|a=2| E[结果2]<br>    F[横向流程图]<br>```</p>
+</div><h2 id="其它使用范例"><a href="#其它使用范例" class="headerlink" title="其它使用范例"></a>其它使用范例</h2><div class="story post-story"><h3 id="typora-画流程图、时序图-顺序图-、甘特图"><a href="#typora-画流程图、时序图-顺序图-、甘特图" class="headerlink" title="typora 画流程图、时序图(顺序图)、甘特图"></a>typora 画流程图、时序图(顺序图)、甘特图</h3><p>1、横向流程图源码格式：</p>
+<p><img src="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/hengxiangliuchengtu.png" class="lazyload" data-srcset="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/hengxiangliuchengtu.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="横向流程图"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[方形] --&gt;B(圆角)</span><br><span class="line">    B --&gt; C&#123;条件a&#125;</span><br><span class="line">    C --&gt;|a=1| D[结果1]</span><br><span class="line">    C --&gt;|a=2| E[结果2]</span><br><span class="line">    F[横向流程图]</span><br></pre></td></tr></table></figure>
-<p>2、竖向流程图源码格式：<br>```mermaid<br>graph TD<br>A[方形] –&gt; B(圆角)<br>    B –&gt; C{条件a}<br>    C –&gt; |a=1| D[结果1]<br>    C –&gt; |a=2| E[结果2]<br>    F[竖向流程图]<br>```</p>
+<p>2、竖向流程图源码格式：</p>
+<p><img src="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/shuxiangliuchengtu.png" class="lazyload" data-srcset="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/shuxiangliuchengtu.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="竖向流程图"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A[方形] --&gt; B(圆角)</span><br><span class="line">    B --&gt; C&#123;条件a&#125;</span><br><span class="line">    C --&gt; |a=1| D[结果1]</span><br><span class="line">    C --&gt; |a=2| E[结果2]</span><br><span class="line">    F[竖向流程图]</span><br></pre></td></tr></table></figure>
-<p>3、标准流程图源码格式：<br>```flow<br>st=&gt;start: 开始框<br>op=&gt;operation: 处理框<br>cond=&gt;condition: 判断框(是或否?)<br>sub1=&gt;subroutine: 子流程<br>io=&gt;inputoutput: 输入输出框<br>e=&gt;end: 结束框<br>st-&gt;op-&gt;cond<br>cond(yes)-&gt;io-&gt;e<br>cond(no)-&gt;sub1(right)-&gt;op<br>```</p>
+<p>3、标准流程图源码格式：</p>
+<p><img src="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/biaozhunliuchengtu.png" class="lazyload" data-srcset="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/biaozhunliuchengtu.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="标准流程图"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: 开始框</span><br><span class="line">op=&gt;operation: 处理框</span><br><span class="line">cond=&gt;condition: 判断框(是或否?)</span><br><span class="line">sub1=&gt;subroutine: 子流程</span><br><span class="line">io=&gt;inputoutput: 输入输出框</span><br><span class="line">e=&gt;end: 结束框</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;io-&gt;e</span><br><span class="line">cond(no)-&gt;sub1(right)-&gt;op</span><br></pre></td></tr></table></figure>
-<p>4、标准流程图源码格式（横向）：<br>```flow<br>st=&gt;start: 开始框<br>op=&gt;operation: 处理框<br>cond=&gt;condition: 判断框(是或否?)<br>sub1=&gt;subroutine: 子流程<br>io=&gt;inputoutput: 输入输出框<br>e=&gt;end: 结束框<br>st(right)-&gt;op(right)-&gt;cond<br>cond(yes)-&gt;io(bottom)-&gt;e<br>cond(no)-&gt;sub1(right)-&gt;op<br>```</p>
+<p>4、标准流程图源码格式（横向）：</p>
+<p><img src="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/hengxiangbiaozhunliuchengtu.png" class="lazyload" data-srcset="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/hengxiangbiaozhunliuchengtu.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="横向标准流程图"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: 开始框</span><br><span class="line">op=&gt;operation: 处理框</span><br><span class="line">cond=&gt;condition: 判断框(是或否?)</span><br><span class="line">sub1=&gt;subroutine: 子流程</span><br><span class="line">io=&gt;inputoutput: 输入输出框</span><br><span class="line">e=&gt;end: 结束框</span><br><span class="line">st(right)-&gt;op(right)-&gt;cond</span><br><span class="line">cond(yes)-&gt;io(bottom)-&gt;e</span><br><span class="line">cond(no)-&gt;sub1(right)-&gt;op</span><br></pre></td></tr></table></figure>
-<p>5、UML时序图源码样例：<br>```sequence<br>对象A-&gt;对象B: 对象B你好吗?（请求）<br>Note right of 对象B: 对象B的描述<br>Note left of 对象A: 对象A的描述(提示)<br>对象B–&gt;对象A: 我很好(响应)<br>对象A-&gt;对象B: 你真的好吗？<br>```</p>
+<p>5、UML时序图源码样例：</p>
+<p><img src="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/UML.png" class="lazyload" data-srcset="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/UML.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="UML时序图"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">对象A-&gt;对象B: 对象B你好吗?（请求）</span><br><span class="line">Note right of 对象B: 对象B的描述</span><br><span class="line">Note left of 对象A: 对象A的描述(提示)</span><br><span class="line">对象B--&gt;对象A: 我很好(响应)</span><br><span class="line">对象A-&gt;对象B: 你真的好吗？</span><br></pre></td></tr></table></figure>
-<p>6、UML时序图源码复杂样例：<br>```sequence<br>Title: 标题：复杂使用<br>对象A-&gt;对象B: 对象B你好吗?（请求）<br>Note right of 对象B: 对象B的描述<br>Note left of 对象A: 对象A的描述(提示)<br>对象B–&gt;对象A: 我很好(响应)<br>对象B-&gt;小三: 你好吗<br>小三–&gt;&gt;对象A: 对象B找我了<br>对象A-&gt;对象B: 你真的好吗？<br>Note over 小三,对象B: 我们是朋友<br>participant C<br>Note right of C: 没人陪我玩<br>```</p>
+<p>6、UML时序图源码复杂样例：</p>
+<p><img src="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/fuzaUML.png" class="lazyload" data-srcset="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/fuzaUML.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="复杂UML"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Title: 标题：复杂使用</span><br><span class="line">对象A-&gt;对象B: 对象B你好吗?（请求）</span><br><span class="line">Note right of 对象B: 对象B的描述</span><br><span class="line">Note left of 对象A: 对象A的描述(提示)</span><br><span class="line">对象B--&gt;对象A: 我很好(响应)</span><br><span class="line">对象B-&gt;小三: 你好吗</span><br><span class="line">小三--&gt;&gt;对象A: 对象B找我了</span><br><span class="line">对象A-&gt;对象B: 你真的好吗？</span><br><span class="line">Note over 小三,对象B: 我们是朋友</span><br><span class="line">participant C</span><br><span class="line">Note right of C: 没人陪我玩</span><br></pre></td></tr></table></figure>
-<p>7、UML标准时序图样例：<br>```mermaid<br>%% 时序图例子,-&gt; 直线，–&gt;虚线，-&gt;&gt;实线箭头<br>  sequenceDiagram<br>    participant 张三<br>    participant 李四<br>    张三-&gt;王五: 王五你好吗？<br>    loop 健康检查<br>        王五-&gt;王五: 与疾病战斗<br>    end<br>    Note right of 王五: 合理 食物 <br>看医生…<br>    李四–&gt;&gt;张三: 很好!<br>    王五-&gt;李四: 你怎么样?<br>    李四–&gt;王五: 很好!<br>```</p>
+<p>7、UML标准时序图样例：</p>
+<p><img src="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/biaozhunUML.png" class="lazyload" data-srcset="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/biaozhunUML.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="标准UML"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头</span><br><span class="line">  sequenceDiagram</span><br><span class="line">    participant 张三</span><br><span class="line">    participant 李四</span><br><span class="line">    张三-&gt;王五: 王五你好吗？</span><br><span class="line">    loop 健康检查</span><br><span class="line">        王五-&gt;王五: 与疾病战斗</span><br><span class="line">    end</span><br><span class="line">    Note right of 王五: 合理 食物 &lt;br/&gt;看医生...</span><br><span class="line">    李四--&gt;&gt;张三: 很好!</span><br><span class="line">    王五-&gt;李四: 你怎么样?</span><br><span class="line">    李四--&gt;王五: 很好!</span><br></pre></td></tr></table></figure>
-<p>8、甘特图样例：<br>```mermaid<br>%% 语法示例<br>        gantt<br>        dateFormat  YYYY-MM-DD<br>        title 软件开发甘特图<br>        section 设计<br>        需求                      :done,    des1, 2014-01-06,2014-01-08<br>        原型                      :active,  des2, 2014-01-09, 3d<br>        UI设计                     :         des3, after des2, 5d<br>    未来任务                     :         des4, after des3, 5d<br>        section 开发<br>        学习准备理解需求                      :crit, done, 2014-01-06,24h<br>        设计框架                             :crit, done, after des2, 2d<br>        开发                                 :crit, active, 3d<br>        未来任务                              :crit, 5d<br>        耍                                   :2d<br>        section 测试<br>        功能测试                              :active, a1, after des3, 3d<br>        压力测试                               :after a1  , 20h<br>        测试报告                               : 48h<br>```</p>
+<p>8、甘特图样例：</p>
+<p><img src="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/gante.png" class="lazyload" data-srcset="/2021/12/20/Typora%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/gante.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="甘特图"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">%% 语法示例</span><br><span class="line">        gantt</span><br><span class="line">        dateFormat  YYYY-MM-DD</span><br><span class="line">        title 软件开发甘特图</span><br><span class="line">        section 设计</span><br><span class="line">        需求                      :done,    des1, 2014-01-06,2014-01-08</span><br><span class="line">        原型                      :active,  des2, 2014-01-09, 3d</span><br><span class="line">        UI设计                     :         des3, after des2, 5d</span><br><span class="line">    未来任务                     :         des4, after des3, 5d</span><br><span class="line">        section 开发</span><br><span class="line">        学习准备理解需求                      :crit, done, 2014-01-06,24h</span><br><span class="line">        设计框架                             :crit, done, after des2, 2d</span><br><span class="line">        开发                                 :crit, active, 3d</span><br><span class="line">        未来任务                              :crit, 5d</span><br><span class="line">        耍                                   :2d</span><br><span class="line">        section 测试</span><br><span class="line">        功能测试                              :active, a1, after des3, 3d</span><br><span class="line">        压力测试                               :after a1  , 20h</span><br><span class="line">        测试报告                               : 48h</span><br></pre></td></tr></table></figure>
 </div>
   </div>
@@ -3369,8 +3376,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1639984569681')
-      volantis.js('/js/message.js?time=1639984569681', () => {
+      volantis.css('/css/message.css?time=1639986100502')
+      volantis.js('/js/message.js?time=1639986100503', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3415,8 +3422,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1639984569681')
-      volantis.js('/js/message.js?time=1639984569681', () => {
+      volantis.css('/css/message.css?time=1639986100502')
+      volantis.js('/js/message.js?time=1639986100503', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3475,8 +3482,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1639984569681')
-      volantis.js('/js/message.js?time=1639984569681', () => {
+      volantis.css('/css/message.css?time=1639986100502')
+      volantis.js('/js/message.js?time=1639986100503', () => {
         hideMessage(done);
       });
     } else {
@@ -3734,7 +3741,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/rightMenu.js?time=1639984569681')
+    volantis.js('/js/rightMenu.js?time=1639986100503')
   </script>
 
 
@@ -3847,19 +3854,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1639984569681")
+        volantis.js("/js/plugins/sites.js?time=1639986100503")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1639984569681")
+        volantis.js("/js/plugins/friends.js?time=1639986100503")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1639984569681")
+        volantis.js("/js/plugins/contributors.js?time=1639986100503")
       }
     
   };
@@ -3931,7 +3938,7 @@ volantis.pjax.push(bindToggleButton);
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/aplayer.js?time=1639984569687')
+    await volantis.js('/js/aplayer.js?time=1639986100509')
     volantis.APlayerController.music = true;
   
   })();
@@ -4065,7 +4072,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1639984569681.js"></script>
+<script src="/js/app.js?time=1639986100503.js"></script>
 
 
 <!-- optional -->
@@ -4078,7 +4085,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1639984569681");
+    return volantis.js("/js/search/hexo.js?time=1639986100503");
   }
 
   function loadSearchService() {
@@ -4149,7 +4156,7 @@ volantis.pjax.push(bindToggleButton);
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4192,7 +4199,7 @@ volantis.pjax.push(bindToggleButton);
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/parallax.js?time=1639984569681').then(()=>{
+    volantis.js('/js/parallax.js?time=1639986100503').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
