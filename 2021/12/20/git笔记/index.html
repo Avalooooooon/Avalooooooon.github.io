@@ -20,7 +20,7 @@
   <meta content="一之碎片" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1640157801806" as="style">
+  <link rel="preload" href="/css/style.css?time=1640157956280" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -1778,8 +1778,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1640157801806" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1640157801806"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1640157956280" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1640157956280"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -3040,8 +3040,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除某个分支【慎重操作】 注意当前不能在iii分支上,跳出之后,再删除</span></span><br><span class="line">git branch -d iii</span><br></pre></td></tr></table></figure>
 
-</div><h2 id="合并分支——fast-forward"><a href="#合并分支——fast-forward" class="headerlink" title="合并分支——fast-forward"></a>合并分支——fast-forward</h2><div class="story post-story"><p>当你试图合并两个分支时， 如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者的时候， 只会简单的将指针向前推进（指针右移），因为这种情况下的合并操作没有需要解决的分歧——这就叫做 “快进（fast-forward）”。</p>
-</div><h2 id="合并分支——merge"><a href="#合并分支——merge" class="headerlink" title="合并分支——merge"></a>合并分支——merge</h2><div class="story post-story"><p>当两个将要合并的分支各自有不同的父提交时发生。比如下面的例子，要合并master和iss53分支：<br><img src="/2021/12/20/git%E7%AC%94%E8%AE%B0/merge.png" class="lazyload" data-srcset="/2021/12/20/git%E7%AC%94%E8%AE%B0/merge.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" ><br>你的开发历史从一个更早的地方开始分叉开来（diverged）。 因为，<code>master</code> 分支所在提交并不是 <code>iss53</code> 分支所在提交的直接祖先，Git 不得不做一些额外的工作。 出现这种情况的时候，Git 会使用两个分支的末端所指的快照（<code>C4</code> 和 <code>C5</code>）以及这两个分支的公共祖先（<code>C2</code>)，做一个简单的三方合并。和之前将分支指针向前推进所不同的是，Git 将此次三方合并的结果做了一个新的快照并且自动创建一个<strong>新的提交</strong>指向它。<br><img src="/2021/12/20/git%E7%AC%94%E8%AE%B0/merge2.png" class="lazyload" data-srcset="/2021/12/20/git%E7%AC%94%E8%AE%B0/merge2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" ></p>
+<h3 id="合并分支——fast-forward"><a href="#合并分支——fast-forward" class="headerlink" title="合并分支——fast-forward"></a>合并分支——fast-forward</h3><p>当你试图合并两个分支时， 如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者的时候， 只会简单的将指针向前推进（指针右移），因为这种情况下的合并操作没有需要解决的分歧——这就叫做 “快进（fast-forward）”。</p>
+<h3 id="合并分支——merge"><a href="#合并分支——merge" class="headerlink" title="合并分支——merge"></a>合并分支——merge</h3><p>当两个将要合并的分支各自有不同的父提交时发生。比如下面的例子，要合并master和iss53分支：<br><img src="/2021/12/20/git%E7%AC%94%E8%AE%B0/merge.png" class="lazyload" data-srcset="/2021/12/20/git%E7%AC%94%E8%AE%B0/merge.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" ><br>你的开发历史从一个更早的地方开始分叉开来（diverged）。 因为，<code>master</code> 分支所在提交并不是 <code>iss53</code> 分支所在提交的直接祖先，Git 不得不做一些额外的工作。 出现这种情况的时候，Git 会使用两个分支的末端所指的快照（<code>C4</code> 和 <code>C5</code>）以及这两个分支的公共祖先（<code>C2</code>)，做一个简单的三方合并。和之前将分支指针向前推进所不同的是，Git 将此次三方合并的结果做了一个新的快照并且自动创建一个<strong>新的提交</strong>指向它。<br><img src="/2021/12/20/git%E7%AC%94%E8%AE%B0/merge2.png" class="lazyload" data-srcset="/2021/12/20/git%E7%AC%94%E8%AE%B0/merge2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" ></p>
 <h3 id="合并分支——rebase"><a href="#合并分支——rebase" class="headerlink" title="合并分支——rebase"></a>合并分支——rebase</h3><p><code>rebase</code>（变基） 命令将提交到某一分支上的所有修改都移至另一分支上。<br>考虑之前提到的merge。开发任务分叉到两个不同分支，又各自提交了更新：<br><img src="/2021/12/20/git%E7%AC%94%E8%AE%B0/rebase1.png" class="lazyload" data-srcset="/2021/12/20/git%E7%AC%94%E8%AE%B0/rebase1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" ><br>Merge会把两个分支的最新快照（<code>C3</code> 和 <code>C4</code>）以及二者最近的共同祖先（<code>C2</code>）进行三方合并，合并的结果是生成一个新的快照（并提交)：<br><img src="/2021/12/20/git%E7%AC%94%E8%AE%B0/rebase2.png" class="lazyload" data-srcset="/2021/12/20/git%E7%AC%94%E8%AE%B0/rebase2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" ><br>其实，还有一种方法：你可以提取在 <code>C4</code> 中引入的补丁和修改，然后在 <code>C3</code> 的基础上应用一次。 在这个例子中，你可以检出 <code>experiment</code> 分支，然后将它变基到 <code>master</code> 分支上：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout experiment</span><br><span class="line">git rebase master</span><br></pre></td></tr></table></figure>
 
@@ -3063,7 +3063,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>等你退出合并工具之后，Git 会询问刚才的合并是否成功。 如果回答“是”，Git 会暂存那些文件以表明冲突已解决。可以再次运行 <code>git status</code> 来确认所有的合并冲突都已被解决。</p>
 <h3 id="合并分支——提交"><a href="#合并分支——提交" class="headerlink" title="合并分支——提交"></a>合并分支——提交</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></table></figure>
 
-<h3 id="管理分支"><a href="#管理分支" class="headerlink" title="管理分支"></a>管理分支</h3><h3 id="关于分支的几个常见场景："><a href="#关于分支的几个常见场景：" class="headerlink" title="关于分支的几个常见场景："></a>关于分支的几个常见场景：</h3><p>1.在新的分支上面常规开发【一般是dev分支】</p>
+
+
+<h3 id="关于分支的几个常见场景："><a href="#关于分支的几个常见场景：" class="headerlink" title="关于分支的几个常见场景："></a>关于分支的几个常见场景：</h3><p>1.在新的分支上面常规开发【一般是dev分支】</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在确保当前分支是上一步git checkout过来的即可【不放心的话可以git branch 确认下】</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;yyyy&quot;</span></span><br><span class="line">git pull       <span class="comment">#注意在多人协作push之前,一定先pull下,养成良好的习惯,避免和被人提交的代码冲突,硬合并而照成代码事故】</span></span><br><span class="line">git push      <span class="comment"># 【再上一步，pull之后如无冲突，即可提交代码】</span></span><br><span class="line">git status    <span class="comment">#【查看当前工作空间状态】</span></span><br></pre></td></tr></table></figure>
 
 <p>2.将次分支和并到主分支上【一般是dev分支合并到主分支master上】【dev分支开发完毕,合并到master分支,并推送上线】</p>
@@ -3264,7 +3266,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC-%E6%97%A5%E5%BF%97"><span class="toc-number">1.</span> <span class="toc-text">查看版本&#x2F;日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%8A%B6%E6%80%81"><span class="toc-number">2.1.</span> <span class="toc-text">文件状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%BF%BD%E7%95%A5"><span class="toc-number">2.2.</span> <span class="toc-text">文件的忽略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%93%E5%BA%93"><span class="toc-number">3.</span> <span class="toc-text">仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E5%B0%9A%E6%9C%AA%E8%BF%9B%E8%A1%8C%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E7%9A%84%E6%9C%AC%E5%9C%B0%E7%9B%AE%E5%BD%95%E8%BD%AC%E6%8D%A2%E4%B8%BA-Git-%E4%BB%93%E5%BA%93"><span class="toc-number">3.1.</span> <span class="toc-text">将尚未进行版本控制的本地目录转换为 Git 仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E5%85%B6%E5%AE%83%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%85%8B%E9%9A%86%E4%B8%80%E4%B8%AA%E5%B7%B2%E5%AD%98%E5%9C%A8%E7%9A%84-Git-%E4%BB%93%E5%BA%93"><span class="toc-number">3.2.</span> <span class="toc-text">从其它服务器克隆一个已存在的 Git 仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-number">3.3.</span> <span class="toc-text">远程仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%89%E5%8F%96%E3%80%81%E6%8A%93%E5%8F%96%E4%B8%8E%E6%8E%A8%E9%80%81"><span class="toc-number">4.</span> <span class="toc-text">拉取、抓取与推送</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%93%E5%8F%96%E2%80%94%E2%80%94fetch"><span class="toc-number">4.1.</span> <span class="toc-text">抓取——fetch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%89%E5%8F%96%E2%80%94%E2%80%94pull"><span class="toc-number">4.2.</span> <span class="toc-text">拉取——pull</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E2%80%94%E2%80%94push"><span class="toc-number">4.3.</span> <span class="toc-text">推送——push</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%94%AF"><span class="toc-number">5.</span> <span class="toc-text">分支</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">5.1.</span> <span class="toc-text">概述</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E2%80%94%E2%80%94fast-forward"><span class="toc-number">6.</span> <span class="toc-text">合并分支——fast-forward</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E2%80%94%E2%80%94merge"><span class="toc-number">7.</span> <span class="toc-text">合并分支——merge</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E2%80%94%E2%80%94rebase"><span class="toc-number">7.1.</span> <span class="toc-text">合并分支——rebase</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E2%80%94%E2%80%94%E5%86%B2%E7%AA%81"><span class="toc-number">7.2.</span> <span class="toc-text">合并分支——冲突</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E2%80%94%E2%80%94%E6%8F%90%E4%BA%A4"><span class="toc-number">7.3.</span> <span class="toc-text">合并分支——提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E5%88%86%E6%94%AF"><span class="toc-number">7.4.</span> <span class="toc-text">管理分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%88%86%E6%94%AF%E7%9A%84%E5%87%A0%E4%B8%AA%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF%EF%BC%9A"><span class="toc-number">7.5.</span> <span class="toc-text">关于分支的几个常见场景：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80"><span class="toc-number">8.</span> <span class="toc-text">版本回退</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E9%83%A8%E5%88%86%E6%96%87%E4%BB%B6%E7%9A%84%E6%92%A4%E9%94%80%E6%93%8D%E4%BD%9C"><span class="toc-number">8.1.</span> <span class="toc-text">针对部分文件的撤销操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E6%95%B4%E4%B8%AA%E7%89%88%E6%9C%AC%E7%9A%84%E5%9B%9E%E9%80%80%E6%93%8D%E4%BD%9C"><span class="toc-number">8.2.</span> <span class="toc-text">针对整个版本的回退操作</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC-%E6%97%A5%E5%BF%97"><span class="toc-number">1.</span> <span class="toc-text">查看版本&#x2F;日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%8A%B6%E6%80%81"><span class="toc-number">2.1.</span> <span class="toc-text">文件状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%BF%BD%E7%95%A5"><span class="toc-number">2.2.</span> <span class="toc-text">文件的忽略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%93%E5%BA%93"><span class="toc-number">3.</span> <span class="toc-text">仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E5%B0%9A%E6%9C%AA%E8%BF%9B%E8%A1%8C%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E7%9A%84%E6%9C%AC%E5%9C%B0%E7%9B%AE%E5%BD%95%E8%BD%AC%E6%8D%A2%E4%B8%BA-Git-%E4%BB%93%E5%BA%93"><span class="toc-number">3.1.</span> <span class="toc-text">将尚未进行版本控制的本地目录转换为 Git 仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E5%85%B6%E5%AE%83%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%85%8B%E9%9A%86%E4%B8%80%E4%B8%AA%E5%B7%B2%E5%AD%98%E5%9C%A8%E7%9A%84-Git-%E4%BB%93%E5%BA%93"><span class="toc-number">3.2.</span> <span class="toc-text">从其它服务器克隆一个已存在的 Git 仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-number">3.3.</span> <span class="toc-text">远程仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%89%E5%8F%96%E3%80%81%E6%8A%93%E5%8F%96%E4%B8%8E%E6%8E%A8%E9%80%81"><span class="toc-number">4.</span> <span class="toc-text">拉取、抓取与推送</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%93%E5%8F%96%E2%80%94%E2%80%94fetch"><span class="toc-number">4.1.</span> <span class="toc-text">抓取——fetch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%89%E5%8F%96%E2%80%94%E2%80%94pull"><span class="toc-number">4.2.</span> <span class="toc-text">拉取——pull</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E2%80%94%E2%80%94push"><span class="toc-number">4.3.</span> <span class="toc-text">推送——push</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%94%AF"><span class="toc-number">5.</span> <span class="toc-text">分支</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">5.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E2%80%94%E2%80%94fast-forward"><span class="toc-number">5.2.</span> <span class="toc-text">合并分支——fast-forward</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E2%80%94%E2%80%94merge"><span class="toc-number">5.3.</span> <span class="toc-text">合并分支——merge</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E2%80%94%E2%80%94rebase"><span class="toc-number">5.4.</span> <span class="toc-text">合并分支——rebase</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E2%80%94%E2%80%94%E5%86%B2%E7%AA%81"><span class="toc-number">5.5.</span> <span class="toc-text">合并分支——冲突</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E2%80%94%E2%80%94%E6%8F%90%E4%BA%A4"><span class="toc-number">5.6.</span> <span class="toc-text">合并分支——提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%88%86%E6%94%AF%E7%9A%84%E5%87%A0%E4%B8%AA%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF%EF%BC%9A"><span class="toc-number">5.7.</span> <span class="toc-text">关于分支的几个常见场景：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80"><span class="toc-number">6.</span> <span class="toc-text">版本回退</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E9%83%A8%E5%88%86%E6%96%87%E4%BB%B6%E7%9A%84%E6%92%A4%E9%94%80%E6%93%8D%E4%BD%9C"><span class="toc-number">6.1.</span> <span class="toc-text">针对部分文件的撤销操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E6%95%B4%E4%B8%AA%E7%89%88%E6%9C%AC%E7%9A%84%E5%9B%9E%E9%80%80%E6%93%8D%E4%BD%9C"><span class="toc-number">6.2.</span> <span class="toc-text">针对整个版本的回退操作</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3482,8 +3484,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1640157801806')
-      volantis.js('/js/message.js?time=1640157801806', () => {
+      volantis.css('/css/message.css?time=1640157956279')
+      volantis.js('/js/message.js?time=1640157956280', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3528,8 +3530,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1640157801806')
-      volantis.js('/js/message.js?time=1640157801806', () => {
+      volantis.css('/css/message.css?time=1640157956279')
+      volantis.js('/js/message.js?time=1640157956280', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3588,8 +3590,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1640157801806')
-      volantis.js('/js/message.js?time=1640157801806', () => {
+      volantis.css('/css/message.css?time=1640157956279')
+      volantis.js('/js/message.js?time=1640157956280', () => {
         hideMessage(done);
       });
     } else {
@@ -3847,7 +3849,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/rightMenu.js?time=1640157801806')
+    volantis.js('/js/rightMenu.js?time=1640157956280')
   </script>
 
 
@@ -3960,19 +3962,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1640157801806")
+        volantis.js("/js/plugins/sites.js?time=1640157956280")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1640157801806")
+        volantis.js("/js/plugins/friends.js?time=1640157956280")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1640157801806")
+        volantis.js("/js/plugins/contributors.js?time=1640157956280")
       }
     
   };
@@ -4044,7 +4046,7 @@ volantis.pjax.push(bindToggleButton);
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/aplayer.js?time=1640157801812')
+    await volantis.js('/js/aplayer.js?time=1640157956285')
     volantis.APlayerController.music = true;
   
   })();
@@ -4178,7 +4180,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1640157801806.js"></script>
+<script src="/js/app.js?time=1640157956280.js"></script>
 
 
 <!-- optional -->
@@ -4191,7 +4193,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1640157801806");
+    return volantis.js("/js/search/hexo.js?time=1640157956280");
   }
 
   function loadSearchService() {
@@ -4262,7 +4264,7 @@ volantis.pjax.push(bindToggleButton);
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4305,7 +4307,7 @@ volantis.pjax.push(bindToggleButton);
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/parallax.js?time=1640157801806').then(()=>{
+    volantis.js('/js/parallax.js?time=1640157956280').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
