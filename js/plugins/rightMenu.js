@@ -11,6 +11,7 @@ const RightMenu = (() => {
   const
     _menuLoad = document.querySelectorAll('.menuLoad-Content'),
     _menuOption = document.querySelector('.menu-Option'),
+    _searchWord = document.querySelector('.menu-Option[data-fn-type="searchWord"]'), 
     _copyText = document.querySelector('.menu-Option[data-fn-type="copyText"]'),
     _copyPaste = document.querySelector('.menu-Option[data-fn-type="copyPaste"]'),
     _copySelect = document.querySelector('.menu-Option[data-fn-type="copySelect"]'),
@@ -202,12 +203,18 @@ const RightMenu = (() => {
     if (selectText) {
       optionFlag = true;
       fn.visible(_copyText);
+      fn.visible(_searchWord);
 
       _copyText.onclick = () => {
         fn.copyString(selectText);
       }
+
+      !!_searchWord && (_searchWord.onclick = () => { 
+        OpenSearch(selectText); 
+      }) 
     } else {
       fn.visible(_copyText, false);
+      fn.visible(_searchWord, false);
     }
 
     // 打印 
@@ -245,9 +252,15 @@ const RightMenu = (() => {
       fn.visible(_readingModel, false);
     }
 
-    if (volantis.APlayerController && typeof MainAPlayer !== 'undefined' && MainAPlayer.APlayer.status === 'play') {
-      optionFlag = true;
-      fn.visible(_menuMusic);
+    if (volantis.APlayerController && typeof MainAPlayer !== 'undefined' && MainAPlayer.APlayer.player !== undefined) {
+      if(volantis.rightMenu.musicAlwaysShow) {
+        fn.visible(_menuMusic);
+      } else if(MainAPlayer.APlayer.status === 'play') {
+        optionFlag = true;
+        fn.visible(_menuMusic);
+      } else {
+        fn.visible(_menuMusic, false);
+      }
     } else {
       fn.visible(_menuMusic, false);
     }
