@@ -20,7 +20,7 @@
   <meta content="一之碎片" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1640505978397" as="style">
+  <link rel="preload" href="/css/style.css?time=1640578996143" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -1778,8 +1778,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1640505978397" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1640505978397"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1640578996143" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1640578996143"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -3032,6 +3032,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>只有当你有所克隆服务器的写入权限，并且之前没有人推送过时，这条命令才能生效。 </p>
 <p>当你和其他人在同一时间克隆，他们先推送到上游然后你再推送到上游，你的推送就会毫无疑问地被拒绝。 你必须先抓取他们的工作并将其合并进你的工作后才能推送。</p>
 </blockquote>
+<p>此外，如果直接使用<code>git push origin xxx</code>,“error: 源引用表达式xxx没有匹配”的问题会在关联的代码库远程分支名称与本地（当前）分支的名称不同时出现。如果不相同，就要用<code>git push origin head:xxx</code>，或者<code>git push origin &lt;当前的本地分支名&gt;:xxx</code>提交代码。</p>
 </div><h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><div class="story post-story"><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看所有分支及当前所在分支【* 表示当前】</span></span><br><span class="line">git branch</span><br><span class="line"><span class="comment"># 查看每一个分支的最后一次提交</span></span><br><span class="line">git branch -v</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看哪些分支已经合并到当前分支。 在这个列表中分支名字前没有 * 号的分支通常可以使用 git branch -d 删除掉，因为已经将它们的工作整合到了另一个分支，所以不会失去任何东西。</span></span><br><span class="line">git branch --merged</span><br><span class="line"><span class="comment"># 查看所有包含未合并工作的分支。因为它包含了还未合并的工作，尝试使用 git branch -d 命令删除它时会失败。可以使用 -D 选项强制删除它。</span></span><br><span class="line">git branch --no-merged</span><br><span class="line"><span class="comment"># 例如，尚未合并到 master 分支的有哪些？</span></span><br><span class="line">git branch --no-merged master</span><br></pre></td></tr></table></figure>
 <p>Git怎么知道当前在哪一个分支上呢？ 很简单，它有一个名为 HEAD 的特殊指针指向当前所在的本地分支（译注：将 HEAD 想象为当前分支的别名）。HEAD 分支随着提交操作自动向前移动。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个新的分支。这会在当前所在的提交对象上创建一个指针。</span></span><br><span class="line"><span class="comment"># git branch 命令仅仅创建 一个新分支，并不会自动切换到新分支中去。</span></span><br><span class="line">git branch xxx </span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个新分支后立即切换过去</span></span><br><span class="line">git checkout -b &lt;newbranchname&gt;</span><br><span class="line"><span class="comment"># 从当前分支切换到某个分支。HEAD指向切换之后的分支。</span></span><br><span class="line">git checkout xxx </span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看各个分支当前所指的提交对象</span></span><br><span class="line">git <span class="built_in">log</span> --oneline --decorate</span><br><span class="line"><span class="comment"># 查看提交历史、各个分支的指向以及项目的分支分叉情况</span></span><br><span class="line">git <span class="built_in">log</span> --oneline --decorate --graph --all</span><br></pre></td></tr></table></figure>
@@ -3495,8 +3496,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1640505978396')
-      volantis.js('/js/thirdparty/message.js?time=1640505978396', () => {
+      volantis.css('/css/message.css?time=1640578996143')
+      volantis.js('/js/thirdparty/message.js?time=1640578996143', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3541,8 +3542,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1640505978396')
-      volantis.js('/js/thirdparty/message.js?time=1640505978396', () => {
+      volantis.css('/css/message.css?time=1640578996143')
+      volantis.js('/js/thirdparty/message.js?time=1640578996143', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3601,8 +3602,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1640505978396')
-      volantis.js('/js/thirdparty/message.js?time=1640505978396', () => {
+      volantis.css('/css/message.css?time=1640578996143')
+      volantis.js('/js/thirdparty/message.js?time=1640578996143', () => {
         hideMessage(done);
       });
     } else {
@@ -3867,7 +3868,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1640505978396')
+    volantis.js('/js/plugins/rightMenu.js?time=1640578996143')
   </script>
 
 
@@ -3997,19 +3998,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1640505978396")
+        volantis.js("/js/plugins/sites.js?time=1640578996143")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1640505978396")
+        volantis.js("/js/plugins/friends.js?time=1640578996143")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1640505978396")
+        volantis.js("/js/plugins/contributors.js?time=1640578996143")
       }
     
   };
@@ -4081,7 +4082,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1640505978399')
+    await volantis.js('/js/plugins/aplayer.js?time=1640578996146')
     volantis.APlayerController.music = true;
   
   })();
@@ -4215,7 +4216,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1640505978397.js"></script>
+<script src="/js/app.js?time=1640578996143.js"></script>
 
 
 <!-- optional -->
@@ -4228,7 +4229,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1640505978397");
+    return volantis.js("/js/search/hexo.js?time=1640578996143");
   }
 
   function loadSearchService() {
@@ -4299,7 +4300,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4342,7 +4343,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1640505978396').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1640578996143').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
