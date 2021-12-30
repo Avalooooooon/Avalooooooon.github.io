@@ -2,7 +2,7 @@
 title: git笔记
 updated: 2021-12-20 15:40:59
 date: 2021-12-20 15:40:59
-tags:
+tags: [git]
 categories:
 ---
 
@@ -221,6 +221,7 @@ git push <remote> <branch>
 >
 > 当你和其他人在同一时间克隆，他们先推送到上游然后你再推送到上游，你的推送就会毫无疑问地被拒绝。 你必须先抓取他们的工作并将其合并进你的工作后才能推送。
 
+此外，如果直接使用```git push origin xxx```,“error: 源引用表达式xxx没有匹配”的问题会在关联的代码库远程分支名称与本地（当前）分支的名称不同时出现。如果不相同，就要用```git push origin head:xxx```，或者```git push origin <当前的本地分支名>:xxx```提交代码。
 ## 分支
 
 ### 概述
