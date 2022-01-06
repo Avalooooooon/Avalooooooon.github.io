@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://avalooooooon.github.io/2021/12/26/gitbook使用教程/"/>
+  <link rel="canonical" href="https://avalooooooon.github.io/2022/01/06/gcc配置c-环境（mingw-w64）/"/>
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -20,25 +20,25 @@
   <meta content="一之碎片" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1641486758226" as="style">
+  <link rel="preload" href="/css/style.css?time=1641486758215" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>gitbook使用教程 - 一之碎片</title>
-  <meta name="keywords" content="git,前端 macOS python 网络">
-  <meta name="description" content="参考了这篇文章  检查node环境1node -v  安装gitbook环境安装gitbook-cli工具gitbook-cli是一个在同一系统上安装和使用多个版本的GitBook的实用程序。它将自动安装所需版本的GitBook来构建一本书。打开终端输入npm install gitbook-cli -g进行全局安装： 12npm install gitbook-cli -g  gitbook">
+  <title>gcc配置C++环境（Mingw-w64） - 一之碎片</title>
+  <meta name="keywords" content="前端 macOS python 网络">
+  <meta name="description" content="官方文档   VS Code下 cmake 配置C++环境（windows）   下载 Mingw-w64下载MinGW-w64 - for 32 and 64 bit Windows。往下翻一翻，选择最新版本的x86_64-posix-seh。解压下载下来的压缩包即可。这里我的解压路径为C: \mingw64。 配置环境变量进入控制面板-&gt;系统和安全-&gt;系统-&gt;高级系统设置">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gitbook使用教程">
-<meta property="og:url" content="https://avalooooooon.github.io/2021/12/26/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+<meta property="og:title" content="gcc配置C++环境（Mingw-w64）">
+<meta property="og:url" content="https://avalooooooon.github.io/2022/01/06/gcc%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83%EF%BC%88Mingw-w64%EF%BC%89/">
 <meta property="og:site_name" content="一之碎片">
-<meta property="og:description" content="参考了这篇文章  检查node环境1node -v  安装gitbook环境安装gitbook-cli工具gitbook-cli是一个在同一系统上安装和使用多个版本的GitBook的实用程序。它将自动安装所需版本的GitBook来构建一本书。打开终端输入npm install gitbook-cli -g进行全局安装： 12npm install gitbook-cli -g  gitbook">
+<meta property="og:description" content="官方文档   VS Code下 cmake 配置C++环境（windows）   下载 Mingw-w64下载MinGW-w64 - for 32 and 64 bit Windows。往下翻一翻，选择最新版本的x86_64-posix-seh。解压下载下来的压缩包即可。这里我的解压路径为C: \mingw64。 配置环境变量进入控制面板-&gt;系统和安全-&gt;系统-&gt;高级系统设置">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2021-12-26T06:39:24.000Z">
-<meta property="article:modified_time" content="2021-12-27T04:34:54.000Z">
+<meta property="article:published_time" content="2022-01-06T11:13:53.000Z">
+<meta property="article:modified_time" content="2022-01-06T11:13:53.000Z">
 <meta property="article:author" content="一之碎片">
-<meta property="article:tag" content="git">
+<meta property="article:tag" content="前端 macOS python 网络">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -1778,8 +1778,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1641486758226" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1641486758226"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1641486758215" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1641486758215"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2799,7 +2799,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper post dock' style="display: none;">
+      <div id="none" class='cover-wrapper vs dock' style="display: none;">
         
   <div id="parallax-window"></div>
 
@@ -2869,8 +2869,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2021/12/26/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow blur article-type-vs" id="vs" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/01/06/gcc%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83%EF%BC%88Mingw-w64%EF%BC%89/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="一之碎片">
   </span>
@@ -2887,7 +2887,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        gitbook使用教程
+        gcc配置C++环境（Mingw-w64）
       </h1>
       <div class='new-meta-box'>
         
@@ -2908,10 +2908,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2021-12-26T14:39:24+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2022-01-06T19:13:53+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2021年12月26日</p>
+    <p>发布于：2022年1月6日</p>
   </a>
 </div>
 
@@ -2933,225 +2933,48 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
     <blockquote>
-<p>参考了<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000017960359">这篇文章</a></p>
-</blockquote>
-<h2 id="检查node环境"><a href="#检查node环境" class="headerlink" title="检查node环境"></a>检查node环境</h2><div class="story post-story"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-
-</div><h2 id="安装gitbook环境"><a href="#安装gitbook环境" class="headerlink" title="安装gitbook环境"></a>安装gitbook环境</h2><div class="story post-story"><h3 id="安装gitbook-cli工具"><a href="#安装gitbook-cli工具" class="headerlink" title="安装gitbook-cli工具"></a>安装gitbook-cli工具</h3><p>gitbook-cli是一个在同一系统上安装和使用多个版本的GitBook的实用程序。它将自动安装所需版本的GitBook来构建一本书。打开终端输入<code>npm install gitbook-cli -g</code>进行全局安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install gitbook-cli -g  </span><br><span class="line">gitbook --version</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>可能遇到的问题:<br><code>TypeError: cb.apply is not a function</code><br>解决方案：降低node版本。10.xx.xx是可行的。</p>
-</blockquote>
-</div><h2 id="Gitbook使用"><a href="#Gitbook使用" class="headerlink" title="Gitbook使用"></a>Gitbook使用</h2><div class="story post-story"><h3 id="初始化一本书（笔记文件夹）"><a href="#初始化一本书（笔记文件夹）" class="headerlink" title="初始化一本书（笔记文件夹）"></a>初始化一本书（笔记文件夹）</h3><p>在想要的位置创建一个项目目录，cd到该目录，执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitbook init</span><br></pre></td></tr></table></figure>
-<p>可以看到该目录下出现了README.md和SUMMARY.md两个文件。</p>
-<h3 id="编辑目录"><a href="#编辑目录" class="headerlink" title="编辑目录"></a>编辑目录</h3><p>如果SUMMARY.md文件有已经编辑好的目录，<code>gitbook init</code>时会根据目录内容创建文件。<br>下面是SUMMARY.md的一个实例：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> [<span class="string">Introduction</span>](<span class="link">README.md</span>)</span><br><span class="line"><span class="bullet">*</span> [<span class="string">第一章</span>](<span class="link">part1/README.md</span>)</span><br><span class="line"><span class="bullet">    *</span> [<span class="string">1.1</span>](<span class="link">part1/1.md</span>)</span><br><span class="line"><span class="bullet">    *</span> [<span class="string">1.2</span>](<span class="link">part1/2.md</span>)</span><br><span class="line"><span class="bullet">        *</span> [<span class="string">1.2.1</span>](<span class="link">part1/2/1.md</span>)</span><br><span class="line"><span class="bullet">*</span> [<span class="string">第二章</span>](<span class="link">part2/README.md</span>)</span><br><span class="line"><span class="bullet">    *</span> [<span class="string">2.1</span>](<span class="link">part2/1.md</span>)</span><br><span class="line"><span class="bullet">*</span> [<span class="string">第三章</span>](<span class="link">part3/README.md</span>)</span><br></pre></td></tr></table></figure>
-<p>它生成的文件结构如下：<br><img src="/2021/12/26/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/wenjianjiegou.png" class="lazyload" data-srcset="/2021/12/26/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/wenjianjiegou.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" ></p>
-<h3 id="写笔记"><a href="#写笔记" class="headerlink" title="写笔记"></a>写笔记</h3><p>根据喜好选择编辑器即可。</p>
-<h3 id="启动gitbook服务"><a href="#启动gitbook服务" class="headerlink" title="启动gitbook服务"></a>启动gitbook服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitbook serve</span><br></pre></td></tr></table></figure>
-<p>启动服务后，项目文件夹中会生成一个_book文件夹，此文件夹就是最终生成的项目。</p>
-<h3 id="生成电子书"><a href="#生成电子书" class="headerlink" title="生成电子书"></a>生成电子书</h3><p>浏览器打开地址” <a href="http://localhost:4000&quot;即可预览。">http://localhost:4000&quot;即可预览。</a></p>
-</div><h2 id="部署到github"><a href="#部署到github" class="headerlink" title="部署到github"></a>部署到github</h2><div class="story post-story"><p>首先在项目中创建一个.gitignore文件（和README.md、SUMMARY.md）同级，内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 忽略gitbook生成的项目目录</span><br><span class="line">_book</span><br></pre></td></tr></table></figure>
-<p>此外，由于gitbook生成的项目跟文档的源码是两个部分，所以可以把文档放到master分支上，部署的网站放到gh-pages 分支。</p>
-<h3 id="在github上创建一个仓库"><a href="#在github上创建一个仓库" class="headerlink" title="在github上创建一个仓库"></a>在github上创建一个仓库</h3><p>自行创建即可。</p>
-<h3 id="本地项目提交到github仓库"><a href="#本地项目提交到github仓库" class="headerlink" title="本地项目提交到github仓库"></a>本地项目提交到github仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m     <span class="comment"># 初始化gitbook本地项目&#x27;</span></span><br><span class="line">git remote add origin &lt;git仓库地址&gt;</span><br><span class="line">git push -u origin main <span class="comment"># 推送到远程仓库的main分支</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="生成项目并上传到github仓库的gh-pages分支"><a href="#生成项目并上传到github仓库的gh-pages分支" class="headerlink" title="生成项目并上传到github仓库的gh-pages分支"></a>生成项目并上传到github仓库的gh-pages分支</h3><p>由于打包命令太多，为了简单化，现在写一个脚本命令来自动执行。当然你也可以终端自己执行这些命令。</p>
-<p>为了部署方便，可以创建一个脚本文件deploy.sh,内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;开始执行命令&#x27;</span></span><br><span class="line"><span class="comment"># 生成静态文件</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;执行命令：gitbook build .&#x27;</span></span><br><span class="line">gitbook build .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入生成的文件夹</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;执行命令：cd ./_book\n&quot;</span></span><br><span class="line"><span class="built_in">cd</span> ./_book</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化一个仓库，仅仅是做了一个初始化的操作，项目里的文件还没有被跟踪</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;执行命令：git init\n&quot;</span></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存所有的修改</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;执行命令：git add -A&quot;</span></span><br><span class="line">git add -A</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把修改的文件提交</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;执行命令：commit -m &#x27;deploy&#x27;&quot;</span></span><br><span class="line">git commit -m <span class="string">&#x27;deploy&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果发布到 https://&lt;USERNAME&gt;.github.io/&lt;REPO&gt;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;执行命令：git push -f git@github.com:Avalooooooon/ING_leetcode_2201.git head:gh-pages&quot;</span></span><br><span class="line">git push -f git@github.com:Avalooooooon/ING_leetcode_2201.git head:gh-pages</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回到上一次的工作目录</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;回到刚才工作目录&quot;</span></span><br><span class="line"><span class="built_in">cd</span> -</span><br></pre></td></tr></table></figure>
-<p>注意脚本文件代码中仓库地址要替换成你自己的地址。<br>文件保存后，在终端执行如下命令，把生成的项目推送到github仓库上的gh-pages分支：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash deploy.sh</span><br></pre></td></tr></table></figure>
-<p>执行成功后，打开你的github仓库，然后选择branch分支，会发现多了一个gh-pages分支，打开这个分之后，里面会有一个index.html文件。说明部署的代码上传成功了。<br>注意：如果没有gh-pages分支说明没有部署成功请查看刚才执行的终端看哪里报错了，解决报错直到成功部署。</p>
-<h3 id="配置GitHub-Pages显示网站"><a href="#配置GitHub-Pages显示网站" class="headerlink" title="配置GitHub Pages显示网站"></a>配置GitHub Pages显示网站</h3><p>在github网站上的仓库里面点击Settings -&gt; GitHub Pages选项中 -&gt; Source里面选择gh-pages branch 然后点击Save按钮，然后在GitHub Pages下面就会看见一个网址，这个网址就是最终的网站。</p>
-</div><h2 id="gitbook的配置文件讲解"><a href="#gitbook的配置文件讲解" class="headerlink" title="gitbook的配置文件讲解"></a>gitbook的配置文件讲解</h2><div class="story post-story"><p>如果想对你的网站有更详细的个性化配置或使用插件，那么需要使用配置文件。<br>配置文件写完后，需要重启服务或者重新打包才能应用配置。<br>gitbook的配置文件名是book.json，首先在项目的根目录中创建book.json文件。<br>book.json主要内容：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;title&quot;</span>: <span class="string">&quot;我的一本书&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;author&quot;</span> : <span class="string">&quot;yu&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;description&quot;</span> : <span class="string">&quot;我第一本书的描述，很好&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;language&quot;</span> : <span class="string">&quot;zh-hans&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;structure&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;readme&quot;</span>: <span class="string">&quot;introduction.md&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;plugins&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;-lunr&quot;</span>,</span><br><span class="line">        <span class="string">&quot;-search&quot;</span>,</span><br><span class="line">        <span class="string">&quot;search-pro&quot;</span>,</span><br><span class="line">        <span class="string">&quot;back-to-top-button&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">&quot;pluginsConfig&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;anchor-navigation-ex&quot;</span>: &#123;</span><br><span class="line">            <span class="attr">&quot;isShowTocTitleIcon&quot;</span>: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;links&quot;</span> : &#123;</span><br><span class="line">        <span class="attr">&quot;sidebar&quot;</span> : &#123;</span><br><span class="line">            <span class="attr">&quot;个性链接1&quot;</span> : <span class="string">&quot;https://www.baidu.com&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;个性链接2&quot;</span> : <span class="string">&quot;https://www.baidu.com&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;styles&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;website&quot;</span>: <span class="string">&quot;styles/website.css&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;ebook&quot;</span>: <span class="string">&quot;styles/ebook.css&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;pdf&quot;</span>: <span class="string">&quot;styles/pdf.css&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;mobi&quot;</span>: <span class="string">&quot;styles/mobi.css&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;epub&quot;</span>: <span class="string">&quot;styles/epub.css&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="book-json中一些主要参数说明"><a href="#book-json中一些主要参数说明" class="headerlink" title="book.json中一些主要参数说明"></a>book.json中一些主要参数说明</h3><ul>
-<li>title：标题</li>
-<li>author：作者</li>
-<li>description：描述，对应gitbook网站的description</li>
-<li>language：使用的语言，zh-hans是简体中文，会对应到页面的&lt;html lang=”zh-hans” &gt;</li>
-<li>structure：指定 Readme、Summary、Glossary 和 Languages 对应的文件名，下面是这几个文件对应变量以及默认值：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>structure.readme</td>
-<td>Readme file name (defaults to README.md)</td>
-</tr>
-<tr>
-<td>structure.summary</td>
-<td>Summary file name (defaults to SUMMARY.md)</td>
-</tr>
-<tr>
-<td>structure.glossary</td>
-<td>Glossary file name (defaults to GLOSSARY.md)</td>
-</tr>
-<tr>
-<td>structure.languages</td>
-<td>Languages file name (defaults to LANGS.md)</td>
-</tr>
-</tbody></table>
-<p>比如想把readme文件换个名字，则可以使用如下配置</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;structure&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;readme&quot;</span>: <span class="string">&quot;introduction.md&quot;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<p>使用这个配置后，gitbook服务就不会找readme文件，而去找introduction文件当项目说明，这样就可以把readme文件完全当成代码仓库说明文档了。</p>
 <ul>
-<li>plugins：使用的插件列表，所有的插件都在这里写出来，然后使用gitbook install来安装。</li>
-<li>pluginsConfig：插件的配置信息，如果插件需要配置参数，那么在这里填写。</li>
-<li>links：目前可以给侧导航栏添加链接信息<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;links&quot;</span> : &#123;</span><br><span class="line">    <span class="attr">&quot;sidebar&quot;</span> : &#123;</span><br><span class="line">        <span class="attr">&quot;个性链接1&quot;</span> : <span class="string">&quot;https://www.baidu.com&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>styles：自定义页面样式，各种格式对应各自的css文件<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;styles&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;website&quot;</span>: <span class="string">&quot;styles/website.css&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ebook&quot;</span>: <span class="string">&quot;styles/ebook.css&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;pdf&quot;</span>: <span class="string">&quot;styles/pdf.css&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;mobi&quot;</span>: <span class="string">&quot;styles/mobi.css&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;epub&quot;</span>: <span class="string">&quot;styles/epub.css&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/cpp/config-mingw#_configure-debug-settings">官方文档</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44717317/article/details/103658160">VS Code下 cmake 配置C++环境（windows）</a></li>
 </ul>
-</div><h2 id="配置默认主题"><a href="#配置默认主题" class="headerlink" title="配置默认主题"></a>配置默认主题</h2><div class="story post-story"><p>默认的主题可以通过配置来做一下效果。<br>比如侧边栏菜单显示标题数字，可以在配置文件的pluginsConfig参数中写入如下字段：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;pluginsConfig&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;theme-default&quot;</span>: &#123;</span><br><span class="line">            <span class="attr">&quot;showLevel&quot;</span>: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>效果如图：<br><img src="/2021/12/26/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/biaotishuzi.png" class="lazyload" data-srcset="/2021/12/26/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/biaotishuzi.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" ></p>
-<ol start="5">
-<li>gitbook的一些实用插件</li>
-</ol>
-<p>gitbook插件可以解决一些网站不太方便的地方，如侧边栏导航不能收缩，自带搜索不支持中文等。<br>用了插件书籍网站会更灵活和美观。</p>
-<p>由于插件很多，请参考另一篇文章：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000019806829">https://segmentfault.com/a/1190000019806829</a></p>
+</blockquote>
+<h2 id="下载-Mingw-w64"><a href="#下载-Mingw-w64" class="headerlink" title="下载 Mingw-w64"></a>下载 Mingw-w64</h2><div class="story post-story"><p>下载<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/">MinGW-w64 - for 32 and 64 bit Windows</a>。<br>往下翻一翻，选择最新版本的<code>x86_64-posix-seh</code>。<br><img src="/2022/01/06/gcc%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83%EF%BC%88Mingw-w64%EF%BC%89/download.png" class="lazyload" data-srcset="/2022/01/06/gcc%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83%EF%BC%88Mingw-w64%EF%BC%89/download.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="下载x86_64-posix-seh"><br>解压下载下来的压缩包即可。这里我的解压路径为<code>C: \mingw64</code>。</p>
+</div><h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><div class="story post-story"><p>进入控制面板-&gt;系统和安全-&gt;系统-&gt;高级系统设置-&gt;环境变量，在系统变量的PATH中添加<code>C:\mingw64\bin</code>，保存；接下来cmd中以管理员身份运行<code>gcc -v</code>，验证是否配置好环境变量。<br><img src="/2022/01/06/gcc%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83%EF%BC%88Mingw-w64%EF%BC%89/yanzheng.png" class="lazyload" data-srcset="/2022/01/06/gcc%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83%EF%BC%88Mingw-w64%EF%BC%89/yanzheng.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="验证"></p>
+</div><h2 id="在VS-Code中配置"><a href="#在VS-Code中配置" class="headerlink" title="在VS Code中配置"></a>在VS Code中配置</h2><div class="story post-story"><p>这一部分最好参考官方文档：<a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/cpp/config-mingw#_configure-debug-settings">使用Mingw-w64</a>。</p>
+<h3 id="创建工作区"><a href="#创建工作区" class="headerlink" title="创建工作区"></a>创建工作区</h3><p>比如在C盘创建一个空文件夹VSCode-C，然后在该文件夹下面再新建空文件夹“workspace”作为工作区，用于存放各种代码。再在workspace文件夹下创建一个test项目和它的配置文件“.vscode”。<br><img src="/2022/01/06/gcc%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83%EF%BC%88Mingw-w64%EF%BC%89/workspace.png" class="lazyload" data-srcset="/2022/01/06/gcc%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83%EF%BC%88Mingw-w64%EF%BC%89/workspace.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="工作区"></p>
+<h3 id="安装扩展"><a href="#安装扩展" class="headerlink" title="安装扩展"></a>安装扩展</h3><p><img src="/2022/01/06/gcc%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83%EF%BC%88Mingw-w64%EF%BC%89/kuozhan.png" class="lazyload" data-srcset="/2022/01/06/gcc%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83%EF%BC%88Mingw-w64%EF%BC%89/kuozhan.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="扩展"></p>
+<h3 id="C-C-IntelliSense配置"><a href="#C-C-IntelliSense配置" class="headerlink" title="C / C ++ IntelliSense配置"></a>C / C ++ IntelliSense配置</h3><p>按<code>Ctrl + Shift + P</code>打开命令面板，键入“ C / C ++”，从建议列表中选择“ 编辑配置（UI）”（Edit Configurations（UI））。VS Code会将在此处进行的更改写入<code>c_cpp_properties.json.vscode</code>文件夹中的文件中。主要修改的是配置集、编译器路径和IntelliSense模式。<br><img src="/2022/01/06/gcc%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83%EF%BC%88Mingw-w64%EF%BC%89/peizhi.png" class="lazyload" data-srcset="/2022/01/06/gcc%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83%EF%BC%88Mingw-w64%EF%BC%89/peizhi.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="70%" alt="This is a picture without description" >C / C ++ IntelliSense配置<br>写入之后，可以看到 .vscode下添加了<code>c_cpp_properties.json</code>文件，然后按照官方给出的配置进行拷贝就可以了。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;configurations&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Win32&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;includePath&quot;</span>: [],</span><br><span class="line">            <span class="attr">&quot;defines&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;_DEBUG&quot;</span>,</span><br><span class="line">                <span class="string">&quot;UNICODE&quot;</span>,</span><br><span class="line">                <span class="string">&quot;_UNICODE&quot;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">&quot;windowsSdkVersion&quot;</span>: <span class="string">&quot;10.0.17763.0&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;compilerPath&quot;</span>: <span class="string">&quot;C:/mingw64/bin/g++.exe&quot;</span>,<span class="comment">//根据个人安装位置修改</span></span><br><span class="line">            <span class="attr">&quot;cStandard&quot;</span>: <span class="string">&quot;c17&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;cppStandard&quot;</span>: <span class="string">&quot;c++17&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;intelliSenseMode&quot;</span>: <span class="string">&quot;$&#123;default&#125;&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">&quot;version&quot;</span>: <span class="number">4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建tasks-json"><a href="#创建tasks-json" class="headerlink" title="创建tasks.json"></a>创建tasks.json</h3><p>创建构建任务，即创建一个tasks.json文件来告诉VS Code如何构建（编译）程序。该任务将调用g ++编译器以基于源代码创建可执行文件。</p>
+<figure class="highlight plaintext"><figcaption><span>任务：配置默认生成任务”（Configure Default Build Task)。在下拉列表中，选择```使用模板创建Tasks.json文件```，然后选择```Others```。VS Code创建一个最小tasks.json文件，并在编辑器中将其打开。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">使用以下代码片段替换整个文件内容：</span><br><span class="line">```json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;version&quot;: &quot;2.0.0&quot;,</span><br><span class="line">  &quot;tasks&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;label&quot;: &quot;build hello world&quot;,//这里可以随意命名</span><br><span class="line">      &quot;type&quot;: &quot;shell&quot;,</span><br><span class="line">      &quot;command&quot;: &quot;g++&quot;,</span><br><span class="line">      &quot;args&quot;: [</span><br><span class="line">        &quot;-g&quot;,</span><br><span class="line">        &quot;-o&quot;,</span><br><span class="line">        &quot;HelloWorld&quot;,   </span><br><span class="line">        &quot;HelloWorld.cpp&quot;</span><br><span class="line">      ],</span><br><span class="line">      &quot;group&quot;: &#123;</span><br><span class="line">        &quot;kind&quot;: &quot;build&quot;,</span><br><span class="line">        &quot;isDefault&quot;: true</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置调试设置"><a href="#配置调试设置" class="headerlink" title="配置调试设置"></a>配置调试设置</h3><p>配置VS Code以在按F5键时启动GCC调试器（gdb.exe）。<br>首次调试.cpp代码时，会弹出选择环境的下拉菜单。选择GDB / LLDB环境。选择“g++.exe-生成和调试活动文件”。<br>vs code会自动打开launch.json文件。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Use IntelliSense to learn about possible attributes.</span></span><br><span class="line">    <span class="comment">// Hover to view descriptions of existing attributes.</span></span><br><span class="line">    <span class="comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;configurations&quot;</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;g++.exe - 生成和调试活动文件&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;cppdbg&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;program&quot;</span>: <span class="string">&quot;C:/VS-Code-C/workspace/HelloWorld/HelloWorld.exe&quot;</span>,<span class="comment">//按照个人工作区名字配置</span></span><br><span class="line">        <span class="attr">&quot;args&quot;</span>: [],</span><br><span class="line">        <span class="attr">&quot;stopAtEntry&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="comment">//&quot;cwd&quot;: &quot;$&#123;workspaceFolder&#125;&quot;,</span></span><br><span class="line">        <span class="attr">&quot;cwd&quot;</span>: <span class="string">&quot;C:/mingw64/bin&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;environment&quot;</span>: [],</span><br><span class="line">        <span class="attr">&quot;externalConsole&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">&quot;MIMode&quot;</span>: <span class="string">&quot;gdb&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;miDebuggerPath&quot;</span>: <span class="string">&quot;C:\\mingw64\\bin\\gdb.exe&quot;</span>,<span class="comment">//按照个人路径配置</span></span><br><span class="line">        <span class="attr">&quot;setupCommands&quot;</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;为gdb启用整齐打印&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;text&quot;</span>: <span class="string">&quot;-enable-pretty-printing&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;ignoreFailures&quot;</span>: <span class="literal">true</span></span><br><span class="line">          &#125;</span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">&quot;preLaunchTask&quot;</span>: <span class="string">&quot;C/C++: g++.exe 生成活动文件&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>VS Code现在已配置为使用Mingw-w64。该配置适用于当前工作空间。要重用配置，只需将三个JSON文件复制到新工作区中的<code>.vscode</code>子文件夹，然后根据需要更改源文件和可执行文件的名称。</p>
+</blockquote>
+<h3 id="运行HelloWorld-cpp"><a href="#运行HelloWorld-cpp" class="headerlink" title="运行HelloWorld.cpp"></a>运行HelloWorld.cpp</h3><p>运行结束后，打开工作区，可以看到新生成了一些文件：<br><img src="/2022/01/06/gcc%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83%EF%BC%88Mingw-w64%EF%BC%89/newworkspace.png" class="lazyload" data-srcset="/2022/01/06/gcc%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83%EF%BC%88Mingw-w64%EF%BC%89/newworkspace.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="新工作区"><br>如果你在workspace下再次创建一个Hello文件夹，并在它下面写c++文件，会导致程序无法运行，因为我们配置的工作区为workspace，而在其下面的文件夹里的文件无法生成.exe文件，导致程序 运行报错<code>[errror]Id returned 1 exit status</code>。因此我们最好在workspace下直接创建c++文件。</p>
 
 </div>
   </div>
   
   
-    
-    <div class='footer'>
-      
-      
-      
-        <div class='copyright'>
-          <blockquote>
-            
-              
-                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
-
-              
-            
-              
-                <p>本文永久链接是：<a href=https://avalooooooon.github.io/2021/12/26/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/>https://avalooooooon.github.io/2021/12/26/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</a></p>
-              
-            
-          </blockquote>
-        </div>
-      
-      
-    </div>
-  
-  
-    
-
-
-  <div class='article-meta' id="bottom">
-    <div class='new-meta-box'>
-      
-        
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-27T12:34:54+08:00">
-  <a class='notlink' href="/" onclick="return false;" title="Click me!" >
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年12月27日</p>
-  </a>
-</div>
-
-        
-      
-        
-          
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/git/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>git</p></a></div>
-  <span hidden itemprop="keywords">git</span>
-
-
-        
-      
-        
-          
-  <div class="new-meta-item share -mob-share-list">
-  <div class="-mob-share-list share-body">
-    
-      
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://avalooooooon.github.io/2021/12/26/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&title=gitbook使用教程 - 一之碎片&summary="
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" >
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://avalooooooon.github.io/2021/12/26/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&title=gitbook使用教程 - 一之碎片&summary="
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" >
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://avalooooooon.github.io/2021/12/26/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&title=gitbook使用教程 - 一之碎片&summary="
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" >
-          
-        </a>
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
-
-
-
-        
-      
-    </div>
-    <!-- Custom Files bottomMeta begin -->
-    
-    <!-- Custom Files bottomMeta end -->
-  </div>
-
-
   
   
 
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/12/26/node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%EF%BC%88macOS%EF%BC%89/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>node版本管理（macOS）</p>
+      
+        <a class='next' href='/2021/12/26/node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%EF%BC%88macOS%EF%BC%89/'>
+          <p class='title'>node版本管理（macOS）<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'>检查node及npm环境12node -vnpm -v
 
 安装node版本管理模块n12sudo npm i -g n n -V
 
 安装和切换node版本可能要求权限，在命令前加sudo即可。
 ...</p>
-        </a>
-      
-      
-        <a class='next' href='/2021/12/20/git%E7%AC%94%E8%AE%B0/'>
-          <p class='title'>git笔记<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>查看完整教程：Git-scm
-查看版本/日志123# 项目所在目录git log：查看提交日志（查看版本号）git log		git reflog 		# 查看版本号  
-不传入任何参数的默认情...</p>
         </a>
       
     </div>
@@ -3167,7 +2990,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <article class="post white-box reveal shadow blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2021/12/26/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/#comments">
+      <meta itemprop="discussionUrl" content="/2022/01/06/gcc%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83%EF%BC%88Mingw-w64%EF%BC%89/#comments">
     </span>
     <p ct><i class='fas fa-comments'></i> 评论</p>
     
@@ -3200,7 +3023,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5node%E7%8E%AF%E5%A2%83"><span class="toc-number">1.</span> <span class="toc-text">检查node环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85gitbook%E7%8E%AF%E5%A2%83"><span class="toc-number">2.</span> <span class="toc-text">安装gitbook环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85gitbook-cli%E5%B7%A5%E5%85%B7"><span class="toc-number">2.1.</span> <span class="toc-text">安装gitbook-cli工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gitbook%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">Gitbook使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E6%9C%AC%E4%B9%A6%EF%BC%88%E7%AC%94%E8%AE%B0%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">初始化一本书（笔记文件夹）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E7%9B%AE%E5%BD%95"><span class="toc-number">3.2.</span> <span class="toc-text">编辑目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E7%AC%94%E8%AE%B0"><span class="toc-number">3.3.</span> <span class="toc-text">写笔记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8gitbook%E6%9C%8D%E5%8A%A1"><span class="toc-number">3.4.</span> <span class="toc-text">启动gitbook服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E7%94%B5%E5%AD%90%E4%B9%A6"><span class="toc-number">3.5.</span> <span class="toc-text">生成电子书</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0github"><span class="toc-number">4.</span> <span class="toc-text">部署到github</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8github%E4%B8%8A%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E4%BB%93%E5%BA%93"><span class="toc-number">4.1.</span> <span class="toc-text">在github上创建一个仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E6%8F%90%E4%BA%A4%E5%88%B0github%E4%BB%93%E5%BA%93"><span class="toc-number">4.2.</span> <span class="toc-text">本地项目提交到github仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E5%B9%B6%E4%B8%8A%E4%BC%A0%E5%88%B0github%E4%BB%93%E5%BA%93%E7%9A%84gh-pages%E5%88%86%E6%94%AF"><span class="toc-number">4.3.</span> <span class="toc-text">生成项目并上传到github仓库的gh-pages分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEGitHub-Pages%E6%98%BE%E7%A4%BA%E7%BD%91%E7%AB%99"><span class="toc-number">4.4.</span> <span class="toc-text">配置GitHub Pages显示网站</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gitbook%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AE%B2%E8%A7%A3"><span class="toc-number">5.</span> <span class="toc-text">gitbook的配置文件讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#book-json%E4%B8%AD%E4%B8%80%E4%BA%9B%E4%B8%BB%E8%A6%81%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number">5.1.</span> <span class="toc-text">book.json中一些主要参数说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E4%B8%BB%E9%A2%98"><span class="toc-number">6.</span> <span class="toc-text">配置默认主题</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD-Mingw-w64"><span class="toc-number">1.</span> <span class="toc-text">下载 Mingw-w64</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">2.</span> <span class="toc-text">配置环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8VS-Code%E4%B8%AD%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">在VS Code中配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%B7%A5%E4%BD%9C%E5%8C%BA"><span class="toc-number">3.1.</span> <span class="toc-text">创建工作区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95"><span class="toc-number">3.2.</span> <span class="toc-text">安装扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-C-IntelliSense%E9%85%8D%E7%BD%AE"><span class="toc-number">3.3.</span> <span class="toc-text">C &#x2F; C ++ IntelliSense配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAtasks-json"><span class="toc-number">3.4.</span> <span class="toc-text">创建tasks.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%B0%83%E8%AF%95%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.5.</span> <span class="toc-text">配置调试设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8CHelloWorld-cpp"><span class="toc-number">3.6.</span> <span class="toc-text">运行HelloWorld.cpp</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3251,8 +3074,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=true;
-  pdata.postTitle="gitbook使用教程";
+  pdata.ispage=false;
+  pdata.postTitle="";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3418,8 +3241,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1641486758226')
-      volantis.js('/js/thirdparty/message.js?time=1641486758226', () => {
+      volantis.css('/css/message.css?time=1641486758215')
+      volantis.js('/js/thirdparty/message.js?time=1641486758215', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3464,8 +3287,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1641486758226')
-      volantis.js('/js/thirdparty/message.js?time=1641486758226', () => {
+      volantis.css('/css/message.css?time=1641486758215')
+      volantis.js('/js/thirdparty/message.js?time=1641486758215', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3524,8 +3347,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1641486758226')
-      volantis.js('/js/thirdparty/message.js?time=1641486758226', () => {
+      volantis.css('/css/message.css?time=1641486758215')
+      volantis.js('/js/thirdparty/message.js?time=1641486758215', () => {
         hideMessage(done);
       });
     } else {
@@ -3790,7 +3613,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1641486758226')
+    volantis.js('/js/plugins/rightMenu.js?time=1641486758215')
   </script>
 
 
@@ -3920,19 +3743,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1641486758226")
+        volantis.js("/js/plugins/sites.js?time=1641486758215")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1641486758226")
+        volantis.js("/js/plugins/friends.js?time=1641486758215")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1641486758226")
+        volantis.js("/js/plugins/contributors.js?time=1641486758215")
       }
     
   };
@@ -4004,7 +3827,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1641486758228')
+    await volantis.js('/js/plugins/aplayer.js?time=1641486758221')
     volantis.APlayerController.music = true;
   
   })();
@@ -4138,7 +3961,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1641486758226.js"></script>
+<script src="/js/app.js?time=1641486758215.js"></script>
 
 
 <!-- optional -->
@@ -4151,7 +3974,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1641486758226");
+    return volantis.js("/js/search/hexo.js?time=1641486758215");
   }
 
   function loadSearchService() {
@@ -4222,7 +4045,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4265,7 +4088,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1641486758226').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1641486758215').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4499,7 +4322,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":3,"item":{"@id":"https://avalooooooon.github.io/2021/12/26/gitbook使用教程/","name":"gitbook使用教程"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"gitbook使用教程","description":"","datePublished":"2021-12-26T06:39:24.000Z","dateModified":"2021-12-27T04:34:54.000Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://avalooooooon.github.io/2021/12/26/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://avalooooooon.github.io/2021/12/26/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/","wordCount":0,"keywords":"git","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":3,"item":{"@id":"https://avalooooooon.github.io/2022/01/06/gcc配置C-环境（Mingw-w64）/","name":"gcc配置C++环境（Mingw-w64）"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"gcc配置C++环境（Mingw-w64）","description":"","datePublished":"2022-01-06T11:13:53.000Z","dateModified":"2022-01-06T11:13:53.000Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://avalooooooon.github.io/2022/01/06/gcc%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83%EF%BC%88Mingw-w64%EF%BC%89/"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://avalooooooon.github.io/2022/01/06/gcc%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83%EF%BC%88Mingw-w64%EF%BC%89/","wordCount":0,"image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->
