@@ -6,6 +6,8 @@ tags:
 categories:
 ---
 
+> [typora快捷键](https://blog.csdn.net/weixin_43314519/article/details/107472017?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1.no_search_link&spm=1001.2101.3001.4242.2)
+
 ## 标题
 
 \#一级标题： 
