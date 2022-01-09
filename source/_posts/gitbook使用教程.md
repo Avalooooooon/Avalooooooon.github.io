@@ -123,13 +123,30 @@ cd -
 注意脚本文件代码中仓库地址要替换成你自己的地址。
 文件保存后，在终端执行如下命令，把生成的项目推送到github仓库上的gh-pages分支：
 ```bash
-bash deploy.sh
+bash deploy.sh # macos
+
+# windows中，确保已经安装了git工具后直接双击deploy.sh即可运行
 ```
 执行成功后，打开你的github仓库，然后选择branch分支，会发现多了一个gh-pages分支，打开这个分之后，里面会有一个index.html文件。说明部署的代码上传成功了。
 注意：如果没有gh-pages分支说明没有部署成功请查看刚才执行的终端看哪里报错了，解决报错直到成功部署。
 
 ### 配置GitHub Pages显示网站
 在github网站上的仓库里面点击Settings -> GitHub Pages选项中 -> Source里面选择gh-pages branch 然后点击Save按钮，然后在GitHub Pages下面就会看见一个网址，这个网址就是最终的网站。
+
+## gitbook多终端使用
+需要一台已经配置好gitbook环境且有完整gitbook文件夹的终端作为条件。
+在另一台设备上，git clone仓库的master分支，运行deploy.sh文件。
+> 在Windows端，如果出现报错"Error:ENOENT:no such file or directory, stat ‘C:\Users\Lenovo\www\mdspg\md\mybook_book\gitbook\gitbook-plugin-fontsettings\fontsettings.js’"，在C:\Users\username\.gitbook\versions\3.2.3\lib\output\website\copyPluginAssets.js，将```confirm:true```全部替换为```confirm:false```。共两处。
+
+### 多终端发布
+不论是在哪台终端，修改了书籍文件后按下列步骤进行操作：
++ ```git pull origin main```，先pull完成本地与远端的融合
++ 修改书籍内容
++ ```git add - A``` ，添加本地所有文件到仓库
++ ```git commit -m 修改说明```，提交修改；
++ ```git push origin main```，更新至main分支；
++ 运行deploy.sh文件，生成项目并上传到github仓库的gh-pages分支；
++ ```gitbook serve```，启动gitbook服务。启动服务后，项目文件夹中会生成一个_book文件夹，此文件夹就是最终生成的项目。
 
 ## gitbook的配置文件讲解
 如果想对你的网站有更详细的个性化配置或使用插件，那么需要使用配置文件。
