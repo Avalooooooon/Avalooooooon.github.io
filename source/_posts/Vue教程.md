@@ -6,11 +6,25 @@ tags:
 categories:
 ---
 
+参考：[Vue中文官网](https://cn.vuejs.org)
 
 安装环境：Windows10
-## 安装node和npm环境
+## 简介
+Vue是一套用于构建用户界面的渐进式JS框架，渐进指Vue可以根据应用的复杂程度自底向上逐层的应用，对于简单应用它只需要一个清凉小巧的核心库，对于复杂应用则可以引入各式各样的Vue插件。
+它有以下特点：
++ 采用组件化模式，提高代码复用率且更好维护。
+![组件化示意](zujianhua.png)
++ 声明式编码，让编码人员直接操作dom，提高开发效率。
+![声明式编码](shengmingshi.png)
++ 使用虚拟dom+优秀的diff算法，尽量复用dom节点。
+![虚拟dom](xunidom.png)
++ 
+## 安装
+环境：Windows10
+### 安装node和npm环境
 
-## 安装脚手架vue-cli
+### 安装脚手架vue-cli
+
 ```bash
 npm install webpack -g
 npm install --global vue-cli
@@ -19,7 +33,7 @@ vue -V
 其中webpack是一个包管理工具，也是vue-cli的构建工具。上述命令可以完成webpack的全局安装。如果用nvs工具，可以在C:\Program Files\nodejs\node_global中查看全局安装的vue-cli。
 ![vue-cli在文件夹中的显示](vuecli.png)
 
-## 构建工程文件
+### 构建工程文件
 cd到工具区。在工作区中```vue init webpack testproj```以生成webpack脚手架。回车后可能会出现一些提示问题：
 + 项目名称（注意名称中不要出现大写字母，否则会报错）
 + 项目描述（可写可不写，看个人需要）
