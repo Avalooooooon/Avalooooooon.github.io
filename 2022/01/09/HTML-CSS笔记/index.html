@@ -20,7 +20,7 @@
   <meta content="一之碎片" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1642580182023" as="style">
+  <link rel="preload" href="/css/style.css?time=1642582949076" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -1778,8 +1778,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1642580182023" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1642580182023"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1642582949076" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1642582949076"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2989,7 +2989,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 </ul>
 <h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><blockquote>
-<p>样式冲突：冲突时由选择器的权重（优先级）决定。比较时要将所有选择器的优先级进行相加计算。但选择器的累加不会超过其最大的数量级，即类选择器最高也不会超过id选择器的优先级。并集（分组）选择器单独计算。<br>「选择器越具体，优先级越高」<br>内联样式 1000 &gt; id选择器 100&gt; 类和伪类选择器 10&gt; 元素选择器 1&gt; 通配选择器 0&gt; 继承的样式 没有优先级；在样式最后加!important直接升为最高优先级。<br>若优先级计算后相等，优先使用靠下的样式。</p>
+<p>样式冲突：冲突时由选择器的权重（优先级）决定。比较时要将所有选择器的优先级进行相加计算。但选择器的累加不会超过其最大的数量级，即类选择器最高也不会超过id选择器的优先级。并集（分组）选择器单独计算。</p>
+<p><em><strong>「选择器越具体，优先级越高」</strong></em>：<br>内联样式 1000 &gt; id选择器 100&gt; 类和伪类选择器 10&gt; 元素选择器 1&gt; 通配选择器 0&gt; 继承的样式 没有优先级；在样式最后加!important直接升为最高优先级。<br>若优先级计算后相等，优先使用靠下的样式。</p>
 </blockquote>
 <ul>
 <li><p>元素选择器：根据标签名选中指定的元素。语法：<code>标签名&#123;&#125;</code>，如<code>h1&#123;&#125;</code>，<code>div&#123;&#125;</code>，<code>p&#123;&#125;</code>。</p>
@@ -3007,11 +3008,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <ol>
 <li>交集选择器：<code>选择器1选择器2选择器3选择器n&#123;&#125;</code>，如<code>div.cla1&#123;&#125;</code>。</li>
 </ol>
-<pre><code>&gt; 如有元素选择器，必须使用元素选择器开头。
-</code></pre>
+<blockquote>
+<p>如有元素选择器，必须使用元素选择器开头。</p>
 <ol start="2">
 <li>并集选择器（选择器分组）:<code>选择器1,选择器2,选择器3,选择器n&#123;&#125;</code>。 </li>
 </ol>
+</blockquote>
 </li>
 <li><p>关系选择器</p>
 <p>父元素（<strong>直接</strong>包含子元素）、子元素（<strong>直接</strong>被父元素包含）；祖先元素（直接或间接包含后代元素）、后代元素；兄弟元素</p>
@@ -3032,18 +3034,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 <li><p>伪类选择器<br>伪类，一般使用:开头，是一种特殊的类，是不存在的类，用于描述一个元素的特殊<em><strong>状态</strong></em>。如第一个子元素、被点击的元素、鼠标移入的元素…</p>
 <ol>
-<li>排序伪类<br>语法：<code>:first-child</code>，第一个子元素；<code>:nthchild()</code>，选中第n个子元素，具体n值写在括号内；…</li>
+<li>排序伪类<br>语法：<code>:first-child</code>，第一个子元素；<code>:nthchild()</code>，选中第n个子元素，具体n值写在括号内；</li>
 </ol>
-<pre><code>&gt; :nthchild()，括号内的特殊值
-&gt;
-&gt; &gt;括号内写n则为全选，2n或even为选中偶数位元素，2n+1或odd为选中奇数位元素；
-
-&gt; 以上的伪类都是根据所有的子元素进行的排序！想要在同类型元素中进行排序，需要使用形如```:first-of-type```的伪类，用法相似。
-</code></pre>
+<blockquote>
+<p>:nthchild()，括号内的特殊值<br>括号内写n则为全选，2n或even为选中偶数位元素，2n+1或odd为选中奇数位元素；</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>以上的伪类都是根据所有的子元素进行的排序！想要在同类型元素中进行排序，需要使用形如<code>:first-of-type</code>的伪类，用法相似。</p>
+</blockquote>
+</blockquote>
 <ol start="2">
 <li>否定伪类<br><code>:not()</code>: 将符合条件的元素从选择器中去除。eg:<code>.cla1 li:not(:last-child)</code></li>
 <li>超链接伪类<blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">       1. 没访问过的链接</span><br><span class="line">         可以用```:link```</span><br><span class="line">       2. 访问过的链接</span><br><span class="line">         ```:visited```：由于隐私原因，只能修改链接颜色</span><br><span class="line">       3. 鼠标状态</span><br><span class="line">         ```:hover```：鼠标移入的状态</span><br><span class="line">  ```:hover```不仅仅可以用在超链接上。</span><br><span class="line">     </span><br><span class="line">         ```:active```：鼠标点击的状态</span><br><span class="line"> </span><br><span class="line">+ 伪元素选择器</span><br><span class="line">   伪元素，一般使用::开头，是一种特殊的元素，是不存在的元素。类似伪类。 如```::first-letter```。&lt;span style=&quot;color:red&quot;&gt;默认是行内元素！&lt;/span&gt;</span><br><span class="line">   </span><br><span class="line">   + ```::before```、```::after```：必须结合```content```属性使用</span><br><span class="line">   </span><br><span class="line">content中的内容是不能选中的，因为它是通过css添加的。</span><br><span class="line">   </span><br><span class="line">   + 示例：</span><br><span class="line">```css</span><br><span class="line">     div::before&#123;</span><br><span class="line">       content:&#x27;abc&#x27;;</span><br><span class="line">       color:red;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure></blockquote>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  没访问过的链接：可以用```:link```</span><br><span class="line">  访问过的链接：```:visited```。由于隐私原因，只能修改链接颜色</span><br><span class="line">  鼠标状态：```:hover```为鼠标移入的状态。 ```:active```为鼠标点击的状态。</span><br><span class="line"> </span><br><span class="line">+ 伪元素选择器</span><br><span class="line">   伪元素，一般使用::开头，是一种特殊的元素，是不存在的元素。类似伪类。 如```::first-letter```。&lt;span style=&quot;color:red&quot;&gt;默认是行内元素！&lt;/span&gt;</span><br><span class="line">   </span><br><span class="line">   + ```::before```、```::after```：必须结合```content```属性使用</span><br><span class="line">   </span><br><span class="line">content中的内容是不能选中的，因为它是通过css添加的。</span><br><span class="line">   </span><br><span class="line">   + 示例：</span><br><span class="line">```css</span><br><span class="line">     div::before&#123;</span><br><span class="line">       content:&#x27;abc&#x27;;</span><br><span class="line">       color:red;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure></blockquote>
 </li>
 </ol>
 </li>
@@ -3581,8 +3585,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1642580182023')
-      volantis.js('/js/thirdparty/message.js?time=1642580182023', () => {
+      volantis.css('/css/message.css?time=1642582949076')
+      volantis.js('/js/thirdparty/message.js?time=1642582949076', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3627,8 +3631,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1642580182023')
-      volantis.js('/js/thirdparty/message.js?time=1642580182023', () => {
+      volantis.css('/css/message.css?time=1642582949076')
+      volantis.js('/js/thirdparty/message.js?time=1642582949076', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3687,8 +3691,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1642580182023')
-      volantis.js('/js/thirdparty/message.js?time=1642580182023', () => {
+      volantis.css('/css/message.css?time=1642582949076')
+      volantis.js('/js/thirdparty/message.js?time=1642582949076', () => {
         hideMessage(done);
       });
     } else {
@@ -3953,7 +3957,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1642580182023')
+    volantis.js('/js/plugins/rightMenu.js?time=1642582949076')
   </script>
 
 
@@ -4083,19 +4087,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1642580182023")
+        volantis.js("/js/plugins/sites.js?time=1642582949076")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1642580182023")
+        volantis.js("/js/plugins/friends.js?time=1642582949076")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1642580182023")
+        volantis.js("/js/plugins/contributors.js?time=1642582949076")
       }
     
   };
@@ -4167,7 +4171,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1642580182025')
+    await volantis.js('/js/plugins/aplayer.js?time=1642582949079')
     volantis.APlayerController.music = true;
   
   })();
@@ -4301,7 +4305,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1642580182023.js"></script>
+<script src="/js/app.js?time=1642582949076.js"></script>
 
 
 <!-- optional -->
@@ -4314,7 +4318,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1642580182023");
+    return volantis.js("/js/search/hexo.js?time=1642582949076");
   }
 
   function loadSearchService() {
@@ -4385,7 +4389,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4428,7 +4432,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1642580182023').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1642582949076').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
