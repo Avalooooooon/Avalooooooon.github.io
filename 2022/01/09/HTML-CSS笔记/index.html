@@ -20,7 +20,7 @@
   <meta content="一之碎片" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1642582949076" as="style">
+  <link rel="preload" href="/css/style.css?time=1642583512167" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -1778,8 +1778,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1642582949076" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1642582949076"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1642583512167" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1642583512167"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -3047,7 +3047,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <ol start="2">
 <li>否定伪类<br><code>:not()</code>: 将符合条件的元素从选择器中去除。eg:<code>.cla1 li:not(:last-child)</code></li>
 <li>超链接伪类<blockquote>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  没访问过的链接：可以用```:link```</span><br><span class="line">  访问过的链接：```:visited```。由于隐私原因，只能修改链接颜色</span><br><span class="line">  鼠标状态：```:hover```为鼠标移入的状态。 ```:active```为鼠标点击的状态。</span><br><span class="line"> </span><br><span class="line">+ 伪元素选择器</span><br><span class="line">   伪元素，一般使用::开头，是一种特殊的元素，是不存在的元素。类似伪类。 如```::first-letter```。&lt;span style=&quot;color:red&quot;&gt;默认是行内元素！&lt;/span&gt;</span><br><span class="line">   </span><br><span class="line">   + ```::before```、```::after```：必须结合```content```属性使用</span><br><span class="line">   </span><br><span class="line">content中的内容是不能选中的，因为它是通过css添加的。</span><br><span class="line">   </span><br><span class="line">   + 示例：</span><br><span class="line">```css</span><br><span class="line">     div::before&#123;</span><br><span class="line">       content:&#x27;abc&#x27;;</span><br><span class="line">       color:red;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure></blockquote>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  没访问过的链接：可以用```:link```</span><br><span class="line">  访问过的链接：```:visited```。由于隐私原因，只能修改链接颜色</span><br><span class="line">  鼠标状态：```:hover```为鼠标移入的状态。 ```:active```为鼠标点击的状态。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ 伪元素选择器</span><br><span class="line">   伪元素，一般使用::开头，是一种特殊的元素，是不存在的元素。类似伪类。 如```::first-letter```。&lt;span style=&quot;color:red&quot;&gt;默认是行内元素！&lt;/span&gt;</span><br><span class="line">   </span><br><span class="line">   + ```::before```、```::after```：必须结合```content```属性使用。</span><br><span class="line">   </span><br><span class="line">content中的内容是通过css添加的，是不能选中的！</span><br><span class="line">   </span><br><span class="line">   + 示例：</span><br><span class="line">```css</span><br><span class="line">     div::before&#123;</span><br><span class="line">       content:&#x27;abc&#x27;;</span><br><span class="line">       color:red;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure></blockquote>
 </li>
 </ol>
 </li>
@@ -3059,29 +3059,35 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>内容区：<code>content</code></li>
 </ol>
 <blockquote>
-<p>width和height设置的是内容区（content）的大小。<br>2. 内边距：<code>padding</code>，</p>
+<p>width和height设置的是内容区（content）的大小。</p>
 </blockquote>
+<ol start="2">
+<li>内边距：<code>padding</code>，</li>
+</ol>
 <blockquote>
-<p>会影响到盒子大小；背景颜色会延伸到内边距<br>3. 边框：<code>border</code>，外面只有外边框。需要至少设置3个样式——宽度（<code>border-width</code>）、颜色（<code>border- color</code>）、样式（<code>border-style</code>，设置为<code>none</code>则没有边框）；还有````border-top```等四个。</p>
+<p>会影响到盒子大小；背景颜色会延伸到内边距</p>
 </blockquote>
+<ol start="3">
+<li>边框：<code>border</code>，外面只有外边框。需要至少设置3个样式——宽度（<code>border-width</code>）、颜色（<code>border- color</code>）、样式（<code>border-style</code>，设置为<code>none</code>则没有边框）；还有````border-top```等四个。</li>
+</ol>
 <ul>
 <li>简写属性：<code>border: solid 10px red</code>，同时设置边框的相关样式且无顺序要求</li>
 </ul>
 <blockquote>
 <ul>
-<li>关于<code>border-width</code>和<code>border- color</code>和<code>border-style</code><pre><code>1. 都可以省略（有默认值）；都有```border-xxx-width/color/style```的形式
-2. 四个值：上，右，下，左；三个值：上，左右，下；两个值：上下，左右
+<li>关于<code>border-width</code>、<code>border- color</code>和<code>border-style</code><pre><code>1.都可以省略（有默认值）；都有```border-xxx-width/color/style```的形式
+2.四个值：上，右，下，左；三个值：上，左右，下；两个值：上下，左右
 </code></pre>
 </li>
 </ul>
 </blockquote>
 <ol start="4">
-<li>外边框：<code>margin</code>，不影响盒子<em><strong>可见框</strong></em>大小，但影响盒子的实际大小和位置。<blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">可以设置为负值。</span><br><span class="line">5. 轮廓：```outline```，用来设置元素的轮廓线，用法和```border```一摸一样。唯一和```border```不一样的点就是轮廓不会影响可见框的大小。</span><br><span class="line">6. 阴影：```box-shadow```，用来设置元素的阴影效果，***不会影响页面布局***。起始位置和元素本身的位置完全重合。</span><br><span class="line">     ```box-shadow: 2px 5px 10px rgba(0,0,0,.3)```</span><br><span class="line">   + 第一个值：水平偏移，正值向右，负值向左。</span><br><span class="line">   + 第二个值：垂直偏移，正值向下，负值向上。</span><br><span class="line">   + 第三个值：模糊半径。即使前两个值都为0，设置了模糊半径也能看到阴影。</span><br><span class="line">   + 第四个值：颜色，常用带透明度的rgba。</span><br><span class="line">7. 圆角：```border-radius```，可以分别指定四个角的圆角。</span><br><span class="line">   + 对某个角同时指定两个半径：椭圆圆角。```border-top-left-radius:10px 20px```</span><br><span class="line">   + 四个值：左上 右上 右下 左下</span><br><span class="line">   + 三个值：左上 右上/左下 右下</span><br><span class="line">   + 两个值：左上/右下 右上/左下</span><br><span class="line">不到四个值，缺哪个找哪个的对角值，这个值代表了两个角的半径。</span><br><span class="line">   + 将元素设置为圆形： ```border-radius:50%```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 水平布局</span><br><span class="line">一个元素在其父元素的内容区中存在，该元素的水平布局***必须满足***：</span><br><span class="line">&lt;span style=&quot;color:red&quot;&gt;左外边距+左边框+左内边距+width+右内边距+右边框+右外边距  =  其父元素内容区的宽度&lt;/span&gt;</span><br><span class="line">但元素设置浮动```float```后，该等式不需要强制成立！</span><br><span class="line"></span><br><span class="line">```width```，```margin-left```，```padding-left```可以设置为```auto```。</span><br><span class="line"></span><br><span class="line">+ 如果不满足，如何调整？（注意margin可以为负）</span><br><span class="line">   + 如果这7个值没有```auto```，浏览器会自动调整```margin-right```。</span><br><span class="line">   + 如果这7个值有一个```auto```，浏览器会自动调             整```auto```。```width```的默认值即为```auto```。</span><br><span class="line">   + 如果这7个值有两个```auto```，且一个是width一个是margin，则宽度会调整到最大，设置为```auto```的外边距自动为0。</span><br><span class="line">   + 如果三个都是auto，则padding为0，width最大。（全屏）</span><br><span class="line">   + 如果将两个外边距auto，***宽度固定***，则会将外边距设置为相同的值。（元素在父元素居中）</span><br><span class="line">   </span><br><span class="line">经常利用这个特点使元素在子元素内居中</span><br><span class="line"></span><br><span class="line">#### 垂直布局</span><br><span class="line">默认情况下父元素的***高度***会被内容撑开</span><br><span class="line">如果子元素的大小超过了父元素，则子元素会从父元素溢出</span><br><span class="line"></span><br><span class="line">使用***overflow***属性设置***父元素***如何处理溢出的子元素，可选值如下：</span><br><span class="line">+ ```visible```：默认值，子元素会从父元素中溢出，在父元素外部的位置显示</span><br><span class="line">+ ```hidden```：溢出内容会被裁剪，不会显示（“一剪没”）</span><br><span class="line">+ ```scroll```：生成垂直和水平两个滚动条，通过滚筒条查看完整内容</span><br><span class="line">+ ```auto```：根据需要生成滚动条（水平还是垂直）</span><br><span class="line">+ ```overflow-x```：单独处理水平方向的</span><br><span class="line">+ ```overflow-y```：单独处理垂直方向的</span><br><span class="line"></span><br><span class="line">#### 相邻的垂直方向外边距的折叠（重叠）</span><br><span class="line"></span><br><span class="line">***相邻*** 且 ***垂直***才适用这种情况。</span><br><span class="line"></span><br><span class="line">+ 兄弟元素</span><br><span class="line">   + 两者都是正值：会取两者之间的较大值</span><br><span class="line">   + 特殊情况：一正一负：取两者的和；两负：取两者绝对值较大的</span><br><span class="line">     </span><br><span class="line">兄弟元素外边距的重叠对开发是有利的，不需要处理</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ 父子元素</span><br><span class="line">   + 子元素的会传递给父元素（上外边距）</span><br><span class="line">父子元素外边距的重叠会影响到页面布局，必须处理！</span><br><span class="line">解决方法：要么不用外边距（给父元素padding），要么别相邻（给父元素border，隔开外边距）</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">解决方案：```::before```伪元素 + ```display:table```</span><br><span class="line">```css</span><br><span class="line">.box1::before&#123;</span><br><span class="line"> content:&#x27;&#x27;;</span><br><span class="line"> display:table</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>外边框：<code>margin</code>，不影响盒子<em><strong>可见框</strong></em>大小，但影响盒子的实际大小和位置。</li>
+</ol>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">可以设置为负值。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">5. 轮廓：```outline```，用来设置元素的轮廓线，用法和```border```一摸一样。唯一和```border```不一样的点就是轮廓不会影响可见框的大小。</span><br><span class="line">6. 阴影：```box-shadow```，用来设置元素的阴影效果，***不会影响页面布局***。起始位置和元素本身的位置完全重合。</span><br><span class="line">     ```box-shadow: 2px 5px 10px rgba(0,0,0,.3)```</span><br><span class="line"></span><br><span class="line">   + 第一个值：水平偏移，正值向右，负值向左。</span><br><span class="line">   + 第二个值：垂直偏移，正值向下，负值向上。</span><br><span class="line">   + 第三个值：模糊半径。即使前两个值都为0，设置了模糊半径也能看到阴影。</span><br><span class="line">   + 第四个值：颜色，常用带透明度的rgba。</span><br><span class="line">7. 圆角：```border-radius```，可以分别指定四个角的圆角。</span><br><span class="line">   + 对某个角同时指定两个半径：椭圆圆角。```border-top-left-radius:10px 20px```</span><br><span class="line">   + 四个值：左上 右上 右下 左下</span><br><span class="line">   + 三个值：左上 右上/左下 右下</span><br><span class="line">   + 两个值：左上/右下 右上/左下</span><br><span class="line">不到四个值，缺哪个找哪个的对角值，这个值代表了两个角的半径。</span><br><span class="line"></span><br><span class="line">   + 将元素设置为圆形： ```border-radius:50%```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 水平布局</span><br><span class="line">一个元素在其父元素的内容区中存在，该元素的水平布局***必须满足***：</span><br><span class="line">&lt;span style=&quot;color:red&quot;&gt;左外边距+左边框+左内边距+width+右内边距+右边框+右外边距  =  其父元素内容区的宽度&lt;/span&gt;</span><br><span class="line">但元素设置浮动```float```后，该等式不需要强制成立！</span><br><span class="line"></span><br><span class="line">```width```，```margin-left```，```padding-left```可以设置为```auto```。</span><br><span class="line"></span><br><span class="line">+ 如果不满足，如何调整？（注意margin可以为负）</span><br><span class="line">   + 如果这7个值没有```auto```，浏览器会自动调整```margin-right```。</span><br><span class="line">   + 如果这7个值有一个```auto```，浏览器会自动调             整```auto```。```width```的默认值即为```auto```。</span><br><span class="line">   + 如果这7个值有两个```auto```，且一个是width一个是margin，则宽度会调整到最大，设置为```auto```的外边距自动为0。</span><br><span class="line">   + 如果三个都是auto，则padding为0，width最大。（全屏）</span><br><span class="line">   + 如果将两个外边距auto，***宽度固定***，则会将外边距设置为相同的值。（元素在父元素居中）</span><br><span class="line">   </span><br><span class="line">经常利用这个特点使元素在子元素内居中</span><br><span class="line"></span><br><span class="line">#### 垂直布局</span><br><span class="line">默认情况下父元素的***高度***会被内容撑开</span><br><span class="line">如果子元素的大小超过了父元素，则子元素会从父元素溢出</span><br><span class="line"></span><br><span class="line">使用***overflow***属性设置***父元素***如何处理溢出的子元素，可选值如下：</span><br><span class="line">+ ```visible```：默认值，子元素会从父元素中溢出，在父元素外部的位置显示</span><br><span class="line">+ ```hidden```：溢出内容会被裁剪，不会显示（“一剪没”）</span><br><span class="line">+ ```scroll```：生成垂直和水平两个滚动条，通过滚筒条查看完整内容</span><br><span class="line">+ ```auto```：根据需要生成滚动条（水平还是垂直）</span><br><span class="line">+ ```overflow-x```：单独处理水平方向的</span><br><span class="line">+ ```overflow-y```：单独处理垂直方向的</span><br><span class="line"></span><br><span class="line">#### 相邻的垂直方向外边距的折叠（重叠）</span><br><span class="line"></span><br><span class="line">***相邻*** 且 ***垂直***才适用这种情况。</span><br><span class="line"></span><br><span class="line">+ 兄弟元素</span><br><span class="line">   + 两者都是正值：会取两者之间的较大值</span><br><span class="line">   + 特殊情况：一正一负：取两者的和；两负：取两者绝对值较大的</span><br><span class="line">     </span><br><span class="line">兄弟元素外边距的重叠对开发是有利的，不需要处理</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ 父子元素</span><br><span class="line">   + 子元素的会传递给父元素（上外边距）</span><br><span class="line">父子元素外边距的重叠会影响到页面布局，必须处理！</span><br><span class="line">解决方法：要么不用外边距（给父元素padding），要么别相邻（给父元素border，隔开外边距）</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">解决方案：```::before```伪元素 + ```display:table```</span><br><span class="line">```css</span><br><span class="line">.box1::before&#123;</span><br><span class="line"> content:&#x27;&#x27;;</span><br><span class="line"> display:table</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>table既可以解决高度塌陷，又可以解决外边框重叠。</p>
 </blockquote>
-</li>
-</ol>
 <h4 id="行内元素的盒模型"><a href="#行内元素的盒模型" class="headerlink" title="行内元素的盒模型"></a>行内元素的盒模型</h4><blockquote>
 <p>文字的垂直居中：<br><span style="color:red">要让一个文字在父元素中垂直居中，只需让父元素的line-height和父元素height相等。</span></p>
 </blockquote>
@@ -3585,8 +3591,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1642582949076')
-      volantis.js('/js/thirdparty/message.js?time=1642582949076', () => {
+      volantis.css('/css/message.css?time=1642583512167')
+      volantis.js('/js/thirdparty/message.js?time=1642583512167', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3631,8 +3637,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1642582949076')
-      volantis.js('/js/thirdparty/message.js?time=1642582949076', () => {
+      volantis.css('/css/message.css?time=1642583512167')
+      volantis.js('/js/thirdparty/message.js?time=1642583512167', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3691,8 +3697,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1642582949076')
-      volantis.js('/js/thirdparty/message.js?time=1642582949076', () => {
+      volantis.css('/css/message.css?time=1642583512167')
+      volantis.js('/js/thirdparty/message.js?time=1642583512167', () => {
         hideMessage(done);
       });
     } else {
@@ -3957,7 +3963,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1642582949076')
+    volantis.js('/js/plugins/rightMenu.js?time=1642583512167')
   </script>
 
 
@@ -4087,19 +4093,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1642582949076")
+        volantis.js("/js/plugins/sites.js?time=1642583512167")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1642582949076")
+        volantis.js("/js/plugins/friends.js?time=1642583512167")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1642582949076")
+        volantis.js("/js/plugins/contributors.js?time=1642583512167")
       }
     
   };
@@ -4171,7 +4177,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1642582949079')
+    await volantis.js('/js/plugins/aplayer.js?time=1642583512170')
     volantis.APlayerController.music = true;
   
   })();
@@ -4305,7 +4311,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1642582949076.js"></script>
+<script src="/js/app.js?time=1642583512167.js"></script>
 
 
 <!-- optional -->
@@ -4318,7 +4324,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1642582949076");
+    return volantis.js("/js/search/hexo.js?time=1642583512167");
   }
 
   function loadSearchService() {
@@ -4389,7 +4395,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4432,7 +4438,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1642582949076').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1642583512167').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
