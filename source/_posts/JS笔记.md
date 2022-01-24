@@ -6,6 +6,15 @@ tags:
 categories:
 ---
 
+ ***Chrome内运行***
+  1.开发者工具->Console 窗口调试 JavaScript 代码
+  2.开发者工具->Sources->Snippets选项卡-> Creat new snippet 来新建一个脚本文件  
+
+(1) JS没有任何打印或者输出的函数。只能：使用 window.alert() 弹出警告框；document.write() 方法将内容写到 HTML 文档中；innerHTML 写入到 HTML 元素； console.log() 写入到浏览器的控制台。
+(2)使用 document.getElementById(id) 方法。![链接引用和脚注]
+使用 "id" 属性来标识/查找 HTML 元素，并 innerHTML 来获取或插入元素内容，下面例子里          `<p id="demo">我的第一个段落</p>`：
+`document.getElementById("demo").innerHTML = "段落已修改。";`
+
 ```javascript
 console.time("计时器的名字");
 console.timeEnd("计时器的名字"); 
