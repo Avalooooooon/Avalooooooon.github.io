@@ -20,7 +20,7 @@
   <meta content="一之碎片" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1643036491084" as="style">
+  <link rel="preload" href="/css/style.css?time=1643706536286" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -1778,8 +1778,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1643036491084" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1643036491084"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1643706536286" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1643706536286"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2977,6 +2977,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>百分比：是相对其父属性而言。可以使子元素跟随父元素的改变而改变。</li>
 <li>em：相对于当前元素（自身）的font- size。1em=1font-size。一般浏览器默认的字体大小都是16px，所以10em就是160px。会根据字体大小的改变而改变。</li>
 <li>rem：相对于根元素（&lt;html&gt;标签）的font- size。  </li>
+<li>vw：视口宽度（viewport width）。</li>
 </ol>
 </li>
 <li><p>颜色</p>
@@ -2987,7 +2988,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>HSL值：（同理有HSLA，色相：0～360+饱和度：颜色浓度0%～100%+亮度：0%～100%+透明度）</li>
 </ol>
 </li>
+<li><p>像素、（移动端）完美视口</p>
+<ol>
+<li>移动端默认的视口大小是980px(css像素)。所以默认情况下，移动端的像素比就是980/移动端宽度（980/760，iPhone6），也就是一个css像素对应零点几个移动端的物理像素。又因为移动端的物理像素本来就小，所以如果我们直接在网页中编写移动端代码，在980的视口中像素比会很不好，导致网页中的内容很小。这就要求编写移动页面时必须确保有一个比较合理的像素比。</li>
+<li>每一款移动设备设计时都会有一个最佳的像素比，一般把像素比设置为该值就可得到最佳效果。将像素比设置为最佳像素比的视口大小我们称其为完美视口。不同设备完美视口的大小不同：iPhone6-375px，iPhone6 plue-414px。由于不同设备视口和像素比不同，所以同样的375像素在不同设备下意义不同，比如在iPhone6中375是全凭，在plus中就会缺一块。所以在移动端开发时就不能再使用px进行布局了。</li>
+<li>可以通过<code>&lt;meta&gt;</code>标签设置视口大小。<code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</code>就把网页的视口设置为完美视口。总之就是再写移动端的页面时就把这句先写上。</li>
+</ol>
+</li>
 </ul>
+<h4 id="移动端开发解决比例问题的最终方案"><a href="#移动端开发解决比例问题的最终方案" class="headerlink" title="移动端开发解决比例问题的最终方案"></a>移动端开发解决比例问题的最终方案</h4><p>使用less+rem的方法，换算设计图px和代码rem的比例。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// total-width是设计图的宽度</span></span><br><span class="line"><span class="variable">@total-width:</span><span class="number">750</span>; </span><br><span class="line"><span class="selector-tag">html</span>&#123;</span><br><span class="line">  <span class="attribute">font-size</span>:(<span class="number">100vw</span>/<span class="variable">@total-width</span>)*<span class="number">40</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">175</span>/<span class="number">40rem</span>; <span class="comment">// 这里的175指的是设计图上的宽度为175px</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><blockquote>
 <p>样式冲突：冲突时由选择器的权重（优先级）决定。比较时要将所有选择器的优先级相加计算。但选择器的累加不会超过其最大的数量级，即类选择器最高也不会超过id选择器的优先级。并集（分组）选择器单独计算。</p>
 <p><em><strong>「选择器越具体，优先级越高」</strong></em>：<br>内联样式 1000 &gt; id选择器 100&gt; 类和伪类选择器 10&gt; 元素选择器 1&gt; 通配选择器 0&gt; 继承的样式 没有优先级；在样式最后加!important直接升为最高优先级。<br>若优先级计算后相等，优先使用靠下的样式。</p>
@@ -3138,7 +3149,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <ul>
 <li>如果不满足，如何调整？（注意margin可以为负）<ul>
 <li>如果这7个值没有<code>auto</code>，浏览器会自动调整<code>margin-right</code>。</li>
-<li>如果这7个值有一个<code>auto</code>，浏览器会自动调             整<code>auto</code>。<code>width</code>的默认值即为<code>auto</code>。</li>
+<li>如果这7个值有一个<code>auto</code>，浏览器会自动调整<code>auto</code>。<code>width</code>的默认值即为<code>auto</code>。</li>
 <li>如果这7个值有两个<code>auto</code>，且一个是width一个是margin，则宽度会调整到最大，设置为<code>auto</code>的外边距自动为0。</li>
 <li>如果三个都是auto，则padding为0，width最大。（全屏）</li>
 <li>如果将两个外边距auto，<em><strong>宽度固定</strong></em>，则会将外边距设置为相同的值。（元素在父元素居中）<blockquote>
@@ -3267,6 +3278,55 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h4 id="解决高度塌陷和外边框重叠的最终方案（灵活，推荐）"><a href="#解决高度塌陷和外边框重叠的最终方案（灵活，推荐）" class="headerlink" title="解决高度塌陷和外边框重叠的最终方案（灵活，推荐）"></a>解决高度塌陷和外边框重叠的最终方案（灵活，推荐）</h4><p>给存在这两种问题的元素直接添加一个<code>clearfix</code>类名：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::before</span>,<span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">  <span class="attribute">content</span>:<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="attribute">display</span>:table;</span><br><span class="line">  <span class="attribute">clear</span>:both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h3><p>主要用来代替浮动完成页面布局。可以使元素带有弹性，让元素可以跟随页面大小的改变而改变。<br>当父元素盒子设置为flex布局后，子元素的float、clear、vertical-align属性将失效。<br>弹性容器：通过<code>display:flex</code>设置为块级弹性容器，<code>display:inline-flex</code>设置为行内的弹性容器。<br>弹性元素：弹性容器的 <em><strong>直接子元素</strong></em> 是弹性元素。<br>元素可以既是弹性容器，又是弹性元素。</p>
+<h4 id="弹性容器的样式"><a href="#弹性容器的样式" class="headerlink" title="弹性容器的样式"></a>弹性容器的样式</h4><p>主轴：弹性元素的排列方向；侧轴：与主轴垂直方向。凡是<code>justify***</code>都是主轴的，<code>align***</code>都是辅轴的。</p>
+<ol>
+<li>容器中弹性元素的排列方式：<code>flex-direction</code></li>
+<li>弹性元素是否在容器中自动换行：<code>flex-wrap</code></li>
+<li>排列方式和换行的简写属性：<code>flex-flow</code></li>
+</ol>
+<p>对齐相关的样式：</p>
+<ol>
+<li><code>justify-content</code>：元素在主轴如何对齐（如何分配主轴空白空间）</li>
+</ol>
+<ul>
+<li><code>flex-start</code>、<code>flex-end</code>：沿主轴起边/终边对齐</li>
+<li><code>center</code>：居中</li>
+<li><code>space-around</code>、<code>space-between</code>、<code>space-evenly</code></li>
+</ul>
+<ol start="2">
+<li><code>align-content</code>：设置元素在辅轴如何对齐（如何分配辅轴空白空间）。可选值和<code>justify-content</code>一样，多一个<code>stretch</code>。</li>
+</ol>
+<blockquote>
+<p>只能用于子项出现<em><strong>换行</strong></em>的情况（多行），单行下没有效果。</p>
+</blockquote>
+<ol start="3">
+<li><code>align-items</code>：子项为单行时使用。设置元素在辅轴如何对齐。<blockquote>
+<p>适用于单行的情况，只有上对齐、下对齐、居中和拉伸。</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li><code>stretch</code>：默认值，将元素的长度设置为相同的值</li>
+<li><code>flex-start</code>、<code>flex-end</code>：沿辅轴起边/终边对齐，不会拉伸元素</li>
+<li><code>center</code>：居中</li>
+<li><code>base-line</code>：基线对齐，用的不多。</li>
+</ul>
+<h4 id="弹性元素的样式"><a href="#弹性元素的样式" class="headerlink" title="弹性元素的样式"></a>弹性元素的样式</h4><p>只有三个：增长、缩短、基础长度。<br>通过<code>align-self</code>覆盖当前元素上的<code>align-items</code>。</p>
+<ol>
+<li><code>flex-grow</code>、<code>flex-shrink</code>：指定弹性元素的伸展/收缩系数。父元素的剩余空间会按照比例分配/当父元素空间不足以容纳所有子元素时，对子元素进行压缩。</li>
+<li><code>flex-basis</code>：元素在主轴上的基础长度。默认auto，即参考元素自身的高度和宽度。<blockquote>
+<p>这三个值可以看作是弹簧的三个状态：伸长，压缩，放松。</p>
+</blockquote>
+</li>
+</ol>
+<p>可以通过简写属性<code>flex</code>设置弹性元素所有的三个样式。<code>flex:增长 缩减 基础</code>。</p>
+<ol>
+<li><code>initial</code>：即为<code>flex:0 1 auto</code>，只能减。</li>
+<li><code>auto</code>：即为<code>flex:1 1 auto</code>，可增可减。</li>
+<li><code>none</code>：即为<code>flex:0 0 auto</code>，元素没有弹性。</li>
+</ol>
+<p>还可以使用<code>order</code>决定弹性元素的排列顺序。</p>
 <h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>用<code>position</code>属性。默认为<code>static</code>，即元素是静止的，没有开启定位。只要开了定位，就都是一个层级；和哪种定位无关。</p>
 <blockquote>
 <p>关于层级：<br>如果元素的层级一样，则优先显示靠下的元素。<br>祖先元素的层级再高也不会盖住后代元素。</p>
@@ -3289,7 +3349,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 <li>绝对定位后，垂直方向的等式也必须满足：top+margin-top/bottom+padding-top/bottom+height=包含块的高度<ol>
 <li>垂直居中：<code>top:0;bottom:0;margin-top:0;margin-bottom:0</code></li>
-<li>在 <em><strong>父元素</strong></em> 中垂直且水平居中：<code>top:0;bottom:0;left: 0；right:0; margin:auto</code></li>
+<li>在 <em><strong>父元素</strong></em> 中垂直且水平居中：<code>top:0;bottom:0;left:0;right:0; margin:auto</code></li>
 </ol>
 </li>
 </ul>
@@ -3317,7 +3377,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>可以将行高设置为和高度一样的值，使 <em><strong>单行</strong></em> 文字在父元素中垂直居中</li>
 <li>行高经常还用来设置文字的行间距。css没有行间距的属性，利用公式<code>行间距=行高-字体大小</code>来间接控制行间距。</li>
 </ul>
-<h4 id="文本的水平和垂直对齐"><a href="#文本的水平和垂直对齐" class="headerlink" title="文本的水平和垂直对齐"></a>文本的水平和垂直对齐</h4><p>水平对齐：<code>text-align</code>，默认值left ；right ；居中对齐center ；两端对齐justify<br>垂直对齐：<code>vertical-align</code>，默认值基线对齐baseline；顶部对齐top；底部对齐bottom；居中对齐middle（中线对齐）。还可以直接指定值<code>vertical-align:100px</code>。</p>
+<h4 id="文本的水平和垂直对齐"><a href="#文本的水平和垂直对齐" class="headerlink" title="文本的水平和垂直对齐"></a>文本的水平和垂直对齐</h4><p>水平对齐：<code>text-align</code>，默认值left ；right ；居中对齐center ；两端对齐justify</p>
+<blockquote>
+<p>注意<code>text-align</code>只能给块元素设置！</p>
+</blockquote>
+<p>垂直对齐：<code>vertical-align</code>，默认值基线对齐baseline；顶部对齐top；底部对齐bottom；居中对齐middle（中线对齐）。还可以直接指定值<code>vertical-align:100px</code>。</p>
 <blockquote>
 <p>用img标签引入图片时，由于图片作为替换元素性质很像行内元素，默认是基线对齐，导致图片和它父元素的border之间有一条缝隙，这个缝隙就是图片的 <em><strong>基线</strong></em> 。<br>想消除这个缝隙：将图片的vertical-align设置为除baseline外的任意值即可。</p>
 </blockquote>
@@ -3377,7 +3441,98 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;group1&quot;</span> <span class="attr">value</span>=<span class="string">&quot;a&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;group1&quot;</span> <span class="attr">value</span>=<span class="string">&quot;b&quot;</span> <span class="attr">checked</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>还有多选框（type=”checkbox”）、下拉列表（&lt;select&gt;&lt;option&gt;)等。</p>
+<h3 id="过渡"><a href="#过渡" class="headerlink" title="过渡"></a>过渡</h3><p>简写属性：<code>transtion</code>。只有一个要求：如果要写 <em><strong>延迟</strong></em> ，则两个时间中的第一个是持续时间。<br>可以指定一个属性发生变化时的切换方式。</p>
+<blockquote>
+<p>注意过渡时必须有两个有效数值！在它们之间过渡。auto不能起作用。</p>
+</blockquote>
+<ul>
+<li>要执行过渡的属性：<code>transtion-property:width</code>。多个属性间使用，隔开，若所有属性都需要过渡，用<code>all</code>关键字。</li>
+<li>过渡效果持续时间：<code>transtion-duration</code>。</li>
+<li>过渡的时序函数：<code>transtion-timing-function</code>。<ul>
+<li>默认为<code>ease</code>，慢速开始，先加速再减速。</li>
+<li>其他可选值：<code>linear</code>,<code>ease-in</code>,<code>ease-in-out</code>。用<code>cubic-bezier()</code>自己指定时序函数，参考<a target="_blank" rel="noopener" href="https://cubic-bezier.com/">本链接</a>。</li>
+<li>用<code>steps()</code>分布执行过渡效果。可以设置一个第二个值：<code>end</code>，在时间结束时执行过渡（默认值）; <code>start</code>，在时间开始时执行过渡。</li>
+</ul>
+</li>
+<li>过渡效果的延迟：<code>transtion-delay</code>，等待一段时间后再执行过渡。</li>
+</ul>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><p>简写属性：<code>animation</code>。只有一个要求：如果要写 <em><strong>延迟</strong></em> ，则两个时间中的第一个是持续时间。<br>过渡需要在某个属性发生变化时才会触发。动画可以自动触发。设置动画效果，必须先设置一个 <em><strong>关键帧</strong></em> ，关键帧设置了动画执行的每一个步骤。</p>
+<ul>
+<li>要对当前元素生效的关键帧的名字：<code>animation-name:test</code></li>
+<li>动画持续时间、延时和时序函数类似过渡：<code>animation-duration animation-delay animation-timing-function</code></li>
+<li>动画执行次数：<code>animation-iteration-count</code></li>
+<li>动画运动方向：<code>animation-direction</code>。可选：<code>normal reverse alternate alternate-reverse</code>。</li>
+<li>动画执行状态：<code>animation-play-state</code>。可选：<code>running paused</code></li>
+<li>动画填充模式：<code>animation-fill-mode</code>。可选：<code>none</code>，默认值，动画执行完毕元素回到原来位置；<code> forwards</code>，动画执行完毕元素停在结束位置；<code>backwards</code>，动画延时等待时元素处于开始状态；<code>both</code>，结合了forwards和backwards。</li>
+</ul>
+<h4 id="关键帧"><a href="#关键帧" class="headerlink" title="关键帧"></a>关键帧</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> test&#123;</span><br><span class="line">  <span class="comment">/* from表示动画的开始位置，也可以使用0% */</span></span><br><span class="line">  <span class="selector-tag">from</span>&#123;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">25%</span>,<span class="selector-tag">to</span>&#123;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">400px</span>;</span><br><span class="line">    <span class="attribute">animation-timing-function</span>: ease-out;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">50%</span>&#123;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">100px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/* to表示动画的结束位置，也可以使用100% */</span></span><br></pre></td></tr></table></figure>
 
+<h3 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h3><p>通过CSS改变元素的形状或位置。不会影响到页面布局。<br>变形：<code>transform</code>。<br>指定变形原点：<code>transform-origin：0 0 </code></p>
+<h4 id="平移"><a href="#平移" class="headerlink" title="平移"></a>平移</h4><p>使用<code>translateX(100%)</code>等。百分比是相对于 <em><strong>自身</strong></em> 去算的。<br>之前所说的垂直且水平居中的方法：<code>top:0;bottom:0;left:0;right:0; margin:auto</code>，<em><strong>只适用于元素大小确定的情况；若元素大小是被内容撑开的则不能使用！</strong></em>因为在width、height、margin均为auto的情况下会优先调整宽和高。</p>
+<ul>
+<li><p>利用X、Y轴方向上的平移实现水平/垂直居中，适用于元素大小被内容撑开的情况：<br>水平居中：<code>left:50%; transform:translateX(-50%);</code><br>水平且垂直居中：<code>left:50%; top:50%; transform:translateX(-50%) translateY(-50%);</code>。</p>
+</li>
+<li><p>Z轴平移：立体效果（近大远小）。默认情况下网页不支持透视。如果需要看见效果，必须设置网页视距如：<code>perspective：800px</code>。一般在html或body标签的样式中设置。</p>
+</li>
+</ul>
+<h4 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h4><p>使用<code>rotateX()</code>使元素沿着x(y z)轴旋转指定的角度。<br>是否显示元素背面：<code>backface-visibility：hidden</code></p>
+<h4 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h4><p>使用<code>scaleX()</code>等实现各个方向的缩放。</p>
+</div><h2 id="less"><a href="#less" class="headerlink" title="less"></a>less</h2><div class="story post-story"><p>事实上，css原生也支持变量的设置和计算函数calc()，但兼容性欠佳。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>&#123;</span><br><span class="line">  --<span class="attribute">color</span>:<span class="number">#bfa</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="built_in">calc</span>(<span class="number">400</span>x/<span class="number">2</span>);</span><br><span class="line">  <span class="attribute">color</span>:<span class="built_in">var</span>(--color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>less是一门css的预处理语言。它是css的增强版，通过less可以编写更少的代码实现更强大的样式。在less中添加了很多新特性，如对变量的支持，对mixin的支持，在less中所有的数值都可以直接进行运算…</p>
+<blockquote>
+<p>新版less中，除法运算必须带着单位放在括号内！</p>
+</blockquote>
+</li>
+<li><p>语法大体上和css一致，但增加了许多对css的扩展。所以浏览器无法直接执行less代码，要执行必须将less转化为css，然后再由浏览器执行。在vscode中，需要安装插件：easy less。</p>
+</li>
+<li><p>用<code>//</code>对less进行单行注释，这种注释方法中的内容不会被解析到css中。用<code>/* */</code>也可以对less进行注释，内容会被解析到css文件中。</p>
+</li>
+<li><p>可以通过在less文件开头<code>@import &quot;demo.less&quot;</code>引入其他外部less文件，方便模块化开发。</p>
+</li>
+</ul>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>变量：语法为<code>@变量名</code>。变量发生重名时优先使用比较近的变量。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@a:</span><span class="number">200px</span>;</span><br><span class="line"><span class="variable">@b:</span>box2;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 作为类名或一部分值使用时必须以 @&#123;变量名&#125; 的形式使用</span></span><br><span class="line"><span class="selector-class">.@&#123;b&#125;</span>&#123;</span><br><span class="line">  <span class="comment">// 直接使用以 @变量名 的形式使用</span></span><br><span class="line">  <span class="attribute">width</span>:<span class="variable">@a</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">height</span>:$width;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>父元素：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box1</span>&#123;</span><br><span class="line">	&gt;<span class="selector-class">.box3</span>&#123;</span><br><span class="line">		<span class="attribute">color</span>:blue;</span><br><span class="line">		<span class="comment">// &amp; 表示的是外层的父元素box3</span></span><br><span class="line">		<span class="selector-tag">&amp;</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">			<span class="attribute">color</span>:yellow;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// &amp; 表示的是外层的父元素box1。                        </span></span><br><span class="line">	<span class="selector-tag">div</span> <span class="selector-tag">&amp;</span>&#123;</span><br><span class="line">		<span class="attribute">width</span>:<span class="number">300px</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>扩展：<code>:extend()</code>。对当前选择器扩展指定选择器的样式（选择器分组）</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.p1</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">	<span class="attribute">height</span>:<span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.p2</span>:<span class="selector-tag">extend</span>(.p1)&#123;</span><br><span class="line">	<span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>功能类似的还有混合函数。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 也可以直接引用指定的样式，相当于将p1的样式在这复制。</span></span><br><span class="line"><span class="comment">// mixin混合</span></span><br><span class="line"><span class="selector-class">.p3</span>&#123;</span><br><span class="line">	<span class="selector-class">.p1</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用类选择器时可以在选择器后边添加括号，这就创建了一个mixins。再引用的时候可以省略括号。</span></span><br><span class="line"><span class="selector-class">.p4</span>()&#123;</span><br><span class="line">	<span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.p5</span>&#123;</span><br><span class="line">	<span class="selector-class">.p4</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在混合函数中可以直接设置变量，也可以给变量设置默认值。设置默认值再引用可以不用全指定值。</span></span><br><span class="line"><span class="selector-class">.test</span>(<span class="variable">@w</span>,<span class="variable">@h</span>,<span class="variable">@bg-color</span>)&#123;</span><br><span class="line">	<span class="attribute">width</span>:<span class="variable">@w</span>;</span><br><span class="line">	<span class="attribute">height</span>:<span class="variable">@h</span>;</span><br><span class="line">	<span class="attribute">border</span>:<span class="number">1px</span> solid <span class="variable">@bg-color</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">	<span class="comment">// 调用混合函数，按顺序或按名字传递参数</span></span><br><span class="line">	<span class="selector-class">.test</span>(<span class="number">200px</span>,<span class="number">300px</span>,#red)</span><br><span class="line">	<span class="comment">// 或</span></span><br><span class="line">	<span class="selector-class">.test</span>(<span class="variable">@bg-color</span>:red,<span class="variable">@h</span>:<span class="number">100px</span>;<span class="variable">@w</span>:<span class="number">300px</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div><h2 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h2><div class="story post-story"><p>语法：<code>@media 查询规则&#123;&#125;</code>。</p>
+<ul>
+<li><p>媒体类型</p>
+<ol>
+<li>all：所有设备</li>
+<li>print：打印设备</li>
+<li>screen：带屏幕的设备</li>
+<li>speech：屏幕阅读器</li>
+</ol>
+</li>
+<li><p>媒体特性</p>
+<ol>
+<li>width、height：视口宽度、视口高度</li>
+<li>min-width、max-width：视口大于/小于指定宽度时生效</li>
+</ol>
+</li>
+</ul>
+<p>样式切换的分界点称为断点，也就是网页样式会在这个点发生变化。</p>
+<ul>
+<li>常用断点<ol>
+<li>小于768：超小屏幕，max-width=768px</li>
+<li>大于768：小屏幕，min-width=768px</li>
+<li>大于992：中型屏幕，min-width=992px</li>
+<li>大于1200:大屏幕，min-width=1200px</li>
+</ol>
+</li>
+</ul>
+<p>可以在媒体类型前添加<code>only</code>，表示只有。<code>only</code>的使用主要是为了兼容一些老版本浏览器。<br>使用逗号连接多个媒体类型，表示它们之间是 <em><strong>或</strong></em> 的关系。如<code>@media print,screen&#123;&#125;</code>；使用<code>and</code>连接多个媒体类型，表示它们之间是 <em><strong>且</strong></em> 的关系。在选择器前加<code>not</code>，表示“除了”，如<code>@media not only screen and (min-width:768px)&#123;&#125;</code>。一个较为完整的写法如下：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>:<span class="number">768px</span>) <span class="keyword">and</span> (<span class="attribute">max-width</span>:<span class="number">992px</span>)&#123;</span><br><span class="line">  <span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>: #red;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen &#123;</span><br><span class="line">  <span class="keyword">@media</span> (<span class="attribute">min-width</span>:<span class="number">768px</span>) <span class="keyword">and</span> (<span class="attribute">max-width</span>:<span class="number">992px</span>)&#123; <span class="comment">// 注意media后面要空格</span></span><br><span class="line">    <span class="selector-tag">body</span>&#123;</span><br><span class="line">      <span class="attribute">background-color</span>: #red;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </div>
   </div>
   
@@ -3551,7 +3706,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML"><span class="toc-number">1.</span> <span class="toc-text">HTML</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">HTML基本结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML%E5%B1%9E%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text">HTML属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML%E5%AE%9E%E4%BD%93%EF%BC%88%E8%BD%AC%E4%B9%89%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">HTML实体（转义）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS"><span class="toc-number">2.</span> <span class="toc-text">CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E9%BB%98%E8%AE%A4%E6%A0%B7%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">浏览器的默认样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%BF%E5%BA%A6%E5%92%8C%E9%A2%9C%E8%89%B2%E5%8D%95%E4%BD%8D"><span class="toc-number">2.2.</span> <span class="toc-text">长度和颜色单位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">2.3.</span> <span class="toc-text">选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.4.</span> <span class="toc-text">盒模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B0%B4%E5%B9%B3%E5%B8%83%E5%B1%80"><span class="toc-number">2.4.1.</span> <span class="toc-text">水平布局</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9E%82%E7%9B%B4%E5%B8%83%E5%B1%80"><span class="toc-number">2.4.2.</span> <span class="toc-text">垂直布局</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B8%E9%82%BB%E7%9A%84%E5%9E%82%E7%9B%B4%E6%96%B9%E5%90%91%E5%A4%96%E8%BE%B9%E8%B7%9D%E7%9A%84%E6%8A%98%E5%8F%A0%EF%BC%88%E9%87%8D%E5%8F%A0%EF%BC%89"><span class="toc-number">2.4.3.</span> <span class="toc-text">相邻的垂直方向外边距的折叠（重叠）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E7%9A%84%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.4.4.</span> <span class="toc-text">行内元素的盒模型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%AE%E5%8A%A8"><span class="toc-number">2.5.</span> <span class="toc-text">浮动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%AE%E5%8A%A8%E7%9A%84%E9%AB%98%E5%BA%A6%E5%A1%8C%E9%99%B7%E9%97%AE%E9%A2%98"><span class="toc-number">2.5.1.</span> <span class="toc-text">浮动的高度塌陷问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BFC"><span class="toc-number">2.5.2.</span> <span class="toc-text">BFC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#clear"><span class="toc-number">2.5.3.</span> <span class="toc-text">clear</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E9%AB%98%E5%BA%A6%E5%A1%8C%E9%99%B7%E5%92%8C%E5%A4%96%E8%BE%B9%E6%A1%86%E9%87%8D%E5%8F%A0%E7%9A%84%E6%9C%80%E7%BB%88%E6%96%B9%E6%A1%88%EF%BC%88%E7%81%B5%E6%B4%BB%EF%BC%8C%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-number">2.5.4.</span> <span class="toc-text">解决高度塌陷和外边框重叠的最终方案（灵活，推荐）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D"><span class="toc-number">2.6.</span> <span class="toc-text">定位</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%EF%BC%9Aabsolute"><span class="toc-number">2.6.1.</span> <span class="toc-text">绝对定位：absolute</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B8%E5%AF%B9%E5%AE%9A%E4%BD%8D%EF%BC%9Arelative"><span class="toc-number">2.6.2.</span> <span class="toc-text">相对定位：relative</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9A%E5%AE%9A%E4%BD%8D%EF%BC%9Afixed"><span class="toc-number">2.6.3.</span> <span class="toc-text">固定定位：fixed</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B2%98%E6%BB%9E%E5%AE%9A%E4%BD%8D%EF%BC%9Asticky"><span class="toc-number">2.6.4.</span> <span class="toc-text">粘滞定位：sticky</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E5%AD%97"><span class="toc-number">2.7.</span> <span class="toc-text">文字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E9%AB%98lineheight%E5%92%8C%E5%AD%97%E4%BD%93%E6%A1%86"><span class="toc-number">2.7.1.</span> <span class="toc-text">行高lineheight和字体框</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E7%9A%84%E6%B0%B4%E5%B9%B3%E5%92%8C%E5%9E%82%E7%9B%B4%E5%AF%B9%E9%BD%90"><span class="toc-number">2.7.2.</span> <span class="toc-text">文本的水平和垂直对齐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%96%87%E6%9C%AC%E6%A0%B7%E5%BC%8F"><span class="toc-number">2.7.3.</span> <span class="toc-text">其他文本样式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">2.8.</span> <span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Ebackground-position%E7%9A%84%E8%AE%A1%E7%AE%97%E5%8E%9F%E7%82%B9"><span class="toc-number">2.8.1.</span> <span class="toc-text">关于background-position的计算原点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%90%E5%8F%98%E8%89%B2"><span class="toc-number">2.8.2.</span> <span class="toc-text">渐变色</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC"><span class="toc-number">2.9.</span> <span class="toc-text">表格</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC%E6%A0%B7%E5%BC%8F"><span class="toc-number">2.9.1.</span> <span class="toc-text">表格样式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E5%8D%95"><span class="toc-number">2.10.</span> <span class="toc-text">表单</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML"><span class="toc-number">1.</span> <span class="toc-text">HTML</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">HTML基本结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML%E5%B1%9E%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text">HTML属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML%E5%AE%9E%E4%BD%93%EF%BC%88%E8%BD%AC%E4%B9%89%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">HTML实体（转义）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS"><span class="toc-number">2.</span> <span class="toc-text">CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E9%BB%98%E8%AE%A4%E6%A0%B7%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">浏览器的默认样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%BF%E5%BA%A6%E5%92%8C%E9%A2%9C%E8%89%B2%E5%8D%95%E4%BD%8D"><span class="toc-number">2.2.</span> <span class="toc-text">长度和颜色单位</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%A3%E5%86%B3%E6%AF%94%E4%BE%8B%E9%97%AE%E9%A2%98%E7%9A%84%E6%9C%80%E7%BB%88%E6%96%B9%E6%A1%88"><span class="toc-number">2.2.1.</span> <span class="toc-text">移动端开发解决比例问题的最终方案</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">2.3.</span> <span class="toc-text">选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.4.</span> <span class="toc-text">盒模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B0%B4%E5%B9%B3%E5%B8%83%E5%B1%80"><span class="toc-number">2.4.1.</span> <span class="toc-text">水平布局</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9E%82%E7%9B%B4%E5%B8%83%E5%B1%80"><span class="toc-number">2.4.2.</span> <span class="toc-text">垂直布局</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B8%E9%82%BB%E7%9A%84%E5%9E%82%E7%9B%B4%E6%96%B9%E5%90%91%E5%A4%96%E8%BE%B9%E8%B7%9D%E7%9A%84%E6%8A%98%E5%8F%A0%EF%BC%88%E9%87%8D%E5%8F%A0%EF%BC%89"><span class="toc-number">2.4.3.</span> <span class="toc-text">相邻的垂直方向外边距的折叠（重叠）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E7%9A%84%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.4.4.</span> <span class="toc-text">行内元素的盒模型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%AE%E5%8A%A8"><span class="toc-number">2.5.</span> <span class="toc-text">浮动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%AE%E5%8A%A8%E7%9A%84%E9%AB%98%E5%BA%A6%E5%A1%8C%E9%99%B7%E9%97%AE%E9%A2%98"><span class="toc-number">2.5.1.</span> <span class="toc-text">浮动的高度塌陷问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BFC"><span class="toc-number">2.5.2.</span> <span class="toc-text">BFC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#clear"><span class="toc-number">2.5.3.</span> <span class="toc-text">clear</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E9%AB%98%E5%BA%A6%E5%A1%8C%E9%99%B7%E5%92%8C%E5%A4%96%E8%BE%B9%E6%A1%86%E9%87%8D%E5%8F%A0%E7%9A%84%E6%9C%80%E7%BB%88%E6%96%B9%E6%A1%88%EF%BC%88%E7%81%B5%E6%B4%BB%EF%BC%8C%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-number">2.5.4.</span> <span class="toc-text">解决高度塌陷和外边框重叠的最终方案（灵活，推荐）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex%E5%B8%83%E5%B1%80"><span class="toc-number">2.6.</span> <span class="toc-text">flex布局</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%B9%E6%80%A7%E5%AE%B9%E5%99%A8%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="toc-number">2.6.1.</span> <span class="toc-text">弹性容器的样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%B9%E6%80%A7%E5%85%83%E7%B4%A0%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="toc-number">2.6.2.</span> <span class="toc-text">弹性元素的样式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D"><span class="toc-number">2.7.</span> <span class="toc-text">定位</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%EF%BC%9Aabsolute"><span class="toc-number">2.7.1.</span> <span class="toc-text">绝对定位：absolute</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B8%E5%AF%B9%E5%AE%9A%E4%BD%8D%EF%BC%9Arelative"><span class="toc-number">2.7.2.</span> <span class="toc-text">相对定位：relative</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9A%E5%AE%9A%E4%BD%8D%EF%BC%9Afixed"><span class="toc-number">2.7.3.</span> <span class="toc-text">固定定位：fixed</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B2%98%E6%BB%9E%E5%AE%9A%E4%BD%8D%EF%BC%9Asticky"><span class="toc-number">2.7.4.</span> <span class="toc-text">粘滞定位：sticky</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E5%AD%97"><span class="toc-number">2.8.</span> <span class="toc-text">文字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E9%AB%98lineheight%E5%92%8C%E5%AD%97%E4%BD%93%E6%A1%86"><span class="toc-number">2.8.1.</span> <span class="toc-text">行高lineheight和字体框</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E7%9A%84%E6%B0%B4%E5%B9%B3%E5%92%8C%E5%9E%82%E7%9B%B4%E5%AF%B9%E9%BD%90"><span class="toc-number">2.8.2.</span> <span class="toc-text">文本的水平和垂直对齐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%96%87%E6%9C%AC%E6%A0%B7%E5%BC%8F"><span class="toc-number">2.8.3.</span> <span class="toc-text">其他文本样式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">2.9.</span> <span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Ebackground-position%E7%9A%84%E8%AE%A1%E7%AE%97%E5%8E%9F%E7%82%B9"><span class="toc-number">2.9.1.</span> <span class="toc-text">关于background-position的计算原点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%90%E5%8F%98%E8%89%B2"><span class="toc-number">2.9.2.</span> <span class="toc-text">渐变色</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC"><span class="toc-number">2.10.</span> <span class="toc-text">表格</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC%E6%A0%B7%E5%BC%8F"><span class="toc-number">2.10.1.</span> <span class="toc-text">表格样式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E5%8D%95"><span class="toc-number">2.11.</span> <span class="toc-text">表单</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%B8%A1"><span class="toc-number">2.12.</span> <span class="toc-text">过渡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E7%94%BB"><span class="toc-number">2.13.</span> <span class="toc-text">动画</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%B8%A7"><span class="toc-number">2.13.1.</span> <span class="toc-text">关键帧</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E5%BD%A2"><span class="toc-number">2.14.</span> <span class="toc-text">变形</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B3%E7%A7%BB"><span class="toc-number">2.14.1.</span> <span class="toc-text">平移</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%8B%E8%BD%AC"><span class="toc-number">2.14.2.</span> <span class="toc-text">旋转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%A9%E6%94%BE"><span class="toc-number">2.14.3.</span> <span class="toc-text">缩放</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less"><span class="toc-number">3.</span> <span class="toc-text">less</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">语法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.</span> <span class="toc-text">媒体查询</span></a></li></ol>
     </div>
   </section>
 
@@ -3769,8 +3924,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1643036491084')
-      volantis.js('/js/thirdparty/message.js?time=1643036491084', () => {
+      volantis.css('/css/message.css?time=1643706536286')
+      volantis.js('/js/thirdparty/message.js?time=1643706536286', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3815,8 +3970,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1643036491084')
-      volantis.js('/js/thirdparty/message.js?time=1643036491084', () => {
+      volantis.css('/css/message.css?time=1643706536286')
+      volantis.js('/js/thirdparty/message.js?time=1643706536286', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3875,8 +4030,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1643036491084')
-      volantis.js('/js/thirdparty/message.js?time=1643036491084', () => {
+      volantis.css('/css/message.css?time=1643706536286')
+      volantis.js('/js/thirdparty/message.js?time=1643706536286', () => {
         hideMessage(done);
       });
     } else {
@@ -4141,7 +4296,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1643036491084')
+    volantis.js('/js/plugins/rightMenu.js?time=1643706536286')
   </script>
 
 
@@ -4271,19 +4426,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1643036491084")
+        volantis.js("/js/plugins/sites.js?time=1643706536286")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1643036491084")
+        volantis.js("/js/plugins/friends.js?time=1643706536286")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1643036491084")
+        volantis.js("/js/plugins/contributors.js?time=1643706536286")
       }
     
   };
@@ -4355,7 +4510,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1643036491087')
+    await volantis.js('/js/plugins/aplayer.js?time=1643706536290')
     volantis.APlayerController.music = true;
   
   })();
@@ -4489,7 +4644,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1643036491084.js"></script>
+<script src="/js/app.js?time=1643706536286.js"></script>
 
 
 <!-- optional -->
@@ -4502,7 +4657,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1643036491084");
+    return volantis.js("/js/search/hexo.js?time=1643706536286");
   }
 
   function loadSearchService() {
@@ -4573,7 +4728,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4616,7 +4771,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1643036491084').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1643706536286').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
