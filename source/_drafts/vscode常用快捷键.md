@@ -10,6 +10,7 @@ categories:
   
     1. 自动保存（html即时查看）：左侧栏齿轮-设置-常用设置第一项：autosave或command+F搜索“autodelay”。Auto Save Delay：单位毫秒，值为1000时延迟一秒。
     2. 打开代码中引入的其他文件：command+单击
+    2. 同时指定多个光标位置批量操作：alt+左键
     
 + 整行操作：
     1. 删除一行：shift+command+K 或shift+alt+K

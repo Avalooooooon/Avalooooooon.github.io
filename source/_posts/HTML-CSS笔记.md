@@ -114,6 +114,7 @@ categories:
     2. 百分比：是相对其父属性而言。可以使子元素跟随父元素的改变而改变。
     3. em：相对于当前元素（自身）的font- size。1em=1font-size。一般浏览器默认的字体大小都是16px，所以10em就是160px。会根据字体大小的改变而改变。
     4. rem：相对于根元素（\<html\>标签）的font- size。  
+    5. vw：视口宽度（viewport width）。
 
 + 颜色
     1. RGB值：```rgb(红色,绿色,蓝色)```
@@ -121,6 +122,23 @@ categories:
     3. 16进制值：```#FFFFFF```。两两重复可以简写。
     4. HSL值：（同理有HSLA，色相：0～360+饱和度：颜色浓度0%～100%+亮度：0%～100%+透明度）
 
++ 像素、（移动端）完美视口
+  1. 移动端默认的视口大小是980px(css像素)。所以默认情况下，移动端的像素比就是980/移动端宽度（980/760，iPhone6），也就是一个css像素对应零点几个移动端的物理像素。又因为移动端的物理像素本来就小，所以如果我们直接在网页中编写移动端代码，在980的视口中像素比会很不好，导致网页中的内容很小。这就要求编写移动页面时必须确保有一个比较合理的像素比。
+  2. 每一款移动设备设计时都会有一个最佳的像素比，一般把像素比设置为该值就可得到最佳效果。将像素比设置为最佳像素比的视口大小我们称其为完美视口。不同设备完美视口的大小不同：iPhone6-375px，iPhone6 plue-414px。由于不同设备视口和像素比不同，所以同样的375像素在不同设备下意义不同，比如在iPhone6中375是全凭，在plus中就会缺一块。所以在移动端开发时就不能再使用px进行布局了。
+  3. 可以通过```<meta>```标签设置视口大小。```<meta name="viewport" content="width=device-width">```就把网页的视口设置为完美视口。总之就是再写移动端的页面时就把这句先写上。
+
+#### 移动端开发解决比例问题的最终方案
+使用less+rem的方法，换算设计图px和代码rem的比例。
+```less
+// total-width是设计图的宽度
+@total-width:750; 
+html{
+  font-size:(100vw/@total-width)*40;
+}
+.box{
+  height:175/40rem; // 这里的175指的是设计图上的宽度为175px
+}
+```
 
 ### 选择器
 > 样式冲突：冲突时由选择器的权重（优先级）决定。比较时要将所有选择器的优先级相加计算。但选择器的累加不会超过其最大的数量级，即类选择器最高也不会超过id选择器的优先级。并集（分组）选择器单独计算。
@@ -250,7 +268,7 @@ categories:
 
 + 如果不满足，如何调整？（注意margin可以为负）
     + 如果这7个值没有```auto```，浏览器会自动调整```margin-right```。
-    + 如果这7个值有一个```auto```，浏览器会自动调             整```auto```。```width```的默认值即为```auto```。
+    + 如果这7个值有一个```auto```，浏览器会自动调整```auto```。```width```的默认值即为```auto```。
     + 如果这7个值有两个```auto```，且一个是width一个是margin，则宽度会调整到最大，设置为```auto```的外边距自动为0。
     + 如果三个都是auto，则padding为0，width最大。（全屏）
     + 如果将两个外边距auto，***宽度固定***，则会将外边距设置为相同的值。（元素在父元素居中）
@@ -376,6 +394,50 @@ BFC：CSS中的一个隐含属性，可以为一个元素开启BFC。开启BFC�
 }
 ```
 
+### flex布局
+主要用来代替浮动完成页面布局。可以使元素带有弹性，让元素可以跟随页面大小的改变而改变。
+当父元素盒子设置为flex布局后，子元素的float、clear、vertical-align属性将失效。
+弹性容器：通过```display:flex```设置为块级弹性容器，```display:inline-flex```设置为行内的弹性容器。
+弹性元素：弹性容器的 ***直接子元素*** 是弹性元素。
+元素可以既是弹性容器，又是弹性元素。
+
+#### 弹性容器的样式
+主轴：弹性元素的排列方向；侧轴：与主轴垂直方向。凡是```justify***```都是主轴的，```align***```都是辅轴的。
+1. 容器中弹性元素的排列方式：```flex-direction```
+2. 弹性元素是否在容器中自动换行：```flex-wrap```
+3. 排列方式和换行的简写属性：```flex-flow```
+
+对齐相关的样式：
+1. ```justify-content```：元素在主轴如何对齐（如何分配主轴空白空间）
+  + ```flex-start```、```flex-end```：沿主轴起边/终边对齐
+  + ```center```：居中
+  + ```space-around```、```space-between```、```space-evenly```
+2. ```align-content```：设置元素在辅轴如何对齐（如何分配辅轴空白空间）。可选值和```justify-content```一样，多一个```stretch```。
+  
+  > 只能用于子项出现***换行***的情况（多行），单行下没有效果。
+  
+3. ```align-items```：子项为单行时使用。设置元素在辅轴如何对齐。
+  > 适用于单行的情况，只有上对齐、下对齐、居中和拉伸。
+  
+  + ```stretch```：默认值，将元素的长度设置为相同的值
+  + ```flex-start```、```flex-end```：沿辅轴起边/终边对齐，不会拉伸元素
+  + ```center```：居中
+  + ```base-line```：基线对齐，用的不多。
+
+#### 弹性元素的样式
+只有三个：增长、缩短、基础长度。
+通过```align-self```覆盖当前元素上的```align-items```。
+1. ```flex-grow```、```flex-shrink```：指定弹性元素的伸展/收缩系数。父元素的剩余空间会按照比例分配/当父元素空间不足以容纳所有子元素时，对子元素进行压缩。
+2. ```flex-basis```：元素在主轴上的基础长度。默认auto，即参考元素自身的高度和宽度。
+> 这三个值可以看作是弹簧的三个状态：伸长，压缩，放松。
+
+可以通过简写属性```flex```设置弹性元素所有的三个样式。```flex:增长 缩减 基础```。
+1. ```initial```：即为```flex:0 1 auto```，只能减。
+2. ```auto```：即为```flex:1 1 auto```，可增可减。
+3. ```none```：即为```flex:0 0 auto```，元素没有弹性。
+
+还可以使用```order```决定弹性元素的排列顺序。
+
 ### 定位
 用```position```属性。默认为```static```，即元素是静止的，没有开启定位。只要开了定位，就都是一个层级；和哪种定位无关。
 
@@ -401,7 +463,7 @@ BFC：CSS中的一个隐含属性，可以为一个元素开启BFC。开启BFC�
   即水平居中：```left: 0；right:0; margin-left:auto;margin-right:auto```
 + 绝对定位后，垂直方向的等式也必须满足：top+margin-top/bottom+padding-top/bottom+height=包含块的高度
     1. 垂直居中：```top:0;bottom:0;margin-top:0;margin-bottom:0```
-    2. 在 ***父元素*** 中垂直且水平居中：```top:0;bottom:0;left: 0；right:0; margin:auto```
+    2. 在 ***父元素*** 中垂直且水平居中：```top:0;bottom:0;left:0;right:0; margin:auto```
 
 #### 相对定位：relative
 “灵魂出窍：移出来的是魂，肉体还在之前的位置”
@@ -442,6 +504,8 @@ font：italic bold 50px/2 微软雅黑，‘Times New Roman’,Times,serif;
 
 #### 文本的水平和垂直对齐
 水平对齐：```text-align```，默认值left ；right ；居中对齐center ；两端对齐justify
+> 注意```text-align```只能给块元素设置！
+
 垂直对齐：```vertical-align```，默认值基线对齐baseline；顶部对齐top；底部对齐bottom；居中对齐middle（中线对齐）。还可以直接指定值```vertical-align:100px```。
 
 > 用img标签引入图片时，由于图片作为替换元素性质很像行内元素，默认是基线对齐，导致图片和它父元素的border之间有一条缝隙，这个缝隙就是图片的 ***基线*** 。
@@ -567,7 +631,202 @@ tr中，使用td表示一个单元格，有几个\<td\>就有几个单元格。
 
 还有多选框（type="checkbox"）、下拉列表（\<select\>\<option\>)等。
 
+### 过渡
+简写属性：```transtion```。只有一个要求：如果要写 ***延迟*** ，则两个时间中的第一个是持续时间。
+可以指定一个属性发生变化时的切换方式。
+> 注意过渡时必须有两个有效数值！在它们之间过渡。auto不能起作用。
+
++ 要执行过渡的属性：```transtion-property:width```。多个属性间使用，隔开，若所有属性都需要过渡，用```all```关键字。
++ 过渡效果持续时间：```transtion-duration```。
++ 过渡的时序函数：```transtion-timing-function```。
+  + 默认为```ease```，慢速开始，先加速再减速。
+  + 其他可选值：```linear```,```ease-in```,```ease-in-out```。用```cubic-bezier()```自己指定时序函数，参考[本链接](https://cubic-bezier.com)。
+  + 用```steps()```分布执行过渡效果。可以设置一个第二个值：```end```，在时间结束时执行过渡（默认值）; ```start```，在时间开始时执行过渡。
++ 过渡效果的延迟：```transtion-delay```，等待一段时间后再执行过渡。
+
+### 动画
+简写属性：```animation```。只有一个要求：如果要写 ***延迟*** ，则两个时间中的第一个是持续时间。
+过渡需要在某个属性发生变化时才会触发。动画可以自动触发。设置动画效果，必须先设置一个 ***关键帧*** ，关键帧设置了动画执行的每一个步骤。
+
++ 要对当前元素生效的关键帧的名字：```animation-name:test```
++ 动画持续时间、延时和时序函数类似过渡：```animation-duration animation-delay animation-timing-function```
++ 动画执行次数：```animation-iteration-count```
++ 动画运动方向：```animation-direction```。可选：```normal reverse alternate alternate-reverse```。
++ 动画执行状态：```animation-play-state```。可选：```running paused```
++ 动画填充模式：```animation-fill-mode```。可选：```none```，默认值，动画执行完毕元素回到原来位置；``` forwards```，动画执行完毕元素停在结束位置；```backwards```，动画延时等待时元素处于开始状态；```both```，结合了forwards和backwards。
 
 
+#### 关键帧
+```css
+@keyframes test{
+  /* from表示动画的开始位置，也可以使用0% */
+  from{
+    margin-top: 0;
+  }
+  25%,to{
+    margin-top: 400px;
+    animation-timing-function: ease-out;
+  }
+  50%{
+    margin-top: 100px;
+  }
+  /* to表示动画的结束位置，也可以使用100% */
+```
 
+### 变形
+通过CSS改变元素的形状或位置。不会影响到页面布局。
+变形：```transform```。
+指定变形原点：```transform-origin：0 0 ```
 
+#### 平移
+使用```translateX(100%)```等。百分比是相对于 ***自身*** 去算的。
+之前所说的垂直且水平居中的方法：```top:0;bottom:0;left:0;right:0; margin:auto```，***只适用于元素大小确定的情况；若元素大小是被内容撑开的则不能使用！***因为在width、height、margin均为auto的情况下会优先调整宽和高。
+
++ 利用X、Y轴方向上的平移实现水平/垂直居中，适用于元素大小被内容撑开的情况：
+水平居中：```left:50%; transform:translateX(-50%);```
+水平且垂直居中：```left:50%; top:50%; transform:translateX(-50%) translateY(-50%);```。
+
++ Z轴平移：立体效果（近大远小）。默认情况下网页不支持透视。如果需要看见效果，必须设置网页视距如：```perspective：800px```。一般在html或body标签的样式中设置。
+
+#### 旋转
+使用```rotateX()```使元素沿着x(y z)轴旋转指定的角度。
+是否显示元素背面：```backface-visibility：hidden```
+
+#### 缩放
+使用```scaleX()```等实现各个方向的缩放。
+
+## less
+事实上，css原生也支持变量的设置和计算函数calc()，但兼容性欠佳。
+
+```css
+html{
+  --color:#bfa;
+}
+.box{
+  width:calc(400x/2);
+  color:var(--color);
+}
+```
+
++ less是一门css的预处理语言。它是css的增强版，通过less可以编写更少的代码实现更强大的样式。在less中添加了很多新特性，如对变量的支持，对mixin的支持，在less中所有的数值都可以直接进行运算…
+> 新版less中，除法运算必须带着单位放在括号内！
+
++ 语法大体上和css一致，但增加了许多对css的扩展。所以浏览器无法直接执行less代码，要执行必须将less转化为css，然后再由浏览器执行。在vscode中，需要安装插件：easy less。
++ 用```//```对less进行单行注释，这种注释方法中的内容不会被解析到css中。用```/* */```也可以对less进行注释，内容会被解析到css文件中。
++ 可以通过在less文件开头```@import "demo.less"```引入其他外部less文件，方便模块化开发。
+
+### 语法
+变量：语法为```@变量名```。变量发生重名时优先使用比较近的变量。
+```less
+@a:200px;
+@b:box2;
+
+// 作为类名或一部分值使用时必须以 @{变量名} 的形式使用
+.@{b}{
+  // 直接使用以 @变量名 的形式使用
+  width:@a;
+}
+
+div{
+  width:300px;
+  height:$width;
+}
+```
+
+父元素：
+```less
+.box1{
+	>.box3{
+		color:blue;
+		// & 表示的是外层的父元素box3
+		&:hover{
+			color:yellow;
+		}
+	}
+	
+	// & 表示的是外层的父元素box1。                        
+	div &{
+		width:300px;
+	}
+}
+```
+
+扩展：```:extend()```。对当前选择器扩展指定选择器的样式（选择器分组）
+```less
+.p1{
+	width:100px;
+	height:200px;
+}
+.p2:extend(.p1){
+	color:red;
+}
+```
+功能类似的还有混合函数。
+```less
+// 也可以直接引用指定的样式，相当于将p1的样式在这复制。
+// mixin混合
+.p3{
+	.p1();
+}
+
+// 使用类选择器时可以在选择器后边添加括号，这就创建了一个mixins。再引用的时候可以省略括号。
+.p4(){
+	width:100px;
+}
+.p5{
+	.p4;
+}
+
+// 在混合函数中可以直接设置变量，也可以给变量设置默认值。设置默认值再引用可以不用全指定值。
+.test(@w,@h,@bg-color){
+	width:@w;
+	height:@h;
+	border:1px solid @bg-color;
+}
+div{
+	// 调用混合函数，按顺序或按名字传递参数
+	.test(200px,300px,#red)
+	// 或
+	.test(@bg-color:red,@h:100px;@w:300px)
+}
+```
+
+## 媒体查询
+语法：```@media 查询规则{}```。
+
++ 媒体类型
+  1. all：所有设备
+  2. print：打印设备
+  3. screen：带屏幕的设备
+  4. speech：屏幕阅读器
+
++ 媒体特性
+  1. width、height：视口宽度、视口高度
+  2. min-width、max-width：视口大于/小于指定宽度时生效
+
+样式切换的分界点称为断点，也就是网页样式会在这个点发生变化。
+
++ 常用断点
+  1. 小于768：超小屏幕，max-width=768px
+  2. 大于768：小屏幕，min-width=768px
+  3. 大于992：中型屏幕，min-width=992px
+  4. 大于1200:大屏幕，min-width=1200px
+
+可以在媒体类型前添加```only```，表示只有。```only```的使用主要是为了兼容一些老版本浏览器。
+使用逗号连接多个媒体类型，表示它们之间是 ***或*** 的关系。如```@media print,screen{}```；使用```and```连接多个媒体类型，表示它们之间是 ***且*** 的关系。在选择器前加```not```，表示“除了”，如```@media not only screen and (min-width:768px){}```。一个较为完整的写法如下：
+
+```less
+@media only screen and (min-width:768px) and (max-width:992px){
+  body{
+    background-color: #red;
+  }
+}
+// 或
+@media only screen {
+  @media (min-width:768px) and (max-width:992px){ // 注意media后面要空格
+    body{
+      background-color: #red;
+    }
+  }
+}
+```
