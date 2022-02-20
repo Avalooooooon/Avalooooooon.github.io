@@ -9,7 +9,7 @@
 安装：
 
 ```sh
-sudo apt install libreswan
+sudo apt-get install libreswan
 ```
 
 验证安装成功：
@@ -49,7 +49,7 @@ conn L2TP-PSK-noNAT
 新建预共享密钥文件：
 
 ```sh
-sudo vim /etc/l2tp-ipsec.secrets
+sudo vim /etc/ipsec.d/l2tp-ipsec.secrets
 ```
 
 写入：
@@ -61,7 +61,7 @@ sudo vim /etc/l2tp-ipsec.secrets
 编辑系统配置文件：
 
 ```sh
-sudo vim /etc/sysctl.conf
+sudo vim /etc/sysctl.d/99-ipsec.conf
 ```
 
 末尾添加：
@@ -105,7 +105,7 @@ L2TP 协议基于 PPP 协议，因此需先确保 PPP 协议正常运行。
 安装：
 
 ```sh
-sudo apt install ppp
+sudo apt-get install ppp
 ```
 
 新建配置文件：
@@ -152,7 +152,7 @@ sudo vim /etc/ppp/chap-secrets
 安装：
 
 ```sh
-sudo apt install xl2tpd
+sudo apt-get install xl2tpd
 ```
 
 编辑配置文件：
@@ -191,6 +191,11 @@ sudo systemctl start xl2tpd
 sudo systemctl enable xl2tpd
 ```
 
+查看l2tp日志：
+```bash
+systemctl status xl2tpd
+```
+
 ## 5. 系统防火墙
 
 使用系统自带的 iptables 软件管理系统防火墙。
@@ -198,7 +203,7 @@ sudo systemctl enable xl2tpd
 向 iptables 缓存添加策略，在其 NAT 表的 POSTROUTING 链中设置 IP 伪装：
 
 ```sh
-sudo iptables -t nat -A POSTROUTING -s 10.1.2.0/24 -o eth0 -j MASQUERADE  # -s 后的网段对应 xl2tpd 配置文件中的 ip range
+sudo iptables -t nat -A POSTROUTING -s 10.1.2.0/24 -o eth0 -j MASQUERADE -m comment --comment "xl2tp"
 ```
 
 将当前策略保存至配置文件，然后应用策略：
@@ -207,6 +212,10 @@ sudo iptables -t nat -A POSTROUTING -s 10.1.2.0/24 -o eth0 -j MASQUERADE  # -s �
 sudo iptables-save > /etc/network/iptables
 sudo iptables-apply -w /etc/network/iptables
 ```
+ptables-persistant netfilter-persistant
+然后netfilter-persistant save就能持久化
+
+centos7:/etc/sysconfig/iptables
 
 重启 xl2tpd 服务：
 
