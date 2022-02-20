@@ -1,9 +1,8 @@
 ---
-{}
+title: 搭建L2TP-IPsec
+tags: [vpn]
 updated: 2022-02-20 15:20:43
 date: 2022-02-20 15:20:43
-title:
-tags:
 categories:
 ---
 

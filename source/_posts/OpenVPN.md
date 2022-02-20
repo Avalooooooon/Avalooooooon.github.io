@@ -1,9 +1,8 @@
 ---
-{}
 updated: 2022-02-20 14:10:04
 date: 2022-02-20 14:10:04
-title:
-tags:
+title: OpenVPN
+tags: [vpn]
 categories:
 ---
 

@@ -2,8 +2,10 @@
 title: Linux折腾
 updated: 2022-02-20 09:58:44
 date: 2022-02-20 09:58:44
-tags:[Linux]
+tags: [Linux]
 categories:
+
+
 ---
 
 操作系统：debian10
@@ -71,7 +73,6 @@ ssh -p 28060 root@xx.xx.xx.xx
 ```bash
 WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! 
 ```
-
 
 
 
