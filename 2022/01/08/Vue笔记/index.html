@@ -20,7 +20,7 @@
   <meta content="一之碎片" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1645357973903" as="style">
+  <link rel="preload" href="/css/style.css?time=1645849449647" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -1778,8 +1778,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1645357973903" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1645357973903"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1645849449647" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1645849449647"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -3008,10 +3008,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 </ul>
 <h3 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h3><ul>
-<li>使用v-on:xxx（简写为@xxx，xxx为事件名）绑定事件，如<code>v-on:click=&quot;showInfo&quot;</code> 配合<code>new Vue(&#123;methods:&#123;showInfo() alert(&#39;hell0&#39;)&#125;&#125;)</code>。</li>
-<li>事件的回调需要配置在methods对象中，最终会在vm上。</li>
-<li>注意methods中配置的函数 <strong>不要用箭头函数！</strong> 否则this就不是vm了。<span style="color:red">methods中配置的函数都是被Vue管理的函数，函数里this的指向是vm或组件实例对象。</span></li>
-<li>@click=”demo”和@click=”demo($event)”效果一致，但后者可以传参。$event表示参数传入了event对象，如果使用前者但定义函数时传入了一个或多个参数，会自动给第一个参数复制为event其它为undefined。</li>
+<li><p>使用v-on:xxx（简写为@xxx，xxx为事件名）绑定事件，如<code>v-on:click=&quot;showInfo&quot;</code> 配合<code>new Vue(&#123;methods:&#123;showInfo() alert(&#39;hell0&#39;)&#125;&#125;)</code>。</p>
+<blockquote>
+<p>绑定事件的时候”@xxx=”的后面可以加一些简单的语句，如<code>@click=&quot;istrue = !istrue;x++&quot;</code>。</p>
+</blockquote>
+</li>
+<li><p>事件的回调需要配置在methods对象中，最终会在vm上。</p>
+</li>
+<li><p>注意methods中配置的函数 <strong>不要用箭头函数！</strong> 否则this就不是vm了。<span style="color:red">methods中配置的函数都是被Vue管理的函数，函数里this的指向是vm或组件实例对象。</span></p>
+</li>
+<li><p>@click=”demo”和@click=”demo($event)”效果一致，但后者可以传参。$event表示参数传入了event对象，如果使用前者但定义函数时传入了一个或多个参数，会自动给第一个参数复制为event其它为undefined。</p>
+</li>
 </ul>
 <h4 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h4><ol>
 <li>prevent：阻止默认事件（常用）</li>
@@ -3044,13 +3051,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><p>通过<code>Vue.config.keyCodes.自定义键名 = 键码</code>，可以去定制按键别名</p>
 </li>
 </ul>
-<h3 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h3><p>何为属性？Vue认为data里的东西就是属性，有属性名和属性值。<br>计算属性就是要用的属性不存在，需要拿已有<strong>属性</strong>（Vue管理的属性才可以，不能是随便一个变量）去加工/计算并生成一个全新的属性。底层原理是借助了Object.defineproperty方法提供的getter和setter。优势是与methods实现相比内部多了一个缓存机制（复用），效率更高且调试方便。<br>计算属性最终会出现在vm上，直接调用即可；且如果计算属性需要被修改（vm.sum=’张+三’ ），就必须写set函数响应修改，<strong>且set函数中需要引起计算时依赖的数据发生改变</strong>。<br>计算属性不能放到data里，而需要放到另一个配置项computed里，并把计算过程放入一个对象：</p>
+<h3 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h3><p>何为属性？Vue认为data里的东西就是属性，有属性名和属性值。<br>计算属性就是要用的属性不存在，需要拿已有<strong>属性</strong>（Vue管理的属性才可以，不能是随便一个变量）去加工/计算并生成一个全新的属性。底层原理是借助了Object.defineproperty方法提供的getter和setter。优势是与methods实现相比内部多了一个缓存机制（复用），效率更高且调试方便。<br>计算属性最终会出现在vm上，直接调用即可；且如果计算属性需要被修改（vm.sum=’张+三’ ），就必须写set函数响应修改，<strong>且set函数中需要引起计算时依赖的数据发生改变</strong>。<br>计算属性不能放到data里，而需要放到另一个配置项computed里，并把计算过程放入一个 <strong>对象</strong> ：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  <span class="attr">el</span>:<span class="string">&#x27;#root&#x27;</span>,</span><br><span class="line">  <span class="attr">data</span>:&#123;<span class="attr">a</span>:<span class="number">3</span>,<span class="attr">b</span>:<span class="number">2</span>&#125;,</span><br><span class="line">  <span class="attr">computed</span>:&#123;</span><br><span class="line">    <span class="attr">sum</span>:&#123;</span><br><span class="line">      <span class="function"><span class="title">get</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.a + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">this</span>.b;</span><br><span class="line">      &#125;，</span><br><span class="line">      <span class="function"><span class="title">set</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">const</span> arr = value.split(<span class="string">&#x27;-&#x27;</span>);</span><br><span class="line">        <span class="built_in">this</span>.a = arr[<span class="number">0</span>];</span><br><span class="line">        <span class="built_in">this</span>.b = arr[<span class="number">1</span>];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>计算属性对象中get()函数的作用：当有人读取sum时就会被调用，且返回值作为sum的值。<br>get()什么时候调用？1. 初次读取sum的值时。2.所依赖的数据（a或b）发生变化时。<br>set()什么时候调用？sum的值被修改时。</p>
 <p>当计算属性确定只有getter而没有setter时即<strong>只有读取需求，没修改需求</strong>时可以用简写属性。即不用写作配置对象，而是写作函数，此时函数就相当于getter：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 简写属性</span></span><br><span class="line"><span class="attr">computed</span>:&#123;</span><br><span class="line">  <span class="function"><span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.a + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">this</span>.b;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="监视"><a href="#监视" class="headerlink" title="监视"></a>监视</h3><h3 id="class与style绑定"><a href="#class与style绑定" class="headerlink" title="class与style绑定"></a>class与style绑定</h3><h3 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h3><h3 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h3><h3 id="收集表单数据"><a href="#收集表单数据" class="headerlink" title="收集表单数据"></a>收集表单数据</h3><h3 id="Vue实例生命周期"><a href="#Vue实例生命周期" class="headerlink" title="Vue实例生命周期"></a>Vue实例生命周期</h3><h3 id="过渡-amp-动画"><a href="#过渡-amp-动画" class="headerlink" title="过渡&amp;动画"></a>过渡&amp;动画</h3><h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><h3 id="内置指令与自定义指令"><a href="#内置指令与自定义指令" class="headerlink" title="内置指令与自定义指令"></a>内置指令与自定义指令</h3><h3 id="自定义插件"><a href="#自定义插件" class="headerlink" title="自定义插件"></a>自定义插件</h3></div><h2 id="Vue组件化"><a href="#Vue组件化" class="headerlink" title="Vue组件化"></a>Vue组件化</h2><div class="story post-story"><h2 id="使用Vue-cli"><a href="#使用Vue-cli" class="headerlink" title="使用Vue-cli"></a>使用Vue-cli</h2><h2 id="Vue中的ajax"><a href="#Vue中的ajax" class="headerlink" title="Vue中的ajax"></a>Vue中的ajax</h2><h2 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h2><h2 id="Vue-router"><a href="#Vue-router" class="headerlink" title="Vue-router"></a>Vue-router</h2><h2 id="Vue-UI组件库"><a href="#Vue-UI组件库" class="headerlink" title="Vue UI组件库"></a>Vue UI组件库</h2>
+<h3 id="监视"><a href="#监视" class="headerlink" title="监视"></a>监视</h3><p>和计算属性语法类似。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 监视属性</span></span><br><span class="line"><span class="attr">watch</span>:&#123;</span><br><span class="line">    <span class="attr">istrue</span>:&#123;</span><br><span class="line">      <span class="comment">// handler:当istrue发生改变时调用</span></span><br><span class="line">      <span class="function"><span class="title">handler</span>(<span class="params">newValue,oldValue</span>)</span>&#123; </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;istrue被修改了&#x27;</span>,newValue,oldValue)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 初始化时让handler调用一下</span></span><br><span class="line">      <span class="attr">immediate</span>:<span class="literal">true</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="class与style绑定"><a href="#class与style绑定" class="headerlink" title="class与style绑定"></a>class与style绑定</h3><h3 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h3><h3 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h3><h3 id="收集表单数据"><a href="#收集表单数据" class="headerlink" title="收集表单数据"></a>收集表单数据</h3><h3 id="Vue实例生命周期"><a href="#Vue实例生命周期" class="headerlink" title="Vue实例生命周期"></a>Vue实例生命周期</h3><h3 id="过渡-amp-动画"><a href="#过渡-amp-动画" class="headerlink" title="过渡&amp;动画"></a>过渡&amp;动画</h3><h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><h3 id="内置指令与自定义指令"><a href="#内置指令与自定义指令" class="headerlink" title="内置指令与自定义指令"></a>内置指令与自定义指令</h3><h3 id="自定义插件"><a href="#自定义插件" class="headerlink" title="自定义插件"></a>自定义插件</h3></div><h2 id="Vue组件化"><a href="#Vue组件化" class="headerlink" title="Vue组件化"></a>Vue组件化</h2><div class="story post-story"><h2 id="使用Vue-cli"><a href="#使用Vue-cli" class="headerlink" title="使用Vue-cli"></a>使用Vue-cli</h2><h2 id="Vue中的ajax"><a href="#Vue中的ajax" class="headerlink" title="Vue中的ajax"></a>Vue中的ajax</h2><h2 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h2><h2 id="Vue-router"><a href="#Vue-router" class="headerlink" title="Vue-router"></a>Vue-router</h2><h2 id="Vue-UI组件库"><a href="#Vue-UI组件库" class="headerlink" title="Vue UI组件库"></a>Vue UI组件库</h2>
 </div>
   </div>
   
@@ -3449,8 +3461,8 @@ Vscode安装的扩展：Live Server；
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1645357973903')
-      volantis.js('/js/thirdparty/message.js?time=1645357973903', () => {
+      volantis.css('/css/message.css?time=1645849449646')
+      volantis.js('/js/thirdparty/message.js?time=1645849449646', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3495,8 +3507,8 @@ Vscode安装的扩展：Live Server；
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1645357973903')
-      volantis.js('/js/thirdparty/message.js?time=1645357973903', () => {
+      volantis.css('/css/message.css?time=1645849449646')
+      volantis.js('/js/thirdparty/message.js?time=1645849449646', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3555,8 +3567,8 @@ Vscode安装的扩展：Live Server；
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1645357973903')
-      volantis.js('/js/thirdparty/message.js?time=1645357973903', () => {
+      volantis.css('/css/message.css?time=1645849449646')
+      volantis.js('/js/thirdparty/message.js?time=1645849449646', () => {
         hideMessage(done);
       });
     } else {
@@ -3821,7 +3833,7 @@ Vscode安装的扩展：Live Server；
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1645357973903')
+    volantis.js('/js/plugins/rightMenu.js?time=1645849449646')
   </script>
 
 
@@ -3951,19 +3963,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1645357973903")
+        volantis.js("/js/plugins/sites.js?time=1645849449646")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1645357973903")
+        volantis.js("/js/plugins/friends.js?time=1645849449646")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1645357973903")
+        volantis.js("/js/plugins/contributors.js?time=1645849449646")
       }
     
   };
@@ -4035,7 +4047,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1645357973907')
+    await volantis.js('/js/plugins/aplayer.js?time=1645849449649')
     volantis.APlayerController.music = true;
   
   })();
@@ -4169,7 +4181,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1645357973903.js"></script>
+<script src="/js/app.js?time=1645849449647.js"></script>
 
 
 <!-- optional -->
@@ -4182,7 +4194,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1645357973903");
+    return volantis.js("/js/search/hexo.js?time=1645849449646");
   }
 
   function loadSearchService() {
@@ -4253,7 +4265,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4296,7 +4308,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1645357973903').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1645849449646').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
