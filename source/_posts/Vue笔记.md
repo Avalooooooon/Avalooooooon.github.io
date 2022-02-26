@@ -156,11 +156,14 @@ console.log(person);
 
 ### 事件处理
 + 使用v-on:xxx（简写为@xxx，xxx为事件名）绑定事件，如```v-on:click="showInfo"``` 配合```new Vue({methods:{showInfo() alert('hell0')}})```。
+  > 绑定事件的时候"@xxx="的后面可以加一些简单的语句，如```@click="istrue = !istrue;x++"```。
+
 + 事件的回调需要配置在methods对象中，最终会在vm上。
 + 注意methods中配置的函数 **不要用箭头函数！** 否则this就不是vm了。<span style="color:red">methods中配置的函数都是被Vue管理的函数，函数里this的指向是vm或组件实例对象。</span>
 + @click="demo"和@click="demo(\$event)"效果一致，但后者可以传参。\$event表示参数传入了event对象，如果使用前者但定义函数时传入了一个或多个参数，会自动给第一个参数复制为event其它为undefined。
 
 #### 事件修饰符
+
 1. prevent：阻止默认事件（常用）
 2. stop：阻止事件冒泡（常用）
 3. once：事件只触发一次（常用）
@@ -192,7 +195,7 @@ console.log(person);
 何为属性？Vue认为data里的东西就是属性，有属性名和属性值。
 计算属性就是要用的属性不存在，需要拿已有**属性**（Vue管理的属性才可以，不能是随便一个变量）去加工/计算并生成一个全新的属性。底层原理是借助了Object.defineproperty方法提供的getter和setter。优势是与methods实现相比内部多了一个缓存机制（复用），效率更高且调试方便。
 计算属性最终会出现在vm上，直接调用即可；且如果计算属性需要被修改（vm.sum='张+三' ），就必须写set函数响应修改，**且set函数中需要引起计算时依赖的数据发生改变**。
-计算属性不能放到data里，而需要放到另一个配置项computed里，并把计算过程放入一个对象：
+计算属性不能放到data里，而需要放到另一个配置项computed里，并把计算过程放入一个 **对象** ：
 ```javascript
 new Vue({
   el:'#root',
@@ -226,7 +229,20 @@ computed:{
 ```
 
 ### 监视
-
+和计算属性语法类似。
+```javascript
+// 监视属性
+watch:{
+    istrue:{
+      // handler:当istrue发生改变时调用
+      handler(newValue,oldValue){ 
+        console.log('istrue被修改了',newValue,oldValue)
+      }
+      // 初始化时让handler调用一下
+      immediate:true,
+    }
+  }
+```
 
 
 
