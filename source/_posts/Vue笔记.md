@@ -228,52 +228,370 @@ computed:{
 }
 ```
 
+需要注意的是计算属性靠的就是对应属性为名字的函数的返回值，但办不到让它等一等再有返回值。所以<span style='color:red'>计算属性中不能开启异步任务去维护数据！ 而watch可以。</span>
+
 ### 监视
-和计算属性语法类似。
+监视属性watch：当被监视的属性变化时，回调函数自动调用，进行相关操作。
+> 监视的属性必须存在才能进行监视！
+
+监视的两种写法：(1) new Vue时传入watch配置  (2) 通过vm.$watch监视
 ```javascript
 // 监视属性
 watch:{
+  // 这里的key名可以使用简写方式，不加引号。对象里的key是字符串。
+  // 但如果需要监视的属性是xxx.xxx，就需要加引号写作'xxx.xxx'的形式。
+  // 不加引号的前提是属性名必须满足变量取名的要求。
     istrue:{
       // handler:当istrue发生改变时调用
       handler(newValue,oldValue){ 
         console.log('istrue被修改了',newValue,oldValue)
       }
-      // 初始化时让handler调用一下
+      // 初始化时调用一下handler
       immediate:true,
     }
   }
 ```
 
+除了handler配置项，也可以用vm监视，首先要保证实例已经创建完毕。
+```javascript
+vm.$watch('istrue',{ // 注意这里的key名需要加引号.对象里的key是字符串。
+  // 这个括号里的内容和上面写在watch里的内容一模一样
+  istrue:{
+      // handler:当istrue发生改变时调用
+      handler(newValue,oldValue){ 
+        console.log('istrue被修改了',newValue,oldValue)
+      }
+      // 初始化时调用一下handler
+      immediate:true,
+})
+```
 
+至于这两种方式的选择，如果在创建实例时就已经明确需要监视谁，就使用watch属性；如果后续根据用户行为再决定需要监视谁，就调用第二种api方式。
+
+#### 深度监视
+如果data中有形如下面的‘numbers’数据，那么numbers就相当于是data中的一个key，它的value（a:1,b:1）就是这个key的地址。
+<span style="color:red">虽然Vue默认可以监视到data中多级数据内部值的改变，但它提供的watch默认不能。</span>
+如果想让它可以，则需要利用```deep:true```属性。
+```javascript
+const vm = new Vue({
+  el:'#root',
+  data:{
+    numbers:{ // 比如这个括号内的部分的地址是0x123，顺着0x123可以找到ab并改变它们的值。但只要0x123依然是它们的地址，numbers就会被认为是没有改变。
+      a:1,
+      b:1
+    }
+  }，
+  watch:{
+    numbers:{
+      deep:true,
+      handler(){
+        console.log('numbers改变了')
+      }
+    }
+  }
+})
+```
+
+#### 监视属性的简写
+在配置项里没有deep、immediate等属性，只需要响应者handler时可以使用简写写法。
+```javascript
+watch:{
+  // 正常写法
+  /* numbers:{
+    istrue:{
+      handler(newValue,oldValue){ 
+        console.log('istrue被修改了',newValue,oldValue)
+      }
+    }
+  }*/
+  
+  // 简写写法,写成一个函数，参数照样传
+  istrue(newValue,oldValue){
+    console.log('istrue被修改了',newValue,oldValue)
+  }
+}
+```
+```javascript
+// 正常写法
+vm.$watch('istrue',{ 
+  istrue:{
+    handler(newValue,oldValue){ 
+      console.log('istrue被修改了',newValue,oldValue)
+    }
+  }
+})
+
+// 简写写法：第二个函数不传配置项，而是函数。参数照样传。
+vm.$watch('istrue',function(newValue,oldValue){
+  console.log('istrue被修改了',newValue,oldValue)
+})
+```
+#### computed和watch的区别
+1. computed能完成的功能watch都可以完成
+2. watch能完成的功能computed不一定能完成，比如watch可以进行异步操作
+
+两个重要的原则：
+1. 被Vue管理的函数最好写成普通函数，这样this的指向才是vm或组建实例对象
+2. 所有不被Vue管理的函数（**定时器的回调函数、ajax的回调函数、promise的回调函数等** ），最好写成箭头函数，这样this的指向才是vm或组建实例对象
+
+#### 用监视属性实现异步任务
+计算属性中不能开启异步任务去维护数据，需要用监视属性。
+之所以要用箭头函数，是因为定时器虽然是在fullname中开启的，但定时器所指定的回调是不受vue控制的，而是受浏览器的定时器管理模块控制的，最后到点了也是浏览器引擎调用的定时器所指定的回调函数。
+如果用普通函数，因为定时器的回调函数是JS引擎调的，而且它调的时候this已经指定好了，就是window；如果用箭头函数，也是JS引擎调的这个函数，但由于写成了箭头函数，它就没有了自己的this，就要去往外找（箭头函数本身没有this指向，会向上查找）；往外找就找到了firstName的this。而firstName是Vue所管理的函数，又因为它是普通函数，所以它的this就是vm。
+```javascript
+watch:{
+  firstName(val){
+    setTimeout(() => {
+      // 测试this
+      // condole.log(this)
+      this.fullname = val + '-' + this.lastName
+    },1000);
+  },
+  lastName(val){
+      this.fullname = val + '-' + this.lastName
+  }
+}
+```
 
 ### class与style绑定
++ class样式：写法为```:class="xxx"```，xxx可以是字符串、对象、数组。
++ style样式：```:style="{fontSize:xxx}"```，其中xxx是动态值；```:style="[a,b]"```，其中a、b是样式对象。  
 
+1. 绑定class样式--字符串写法，适用于：样式的类名不确定，需要动态指定。比如下面的例子，已知必须要从mood里读东西，但读的是什么不确定。
+```html
+<body>
+  <div id = "root">
+    <div class="basic" :class="mood" @click="changeMood">Hello</div>
+  </div>
 
+  <script type="text/javascript">
+    new Vue({
+      el:'#root',
+      data:{
+        mood:'normal'
+      },
+      methods:{
+        changeMood(){
+          this.mood = 'happy'
+        }
+      }
+    })
+  </script>
+</body>
+```
+2. 绑定class样式--数组写法，适用于：要绑定的样式个数不确定，名字也不确定。把一个数组传给v-bind:class，这样可以应用一个class列表：
+```html
+<div class="basic" :class="classArr">Hello</div>
+```
+```javascript
+data:{classArr:['myclass1','myclass2','myclass3']},
+```
+3. 绑定class样式--对象写法 ，适用于：要绑定的样式个数确定，名字也确定，但要动态决定用不用。
+```html
+<div class="basic" :class="{myclass1:a,myclass2:b}">Hello</div>
+```
+```javascript
+data:{a:ture,b:false},
+```
+4. 绑定style样式--对象写法
+```html
+<div class="basic" :style="styleObj">Hello</div>
+```
+```javascript
+styleObj:{ fontsize:'40px',color:'red' }
+```
+5. 绑定style样式--数组写法 
+```html
+<div class="basic" :style="styleArr">Hello</div>
+```
+```javascript
+styleArr:[
+  { fontsize:'40px',color:'red',},
+  { backgroundcolor:'orange'}
+] 
+```
 ### 条件渲染
-
++ v-if：适用于切换频率较低的场景。
+  特点：不展示的DOM元素直接被移除。
+  注意：v-if可以和v-else-if、v-else一起使用，但要求结构不能被“打断”
+  1. v-if = “表达式”
+  2. v-else-if = “表达式”
+  3. v-else = “表达式”
++ v-show：适用于切换频率较高的场景。
+  特点：不展示的DOM元素未被移除，仅仅是使用样式隐藏掉。
++ 使用v-id时元素可能无法获取到，而使用v-show一定可以获取到。
 
 ### 列表渲染
++ v-for
+  1. 用于展示列表数据
+  2. 语法：```v-for="(item，index) in xxx" :key="yyy"```
+  3. 可遍历数组、对象、字符串（用的很少）、指定次数（用的很少）
 
+### （题）react、vue中的key有什么作用？（key的内部原理）
+1. 虚拟DOM中key的作用：
+  key是虚拟DOM对象的标识，当数据发生变化时，Vue会根据【新数据】生成【新的虚拟DOM】，随后Vue进行【新虚拟DOM】与【旧虚拟DOM】的差异比较，比较规则如下：
+2. 对比规则：
+  1. 旧虚拟DOM中找到了与新虚拟DOM相同的key：
+    1. 若虚拟DOM中内容没变，直接使用之前的真实DOM！
+    2. 若虚拟DOM中内容变了，则生成新的真实DOM，随后替换掉页面中之前的真实DOM。
+  2. 旧虚拟DOM中未找到与新虚拟DOM相同的key：
+    创建新的真实DOM随后渲染到页面。 
+3. 用index作为key可能会引发的问题：
+  1. 若对数据进行：逆序添加、逆序删除等破坏顺序操作：
+    会产生没有必要的真实DOM更新 ==》 界面效果没问题，但效率低。
+  2. 如果结构中还包含输入类的DOM：
+    会产生错误DOM更新 ==》 页面有问题。
+4. 开发中如何选择key：
+  1. 最好使用每条数据的唯一标识作为key，比如id、手机号、身份证号、学号等唯一值
+  2. 如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，使用index作为key是没有问题的。 
+
+### Vue监视数据
+1. Vue会监视data中所有层次的数据。
+2. 如何监测对象中的数据？
+  通过setter实现监视，且要在newVue时就传入要监测的数据。
+  1. 对象中后追加的属性，Vue默认不做响应式处理
+  2. 如需给后添加的属性做响应式，请使用如下API：
+    Vue.set(target,propertyName/index,value)或
+    vm.$set(target,propertyName/index,value)
+3. 如何监测数组中的数据？
+  通过包裹数组更新元素的方法实现，本质是做了两件事：
+  1. 调用原生对应的方法对数组进行更新
+  2. 重新解析模版进而更新页面
+4. 在Vue修改数组中的某个元素一定要用如下方法：
+  1. 使用这些API：push()、pop()、shift()、unshift()、splice()、sort()、reverse()
+  2. Vue.set() 或 vm.$set()
+
+特别注意：<span style='color:red'>Vue.set() 和 vm.$set()不能给vm或vm的数据对象添加属性！！！</span>
 
 ### 收集表单数据
++ 若```<input type="text"/>```，则v-model收集的是value值，用户输入的就是value值。
++ 若```<input type="radio"/>```，则v-model收集的是value值，且要给标签配置value值。
++ 若```<input type="checkbox"/>```
+  1. 没有配置input的value属性，那么收集的就是checked（勾选/未勾选，是boolean）
+  2. 配置input的value属性：
+    （1）v-model的初始值是非数组，那么收集的就是checked（勾选/未勾选，是boolean）
+    （2）v-model的初始值是数组，那么收集的就是value组成的数组
 
-
-### Vue实例生命周期
-
+> v-model的三个修饰符：
+> lazy：失去焦点再收集数据；number：输入字符串转为有效的数字；trim：输入首尾空格过滤
 
 ### 过渡&动画
 
 
 ### 过滤器
+定义：对要显示的数据进行特定格式化后再显示（适用于一些简单逻辑的处理）
+语法：
+  1.注册过滤器：```Vue.filter(name,callback)``` 或 ```new Vue{filters:{}}```
+  2.使用过滤器：```{{ xxx | 过滤器名}}``` 或 ```v-bind:属性 = ”xxx｜过滤器名“```
 
+过滤器也可以接收额外参数，多个过滤器也可以串联；而且过滤器并没有改变原本的数据，只是产生新的对应的数据。
 
 ### 内置指令与自定义指令
+#### 内置指令
+（一）
+v-bind：单向绑定解析表达式，可简写为```:xxx```
+v-model：双向数据绑定
+v-for：遍历数组/对象/字符串
+v-on：绑定事件监听，可简写为```@```
+v-if：条件渲染（动态控制节点是否存在）
+v-else：条件渲染（动态控制节点是否存在）
+v-show：条件渲染（动态控制节点是否展示）
 
+（二）
+v-text：向其所在的节点中渲染文本内容。与插值语法```{{xx}}```的区别在于v-text会替换掉节点中的内容，```{{xx}}```则不会。
+
+v-html：向指定节点中渲染包含html结构的内容。与插值语法```{{xx}}```的区别在于v-model会替换掉节点中 **所有** 的内容，```{{xx}}```则不会；且v-html可以识别html结构。
+**特别注意：<span style='color:red'>v-html有安全性问题！1.在网站上动态渲染任意html都是非常危险的，容易导致xss攻击；2.一定要在可信的内容上使用v-html，永远不要在用户提交的内容上使用！</span>**
+
+v-cloak（没有值）：本质上是一个特殊属性，Vue实例创建完毕并接管容器后会删掉v-cloak属性。使用css配合v-cloak可以解决网速慢时页面展示出{{xxx}}的问题。
+
+v-once：v-once所在节点在初次被动态渲染后就视为静态内容了。以后数据的改变不会引起v-once所在结构的更新，可以用于优化性能。
+
+v-pre：跳过其所在节点的编译过程。可利用它跳过没有使用指令语法、没有使用插值语法的节点，会加快编译。
+
+#### 自定义指令
++ 定义语法
+
+1.局部指令：
+```javascript
+  new Vue({
+  directives:{指令名：配置对象}
+  })
+  // 或
+  new Vue({
+  directives:{指令名：回调函数}
+  })
+```
+2.全局指令：
+```Vue.directive{指令名,配置对象}``` 或 ```Vue.directive{指令名,回调函数}``` 
+
++ 配置对象中常用的3个回调：
+  1. ```.bind```：指令与元素成功绑定时调用。
+  2. ```.inserted```：指令所在元素被插入页面时调用。
+  3. ```.update```：指令所在模版结构被重新解析时调用。
++ 注意：
+  1. 指令定义时不加v-，但使用时要加v-；
+  2. 指令名如果是多个单词，要使用kebab-case命名方式，不要使用camelCase命名。
+
+### 生命周期
+生命周期，又名生命周期回调函数、生命周期函数、生命周期钩子，是Vue在关键时刻帮我们调用的一些特殊名称的函数。生命周期函数的名字不可更改，但函数的具体内容是程序员根据需求编写的，生命周期函数中的this指向是vm或组建实例对象。
+
+常用的生命周期钩子：
+  1.mounted：发送ajax请求、启动定时器、绑定自定义事件、订阅消息等【初始化操作】
+  2.beforeDextroy：清除定时器、解绑自定义事件、取消订阅消息等【收尾工作】
+
+关于销毁Vue实例：
+  1.销毁后借助vue开发者工具看不到任何信息。
+  2.销毁后自定义事件会失效，但原生DOM事件依然有效。
+  3.一般不会再beforeDextroy操作数据，因为即使操作数据也不会再触发更新流程了。
 
 ### 自定义插件
 
 
 ## Vue组件化
+### 模块与组件、模块化与组件化
+模块：向外提供特定功能的js程序，一般就是一个js文件。由于js文件很多很复杂，模块化可以实现js的复用，简化js的编写，提高js运行效率。
+当应用中的js都是以模块来编写的，那么这个应用就是一个模块化的应用。
+
+组件：用来实现局部（特定）功能效果的代码集合（html/css/js/image等）。由于一个界面的功能很复杂，组件化可以实现编码的复用，简化项目编码，提高运行效率。
+当应用中的功能都是以多组件的方式来编写的，那么这个应用就是一个组件化的应用。
+### 非单文件组件
+Vue中使用组件的三大步骤：
+一、定义组件（创建组件）
+二、注册组件
+三、使用组件（写组件标签）
+
+1. 如何定义一个组件？
+  使用```Vue.extend(options)```创建，其中options和```new Vue(options)```时传入的那个options几乎一样，但也有点区别：
+  1.el不要写。因为最终所有的组件都要经过一个vm的管理，由vm中的el决定服务哪个容器。
+  2.data必须写成函数。为了避免组件被服用时数据存在引用关系。
+2. 如何注册组件？
+  1.局部注册：靠new Vue的时候传入components选项
+  2.全局注册：靠```Vue.component('组件名',组件)```
+3. 编写组件标签
+  ```<school></school>```
+
+### VueComponent
+关于VueComponent：
+1. school组件本质上是一个名为VueComponent的构造函数，且不是程序员定义的，是Vue.extend生成的。
+2. 我们只需要写```<school/>```或```<school></school>```，Vue解析时会帮我们创建school组件的实例对象。即Vue帮我们执行的```new VueComponent(options)```。
+3. 特别注意：<span style='color:red'>每次调用```Vue.extend```，返回的都是一个全新的VueComponent！！！</span>
+4. 关于this的指向，
+  1. 组件配置中，data函数、methods中的函数、watch中的函数、computed中的函数，它们的this均是【VueComponent实例对象】。
+  2. ```.new Vue(options)```配置中，data函数、methods中的函数、watch中的函数、computed中的函数，它们的this均是【Vue实例对象】。
+5. VueComponent的实例对象，经常被简称vc（也可称之为：组件实例对象）。
+  Vue的实例对象则常被简称为vm。
+
+### 
+
+
+
+
+### 
+
+
+
+
 
 
 ## 使用Vue-cli
