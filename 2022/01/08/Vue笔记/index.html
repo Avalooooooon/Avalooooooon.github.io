@@ -20,7 +20,7 @@
   <meta content="一之碎片" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1645849449647" as="style">
+  <link rel="preload" href="/css/style.css?time=1646042770264" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -1778,8 +1778,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1645849449647" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1645849449647"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1646042770264" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1646042770264"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -3057,12 +3057,160 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>当计算属性确定只有getter而没有setter时即<strong>只有读取需求，没修改需求</strong>时可以用简写属性。即不用写作配置对象，而是写作函数，此时函数就相当于getter：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 简写属性</span></span><br><span class="line"><span class="attr">computed</span>:&#123;</span><br><span class="line">  <span class="function"><span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.a + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">this</span>.b;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="监视"><a href="#监视" class="headerlink" title="监视"></a>监视</h3><p>和计算属性语法类似。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 监视属性</span></span><br><span class="line"><span class="attr">watch</span>:&#123;</span><br><span class="line">    <span class="attr">istrue</span>:&#123;</span><br><span class="line">      <span class="comment">// handler:当istrue发生改变时调用</span></span><br><span class="line">      <span class="function"><span class="title">handler</span>(<span class="params">newValue,oldValue</span>)</span>&#123; </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;istrue被修改了&#x27;</span>,newValue,oldValue)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 初始化时让handler调用一下</span></span><br><span class="line">      <span class="attr">immediate</span>:<span class="literal">true</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是计算属性靠的就是对应属性为名字的函数的返回值，但办不到让它等一等再有返回值。所以<span style="color:red">计算属性中不能开启异步任务去维护数据！ 而watch可以。</span></p>
+<h3 id="监视"><a href="#监视" class="headerlink" title="监视"></a>监视</h3><p>监视属性watch：当被监视的属性变化时，回调函数自动调用，进行相关操作。</p>
+<blockquote>
+<p>监视的属性必须存在才能进行监视！</p>
+</blockquote>
+<p>监视的两种写法：(1) new Vue时传入watch配置  (2) 通过vm.$watch监视</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 监视属性</span></span><br><span class="line"><span class="attr">watch</span>:&#123;</span><br><span class="line">  <span class="comment">// 这里的key名可以使用简写方式，不加引号。对象里的key是字符串。</span></span><br><span class="line">  <span class="comment">// 但如果需要监视的属性是xxx.xxx，就需要加引号写作&#x27;xxx.xxx&#x27;的形式。</span></span><br><span class="line">  <span class="comment">// 不加引号的前提是属性名必须满足变量取名的要求。</span></span><br><span class="line">    <span class="attr">istrue</span>:&#123;</span><br><span class="line">      <span class="comment">// handler:当istrue发生改变时调用</span></span><br><span class="line">      <span class="function"><span class="title">handler</span>(<span class="params">newValue,oldValue</span>)</span>&#123; </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;istrue被修改了&#x27;</span>,newValue,oldValue)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 初始化时调用一下handler</span></span><br><span class="line">      <span class="attr">immediate</span>:<span class="literal">true</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
+<p>除了handler配置项，也可以用vm监视，首先要保证实例已经创建完毕。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vm.$watch(<span class="string">&#x27;istrue&#x27;</span>,&#123; <span class="comment">// 注意这里的key名需要加引号.对象里的key是字符串。</span></span><br><span class="line">  <span class="comment">// 这个括号里的内容和上面写在watch里的内容一模一样</span></span><br><span class="line">  <span class="attr">istrue</span>:&#123;</span><br><span class="line">      <span class="comment">// handler:当istrue发生改变时调用</span></span><br><span class="line">      <span class="function"><span class="title">handler</span>(<span class="params">newValue,oldValue</span>)</span>&#123; </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;istrue被修改了&#x27;</span>,newValue,oldValue)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 初始化时调用一下handler</span></span><br><span class="line">      <span class="attr">immediate</span>:<span class="literal">true</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
+<p>至于这两种方式的选择，如果在创建实例时就已经明确需要监视谁，就使用watch属性；如果后续根据用户行为再决定需要监视谁，就调用第二种api方式。</p>
+<h4 id="深度监视"><a href="#深度监视" class="headerlink" title="深度监视"></a>深度监视</h4><p>如果data中有形如下面的‘numbers’数据，那么numbers就相当于是data中的一个key，它的value（a:1,b:1）就是这个key的地址。<br><span style="color:red">虽然Vue默认可以监视到data中多级数据内部值的改变，但它提供的watch默认不能。</span><br>如果想让它可以，则需要利用<code>deep:true</code>属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  <span class="attr">el</span>:<span class="string">&#x27;#root&#x27;</span>,</span><br><span class="line">  <span class="attr">data</span>:&#123;</span><br><span class="line">    <span class="attr">numbers</span>:&#123; <span class="comment">// 比如这个括号内的部分的地址是0x123，顺着0x123可以找到ab并改变它们的值。但只要0x123依然是它们的地址，numbers就会被认为是没有改变。</span></span><br><span class="line">      <span class="attr">a</span>:<span class="number">1</span>,</span><br><span class="line">      <span class="attr">b</span>:<span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;，</span><br><span class="line">  <span class="attr">watch</span>:&#123;</span><br><span class="line">    <span class="attr">numbers</span>:&#123;</span><br><span class="line">      <span class="attr">deep</span>:<span class="literal">true</span>,</span><br><span class="line">      <span class="function"><span class="title">handler</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;numbers改变了&#x27;</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h3 id="class与style绑定"><a href="#class与style绑定" class="headerlink" title="class与style绑定"></a>class与style绑定</h3><h3 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h3><h3 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h3><h3 id="收集表单数据"><a href="#收集表单数据" class="headerlink" title="收集表单数据"></a>收集表单数据</h3><h3 id="Vue实例生命周期"><a href="#Vue实例生命周期" class="headerlink" title="Vue实例生命周期"></a>Vue实例生命周期</h3><h3 id="过渡-amp-动画"><a href="#过渡-amp-动画" class="headerlink" title="过渡&amp;动画"></a>过渡&amp;动画</h3><h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><h3 id="内置指令与自定义指令"><a href="#内置指令与自定义指令" class="headerlink" title="内置指令与自定义指令"></a>内置指令与自定义指令</h3><h3 id="自定义插件"><a href="#自定义插件" class="headerlink" title="自定义插件"></a>自定义插件</h3></div><h2 id="Vue组件化"><a href="#Vue组件化" class="headerlink" title="Vue组件化"></a>Vue组件化</h2><div class="story post-story"><h2 id="使用Vue-cli"><a href="#使用Vue-cli" class="headerlink" title="使用Vue-cli"></a>使用Vue-cli</h2><h2 id="Vue中的ajax"><a href="#Vue中的ajax" class="headerlink" title="Vue中的ajax"></a>Vue中的ajax</h2><h2 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h2><h2 id="Vue-router"><a href="#Vue-router" class="headerlink" title="Vue-router"></a>Vue-router</h2><h2 id="Vue-UI组件库"><a href="#Vue-UI组件库" class="headerlink" title="Vue UI组件库"></a>Vue UI组件库</h2>
+<h4 id="监视属性的简写"><a href="#监视属性的简写" class="headerlink" title="监视属性的简写"></a>监视属性的简写</h4><p>在配置项里没有deep、immediate等属性，只需要响应者handler时可以使用简写写法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">watch:&#123;</span><br><span class="line">  <span class="comment">// 正常写法</span></span><br><span class="line">  <span class="comment">/* numbers:&#123;</span></span><br><span class="line"><span class="comment">    istrue:&#123;</span></span><br><span class="line"><span class="comment">      handler(newValue,oldValue)&#123; </span></span><br><span class="line"><span class="comment">        console.log(&#x27;istrue被修改了&#x27;,newValue,oldValue)</span></span><br><span class="line"><span class="comment">      &#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">  &#125;*/</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 简写写法,写成一个函数，参数照样传</span></span><br><span class="line">  <span class="function"><span class="title">istrue</span>(<span class="params">newValue,oldValue</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;istrue被修改了&#x27;</span>,newValue,oldValue)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正常写法</span></span><br><span class="line">vm.$watch(<span class="string">&#x27;istrue&#x27;</span>,&#123; </span><br><span class="line">  <span class="attr">istrue</span>:&#123;</span><br><span class="line">    <span class="function"><span class="title">handler</span>(<span class="params">newValue,oldValue</span>)</span>&#123; </span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;istrue被修改了&#x27;</span>,newValue,oldValue)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 简写写法：第二个函数不传配置项，而是函数。参数照样传。</span></span><br><span class="line">vm.$watch(<span class="string">&#x27;istrue&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">newValue,oldValue</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;istrue被修改了&#x27;</span>,newValue,oldValue)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="computed和watch的区别"><a href="#computed和watch的区别" class="headerlink" title="computed和watch的区别"></a>computed和watch的区别</h4><ol>
+<li>computed能完成的功能watch都可以完成</li>
+<li>watch能完成的功能computed不一定能完成，比如watch可以进行异步操作</li>
+</ol>
+<p>两个重要的原则：</p>
+<ol>
+<li>被Vue管理的函数最好写成普通函数，这样this的指向才是vm或组建实例对象</li>
+<li>所有不被Vue管理的函数（<strong>定时器的回调函数、ajax的回调函数、promise的回调函数等</strong> ），最好写成箭头函数，这样this的指向才是vm或组建实例对象</li>
+</ol>
+<h4 id="用监视属性实现异步任务"><a href="#用监视属性实现异步任务" class="headerlink" title="用监视属性实现异步任务"></a>用监视属性实现异步任务</h4><p>计算属性中不能开启异步任务去维护数据，需要用监视属性。<br>之所以要用箭头函数，是因为定时器虽然是在fullname中开启的，但定时器所指定的回调是不受vue控制的，而是受浏览器的定时器管理模块控制的，最后到点了也是浏览器引擎调用的定时器所指定的回调函数。<br>如果用普通函数，因为定时器的回调函数是JS引擎调的，而且它调的时候this已经指定好了，就是window；如果用箭头函数，也是JS引擎调的这个函数，但由于写成了箭头函数，它就没有了自己的this，就要去往外找（箭头函数本身没有this指向，会向上查找）；往外找就找到了firstName的this。而firstName是Vue所管理的函数，又因为它是普通函数，所以它的this就是vm。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">watch:&#123;</span><br><span class="line">  <span class="function"><span class="title">firstName</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 测试this</span></span><br><span class="line">      <span class="comment">// condole.log(this)</span></span><br><span class="line">      <span class="built_in">this</span>.fullname = val + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">this</span>.lastName</span><br><span class="line">    &#125;,<span class="number">1000</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">lastName</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">      <span class="built_in">this</span>.fullname = val + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">this</span>.lastName</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="class与style绑定"><a href="#class与style绑定" class="headerlink" title="class与style绑定"></a>class与style绑定</h3><ul>
+<li>class样式：写法为<code>:class=&quot;xxx&quot;</code>，xxx可以是字符串、对象、数组。</li>
+<li>style样式：<code>:style=&quot;&#123;fontSize:xxx&#125;&quot;</code>，其中xxx是动态值；<code>:style=&quot;[a,b]&quot;</code>，其中a、b是样式对象。  </li>
+</ul>
+<ol>
+<li>绑定class样式–字符串写法，适用于：样式的类名不确定，需要动态指定。比如下面的例子，已知必须要从mood里读东西，但读的是什么不确定。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span> = <span class="string">&quot;root&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;basic&quot;</span> <span class="attr">:class</span>=<span class="string">&quot;mood&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;changeMood&quot;</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">el</span>:<span class="string">&#x27;#root&#x27;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="attr">data</span>:&#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">mood</span>:<span class="string">&#x27;normal&#x27;</span></span></span><br><span class="line"><span class="javascript">      &#125;,</span></span><br><span class="line"><span class="javascript">      <span class="attr">methods</span>:&#123;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">changeMood</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.mood = <span class="string">&#x27;happy&#x27;</span></span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">      &#125;</span></span><br><span class="line"><span class="javascript">    &#125;)</span></span><br><span class="line"><span class="javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>绑定class样式–数组写法，适用于：要绑定的样式个数不确定，名字也不确定。把一个数组传给v-bind:class，这样可以应用一个class列表：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;basic&quot;</span> <span class="attr">:class</span>=<span class="string">&quot;classArr&quot;</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data:&#123;<span class="attr">classArr</span>:[<span class="string">&#x27;myclass1&#x27;</span>,<span class="string">&#x27;myclass2&#x27;</span>,<span class="string">&#x27;myclass3&#x27;</span>]&#125;,</span><br></pre></td></tr></table></figure></li>
+<li>绑定class样式–对象写法 ，适用于：要绑定的样式个数确定，名字也确定，但要动态决定用不用。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;basic&quot;</span> <span class="attr">:class</span>=<span class="string">&quot;&#123;myclass1:a,myclass2:b&#125;&quot;</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data:&#123;<span class="attr">a</span>:ture,<span class="attr">b</span>:<span class="literal">false</span>&#125;,</span><br></pre></td></tr></table></figure></li>
+<li>绑定style样式–对象写法<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;basic&quot;</span> <span class="attr">:style</span>=<span class="string">&quot;styleObj&quot;</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">styleObj:&#123; <span class="attr">fontsize</span>:<span class="string">&#x27;40px&#x27;</span>,<span class="attr">color</span>:<span class="string">&#x27;red&#x27;</span> &#125;</span><br></pre></td></tr></table></figure></li>
+<li>绑定style样式–数组写法 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;basic&quot;</span> <span class="attr">:style</span>=<span class="string">&quot;styleArr&quot;</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">styleArr:[</span><br><span class="line">  &#123; <span class="attr">fontsize</span>:<span class="string">&#x27;40px&#x27;</span>,<span class="attr">color</span>:<span class="string">&#x27;red&#x27;</span>,&#125;,</span><br><span class="line">  &#123; <span class="attr">backgroundcolor</span>:<span class="string">&#x27;orange&#x27;</span>&#125;</span><br><span class="line">] </span><br></pre></td></tr></table></figure>
+<h3 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h3></li>
+</ol>
+<ul>
+<li>v-if：适用于切换频率较低的场景。<br>特点：不展示的DOM元素直接被移除。<br>注意：v-if可以和v-else-if、v-else一起使用，但要求结构不能被“打断”<ol>
+<li>v-if = “表达式”</li>
+<li>v-else-if = “表达式”</li>
+<li>v-else = “表达式”</li>
+</ol>
+</li>
+<li>v-show：适用于切换频率较高的场景。<br>特点：不展示的DOM元素未被移除，仅仅是使用样式隐藏掉。</li>
+<li>使用v-id时元素可能无法获取到，而使用v-show一定可以获取到。</li>
+</ul>
+<h3 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h3><ul>
+<li>v-for<ol>
+<li>用于展示列表数据</li>
+<li>语法：<code>v-for=&quot;(item，index) in xxx&quot; :key=&quot;yyy&quot;</code></li>
+<li>可遍历数组、对象、字符串（用的很少）、指定次数（用的很少）</li>
+</ol>
+</li>
+</ul>
+<h3 id="（题）react、vue中的key有什么作用？（key的内部原理）"><a href="#（题）react、vue中的key有什么作用？（key的内部原理）" class="headerlink" title="（题）react、vue中的key有什么作用？（key的内部原理）"></a>（题）react、vue中的key有什么作用？（key的内部原理）</h3><ol>
+<li>虚拟DOM中key的作用：<br>key是虚拟DOM对象的标识，当数据发生变化时，Vue会根据【新数据】生成【新的虚拟DOM】，随后Vue进行【新虚拟DOM】与【旧虚拟DOM】的差异比较，比较规则如下：</li>
+<li>对比规则：</li>
+<li>旧虚拟DOM中找到了与新虚拟DOM相同的key：    1. 若虚拟DOM中内容没变，直接使用之前的真实DOM！    2. 若虚拟DOM中内容变了，则生成新的真实DOM，随后替换掉页面中之前的真实DOM。</li>
+<li>旧虚拟DOM中未找到与新虚拟DOM相同的key：<br>创建新的真实DOM随后渲染到页面。 </li>
+<li>用index作为key可能会引发的问题：</li>
+<li>若对数据进行：逆序添加、逆序删除等破坏顺序操作：<br>会产生没有必要的真实DOM更新 ==》 界面效果没问题，但效率低。</li>
+<li>如果结构中还包含输入类的DOM：<br>会产生错误DOM更新 ==》 页面有问题。</li>
+<li>开发中如何选择key：</li>
+<li>最好使用每条数据的唯一标识作为key，比如id、手机号、身份证号、学号等唯一值</li>
+<li>如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，使用index作为key是没有问题的。 </li>
+</ol>
+<h3 id="Vue监视数据"><a href="#Vue监视数据" class="headerlink" title="Vue监视数据"></a>Vue监视数据</h3><ol>
+<li>Vue会监视data中所有层次的数据。</li>
+<li>如何监测对象中的数据？<br>通过setter实现监视，且要在newVue时就传入要监测的数据。</li>
+<li>对象中后追加的属性，Vue默认不做响应式处理</li>
+<li>如需给后添加的属性做响应式，请使用如下API：<br>Vue.set(target,propertyName/index,value)或<br>vm.$set(target,propertyName/index,value)</li>
+<li>如何监测数组中的数据？<br>通过包裹数组更新元素的方法实现，本质是做了两件事：</li>
+<li>调用原生对应的方法对数组进行更新</li>
+<li>重新解析模版进而更新页面</li>
+<li>在Vue修改数组中的某个元素一定要用如下方法：</li>
+<li>使用这些API：push()、pop()、shift()、unshift()、splice()、sort()、reverse()</li>
+<li>Vue.set() 或 vm.$set()</li>
+</ol>
+<p>特别注意：<span style="color:red">Vue.set() 和 vm.$set()不能给vm或vm的数据对象添加属性！！！</span></p>
+<h3 id="收集表单数据"><a href="#收集表单数据" class="headerlink" title="收集表单数据"></a>收集表单数据</h3><ul>
+<li>若<code>&lt;input type=&quot;text&quot;/&gt;</code>，则v-model收集的是value值，用户输入的就是value值。</li>
+<li>若<code>&lt;input type=&quot;radio&quot;/&gt;</code>，则v-model收集的是value值，且要给标签配置value值。</li>
+<li>若<code>&lt;input type=&quot;checkbox&quot;/&gt;</code><ol>
+<li>没有配置input的value属性，那么收集的就是checked（勾选/未勾选，是boolean）</li>
+<li>配置input的value属性：<br>（1）v-model的初始值是非数组，那么收集的就是checked（勾选/未勾选，是boolean）<br>（2）v-model的初始值是数组，那么收集的就是value组成的数组</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>v-model的三个修饰符：<br>lazy：失去焦点再收集数据；number：输入字符串转为有效的数字；trim：输入首尾空格过滤</p>
+</blockquote>
+<h3 id="过渡-amp-动画"><a href="#过渡-amp-动画" class="headerlink" title="过渡&amp;动画"></a>过渡&amp;动画</h3><h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p>定义：对要显示的数据进行特定格式化后再显示（适用于一些简单逻辑的处理）<br>语法：<br>  1.注册过滤器：<code>Vue.filter(name,callback)</code> 或 <code>new Vue&#123;filters:&#123;&#125;&#125;</code><br>  2.使用过滤器：<code>&#123;&#123; xxx | 过滤器名&#125;&#125;</code> 或 <code>v-bind:属性 = ”xxx｜过滤器名“</code></p>
+<p>过滤器也可以接收额外参数，多个过滤器也可以串联；而且过滤器并没有改变原本的数据，只是产生新的对应的数据。</p>
+<h3 id="内置指令与自定义指令"><a href="#内置指令与自定义指令" class="headerlink" title="内置指令与自定义指令"></a>内置指令与自定义指令</h3><h4 id="内置指令"><a href="#内置指令" class="headerlink" title="内置指令"></a>内置指令</h4><p>（一）<br>v-bind：单向绑定解析表达式，可简写为<code>:xxx</code><br>v-model：双向数据绑定<br>v-for：遍历数组/对象/字符串<br>v-on：绑定事件监听，可简写为<code>@</code><br>v-if：条件渲染（动态控制节点是否存在）<br>v-else：条件渲染（动态控制节点是否存在）<br>v-show：条件渲染（动态控制节点是否展示）</p>
+<p>（二）<br>v-text：向其所在的节点中渲染文本内容。与插值语法<code>&#123;&#123;xx&#125;&#125;</code>的区别在于v-text会替换掉节点中的内容，<code>&#123;&#123;xx&#125;&#125;</code>则不会。</p>
+<p>v-html：向指定节点中渲染包含html结构的内容。与插值语法<code>&#123;&#123;xx&#125;&#125;</code>的区别在于v-model会替换掉节点中 <strong>所有</strong> 的内容，<code>&#123;&#123;xx&#125;&#125;</code>则不会；且v-html可以识别html结构。<br><strong>特别注意：<span style="color:red">v-html有安全性问题！1.在网站上动态渲染任意html都是非常危险的，容易导致xss攻击；2.一定要在可信的内容上使用v-html，永远不要在用户提交的内容上使用！</span></strong></p>
+<p>v-cloak（没有值）：本质上是一个特殊属性，Vue实例创建完毕并接管容器后会删掉v-cloak属性。使用css配合v-cloak可以解决网速慢时页面展示出的问题。</p>
+<p>v-once：v-once所在节点在初次被动态渲染后就视为静态内容了。以后数据的改变不会引起v-once所在结构的更新，可以用于优化性能。</p>
+<p>v-pre：跳过其所在节点的编译过程。可利用它跳过没有使用指令语法、没有使用插值语法的节点，会加快编译。</p>
+<h4 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h4><ul>
+<li>定义语法</li>
+</ul>
+<p>1.局部指令：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line"><span class="attr">directives</span>:&#123;指令名：配置对象&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line"><span class="attr">directives</span>:&#123;指令名：回调函数&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>2.全局指令：<br><code>Vue.directive&#123;指令名,配置对象&#125;</code> 或 <code>Vue.directive&#123;指令名,回调函数&#125;</code> </p>
+<ul>
+<li>配置对象中常用的3个回调：<ol>
+<li><code>.bind</code>：指令与元素成功绑定时调用。</li>
+<li><code>.inserted</code>：指令所在元素被插入页面时调用。</li>
+<li><code>.update</code>：指令所在模版结构被重新解析时调用。</li>
+</ol>
+</li>
+<li>注意：<ol>
+<li>指令定义时不加v-，但使用时要加v-；</li>
+<li>指令名如果是多个单词，要使用kebab-case命名方式，不要使用camelCase命名。</li>
+</ol>
+</li>
+</ul>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>生命周期，又名生命周期回调函数、生命周期函数、生命周期钩子，是Vue在关键时刻帮我们调用的一些特殊名称的函数。生命周期函数的名字不可更改，但函数的具体内容是程序员根据需求编写的，生命周期函数中的this指向是vm或组建实例对象。</p>
+<p>常用的生命周期钩子：<br>  1.mounted：发送ajax请求、启动定时器、绑定自定义事件、订阅消息等【初始化操作】<br>  2.beforeDextroy：清除定时器、解绑自定义事件、取消订阅消息等【收尾工作】</p>
+<p>关于销毁Vue实例：<br>  1.销毁后借助vue开发者工具看不到任何信息。<br>  2.销毁后自定义事件会失效，但原生DOM事件依然有效。<br>  3.一般不会再beforeDextroy操作数据，因为即使操作数据也不会再触发更新流程了。</p>
+<h3 id="自定义插件"><a href="#自定义插件" class="headerlink" title="自定义插件"></a>自定义插件</h3></div><h2 id="Vue组件化"><a href="#Vue组件化" class="headerlink" title="Vue组件化"></a>Vue组件化</h2><div class="story post-story"><h3 id="模块与组件、模块化与组件化"><a href="#模块与组件、模块化与组件化" class="headerlink" title="模块与组件、模块化与组件化"></a>模块与组件、模块化与组件化</h3><p>模块：向外提供特定功能的js程序，一般就是一个js文件。由于js文件很多很复杂，模块化可以实现js的复用，简化js的编写，提高js运行效率。<br>当应用中的js都是以模块来编写的，那么这个应用就是一个模块化的应用。</p>
+<p>组件：用来实现局部（特定）功能效果的代码集合（html/css/js/image等）。由于一个界面的功能很复杂，组件化可以实现编码的复用，简化项目编码，提高运行效率。<br>当应用中的功能都是以多组件的方式来编写的，那么这个应用就是一个组件化的应用。</p>
+<h3 id="非单文件组件"><a href="#非单文件组件" class="headerlink" title="非单文件组件"></a>非单文件组件</h3><p>Vue中使用组件的三大步骤：<br>一、定义组件（创建组件）<br>二、注册组件<br>三、使用组件（写组件标签）</p>
+<ol>
+<li>如何定义一个组件？<br>使用<code>Vue.extend(options)</code>创建，其中options和<code>new Vue(options)</code>时传入的那个options几乎一样，但也有点区别：</li>
+<li>el不要写。因为最终所有的组件都要经过一个vm的管理，由vm中的el决定服务哪个容器。</li>
+<li>data必须写成函数。为了避免组件被服用时数据存在引用关系。</li>
+<li>如何注册组件？</li>
+<li>局部注册：靠new Vue的时候传入components选项</li>
+<li>全局注册：靠<code>Vue.component(&#39;组件名&#39;,组件)</code></li>
+<li>编写组件标签<br><code>&lt;school&gt;&lt;/school&gt;</code></li>
+</ol>
+<h3 id="VueComponent"><a href="#VueComponent" class="headerlink" title="VueComponent"></a>VueComponent</h3><p>关于VueComponent：</p>
+<ol>
+<li>school组件本质上是一个名为VueComponent的构造函数，且不是程序员定义的，是Vue.extend生成的。</li>
+<li>我们只需要写<code>&lt;school/&gt;</code>或<code>&lt;school&gt;&lt;/school&gt;</code>，Vue解析时会帮我们创建school组件的实例对象。即Vue帮我们执行的<code>new VueComponent(options)</code>。</li>
+<li>特别注意：<span style="color:red">每次调用<code>Vue.extend</code>，返回的都是一个全新的VueComponent！！！</span></li>
+<li>关于this的指向，</li>
+<li>组件配置中，data函数、methods中的函数、watch中的函数、computed中的函数，它们的this均是【VueComponent实例对象】。</li>
+<li><code>.new Vue(options)</code>配置中，data函数、methods中的函数、watch中的函数、computed中的函数，它们的this均是【Vue实例对象】。</li>
+<li>VueComponent的实例对象，经常被简称vc（也可称之为：组件实例对象）。<br>Vue的实例对象则常被简称为vm。</li>
+</ol>
+<h3 id><a href="#" class="headerlink" title></a></h3><h3 id="-1"><a href="#-1" class="headerlink" title></a></h3></div><h2 id="使用Vue-cli"><a href="#使用Vue-cli" class="headerlink" title="使用Vue-cli"></a>使用Vue-cli</h2><div class="story post-story"><h2 id="Vue中的ajax"><a href="#Vue中的ajax" class="headerlink" title="Vue中的ajax"></a>Vue中的ajax</h2><h2 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h2><h2 id="Vue-router"><a href="#Vue-router" class="headerlink" title="Vue-router"></a>Vue-router</h2><h2 id="Vue-UI组件库"><a href="#Vue-UI组件库" class="headerlink" title="Vue UI组件库"></a>Vue UI组件库</h2>
 </div>
   </div>
   
@@ -3243,7 +3391,7 @@ Vscode安装的扩展：Live Server；
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E4%BD%BF%E7%94%A8cli"><span class="toc-number">2.1.</span> <span class="toc-text">不使用cli</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8cli"><span class="toc-number">2.2.</span> <span class="toc-text">使用cli</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue%E6%A0%B8%E5%BF%83"><span class="toc-number">3.</span> <span class="toc-text">Vue核心</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E8%AF%86Vue"><span class="toc-number">3.1.</span> <span class="toc-text">初识Vue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVVM%E6%A8%A1%E5%9E%8B"><span class="toc-number">3.2.</span> <span class="toc-text">MVVM模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86"><span class="toc-number">3.3.</span> <span class="toc-text">数据代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E7%89%88%E8%AF%AD%E6%B3%95"><span class="toc-number">3.4.</span> <span class="toc-text">模版语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86"><span class="toc-number">3.5.</span> <span class="toc-text">事件处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-number">3.5.1.</span> <span class="toc-text">事件修饰符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6"><span class="toc-number">3.5.2.</span> <span class="toc-text">键盘事件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7"><span class="toc-number">3.6.</span> <span class="toc-text">计算属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%91%E8%A7%86"><span class="toc-number">3.7.</span> <span class="toc-text">监视</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#class%E4%B8%8Estyle%E7%BB%91%E5%AE%9A"><span class="toc-number">3.8.</span> <span class="toc-text">class与style绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93"><span class="toc-number">3.9.</span> <span class="toc-text">条件渲染</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93"><span class="toc-number">3.10.</span> <span class="toc-text">列表渲染</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B6%E9%9B%86%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE"><span class="toc-number">3.11.</span> <span class="toc-text">收集表单数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">3.12.</span> <span class="toc-text">Vue实例生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%B8%A1-amp-%E5%8A%A8%E7%94%BB"><span class="toc-number">3.13.</span> <span class="toc-text">过渡&amp;动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-number">3.14.</span> <span class="toc-text">过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E7%BD%AE%E6%8C%87%E4%BB%A4%E4%B8%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4"><span class="toc-number">3.15.</span> <span class="toc-text">内置指令与自定义指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8F%92%E4%BB%B6"><span class="toc-number">3.16.</span> <span class="toc-text">自定义插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue%E7%BB%84%E4%BB%B6%E5%8C%96"><span class="toc-number">4.</span> <span class="toc-text">Vue组件化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Vue-cli"><span class="toc-number">5.</span> <span class="toc-text">使用Vue-cli</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue%E4%B8%AD%E7%9A%84ajax"><span class="toc-number">6.</span> <span class="toc-text">Vue中的ajax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vuex"><span class="toc-number">7.</span> <span class="toc-text">Vuex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-router"><span class="toc-number">8.</span> <span class="toc-text">Vue-router</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-UI%E7%BB%84%E4%BB%B6%E5%BA%93"><span class="toc-number">9.</span> <span class="toc-text">Vue UI组件库</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E4%BD%BF%E7%94%A8cli"><span class="toc-number">2.1.</span> <span class="toc-text">不使用cli</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8cli"><span class="toc-number">2.2.</span> <span class="toc-text">使用cli</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue%E6%A0%B8%E5%BF%83"><span class="toc-number">3.</span> <span class="toc-text">Vue核心</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E8%AF%86Vue"><span class="toc-number">3.1.</span> <span class="toc-text">初识Vue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVVM%E6%A8%A1%E5%9E%8B"><span class="toc-number">3.2.</span> <span class="toc-text">MVVM模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86"><span class="toc-number">3.3.</span> <span class="toc-text">数据代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E7%89%88%E8%AF%AD%E6%B3%95"><span class="toc-number">3.4.</span> <span class="toc-text">模版语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86"><span class="toc-number">3.5.</span> <span class="toc-text">事件处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-number">3.5.1.</span> <span class="toc-text">事件修饰符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6"><span class="toc-number">3.5.2.</span> <span class="toc-text">键盘事件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7"><span class="toc-number">3.6.</span> <span class="toc-text">计算属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%91%E8%A7%86"><span class="toc-number">3.7.</span> <span class="toc-text">监视</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E7%9B%91%E8%A7%86"><span class="toc-number">3.7.1.</span> <span class="toc-text">深度监视</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%91%E8%A7%86%E5%B1%9E%E6%80%A7%E7%9A%84%E7%AE%80%E5%86%99"><span class="toc-number">3.7.2.</span> <span class="toc-text">监视属性的简写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#computed%E5%92%8Cwatch%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.7.3.</span> <span class="toc-text">computed和watch的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E7%9B%91%E8%A7%86%E5%B1%9E%E6%80%A7%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1"><span class="toc-number">3.7.4.</span> <span class="toc-text">用监视属性实现异步任务</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#class%E4%B8%8Estyle%E7%BB%91%E5%AE%9A"><span class="toc-number">3.8.</span> <span class="toc-text">class与style绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93"><span class="toc-number">3.9.</span> <span class="toc-text">条件渲染</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93"><span class="toc-number">3.10.</span> <span class="toc-text">列表渲染</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E9%A2%98%EF%BC%89react%E3%80%81vue%E4%B8%AD%E7%9A%84key%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F%EF%BC%88key%E7%9A%84%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86%EF%BC%89"><span class="toc-number">3.11.</span> <span class="toc-text">（题）react、vue中的key有什么作用？（key的内部原理）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E7%9B%91%E8%A7%86%E6%95%B0%E6%8D%AE"><span class="toc-number">3.12.</span> <span class="toc-text">Vue监视数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B6%E9%9B%86%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE"><span class="toc-number">3.13.</span> <span class="toc-text">收集表单数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%B8%A1-amp-%E5%8A%A8%E7%94%BB"><span class="toc-number">3.14.</span> <span class="toc-text">过渡&amp;动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-number">3.15.</span> <span class="toc-text">过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E7%BD%AE%E6%8C%87%E4%BB%A4%E4%B8%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4"><span class="toc-number">3.16.</span> <span class="toc-text">内置指令与自定义指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E7%BD%AE%E6%8C%87%E4%BB%A4"><span class="toc-number">3.16.1.</span> <span class="toc-text">内置指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4"><span class="toc-number">3.16.2.</span> <span class="toc-text">自定义指令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">3.17.</span> <span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8F%92%E4%BB%B6"><span class="toc-number">3.18.</span> <span class="toc-text">自定义插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue%E7%BB%84%E4%BB%B6%E5%8C%96"><span class="toc-number">4.</span> <span class="toc-text">Vue组件化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E4%B8%8E%E7%BB%84%E4%BB%B6%E3%80%81%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%8E%E7%BB%84%E4%BB%B6%E5%8C%96"><span class="toc-number">4.1.</span> <span class="toc-text">模块与组件、模块化与组件化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E5%8D%95%E6%96%87%E4%BB%B6%E7%BB%84%E4%BB%B6"><span class="toc-number">4.2.</span> <span class="toc-text">非单文件组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VueComponent"><span class="toc-number">4.3.</span> <span class="toc-text">VueComponent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">4.4.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-1"><span class="toc-number">4.5.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Vue-cli"><span class="toc-number">5.</span> <span class="toc-text">使用Vue-cli</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue%E4%B8%AD%E7%9A%84ajax"><span class="toc-number">6.</span> <span class="toc-text">Vue中的ajax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vuex"><span class="toc-number">7.</span> <span class="toc-text">Vuex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-router"><span class="toc-number">8.</span> <span class="toc-text">Vue-router</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-UI%E7%BB%84%E4%BB%B6%E5%BA%93"><span class="toc-number">9.</span> <span class="toc-text">Vue UI组件库</span></a></li></ol>
     </div>
   </section>
 
@@ -3461,8 +3609,8 @@ Vscode安装的扩展：Live Server；
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1645849449646')
-      volantis.js('/js/thirdparty/message.js?time=1645849449646', () => {
+      volantis.css('/css/message.css?time=1646042770264')
+      volantis.js('/js/thirdparty/message.js?time=1646042770264', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3507,8 +3655,8 @@ Vscode安装的扩展：Live Server；
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1645849449646')
-      volantis.js('/js/thirdparty/message.js?time=1645849449646', () => {
+      volantis.css('/css/message.css?time=1646042770264')
+      volantis.js('/js/thirdparty/message.js?time=1646042770264', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3567,8 +3715,8 @@ Vscode安装的扩展：Live Server；
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1645849449646')
-      volantis.js('/js/thirdparty/message.js?time=1645849449646', () => {
+      volantis.css('/css/message.css?time=1646042770264')
+      volantis.js('/js/thirdparty/message.js?time=1646042770264', () => {
         hideMessage(done);
       });
     } else {
@@ -3833,7 +3981,7 @@ Vscode安装的扩展：Live Server；
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1645849449646')
+    volantis.js('/js/plugins/rightMenu.js?time=1646042770264')
   </script>
 
 
@@ -3963,19 +4111,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1645849449646")
+        volantis.js("/js/plugins/sites.js?time=1646042770264")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1645849449646")
+        volantis.js("/js/plugins/friends.js?time=1646042770264")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1645849449646")
+        volantis.js("/js/plugins/contributors.js?time=1646042770264")
       }
     
   };
@@ -4047,7 +4195,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1645849449649')
+    await volantis.js('/js/plugins/aplayer.js?time=1646042770267')
     volantis.APlayerController.music = true;
   
   })();
@@ -4181,7 +4329,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1645849449647.js"></script>
+<script src="/js/app.js?time=1646042770264.js"></script>
 
 
 <!-- optional -->
@@ -4194,7 +4342,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1645849449646");
+    return volantis.js("/js/search/hexo.js?time=1646042770264");
   }
 
   function loadSearchService() {
@@ -4265,7 +4413,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4308,7 +4456,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1645849449646').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1646042770264').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
