@@ -56,6 +56,7 @@ cd到工具区。在工作区中```vue init webpack testproj```以生成webpack�
 
 
 ## Vue核心
+和基础写法相比，使用Vue可以概括成不变化的都正常写，变化的都要动态指定，也就是前面带冒号，冒号就表示了动态。动态指定的数据都可以在浏览器的vue调试界面中看到。
 ```html
 <body>
     <!-- 准备一个容器 -->
@@ -142,6 +143,10 @@ console.log(person);
 ![数据代理](shujvdaili.png)
 数据代理的基本原理：通过Object.defineproperty()把data对象中所有属性添加到vm上，再为每个添加到vm上的属性都指定一个getter/setter，在getter/setter内部去操作（读/写)data中对应的属性，
 
+### template
+标签```<template></template>```最大的特点就是不影响结构，类似于小程序中的```<block></block>```。最终页面渲染的时候通过检查元素查看，可以看到并没有实际的```<template></template>```结构。
+
+需要注意的是template只能配合```v-if```，不能配合```v-show```。
 ### 模版语法
 + 插值语法：用于解析标签体内容（标签体内使用）
 写法为```{{xxx}}```。xxx为js**表达式**，可直接读到data中的所有属性。
@@ -355,7 +360,7 @@ watch:{
 
 ### class与style绑定
 + class样式：写法为```:class="xxx"```，xxx可以是字符串、对象、数组。
-+ style样式：```:style="{fontSize:xxx}"```，其中xxx是动态值；```:style="[a,b]"```，其中a、b是样式对象。  
++ style样式：```:style="{fontSize:xxx}"```，其中xxx是动态值；```:style="[a,b]"```，其中a、b是样式对象。（样式对象的特点就是样式对象中的属性名都不能瞎写，得是存在的css属性。下面例子4、5中的对象就是样式对象。）
 
 1. 绑定class样式--字符串写法，适用于：样式的类名不确定，需要动态指定。比如下面的例子，已知必须要从mood里读东西，但读的是什么不确定。
 ```html
@@ -388,6 +393,18 @@ data:{classArr:['myclass1','myclass2','myclass3']},
 ```
 3. 绑定class样式--对象写法 ，适用于：要绑定的样式个数确定，名字也确定，但要动态决定用不用。
 ```html
+<div class="basic" :class="classObj">Hello</div>
+```
+```javascript
+data:{
+  classObj:{
+    myclass1:ture,
+    myclass2:false
+  }
+},
+```
+也可以写为：
+```html
 <div class="basic" :class="{myclass1:a,myclass2:b}">Hello</div>
 ```
 ```javascript
@@ -395,55 +412,176 @@ data:{a:ture,b:false},
 ```
 4. 绑定style样式--对象写法
 ```html
+<div class="basic" :style="{fontsize: fsize+'px'}">Hello</div>
+```
+```javascript
+data:{fsize:40},
+```
+可以更直观地写为：
+```html
 <div class="basic" :style="styleObj">Hello</div>
 ```
 ```javascript
-styleObj:{ fontsize:'40px',color:'red' }
+data:{
+  styleObj:{ fontsize:'40px',color:'red' }
+},
 ```
 5. 绑定style样式--数组写法 
 ```html
 <div class="basic" :style="styleArr">Hello</div>
 ```
 ```javascript
-styleArr:[
-  { fontsize:'40px',color:'red',},
-  { backgroundcolor:'orange'}
-] 
+data:{
+  styleArr:[
+    { fontsize:'40px',color:'red',},
+    { backgroundcolor:'orange'}
+  ] 
+}
 ```
+这种写法不如：
+```html
+<div class="basic" :style="[styleObj1,styleObj2]">Hello</div>
+```
+```javascript
+data:{
+  styleObj1:{
+    fontsize:'40px',color:'red',
+  },
+  styleObj2:{
+    backgroundcolor:'orange'
+  },
+},
+```
+
 ### 条件渲染
 + v-if：适用于切换频率较低的场景。
   特点：不展示的DOM元素直接被移除。
-  注意：v-if可以和v-else-if、v-else一起使用，但要求结构不能被“打断”
+  注意：v-if可以和v-else-if、v-else一起使用，但要求结构不能被“打断”。其含义类似于```if if if```和```if else-if else```。
   1. v-if = “表达式”
   2. v-else-if = “表达式”
   3. v-else = “表达式”
 + v-show：适用于切换频率较高的场景。
-  特点：不展示的DOM元素未被移除，仅仅是使用样式隐藏掉。
-+ 使用v-id时元素可能无法获取到，而使用v-show一定可以获取到。
+  ```v-show=```的等号后面是```true```或```false```，但也可以写一个表达式，根据表达式的值为真或假来给v-show赋值。也可以写```v-show="a"```，这会让Vue去下面的data中找a，可以通过调整a实现动态的调整。
+  特点：不展示的DOM元素未被移除，仅仅是使用样式隐藏掉。其底层实现是通过调整```display:none```。
++ 使用v-if时元素可能无法获取到，而使用v-show一定可以获取到。
++ 需要注意的是， template只能配合```v-if```，不能配合```v-show```。
 
 ### 列表渲染
-+ v-for
++ v-for：加在谁身上就通过遍历的方式生成谁。
   1. 用于展示列表数据
-  2. 语法：```v-for="(item，index) in xxx" :key="yyy"```
-  3. 可遍历数组、对象、字符串（用的很少）、指定次数（用的很少）
+  2. 语法：```v-for="(item，index) in xxx" :key="yyy"```（in可以用of代替）（注意key是唯一的）
+  3. 可遍历数组(p,index)、对象(value,key)、字符串(char,index)（用的很少，value是每个单个字符）、指定次数(number,index)（非常少见 ，）
 
-### （题）react、vue中的key有什么作用？（key的内部原理）
-1. 虚拟DOM中key的作用：
+形参可以有不止一个，默认第一个是每一项内容（value），第二个是索引（index，如果遍历数组就是从0开始的数字；遍历对象就是每一个属性名；遍历字符串也是从0开始的数字）。使用多个形参最好用小括号括起来。
+
+> 只要用了遍历（v-for）方式去生成多个同样结构的数据，就必须给每个结构作一个唯一标识，```:key```就是它们的标识。
+
+```html
+<body>
+  <div id="root">
+    <ul>
+      <!-- 下面的p是一个形参，这个形参可以直接在li标签体里面使用。 -->
+      <!-- 传递多个形参： -->
+      <!--   <li v-for="(p,index) in persons" :key="index">   -->
+      <li v-for="p in persons" :key="p.id">  
+        {{p.name}}-{{p.age}} 
+      </li>
+    <ul>
+  <div>
+  
+  <script>
+    new Vue({
+      el:'#root',
+      data:{
+        persons:[ // 每个人都应该有唯一的标识：id，一个人的各种信息应该封装在一个对象中
+          {id:'001',name:'张三',age:18},
+          {id:'002',name:'李四',age:19}
+        ]
+      }
+    })
+  </script>
+</body>
+```
+
+#### 列表过滤
+方法```filter()```创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。其中的return是过滤条件，把符合条件的过滤出来。
+判断一个字符串中是否含有指定字符：使用属性```indexOf```。它可以判断字符出现的索引位置，没出现则返回-1。不会改变原数组，而是会把结果存储到新的数组中。 
+1.用监视属性watch实现：
+```html
+<input type="text" placeholder="请输入关键字" v-model="keyWord">
+<ul>
+  <li v-for="(p,index) in filPersons" :key="index">
+    {{p.name}}-{{p.age}}-{{p.sex}}
+  </li>
+</ul>
+```
+```javascript
+data:{
+  keyWord:'',
+  persons:[
+    {},{},{},
+  ],
+  filPersons:[], // 用来保管过滤出的数据而不对原数组进行修改
+},
+watch:{
+  keyWord:{
+    immediate:true,  // 初始化时让handler调用一下；此时的val是空串，而任何字符串都包含空串，所以所有数据都符合过滤条件。
+    handler(val){
+      this.filPersons = this.persons.filter((p)=>{
+      return p.name.indexOf(val) !== -1 
+      })
+    }
+  }
+}
+```
+
+2.用计算属性computed实现：
+```javascript
+data:{
+  keyWord:'',
+  persons:[
+    {},{},{},
+  ],
+  filPersons:[], // 用来保管过滤出的数据而不对原数组进行修改
+},
+
+computed:{
+  filPersons(){  // 只要keyWord变化，filPersons()就会重新执行
+    return this.persons.filter((p)=>{
+      return p.name.indexOf(this.keyWord) !== -1 
+    }
+  }
+},
+```
+
+
+#### 列表排序
+
+
+###  key的原理
+key的作用可以理解为就是给节点做一个标识，相当于人类社会中的身份证号。
+在原列表的最前面添加一个新的person项，用index作为key，为什么会出错？有问题的流程和id作为key的正确流程如下图所示：
+![问题流程](key.png)
+![正确流程](keyid.png)
+如果遍历时根本没有写key，Vue则会自动让index作为key。
+（面试题）react、vue中的key有什么作用？
+1. 虚拟DOM中key的作用： 
   key是虚拟DOM对象的标识，当数据发生变化时，Vue会根据【新数据】生成【新的虚拟DOM】，随后Vue进行【新虚拟DOM】与【旧虚拟DOM】的差异比较，比较规则如下：
 2. 对比规则：
-  1. 旧虚拟DOM中找到了与新虚拟DOM相同的key：
-    1. 若虚拟DOM中内容没变，直接使用之前的真实DOM！
+  1. 旧虚拟DOM中找到了与新虚拟DOM **相同的key** ：
+    1. 若虚拟DOM中内容没变，直接使用之前的真实DOM！（之前的旧虚拟dom中肯定已经转过一次了）
     2. 若虚拟DOM中内容变了，则生成新的真实DOM，随后替换掉页面中之前的真实DOM。
   2. 旧虚拟DOM中未找到与新虚拟DOM相同的key：
     创建新的真实DOM随后渲染到页面。 
 3. 用index作为key可能会引发的问题：
   1. 若对数据进行：逆序添加、逆序删除等破坏顺序操作：
-    会产生没有必要的真实DOM更新 ==》 界面效果没问题，但效率低。
+    会产生没有必要的真实DOM更新 ==> 界面效果没问题，但效率低。
   2. 如果结构中还包含输入类的DOM：
-    会产生错误DOM更新 ==》 页面有问题。
+    会产生错误DOM更新 ==> 页面有问题。
 4. 开发中如何选择key：
   1. 最好使用每条数据的唯一标识作为key，比如id、手机号、身份证号、学号等唯一值
   2. 如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，使用index作为key是没有问题的。 
+
 
 ### Vue监视数据
 1. Vue会监视data中所有层次的数据。
@@ -549,47 +687,249 @@ v-pre：跳过其所在节点的编译过程。可利用它跳过没有使用指
 
 
 ## Vue组件化
-### 模块与组件、模块化与组件化
 模块：向外提供特定功能的js程序，一般就是一个js文件。由于js文件很多很复杂，模块化可以实现js的复用，简化js的编写，提高js运行效率。
 当应用中的js都是以模块来编写的，那么这个应用就是一个模块化的应用。
 
-组件：用来实现局部（特定）功能效果的代码集合（html/css/js/image等）。由于一个界面的功能很复杂，组件化可以实现编码的复用，简化项目编码，提高运行效率。
+传统方式和组件化方式编写应用可以如下图所示，其中传统方式的左侧HTML文件是第二个需求所用到的：
+![传统方式](zujian-chuantong.png)
+![传统方式](zujian-zujian.png)
+
+组件：用来实现 **局部** （特定）功能效果的 **代码** 和 **资源** 的 **集合**（html/css/js/image等）。由于一个界面的功能很复杂，组件化可以实现编码的复用，简化项目编码，提高运行效率。
 当应用中的功能都是以多组件的方式来编写的，那么这个应用就是一个组件化的应用。
-### 非单文件组件
+
+单文件组件指一个文件中只包含一个组件，文件和组件一一对应，一个文件就是一个组件(a.vue)；非单文件组件指一个文件中包含有n个组件(a.html)。
+```html
+<body>
+  <div id="root">
+    <!-- 第三步：编写组件标签 -->
+    <xuexiao></xuexiao>
+    <hr>
+    <!-- 第三步：编写组件标签 -->
+    <xuesheng></xuesheng>
+  </div>
+  <script>
+  // 第一步：创建school组件
+  const school = Vue.extend({
+    name:'BUT', // 如果在此处指定名字，就指定了组件在开发者工具中呈现的名字，注册时不能再更改。
+    template:`
+      <div>
+        <h2>学校名称:{{schoolName}}</h2>
+        <h2>学校地址:{{address}}</h2>
+        <button @click="showName">显示学校名</button>
+      </div>
+    `,
+    data(){
+      return{
+        schoolName:'BUT',
+        address:'beijing'
+      }
+    },
+    methods:{
+      showName(){
+        alert(this.schoolName)
+      }
+    },
+  })
+
+  // 第一步：创建student组件
+  const student = Vue.extend({
+    template:`
+      <div>
+        <h2>学生姓名:{{studentName}}</h2>
+        <h2>学生年龄:{{age}}</h2>
+      </div>
+    `,
+    data(){
+      return{
+        studentName:'BUT',
+        age:'beijing'
+      }
+    }
+  })
+
+  // 创建vm
+  new Vue({
+    el:'#root',
+    // 第二步：注册组件
+    components:{ // 局部注册xuexiao和xuesheng;只有#root可以用
+      xuexiao:school,  
+      xuesheng:student
+    }
+  })
+  new Vue({
+    el:'#root2',
+  })
+  
+  // 全局注册组件；#root和#root2都可以用。
+  Vue.component('xuexiao',school)
+  </script>
+</body>
+```
+
+### 使用组件的基本步骤
 Vue中使用组件的三大步骤：
 一、定义组件（创建组件）
 二、注册组件
-三、使用组件（写组件标签）
+三、使用组件（写组件标签```<xuexiao></xuexiao>```）
 
 1. 如何定义一个组件？
   使用```Vue.extend(options)```创建，其中options和```new Vue(options)```时传入的那个options几乎一样，但也有点区别：
-  1.el不要写。因为最终所有的组件都要经过一个vm的管理，由vm中的el决定服务哪个容器。
-  2.data必须写成函数。为了避免组件被服用时数据存在引用关系。
+  1. **el不要写**。因为最终所有的组件都要经过一个vm的管理，由vm中的el决定服务哪个容器。
+  el只能用在通过new关键字创建的Vue实例上，也就是只有```new Vue({})```里的配置对象中才有资格写el。而组件在创建时不会被写明白它到底为谁服务，“组件就是一块砖，哪里需要哪里搬”。
+  2. **data必须写成函数**。为了避免组件被服用时数据存在引用关系。
+  使用对象是引用数据，你用我用大家用；而函数返回值相当于复印了一份新的，随便改动却影响不了原文件。每次调用函数的时候返回的都是一个新的对象，不会出现两次调用指向的是同一个地址的情况。
 2. 如何注册组件？
-  1.局部注册：靠new Vue的时候传入components选项
-  2.全局注册：靠```Vue.component('组件名',组件)```
+  1. 局部注册（推荐）：靠new Vue的时候传入components选项。
+  components中是一组一组的key-value组合，上面定义组件时起的名字只是组件的临时名字，components里的key值才是真正决定了组件名称的。value则指定了组件位置，填写的是上面定义组件时给它的名字。**最好这两处使用同样的名字，这样可以使用简写写法（只写一个）。**
+  2. 全局注册：靠```Vue.component('组件名',组件)```
 3. 编写组件标签
-  ```<school></school>```
+  ```<xuexiao></xuexiao>```
+
++ 关于组件的命名：
+  一个单词的组件名：推荐首字母大写。也可以全小写。
+  多个单词的组件名：推荐每个单词的首字母大写（CamelCase命名）（必须在脚手架环境）。也可以单词间用短横线“-”连接（kebab-case命名），注意JS语法要求对象里的key如果有-则需要用引号包起来。 
+  + 注意组件名尽量回避HTML中已有的元素名称，例如h2、H2都不行。
+  + 可以使用```name```配置项指定组件在 **开发者工具** 中呈现的名字。
+
++ 关于组件标签
+  第一种写法：```<xuexiao></xuexiao>```
+  第二种写法：```<xuexiao/>```（自闭合）
+  注意：在不使用脚手架时，```<xuexiao/>```会导致后续组件不能渲染。
+  
++ 简写：```const school = Vue.extend(options)```可以简写为```const school = options```，即直接写配置项。这样在注册组件时还是会调用Vue.extend。
+
+### 组件的嵌套
+子组件需要注册在在父组件的内部。
+需要注意：子组件的定义要在注册之前。
+
+子组件在哪里注册，其结构就在哪里写。在父组件的```template:```内的最后一行补上```<xuesheng></xuesheng>```即可。
+
+开发中使用app组件管理其它所有组件。一人（vm）之下，万人之上。
+```html
+<div id="root">
+  <app></app>
+</div>
+```
+```javascript
+// 定义app组件
+const app = Vue.extend({
+  template:`
+    <div>
+      <school></school>
+      <students></students>
+    </div>
+  `,
+  components:{
+    school,
+    students,
+  }
+})
+
+new Vue({
+  // template:`<app></app>`  这里写了的话html的div里就可以是空的了
+  el:"#root",
+  components:{app}
+})
+```
 
 ### VueComponent
+组件是可复用的Vue实例，所以它们与```new Vue```接收相同的选项，例如data、methods、watch、生命周期钩子等。仅有的例外是像```el```这样 **根实例（vm）** 特有的选项。
 关于VueComponent：
-1. school组件本质上是一个名为VueComponent的构造函数，且不是程序员定义的，是Vue.extend生成的。
-2. 我们只需要写```<school/>```或```<school></school>```，Vue解析时会帮我们创建school组件的实例对象。即Vue帮我们执行的```new VueComponent(options)```。
+1. school **组件本质上是一个名为*VueComponent的构造函数*** ，且不是程序员定义的，它归根到底是Vue.extend生成的。
+  组件归根到底就是VueComponent，就是构造函数。
+2. 我们只需要写```<school/>```或```<school></school>```，Vue解析时会帮我们创建school**组件的实例对象** 。即Vue帮我们执行的```new VueComponent(options)```。
 3. 特别注意：<span style='color:red'>每次调用```Vue.extend```，返回的都是一个全新的VueComponent！！！</span>
+  比如```<xuexiao>```和```<xuesheng>```的VueComponent，虽然打印出来虽然一模一样但它们确实不是同一个。是同一个类new出来的两个对象，它们是不同的实体，只是结构类似而已。每new一次就会开辟一块新的内存。
 4. 关于this的指向，
-  1. 组件配置中，data函数、methods中的函数、watch中的函数、computed中的函数，它们的this均是【VueComponent实例对象】。
-  2. ```.new Vue(options)```配置中，data函数、methods中的函数、watch中的函数、computed中的函数，它们的this均是【Vue实例对象】。
-5. VueComponent的实例对象，经常被简称vc（也可称之为：组件实例对象）。
+  1. 组件配置中，
+    data函数、methods中的函数、watch中的函数、computed中的函数，它们的this均是【VueComponent实例对象(vc)】。
+    vc和vm功能一样，都有数据代理、数据监视等。
+  2. ```.new Vue(options)```配置中，
+    data函数、methods中的函数、watch中的函数、computed中的函数，它们的this均是【Vue实例对象(vm)】。
+5. VueComponent的实例对象，经常被简称vc（也可称之为：组件实例对象。因为组件归根到底就是VueComponent）。
   Vue的实例对象则常被简称为vm。
 
-### 
+### 一个重要的内置关系（原型链相关）
+> 关于原型链：
+> 显式原型```prototype```和隐式原型```__proto__```的区别在于，```prototype```是构造函数的属性，而```__proto__```是对象的属性。
+> 无论是函数身上的显式原型属性，还是实例身上的隐式原型属性，它们都指向了同一个对象：**原型对象**。通过显示原型链给原型(或者原型的原型)添加属性，通过隐式原型链获取原型的属性，从自身沿着原型链一直找直到window的原型为空。
 
+<span style='color:red'>实例的隐式原型属性，永远指向自己缔造者的原型对象！</span>
 
+一个重要的内置关系：** ```VueComponent.prototype.__proto__ === Vue.prototype```。**
+为什么要有这个关系：<span style='color:red'>让组件实例对象（vc）可以访问到Vue原型上的属性、方法。</span>
 
+从下图可以看出，VueComponent的原型对象（VueComponent.prototype）的原型对象（VueComponent.prototype.__proto__），就是Vue的原型对象（Vue.prototype）。
+![一个重要的内置关系](VueComponentProto.png)
 
-### 
+### 单文件组件（xxx.vue)
+> vscode不认.vue文件，需要安装插件。（如vetur）
+> 如果已经安装插件vetur，在.vue文件中输入```<v```再回车即可生成一套模板。
 
+给.vue文件的起名规则和组件名的那套规则一样（单个单词、多个单词）。
+下面是文件School.vue的示例：
+```vue
+<template>
+<!--组件的结构-->
+  <div class="demo">
+    <h2>学校名称:{{schoolName}}</h2>
+    <h2>学校地址:{{address}}</h2>
+    <button @click="showName">显示学校名</button>
+  </div>
+</template>
 
+<script>
+// 组件交互相关的代码（数据、方法等）
+  export default { // 暴露
+    name:'School',  // 不写的话，别人在注册这个组件的时候可能会随便起名
+    data(){
+      return{
+        schoolName:'BUT',
+        address:'beijing'
+      }
+    },
+    methods:{
+      showName(){
+        alert(this.schoolName)
+      }
+    },
+  }
+</script>
+
+<style>
+/* 组件的样式 */
+  .demo{
+    background-color:orange;
+  }
+</style>
+```
+
+一个必须有的.vue文件：App.vue。
+```vue
+<template>
+  <div>
+    <School/>
+    <Student/>
+  </div>
+</template>
+
+<script>
+  // 引入组件
+  import School from './School'  // 自行确定路径
+  import Student from './Student'  
+  
+  export default { 
+    name:'App', 
+    components:{
+      School,
+      Student
+    }
+  }
+</script>
+
+<style>
+</style>
+```
 
 
 
