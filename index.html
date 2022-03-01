@@ -20,7 +20,7 @@
   <meta content="一之碎片" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1641886156459" as="style">
+  <link rel="preload" href="/css/style.css?time=1646144217484" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -1776,8 +1776,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1641886156459" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1641886156459"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1646144217484" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1646144217484"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2893,6 +2893,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
+          
+        
       
     
     
@@ -2900,7 +2904,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/01/09/JavaScript%E7%AC%94%E8%AE%B0/">
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/02/20/%E6%90%AD%E5%BB%BAL2TP-IPsec/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="一之碎片">
   </span>
@@ -2914,16 +2918,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/01/09/JavaScript%E7%AC%94%E8%AE%B0/"  itemprop="url">
-        JavaScript笔记
+      <a href="/2022/02/20/%E6%90%AD%E5%BB%BAL2TP-IPsec/"  itemprop="url">
+        搭建L2TP-IPsec
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        
-
+        1. 前言虚拟专用网络（VPN，Virtual Private Network）是一种网络底层协议，主机开启 VPN 后，所有网络请求都会先发送到 VPN 服务器，然后 VPN 服务器作为代理帮我们访问敏感资源。本文介绍如何在 Linux（Ubuntu 18.04）服务器上搭建 L2TP/IPsec VPN。
+2. IPSec互联网安全协议（IPsec，Internet Protocol S...
       
     
   </div>
@@ -2931,12 +2935,127 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2022-01-09T21:42:15+08:00">2022-01-09</time>
+        <time itemprop="dateCreated datePublished" datetime="2022-02-20T15:20:43+08:00">2022-02-20</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2022/01/09/JavaScript%E7%AC%94%E8%AE%B0/' itemprop="url">
+          <a class='readmore' href='/2022/02/20/%E6%90%AD%E5%BB%BAL2TP-IPsec/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/02/20/OpenVPN/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="一之碎片">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2022/02/20/OpenVPN/"  itemprop="url">
+        OpenVPN
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        
+简介
+OpenVPN 是基于 TLS 加密层实现 VPN 的开源项目。
+安装Linux 服务端(debian10)登录服务端：除了ssh方式，也可以通过用户名密码方式。参考了这篇文章。端口号可以在服务器后台查阅ssh server。
+1ssh -p port user@IP
+
+   安装软件包（包含客户端与服务端）：
+   12sudo apt-get update &amp;&amp; ...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2022-02-20T14:10:04+08:00">2022-02-20</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2022/02/20/OpenVPN/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/01/17/JS%E7%AC%94%E8%AE%B0/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="一之碎片">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2022/01/17/JS%E7%AC%94%E8%AE%B0/"  itemprop="url">
+        JS笔记
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+         Chrome内运行
+
+开发者工具-&gt;Console 窗口调试 JavaScript 代码
+开发者工具-&gt;Sources-&gt;Snippets选项卡-&gt; Creat new snippet 来新建一个脚本文件  
+
+
+JS没有任何打印或者输出的函数，只能：使用 window.alert() 弹出警告框；document.write() 方法将内容写到 HTML 文档中；...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2022-01-17T19:45:34+08:00">2022-01-17</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2022/01/17/JS%E7%AC%94%E8%AE%B0/' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -2980,9 +3099,9 @@ Vscode安装的扩展：Live Server；
 在浏览器中，检查元素的elements窗口显示的是代码在内存中的结构
 
 HTML基本结构
-在vs code中，新建后缀名为html的文件，在文件中输入一个感叹号后直接按tab键可直接一键生成一个最简单的HTML模版。
+vs code中新建.html文件，输入一个感叹号后直接tab可一键生成一个最简单的HTML模版。
 
-123456789101112131415161...
+12345678910111213141516171819202122232...
       
     
   </div>
@@ -3011,7 +3130,7 @@ HTML基本结构
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/01/08/Vue%E6%95%99%E7%A8%8B/">
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/01/08/Vue%E7%AC%94%E8%AE%B0/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="一之碎片">
   </span>
@@ -3025,21 +3144,19 @@ HTML基本结构
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/01/08/Vue%E6%95%99%E7%A8%8B/"  itemprop="url">
-        Vue教程
+      <a href="/2022/01/08/Vue%E7%AC%94%E8%AE%B0/"  itemprop="url">
+        Vue笔记
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        参考：Vue中文官网
-安装环境：Windows10
-简介Vue是一套用于构建用户界面的渐进式JS框架，渐进指Vue可以根据应用的复杂程度自底向上逐层的应用，对于简单应用它只需要一个清凉小巧的核心库，对于复杂应用则可以引入各式各样的Vue插件。它有以下特点：
+        vscode插件：Vue 3 snippetsChrome插件：Vue.js devtools浏览器强制刷新：shift + 刷新按钮
+简介Vue是一套用于构建用户界面的渐进式JS框架，渐进指Vue可以根据应用的复杂程度自底向上逐层的应用，对于简单应用它只需要一个轻量小巧的核心库，对于复杂应用则可以引入各式各样的Vue插件。它有以下特点：
 
 采用组件化模式，提高代码复用率且更好维护。
-声明式编码，让编码人员直接操作dom，提高开发效率。
-使用虚拟dom+优秀的diff算法，...
+声明式...
       
     
   </div>
@@ -3052,7 +3169,7 @@ HTML基本结构
       </div>
       
         <div>
-          <a class='readmore' href='/2022/01/08/Vue%E6%95%99%E7%A8%8B/' itemprop="url">
+          <a class='readmore' href='/2022/01/08/Vue%E7%AC%94%E8%AE%B0/' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -3350,122 +3467,24 @@ macOS：使用 n 版本管理工具检查node及npm环境12node -vnpm -v
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2021/12/20/Markdown%E7%AC%94%E8%AE%B0/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="一之碎片">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2021/12/20/Markdown%E7%AC%94%E8%AE%B0/"  itemprop="url">
-        Markdown笔记
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        
-typora快捷键
-
-标题#一级标题：## 二级标题### 三级标题#### 四级标题
-段落在 Markdown 语法中，换行（line break）与换段是不同的。且换行分为软换行和硬换行。换行：两个以上空格加回车，或直接插入HTML标签&lt;br/&gt;
-
-软换行：在 Typora 中可以通过 Shift + Enter 完成一次软换行。软换行只在编辑界面可见，当文档被导出时换行会...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2021-12-20T14:12:19+08:00">2021-12-20</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/12/20/Markdown%E7%AC%94%E8%AE%B0/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2021/12/19/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="一之碎片">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2021/12/19/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/"  itemprop="url">
-        建站记录
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Part1 环境搭建安装nodejs12node -v npm -v  #查看版本
-安装git1git --version #查看版本
-创建博客文件夹并安装hexo自己在想要的位置创建文件夹blog，在该文件夹中新建终端并运行以下命令：
-12npm install -g hexo-clihexo -v
-
-在Windows中，如果出现”‘hexo’不是内部或外部命令，也不是可运行的程序”，需要...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2021-12-19T14:53:04+08:00">2021-12-19</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/12/19/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
+    
+      <br>
+      <div class="prev-next">
+        
+        <p class="current">
+          1 / 2
+        </p>
+        
+          <a class="next" rel="next" href="/page/2/">
+            <section class="post next white-box shadow blur">
+              &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </section>
+          </a>
+        
+      </div>
     
   
 
@@ -3562,7 +3581,7 @@ typora快捷键
 
 
     <div class='content'>
-      <a href="/tags/git/" style="font-size: 24px; color: #555">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/node/" style="font-size: 14px; color: #999">node</a>
+      <a href="/tags/git/" style="font-size: 24px; color: #555">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/node/" style="font-size: 14px; color: #999">node</a> <a href="/tags/vpn/" style="font-size: 24px; color: #555">vpn</a>
     </div>
   </section>
 
@@ -3775,8 +3794,8 @@ typora快捷键
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1641886156459')
-      volantis.js('/js/thirdparty/message.js?time=1641886156459', () => {
+      volantis.css('/css/message.css?time=1646144217484')
+      volantis.js('/js/thirdparty/message.js?time=1646144217484', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3821,8 +3840,8 @@ typora快捷键
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1641886156459')
-      volantis.js('/js/thirdparty/message.js?time=1641886156459', () => {
+      volantis.css('/css/message.css?time=1646144217484')
+      volantis.js('/js/thirdparty/message.js?time=1646144217484', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3881,8 +3900,8 @@ typora快捷键
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1641886156459')
-      volantis.js('/js/thirdparty/message.js?time=1641886156459', () => {
+      volantis.css('/css/message.css?time=1646144217484')
+      volantis.js('/js/thirdparty/message.js?time=1646144217484', () => {
         hideMessage(done);
       });
     } else {
@@ -4147,7 +4166,7 @@ typora快捷键
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1641886156459')
+    volantis.js('/js/plugins/rightMenu.js?time=1646144217484')
   </script>
 
 
@@ -4277,19 +4296,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1641886156459")
+        volantis.js("/js/plugins/sites.js?time=1646144217484")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1641886156459")
+        volantis.js("/js/plugins/friends.js?time=1646144217484")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1641886156459")
+        volantis.js("/js/plugins/contributors.js?time=1646144217484")
       }
     
   };
@@ -4361,7 +4380,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1641886156461')
+    await volantis.js('/js/plugins/aplayer.js?time=1646144217486')
     volantis.APlayerController.music = true;
   
   })();
@@ -4495,7 +4514,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1641886156459.js"></script>
+<script src="/js/app.js?time=1646144217484.js"></script>
 
 
 <!-- optional -->
@@ -4508,7 +4527,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1641886156459");
+    return volantis.js("/js/search/hexo.js?time=1646144217484");
   }
 
   function loadSearchService() {
@@ -4579,7 +4598,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4622,7 +4641,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1641886156459').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1646144217484').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
