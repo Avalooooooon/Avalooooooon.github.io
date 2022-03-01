@@ -20,7 +20,7 @@
   <meta content="一之碎片" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1646042781550" as="style">
+  <link rel="preload" href="/css/style.css?time=1646129448352" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -1778,8 +1778,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1646042781550" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1646042781550"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1646129448352" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1646129448352"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -3144,13 +3144,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h3 id="垃圾回收（Garbage-Collection，GC）"><a href="#垃圾回收（Garbage-Collection，GC）" class="headerlink" title="垃圾回收（Garbage Collection，GC）"></a>垃圾回收（Garbage Collection，GC）</h3><p>当一个对象没有任何的变量或属性对它进行引用，将永远无法操作该对象，这种对象就是垃圾，存在过多会占用大量的内存空间，必须进行清理。</p>
 <p>JS中有自动的垃圾回收机制，会自动将这些垃圾对象从内存中销毁，我们不需要也不能进行垃圾回收的操作。<br>我们需要做的只是要将不再使用的对象设置为<code>null</code>。</p>
 </div><h2 id="原型对象"><a href="#原型对象" class="headerlink" title="原型对象"></a>原型对象</h2><div class="story post-story"><p>在上面的Person()构造函数中为每一个对象都添加了一个sayName方法，而且这个方法是在构造函数内部创建的，也就是构造函数每执行一次就会创建一个新的sayName方法，（说到底每次执行构造函数在堆空间中开辟的内存都不同），也就是所有实例的sayName都是唯一的。如果像这样将sayName方法在全局作用域中定义（这里叫它fun）：<code>function fun()&#123;alert(this.name);&#125;</code>，则会污染全局作用域的命名空间，而且定义在全局作用域中也很不安全。</p>
-<h3 id="显式原型prototype和隐式原型-proto"><a href="#显式原型prototype和隐式原型-proto" class="headerlink" title="显式原型prototype和隐式原型__proto__"></a>显式原型<code>prototype</code>和隐式原型<code>__proto__</code></h3><p>显式原型：我们所创建的每一个函数，解析器都会向函数中添加一个属性<code>prototype</code>（例外：通过Function.prototype.bind方法构造出来的函数没有prototype属性）。这个属性指向函数的原型对象。其主要作用是实现基于原型的继承与属性的共享。<br>隐式原型：可以通过<code>__proto__</code>（两边都是两个下划线）访问对象的内置属性<code>prototype</code>。其主要作用是构成原型链，同样用于实现基于原型的继承。比如访问obj对象中的x属性时，如果在obj中找不到就会沿着<code>__proto__</code>依次查找。<code>__proto__</code>指向创建这个对象的函数的显式原型。<br>显式原型<code>prototype</code>和隐式原型<code>__proto__</code>的区别在于，<code>prototype</code>是构造函数的属性，而<code>__proto__</code>是对象的属性。<br><img src="/2022/01/17/JS%E7%AC%94%E8%AE%B0/yuanxing.png" class="lazyload" data-srcset="/2022/01/17/JS%E7%AC%94%E8%AE%B0/yuanxing.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="原型"></p>
+<h3 id="显式原型prototype和隐式原型-proto"><a href="#显式原型prototype和隐式原型-proto" class="headerlink" title="显式原型prototype和隐式原型__proto__"></a>显式原型<code>prototype</code>和隐式原型<code>__proto__</code></h3><p>显式原型（函数）：我们所创建的每一个函数，解析器都会向函数中添加一个属性<code>prototype</code>（例外：通过Function.prototype.bind方法构造出来的函数没有prototype属性）。这个属性指向函数的原型对象。其主要作用是实现基于原型的继承与属性的共享。<br>隐式原型（实例）：可以通过<code>__proto__</code>（两边都是两个下划线）访问对象的内置属性<code>prototype</code>。其主要作用是构成原型链，同样用于实现基于原型的继承。比如访问obj对象中的x属性时，如果在obj中找不到就会沿着<code>__proto__</code>依次查找。<code>__proto__</code>指向创建这个对象的函数的显式原型。</p>
+<p>显式原型<code>prototype</code>和隐式原型<code>__proto__</code>的区别在于，<code>prototype</code>是构造函数的属性，而<code>__proto__</code>是对象的属性。<br>无论是函数身上的显式原型属性，还是实例身上的隐式原型属性，它们都指向了同一个对象：<strong>原型对象</strong>。通过显示原型链给原型(或者原型的原型)添加属性，通过隐式原型链获取原型的属性，从自身沿着原型链一直找直到window的原型为空。</p>
+<p><span style="color:red">实例的隐式原型属性，永远指向自己缔造者的原型对象！</span></p>
+<p><img src="/2022/01/17/JS%E7%AC%94%E8%AE%B0/yuanxing.png" class="lazyload" data-srcset="/2022/01/17/JS%E7%AC%94%E8%AE%B0/yuanxing.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="原型"></p>
 <p>如果函数作为普通函数调用，<code>prototype</code>没有任何作用；当函数以构造函数的形式调用时，它所创建的对象中都有一个隐含的属性指向<span style="color:red">该构造函数的原型对象。</span>也就是<code>构造函数.prototype == 所有该构造函数的实例._proto_</code>。</p>
 <p>原型对象就相当于一个公共的区域，所有一个类的实例都可以访问到这个原型对象。我们可以将对象中共有的内容统一设置到原型对象中。当我们访问对象的一个属性或方法时，它会先在对象自身中寻找，如果没有则会去原型对象中寻找，找到了就直接使用。</p>
 <p>以后我们创建构造函数时可以将这些对象共有的属性和方法统一添加到构造函数的原型对象中，这样不用为每一个对象添加，也不会影响到全局作用域，就可以使每个对象都具有这些属性和方法了。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 向Person的原型中添加属性a</span></span><br><span class="line">Person.prototype.a = <span class="number">123</span>;</span><br><span class="line"><span class="comment">// 向Person的原型中添加一个方法</span></span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(<span class="built_in">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> per = <span class="keyword">new</span> Person(<span class="string">&quot;Bob&quot;</span>,<span class="number">18</span>)</span><br><span class="line">per.sayName();</span><br></pre></td></tr></table></figure>
 
 <h3 id="原型对象的原型"><a href="#原型对象的原型" class="headerlink" title="原型对象的原型"></a>原型对象的原型</h3><p>原型对象也是对象，所以它也有原型。<br>当我们使用一个对象的属性或方法时，会先在自身中寻找，自身中如果有，则直接使用；如果没有则去原型对象中寻找，如果原型对象中有，则使用；如果没有则去原型的原型中寻找。直到找到Object对象的原型——Object对象的原型没有原型，但它也有一个__proto__属性，这个属性对应的值就是null。如果在Object中依然没有找到，则该对象.属性返回undefined。（null是没找到原型，undefined是没找到原型的属性）</p>
+<p>在看原型链时，只要看到<code>toString()</code>方法，就证明这个已经到了Object的原型对象。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原型。实例._proto_=构造函数.prototype，即Person的prototype</span></span><br><span class="line"><span class="built_in">console</span>.log(per.__proto__);</span><br><span class="line"><span class="comment">// 原型的原型。Person.prototype的_proto_，是Object的prototype</span></span><br><span class="line"><span class="built_in">console</span>.log(per.__proto__.__proto__); <span class="comment">//[Object Object]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(per.__proto__.__proto__.hasOwnProperty(<span class="string">&quot;hasOwnProperty&quot;</span>)); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 原型的原型的原型。Object的原型没有原型。</span></span><br><span class="line"><span class="built_in">console</span>.log(per.__proto__.__proto__.__proto__); <span class="comment">// null</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h3><p>当我们直接在页面中打印一个对象时（console.log)，实际上是输出的对象的<code>toString()</code>方法的返回值。如果我们希望在输出对象时不输出[Object Object]，可以为对象（或原型）添加一个<code>toString()</code>方法。</p>
@@ -3215,7 +3219,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </blockquote>
 <h3 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h3><p><strong>使用量词设置一个内容出现的次数。</strong>需要注意的是量词只对它前边的一个内容起作用，通过括号指定需要重复的组合。<br>{n}，如<code>&#123;(ab)n&#125;</code>，ab正好出现n次。<br>{m,n}，如<code>&#123;ab&#123;m,n&#125;c&#125;</code>，b出现m到n次。<br>{m,}，出现m次以上。<br>+，至少一个。相当于{1,}。<br>*，0个或多个，相当于{0,}。<br>？，0个或一个，相当于{0,1}。<br>^，表示开头。如<code>&#123;^a&#125;</code>，以a开头。<br>$，表示结尾。如<code>&#123;a$&#125;</code>，以a结尾。<br><strong>如果在正则表达式中同时使用^和$则要求字符串必须完全满足正则表达式。</strong></p>
 <p>比如创建一个用来检查字符串是否为合法手机号的正则表达式。规则：以1开头+第二位为3-9的任意数字+含第三位的九个任意数字。<code>^1[3-9][0-9]&#123;9&#125;$</code></p>
-<h3 id="邮件的正则"><a href="#邮件的正则" class="headerlink" title="邮件的正则"></a>邮件的正则</h3><p>例如<a href="mailto:&#104;&#101;&#x6c;&#x6c;&#x6f;&#x2e;&#x6e;&#x69;&#104;&#x61;&#111;&#64;&#x61;&#98;&#99;&#46;&#x63;&#111;&#x6d;&#46;&#99;&#110;">&#104;&#101;&#x6c;&#x6c;&#x6f;&#x2e;&#x6e;&#x69;&#104;&#x61;&#111;&#64;&#x61;&#98;&#99;&#46;&#x63;&#111;&#x6d;&#46;&#99;&#110;</a></p>
+<h3 id="邮件的正则"><a href="#邮件的正则" class="headerlink" title="邮件的正则"></a>邮件的正则</h3><p>例如<a href="mailto:&#104;&#x65;&#108;&#x6c;&#x6f;&#46;&#110;&#105;&#x68;&#x61;&#x6f;&#64;&#x61;&#98;&#99;&#46;&#99;&#x6f;&#x6d;&#46;&#99;&#110;">&#104;&#x65;&#108;&#x6c;&#x6f;&#46;&#110;&#105;&#x68;&#x61;&#x6f;&#64;&#x61;&#98;&#99;&#46;&#99;&#x6f;&#x6d;&#46;&#99;&#110;</a></p>
 <blockquote>
 <p>注意量词的使用！</p>
 </blockquote>
@@ -3785,8 +3789,8 @@ Vscode安装的扩展：Live Server；
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1646042781550')
-      volantis.js('/js/thirdparty/message.js?time=1646042781550', () => {
+      volantis.css('/css/message.css?time=1646129448352')
+      volantis.js('/js/thirdparty/message.js?time=1646129448352', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3831,8 +3835,8 @@ Vscode安装的扩展：Live Server；
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1646042781550')
-      volantis.js('/js/thirdparty/message.js?time=1646042781550', () => {
+      volantis.css('/css/message.css?time=1646129448352')
+      volantis.js('/js/thirdparty/message.js?time=1646129448352', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3891,8 +3895,8 @@ Vscode安装的扩展：Live Server；
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1646042781550')
-      volantis.js('/js/thirdparty/message.js?time=1646042781550', () => {
+      volantis.css('/css/message.css?time=1646129448352')
+      volantis.js('/js/thirdparty/message.js?time=1646129448352', () => {
         hideMessage(done);
       });
     } else {
@@ -4157,7 +4161,7 @@ Vscode安装的扩展：Live Server；
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1646042781550')
+    volantis.js('/js/plugins/rightMenu.js?time=1646129448352')
   </script>
 
 
@@ -4287,19 +4291,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1646042781550")
+        volantis.js("/js/plugins/sites.js?time=1646129448352")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1646042781550")
+        volantis.js("/js/plugins/friends.js?time=1646129448352")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1646042781550")
+        volantis.js("/js/plugins/contributors.js?time=1646129448352")
       }
     
   };
@@ -4371,7 +4375,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1646042781553')
+    await volantis.js('/js/plugins/aplayer.js?time=1646129448356')
     volantis.APlayerController.music = true;
   
   })();
@@ -4505,7 +4509,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1646042781550.js"></script>
+<script src="/js/app.js?time=1646129448352.js"></script>
 
 
 <!-- optional -->
@@ -4518,7 +4522,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1646042781550");
+    return volantis.js("/js/search/hexo.js?time=1646129448352");
   }
 
   function loadSearchService() {
@@ -4589,7 +4593,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4632,7 +4636,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1646042781550').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1646129448352').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
