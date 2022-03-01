@@ -867,10 +867,11 @@ new Vue({
 > 如果已经安装插件vetur，在.vue文件中输入```<v```再回车即可生成一套模板。
 
 给.vue文件的起名规则和组件名的那套规则一样（单个单词、多个单词）。
-下面是文件School.vue的示例：
+下面是文件 **School.vue** 的示例：
 ```vue
 <template>
-<!--组件的结构-->
+<!-- 组件的结构 -->
+<!-- template内必须有一个根标签<div> -->
   <div class="demo">
     <h2>学校名称:{{schoolName}}</h2>
     <h2>学校地址:{{address}}</h2>
@@ -904,7 +905,7 @@ new Vue({
 </style>
 ```
 
-一个必须有的.vue文件：App.vue。
+一个必须有的.vue文件：**App.vue**。
 ```vue
 <template>
   <div>
@@ -915,7 +916,7 @@ new Vue({
 
 <script>
   // 引入组件
-  import School from './School'  // 自行确定路径
+  import School from './School'  // 自行确定路径。这里的文件名可以省略拓展名.vue
   import Student from './Student'  
   
   export default { 
@@ -926,13 +927,50 @@ new Vue({
     }
   }
 </script>
+```
+ 
+同时所有的组件都被vm管理，那么应该在什么地方创建vm呢？上面的几个文件都是.vue文件，.vue文件中一定不会出现```new Vue```语句。
+创建与App.vue同级的文件 **main.js** 【入口文件】，一切的事从它开始 ：
+```javascript
+import App from './App.vue'
 
-<style>
-</style>
+new Vue({
+  el:'#root',  // 服务于哪个容器
+  template:`<App></App>`,
+  components:{App},   // 领头的组件是App 
+})
 ```
 
+上述代码中的#root容器则在 **index.html** 中存放，注意一定要先让模版出来再去引入main.js：
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>单文件组件的语法</title>
+</head>
+<body>
+  <!-- 注意下面语句的先后顺序！一定要先让模版出来再去引入main.js -->
+  <!-- 准备一个容器 -->
+  <div id="root"></div>
+  <script src="./js/vue.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
+``` 
 
+大致捋顺一下逻辑：
+要打开的是index.html，在index.html可以看到容器已经准备好（```<div id="root"></div>```），vue已经就位（```<script src="./js/vue.js"></script>```），这样就到了一切的开端：main.js，即入口文件(```<script src="./main.js"></script>```)。
 
+接下来进入main.js，main.js中首先进行的操作是引入App.vue(```import App from './App.vue'```)：
+进入App.vue，里面有结构（```<template>```），又引入了school、student（这两个组件也注册、使用了，没有问题）。在组件import的时候的时候就开始读取school.vue文件，这文件里的东西就被读取。再回到App.vue，在引入school的下一行又引入了student，执行类似的操作。这两行执行完之后再对这两个组件进行注册，随后对整个模版进行解析。
+
+结束后回到main.js，此时App已经import完毕，开始执行new Vue的操作。在new Vue的时候，由于之前在index.html中最先引入了vue.js，所以在main.js中自然可以new Vue；也引入了也注册了；组件标签也写了；服务于哪个容器也说了（#root）。
+
+这时候回到index.html，在root容器里面就已经出现了想要的东西。
+但这时直接打开index.html会报错，因为浏览器不能直接支持ES6的模块化语法。这实际是因为main.js的第一句import就出了问题：.vue文件浏览器不能直接运行。import语句浏览器也不认识。
+
+可以总结一下，随便打开一个普通组件的.vue，可以看到template里面写结构，script里面写脚本，这个脚本里面包含着给组件命名、配置数据、配置计算属性等等，style里面放的是样式。App组件则负责汇总所有组件。main.js创建vue实例并指明为哪个容器服务，index.html则是页面。
 
 ## 使用Vue-cli
 
