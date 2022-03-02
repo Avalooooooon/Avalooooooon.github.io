@@ -928,7 +928,7 @@ new Vue({
   }
 </script>
 ```
- 
+
 同时所有的组件都被vm管理，那么应该在什么地方创建vm呢？上面的几个文件都是.vue文件，.vue文件中一定不会出现```new Vue```语句。
 创建与App.vue同级的文件 **main.js** 【入口文件】，一切的事从它开始 ：
 ```javascript
@@ -957,7 +957,7 @@ new Vue({
   <script src="./main.js"></script>
 </body>
 </html>
-``` 
+```
 
 大致捋顺一下逻辑：
 要打开的是index.html，在index.html可以看到容器已经准备好（```<div id="root"></div>```），vue已经就位（```<script src="./js/vue.js"></script>```），这样就到了一切的开端：main.js，即入口文件(```<script src="./main.js"></script>```)。
@@ -972,12 +972,241 @@ new Vue({
 
 可以总结一下，随便打开一个普通组件的.vue，可以看到template里面写结构，script里面写脚本，这个脚本里面包含着给组件命名、配置数据、配置计算属性等等，style里面放的是样式。App组件则负责汇总所有组件。main.js创建vue实例并指明为哪个容器服务，index.html则是页面。
 
+### ref属性
+1. 被用来给元素或子组件注册引用信息（id的替代者）
+2. 应用在html标签上获取的是真实DOM元素，**应用在组件标签上是组件实例对象（vc）**
+3. 使用方式：
+  打标识：```<h1 ref="xxx">.....</h1>```或```<School ref=xxx"></School>```
+  获取：```this.$refs.xxx```
+
+### 配置项props
+功能：让组件接收外部传过来的数据
+1. 传递数据：```<Demo name="xxx"/>
+2. 接收数据:
+  + 第一种方式（只接收）：```props:['name']```
+  + 第二种方式（限制类型）：```props:{ name:String }```
+  + 第三种方式（限制类型、限制必要性、指定默认值）：```props:{ name:{type:String,required:true,default:'张三'}}```
+3. 备注：props是只读的，Vue底层会监测对props的修改。如果进行了修改，就会发出警告；若业务需求确实需要修改，需要复制props的内容到data中一份然后去修改data中的数据。
+
 ## 使用Vue-cli
+官网：https://cli.vuejs.org/zh/
+
+准备工作：配置npm淘宝镜像，```npm config set registry https://registry.npm.taobao.org```
+
+1. 第一步（仅第一次执行）：全局安装@vue/cli，```npm install -g @vue/cli```。
+   可以执行以下命令更新vue-cli：
+```bash
+npm uninstall -g vue-cli
+npm install -g @vue/cli
+```
+2. 第二步：<span style='color'>切换到要创建项目的目录</span>，然后使用命令创建项目：
+   执行```vue create vue_test```，vue_test处写自己想要创建的项目名。会弹出以下选项：
+   ![newcli1](newcli1.png)
+   上图为选择想要的vue版本（注意不是vuecli版本)。babel进行语法转换，作用是将写Vue用到的ES6代码转换为ES5。eslint的作用是对JS进行语法检查。
+3. 第三步：启动项目：
+  回车之后脚手架继续执行，完成后通过```cd vue_test```进入文件夹。通过```npm run serve  # 回车后开始编译代码```启动项目。
+
+完成后可以看到脚手架不仅做了翻译，还开启了一个内置的小服务器，端口在8080：```- Local:   http://localhost:8080/ ```。下一行```- Network: http://172.16.17.33:8080/```可以给同局域网内的同事使用，自己也可以使用。
+
+按ctrl+c可以停止工程。
+
+### 分析脚手架结构
+1. ./
+  + .gitignore：git忽略文件。其中是不被git管理的文件/文件夹。
+  + babel.config.js：babel配置文件。通常不需要进行配置，如实在需要可参考babel官网。
+  + package.json：任何符合npm规范的工程都会有package.json，是包的说明书，里面写了包的名称、版本、常用命令、依赖、库等等。
+    比如在命令中可以看到语句```"serve": "vue-cli-service serve"```，这说明当我们运行命令```npm run serve```时实际执行的是```vue-cli-service serve```。
+    serve命令在开发过程中使用，可以让它帮我们配置好服务器等等，也就是刚才的效果。
+    build命令可以在所有功能都写完后把它变成一个浏览器认识的东西，也就是最后一次编译。
+    lint命令很少用，其作用是把所有的JS和.vue文件都进行一次语法检查。少用是因为vscode本身就有很好的语法检查插件，而且开发的过程中通常都会关闭语法检查，只有在最后的时候才会打开一下看看有没有什么不合理的地方。
+  + package-lock.json：包版本控制文件。可以在其中查看各个包的版本、下载地址等，这保证了以后可以用最快的速度安装指定版本。lock可以理解成是锁死了包的版本号，在下载的时候就不会错误的下载成其他版本。
+2. ./src/
+  + main.js：【该文件是整个项目的入口文件】。执行完命令```npm run serve```后，就会直接运行main.js。
+    其中的```render: h => h(App)```完成的是把App组件放入容器中。render是渲染的意思。
+    注意它里面的```import Vue from 'vue'```引入的其实是残缺版的vue，这个残缺的没有模版解析器，所以只要在new Vue里一写template就会报错，所以需要借助render。（标签```<template>```不受影响）
+    可以command+'vue'打开文件来到node_modules/vue/types/index.d.ts，再打开其上层文件夹node_modules/vue的package.json，可以看到``` "module": "dist/vue.runtime.esm.js"```，这个vue.runtime.esm.js才是真正引入的那个vue文件。最原始的vue应该是node_modules/vue/dist/vue 。
+  + App.vue：【App组件是所有组件的父组件】。其中import其他所有组件，注意路径。
+  + ./scr/assets：存放静态资源。
+  + ./scr/components：【存放所有程序员写出的组件】。除了App.vue。
+
+3. ./public
+  + index.html：【整个应用的界面】。
+    语句```<meta http-equiv="X-UA-Compatible" content="IE=edge">```：针对IE的特殊配制，含义是让IE以最高的渲染级别渲染页面。
+    语句```<meta name="viewport" content="width=device-width,initial-scale=1.0">```：开启移动端的理想视口。
+    路径```<%= BASE_URL %>```：即public文件夹的路径。
+    标签```<noscript>```：如果浏览器支持JS，这个页面的东西就不会渲染。 
+    语句``` <div id="app"></div>```：容器。
+4. ./router
+  + 是自己新建的文件夹，存放路由。
+  + ./router/index.js：【创建整个应用的路由器】
+
+5. 几个不能改的文件/文件夹：
+  1. ./public文件夹，需要去这里面找index.html
+  2. ./public/favicon.ico
+  3. ./public/index.html
+  4. ./src文件夹，底层的默认配置需要
+  5. ./main.js
+6. 可选配置文件：vue.config.js，<span style="color:red">放在与package.json同级的的地方。</span>详情见：https://cli.vuejs.org/zh/config/
+  Vue脚手架隐藏了所有webpack相关的配置，若想查看具体的webpack配置，执行```vue inspect > output.js```。
+  这个文件修改之后需要重新```npm run serve```使其生效。
+    
+
+大致流程：执行完```npm run serve```，来到src文件夹找到main.js，该文件引入了vue引入了App。到引入App的这一行，来到App.vue，发现里面引入了School Student，就把这两个对应的.vue文件也执行了，再汇总到App里。回到main.js继续走，```render: h => h(App)```把App组件放入容器中，也就是到index.html中放到了容器``` <div id="app"></div>```里。
+
++ 关于不同版本的vue：
+  1.vue.js是完整版的Vue，包含核心功能+模版解析器
+  2.vue.runtime.xxx.js是运行版的Vue，只包含核心功能而不含模版解析器。
+  3.由于vue.runtime.xxx.js没有模版解析器，所以不能用template配置项，而需要使用render函数接收到的createElement函数去指定具体内容。
+
++ 关于main.js其中的```render: h => h(App)```：
+  这里的render实际上是一个函数，实际调用它的是vue，调用时传递的是```createElement```参数。这个函数可以创建具体的元素、传递具体的内容。它相当于```render(createElement){ return createElement('h1','HelloWorld!')}```。   
+  这个函数里没用到this就可以写成箭头函数：```render:(createElement)==>{ return createElement('h1','HelloWorld!')}```，这个箭头函数左边只有一个参数就可以省略这个参数旁边的小括号：```render:createElement==>{ return createElement('h1','HelloWorld!')}```，这个箭头函数只有一句函数体而且还需要return，顺便把createElement换成个短一些的h：```render:h==>h('h1','HelloWorld!')```。
+  到此时，h里面还传入了两个参数:```'h1','HelloWorld!'```，有两个是因为h1是html的内置元素，需要知道这个元素里的具体内容，就需要第二个参数。但如果用的是组件，具体内容都在组件里面，注意里面的App两侧没有引号。
 
 ## Vue中的ajax
 
 ## Vuex
 
 ## Vue-router
+> 2022.2.7以后，vue-router的默认版本为4版本，vue-router4只能在vue3中使用，vue-router3才能在vue2中使用。
+> 如果把vue-router4强行安装到vue2中则会报错。
+> 所以在vue2中安装vue-router3：```npm i vue-router@3```，在vue3中安装vue-router4则可以直接```npm i vue-router```。在哪个项目里用就在哪里开终端然后执行安装命令。
+> 在main.js中通过```import VueRouter from 'vue-router'```引入这个插件，并在下面```Vue.use(VueRouter)```应用插件。
+
+vue-router就是vue的一个插件库，专门用来实现SPA应用。
+
++ 如何理解SPA应用？
+  1. 单页Web应用（single page web application，SPA）
+  2. 整个应用只有<span style='color:red'>一个完整的页面</span>（index.html）
+  3. 点击页面中的导航连接<span style='color:red'>不会刷新</span>页面，只会做页面的<span style='color:red'>局部更新</span>
+  4. 数据需要通过ajax请求获取
+
++ 如何理解路由？
+  1. 路由就是<span style='color:red'>一组key-value的对应关系</span>，多个路由需要经过路由器的管理。
+  2. key为路径，value可能是function或component。
+
++ 路由分类：
+  1. 前端路由：value是component，用于展示页面内容。
+    工作过程：当浏览器的路径改变时，对应的组件就会显示。
+  2. 后端路由：value是function，用于处理客户端提交的请求。
+    工作过程：服务器接收到一个请求时，根据请求路径找到匹配的函数来处理请求，返回响应数据。
+
++ 基本使用
+  1. 安装vue-router：```npm i vue-router```
+  2. 应用插件：```Vue.use(VueRouter)```
+  3. 编写router配置项
+  4. 实现切换（active-class可以配置高亮样式）：```<router-link class="item" active-class="active" to="/about">这里是About</router-link>```
+  5. 指定展示位置：```<router-view></router-view>```
+
++ 几个注意点
+  1. 路由组件通常存放在pages文件夹，一般组件通常存放在components文件夹。
+  2. 通过切换，“隐藏”了的路由组件默认是被销毁的，需要的时候再去挂载。
+  3. 每个组件都有自己的$route属性，里面存储着自己的路由信息。
+  4. 整个应用只有一个router，可以通过组件的$router属性获取到。
+
+### 基本路由
+./router就是自己新建的文件夹，存放路由。./router/index.js：【创建整个应用的路由器】
+./router/index.js的一个示例：
+```javascript
+import VueRouter from 'vue-router'   // VueRouter可以当成一个构造函数去用
+import About from '../comopoents/About'
+
+// const router = new VueRouter({  // 创建一个路由器
+export default new VueRouter({  // 创建并暴露一个路由器
+  routes:[  // 里面写一组一组的路由，每一个都是一个配置对象（因为是key-value）
+    {  // 如果路径是/about，就去显示About组件。这里用到的组件得在上面import。
+      path:'/about',  //  也是浏览器地址栏后面追加的路径。
+      component:About  
+    },
+    { ... },
+  ]
+})
+```
+
+在main.js通过```import VueRouter from 'vue-router'```引入这个插件，通过```import router from './router'```引入路由器，并在下面```Vue.use(VueRouter)```应用插件。应用完之后，在new Vue中就可以使用配置项：**router**。下面是main.js的示例。
+```javascript
+import Vue from 'vue'
+import App from './App.vue'
+import VueRouter from 'vue-router'
+import router from './router'
+
+Vue.config.productionTip = false
+Vue.use(VueRouter)
+
+new Vue({
+  el:'#app',
+  render:h => h(App),
+  router:router
+})
+```
+此外，还需要在用到了路由切换的地方用标签```<router-link>```并在其中使用```to="目标路由"```、```active-class="选中样式"```等处理跳转部分的语句，比如```<router-link class="item" active-class="active" to="/about">这里是About</router-link>```。
+同时通过标签```<router-view>```指定组件的呈现位置。
+
+在实际网页上可以看到，使用```<a>```标签和```<router-link>```标签得到的结果完全相同，打开开发者工具就可以看到，实际上```<router-link>```也被转化成了```<a>```标签处理。
+### 嵌套（多级）路由
+1. 配置路由规则。使用children配置项：
+```javascript
+routes:[
+  {
+    path:'/about',
+    component:About,
+  },
+  {
+    path:'/home',
+    component:Home,
+    children:[  // 通过children配置子级路由
+      {
+        path:'news',  // 此处一定不要写"/news"！
+        component:News
+      },
+      {
+        path:'message',  // 此处一定不要写"/message"！
+        component:Message  
+      }
+    ]
+  }
+] 
+```
+2. 跳转（**要写完整路径**）：
+```<router-link to="/home/news">News</router-link>```
+
+
+### 路由传参(路由的query参数)
+1. 传递参数
+```javascript
+<!-- 跳转并携带query参数，to的字符串写法 -->
+<router-link :to="/home/message/detail?id=666&title=你好">跳转</router-link>
+
+<!-- 跳转并携带query参数，to的对象写法 -->
+<router-link 
+  :to="{
+    path:'/home/message/detail',
+    query:{
+      id=666,
+      title='你好'
+    }
+  }"
+>跳转</router-link>
+```
+2. 接收参数：
+```javascript
+$route.query.id
+$route.query.title
+```
+
+### 命名路由
+作用：简化路由跳转。
+如何使用：
+1. 给路由命名：
+```javascript
+
+```
+
+### 编程式路由导航
+
+
+
+
+
 
 ## Vue UI组件库
