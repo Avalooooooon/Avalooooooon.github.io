@@ -467,7 +467,7 @@ data:{
 + 需要注意的是， template只能配合```v-if```，不能配合```v-show```。
 
 ### 列表渲染
-+ v-for：加在谁身上就通过遍历的方式生成谁。
++ v-for：加在谁身上就通过遍历的方式生成谁。（有一堆谁就给谁加v-for）
   1. 用于展示列表数据
   2. 语法：```v-for="(item，index) in xxx" :key="yyy"```（in可以用of代替）（注意key是唯一的）
   3. 可遍历数组(p,index)、对象(value,key)、字符串(char,index)（用的很少，value是每个单个字符）、指定次数(number,index)（非常少见 ，）
@@ -671,19 +671,67 @@ v-pre：跳过其所在节点的编译过程。可利用它跳过没有使用指
   1. 指令定义时不加v-，但使用时要加v-；
   2. 指令名如果是多个单词，要使用kebab-case命名方式，不要使用camelCase命名。
 
-### 生命周期
-生命周期，又名生命周期回调函数、生命周期函数、生命周期钩子，是Vue在关键时刻帮我们调用的一些特殊名称的函数。生命周期函数的名字不可更改，但函数的具体内容是程序员根据需求编写的，生命周期函数中的this指向是vm或组建实例对象。
+### 插件
+用于增强Vue。本质是包含install方法的一个对象，install的第一个参数是Vue，第二个以后的参数是插件使用者传递的数据。
 
-常用的生命周期钩子：
-  1.mounted：发送ajax请求、启动定时器、绑定自定义事件、订阅消息等【初始化操作】
-  2.beforeDextroy：清除定时器、解绑自定义事件、取消订阅消息等【收尾工作】
+定义插件：
+```javascript
+对象.install = function(Vue,options){
+    // 1. 添加全局过滤器
+    Vue.filter(....)
+    
+    // 2. 添加全局指令
+    Vue.directive(....)
+    
+    // 3. 配置全局混入（混合）
+    Vue.mixin(....)
+    
+    // 4. 添加实例方法
+    Vue.prototype.$myMethod = function(){...}
+    Vue.prototype.$myProperty = xxxx
+} 
+```
+使用插件：```Vue.use()```
 
-关于销毁Vue实例：
-  1.销毁后借助vue开发者工具看不到任何信息。
-  2.销毁后自定义事件会失效，但原生DOM事件依然有效。
-  3.一般不会再beforeDextroy操作数据，因为即使操作数据也不会再触发更新流程了。
 
 ### 自定义插件
+
+## 生命周期
+> 在 http://www.atguigu.com/wp-content/uploads/2020/01/web20-1-2-2.png 查看生命周期图示。
+
+是Vue在关键时刻帮我们调用的一些特殊名称的函数。生命周期函数的名字不可更改，但函数的具体内容是程序员根据需求编写的。
+<span style='color:red'>生命周期函数中的this指向是vm 或 组建实例对象。</span>
+生命周期函数写在与methods配置项同级的地方。
+![生命周期](shengming1.png)
+![生命周期](shengming2.png)
+
+除了路由相关的那三个，一共有4对（8个）生命周期钩子。
+将要创建（数据监测、数据代理的创建）——```beforeCreate()```
+创建完毕——```created()```
+将要挂载——```beforeMount()```
+<span style='color:red'>挂载完毕</span>——```mounted()```
+将要更新——```beforeUpdate()```
+更新完毕——```updated()```
+<span style='color:red'>将要销毁</span>——```beforeDestroy()``` 
+销毁完毕——```destroyed()```
+### 挂载流程
+上面的第一张图即为挂载流程。
+
+### 更新流程
+![生命周期](shengmingupdate.png)
+
+### 销毁流程
+![生命周期](shengmingdestroy.png)
+关于销毁Vue实例：
+1.销毁后借助vue开发者工具看不到任何信息。
+2.销毁后 **自定义** 事件会失效，但 **原生** DOM事件依然有效。
+3.一般不会在beforeDextroy操作数据，因为即使操作数据也不会再触发更新流程了。
+
+### 常用的生命周期钩子
+1. mounted：Vue完成模板的解析并把 **初始的真实DOM元素** 放入页面（挂载完毕）后调用。在vm的工作过程中mounted只会被调用一次。
+    发送ajax请求、启动定时器、绑定自定义事件、订阅消息等【初始化操作】
+2. beforeDestroy：当```vm.$destroy()```调用时调用此生命周期函数（虽然很少调，让张三自鲨不太好）。此时，vm中所有的data、methods、指令等都处于可用状态，马上要执行销毁过程。但 **此时对数据的修改不会再触发更新。
+    清除定时器、解绑自定义事件、取消订阅消息等【收尾工作】
 
 
 ## Vue组件化
@@ -988,7 +1036,39 @@ new Vue({
   + 第三种方式（限制类型、限制必要性、指定默认值）：```props:{ name:{type:String,required:true,default:'张三'}}```
 3. 备注：props是只读的，Vue底层会监测对props的修改。如果进行了修改，就会发出警告；若业务需求确实需要修改，需要复制props的内容到data中一份然后去修改data中的数据。
 
+### 全局事件总线（GlobalEventBus）
+是一种组件间通信的方式，适用于任意组件间通信。
+
+1. 安装全局事件总线
+```javascript
+new Vue({
+    ......
+    beforeCreate(){
+        Vue.prototype.$bus = this  // 安装全局事件总线。$bus就是当前应用的vm。
+    },
+    ...
+})
+```
+2. 使用事件总线
+
+  1.接收数据：A组件想接收数据，就在A组件中给```$bus```绑定自定义事件，<span style='color'>事件的回调留在A组件自身</span>。
+```javascript
+  methods(){
+    demo(data){......}
+  }
+  ......
+  mounted(){
+    this.$bus.$on('xxxx',this.demo)
+  }
+```
+
+​                   2.提供数据：```this.$bus.$emit('xxxx',数据)```
+
+3. 最好在```beforeDestroy```钩子中，用```$off```去解绑<span style='color'>当前组件使用到的事件</span>。
+
+
 ## 使用Vue-cli
+
 官网：https://cli.vuejs.org/zh/
 
 准备工作：配置npm淘宝镜像，```npm config set registry https://registry.npm.taobao.org```
@@ -1049,7 +1129,7 @@ npm install -g @vue/cli
 6. 可选配置文件：vue.config.js，<span style="color:red">放在与package.json同级的的地方。</span>详情见：https://cli.vuejs.org/zh/config/
   Vue脚手架隐藏了所有webpack相关的配置，若想查看具体的webpack配置，执行```vue inspect > output.js```。
   这个文件修改之后需要重新```npm run serve```使其生效。
-    
+  
 
 大致流程：执行完```npm run serve```，来到src文件夹找到main.js，该文件引入了vue引入了App。到引入App的这一行，来到App.vue，发现里面引入了School Student，就把这两个对应的.vue文件也执行了，再汇总到App里。回到main.js继续走，```render: h => h(App)```把App组件放入容器中，也就是到index.html中放到了容器``` <div id="app"></div>```里。
 
@@ -1060,12 +1140,29 @@ npm install -g @vue/cli
 
 + 关于main.js其中的```render: h => h(App)```：
   这里的render实际上是一个函数，实际调用它的是vue，调用时传递的是```createElement```参数。这个函数可以创建具体的元素、传递具体的内容。它相当于```render(createElement){ return createElement('h1','HelloWorld!')}```。   
-  这个函数里没用到this就可以写成箭头函数：```render:(createElement)==>{ return createElement('h1','HelloWorld!')}```，这个箭头函数左边只有一个参数就可以省略这个参数旁边的小括号：```render:createElement==>{ return createElement('h1','HelloWorld!')}```，这个箭头函数只有一句函数体而且还需要return，顺便把createElement换成个短一些的h：```render:h==>h('h1','HelloWorld!')```。
+  这个函数里没用到this就可以写成箭头函数：```render:(createElement)=>{ return createElement('h1','HelloWorld!')}```，这个箭头函数左边只有一个参数就可以省略这个参数旁边的小括号：```render:createElement=>{ return createElement('h1','HelloWorld!')}```，这个箭头函数只有一句函数体而且还需要return，顺便把createElement换成个短一些的h：```render:h=>h('h1','HelloWorld!')```。
   到此时，h里面还传入了两个参数:```'h1','HelloWorld!'```，有两个是因为h1是html的内置元素，需要知道这个元素里的具体内容，就需要第二个参数。但如果用的是组件，具体内容都在组件里面，注意里面的App两侧没有引号。
 
 ## Vue中的ajax
 
+
+
+
+
+
+
 ## Vuex
+> github地址：https://github.com/vuejs/vuex
+
+专门在Vue实现 **集中式** 状态（数据）管理的一个Vue **插件** （通过Vue.use(Vuex)的方式使用)，对Vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。
+
+什么时候使用Vuex：1.多个组件依赖于同一状态时。   2.来自不同组件的行为需要变更同一状态时。
+
+
+
+
+
+
 
 ## Vue-router
 > 2022.2.7以后，vue-router的默认版本为4版本，vue-router4只能在vue3中使用，vue-router3才能在vue2中使用。
@@ -1076,19 +1173,19 @@ npm install -g @vue/cli
 vue-router就是vue的一个插件库，专门用来实现SPA应用。
 
 + 如何理解SPA应用？
-  1. 单页Web应用（single page web application，SPA）
-  2. 整个应用只有<span style='color:red'>一个完整的页面</span>（index.html）
-  3. 点击页面中的导航连接<span style='color:red'>不会刷新</span>页面，只会做页面的<span style='color:red'>局部更新</span>
-  4. 数据需要通过ajax请求获取
+    1. 单页Web应用（single page web application，SPA）
+    2. 整个应用只有<span style='color:red'>一个完整的页面</span>（index.html）
+    3. 点击页面中的导航连接<span style='color:red'>不会刷新</span>页面，只会做页面的<span style='color:red'>局部更新</span>
+    4. 数据需要通过ajax请求获取
 
 + 如何理解路由？
-  1. 路由就是<span style='color:red'>一组key-value的对应关系</span>，多个路由需要经过路由器的管理。
-  2. key为路径，value可能是function或component。
+    1. 路由就是<span style='color:red'>一组key-value的对应关系</span>，多个路由需要经过路由器的管理。
+    2. key为路径，value可能是function或component。
 
 + 路由分类：
-  1. 前端路由：value是component，用于展示页面内容。
+    1. 前端路由：value是component，用于展示页面内容。
     工作过程：当浏览器的路径改变时，对应的组件就会显示。
-  2. 后端路由：value是function，用于处理客户端提交的请求。
+    2. 后端路由：value是function，用于处理客户端提交的请求。
     工作过程：服务器接收到一个请求时，根据请求路径找到匹配的函数来处理请求，返回响应数据。
 
 + 基本使用
@@ -1099,9 +1196,9 @@ vue-router就是vue的一个插件库，专门用来实现SPA应用。
   5. 指定展示位置：```<router-view></router-view>```
 
 + 几个注意点
-  1. 路由组件通常存放在pages文件夹，一般组件通常存放在components文件夹。
+  1. 路由组件通常存放在pages文件夹，一般组件通常存放在components文件夹。(这两个文件夹同级，都在src里)
   2. 通过切换，“隐藏”了的路由组件默认是被销毁的，需要的时候再去挂载。
-  3. 每个组件都有自己的$route属性，里面存储着自己的路由信息。
+  3. 每个组件都有自己的$route属性，存储着这个组件自己的路由信息。里面有path、query等。
   4. 整个应用只有一个router，可以通过组件的$router属性获取到。
 
 ### 基本路由
@@ -1109,7 +1206,7 @@ vue-router就是vue的一个插件库，专门用来实现SPA应用。
 ./router/index.js的一个示例：
 ```javascript
 import VueRouter from 'vue-router'   // VueRouter可以当成一个构造函数去用
-import About from '../comopoents/About'
+import About from '../pages/About'
 
 // const router = new VueRouter({  // 创建一个路由器
 export default new VueRouter({  // 创建并暴露一个路由器
@@ -1144,7 +1241,7 @@ new Vue({
 
 在实际网页上可以看到，使用```<a>```标签和```<router-link>```标签得到的结果完全相同，打开开发者工具就可以看到，实际上```<router-link>```也被转化成了```<a>```标签处理。
 ### 嵌套（多级）路由
-1. 配置路由规则。使用children配置项：
+1. 配置路由规则。使用 **children配置项**。注意 **子路由的path不要加斜杠**：
 ```javascript
 routes:[
   {
@@ -1170,37 +1267,126 @@ routes:[
 2. 跳转（**要写完整路径**）：
 ```<router-link to="/home/news">News</router-link>```
 
+### 路由传参
+#### 路由的query参数
+通过路径后添加问号的方式携带参数，多组key-value之间用```&```分隔。
 
-### 路由传参(路由的query参数)
 1. 传递参数
-```javascript
+注意router-link里的<span style='color:red>'```to```前面要加冒号！</span>否则就会把里面传的东西全当字符串处理。
+在使用to的字符串写法时，加了冒号就会把双引号内的东西当作JS去解析，但是还需要一个模板字符串标志"` `"括起来。此外，模板字符串里面混入的JS变量需要用```${xxx}```括起来。
+```html
 <!-- 跳转并携带query参数，to的字符串写法 -->
-<router-link :to="/home/message/detail?id=666&title=你好">跳转</router-link>
+<router-link :to="`/home/message/detail?id=${m.id}&title=${m.title}`">显示{{m.title}}</router-link>
 
 <!-- 跳转并携带query参数，to的对象写法 -->
 <router-link 
   :to="{
     path:'/home/message/detail',
     query:{
-      id=666,
-      title='你好'
+      id:m.id,
+      title:m.title
     }
   }"
 >跳转</router-link>
 ```
 2. 接收参数：
+  每个组件自己的$route属性存储着这个组件的路由信息。里面有path、query、params等。
 ```javascript
-$route.query.id
-$route.query.title
+$route.query.id  
+$route.query.title  // id和title就是传的参数
+```
+
+#### 路由的params参数
+1. 配置路由，一定要使用**占位符**声明接收params参数。
+```javascript
+children:[  
+      {
+        name:'xiangqing'
+        path:'detail/:id/:title',  // 使用占位符声明接收params参数
+        component:News
+      }
+    ]
+```
+2. 传递参数
+注意，在使用to的对象写法传递参数时<span style='color:red'>一定不能用path配置项，必须用name配置项！</span>而且在配置路由时也得配置name。
+```html
+<!-- 跳转并携带params参数，to的字符串写法 -->
+<router-link :to="`/home/message/detail/${m.id}/${m.title}`">显示{{m.title}}</router-link>
+
+<!-- 跳转并携带params参数，to的对象写法 -->
+<router-link 
+  :to="{
+    name:'xiangqing'
+    params:{
+      id:m.id,
+      title:m.title
+    }
+  }"
+>跳转</router-link>
+```
+3. 接收参数：
+每个组件自己的$route属性存储着这个组件的路由信息。里面有path、query、params等。
+```javascript
+$route.params.id  
+$route.params.title  // id和title就是传的参数
 ```
 
 ### 命名路由
 作用：简化路由跳转。
 如何使用：
-1. 给路由命名：
+1. 给路由命名：给谁命名就在谁的配置项里加一个```name:'xxx'```。
 ```javascript
-
+routes:[  
+    { 
+      name:'guanyu',
+      path:'/about',  
+      component:About  
+    },
+    { ... },
+  ]
 ```
+2. 简化跳转：简化前，需要写完整的路径；简化后，直接通过名字跳转。注意to前面需要加冒号。而且其内部要写成对象形式。
+```html
+<router-link to="/About">简化前的跳转到about</router-link>
+<router-link :to="{name:'guanyu'}">简化后的跳转到about</router-link>
+```
+
+### 路由的props配置项
+作用：让路由组件更方便的收到参数。
+在router/index.js里，哪个路由接收东西就在谁里面写props配置项。写法如下：
+
++ 第一种写法（很少）：props值为对象，该对象中所有的key-value的组合最终都会以props的形式，通过props传给Detail组件。
+    index.js中的配置：```props:{a:900,b:'hello'}```，Detail.vue中的接收，注意使用字符串：```props:['a','b']```，Detail.vue的template中的使用：```a:{{a}}```。
+    缺点：传递的都是写死的数据。
++ 第二种写法：props值为布尔值，若布尔值为true，则把路由收到的所有 **params参数** 以props的形式通过props传给Detail组件。
+    index.js中的配置：```props:true```，Detail.vue中的接收，注意使用字符串：```props:['id','title']```，Detail.vue的template中的使用：```id:{{id}}```。
+    缺点：不能传递query类型的参数。
++ 第三种写法：props值为函数，该函数返回的对象中每一组key-value都会以props的形式通过props传给Detail组件。写法如下例所示：
+```javascript
+{
+    name:'xiangqing',
+    path:'datial/:id',
+    component:Detail,
+    
+    props(route){
+        return {
+            id:route.query.id,
+            title:route.query.title
+        }
+    }
+}
+```
+上面的props配置项也可以使用解构赋值/解构赋值的连续写法：
+```javascript
+props({query}){
+    return { id:query.id, title:query.title }
+}
+
+props({query:{id,title}}){
+    return { id, title }
+}
+```
+
 
 ### 编程式路由导航
 
@@ -1209,4 +1395,56 @@ $route.query.title
 
 
 
-## Vue UI组件库
+## Element UI
+一个基于Vue框架的PC端UI组件库。官网：https://element.eleme.cn/#/zh-CN 。
+
+需要注意的是，如果使用了下面两行代码：
+```javascript
+import 'element-ui/lib/theme-chalk/index.css';  // ElementUI所有样式全部被引入了
+Vue.use(ElementUI);  // ElementUI所有组件全部被注册了
+```
+实际上是引入了所有的样式和所有的组件，则会使"chuknk-vendor.js"文件的体积过大（可以在浏览器的Network中查看）。
+此外，```import 'element-ui/lib/theme-chalk/index.css';```中的```index.css```也是全部的样式。
+
++ 借助```babel-plugin-component```按需引入组件
+    + 参考Element UI官网 https://element.eleme.cn/#/zh-CN/component/quickstart 中的“按需引入”。
+    + 修改对应的babel文件
+    + 在```main.js```按需引入，注意引入时的首字母参照官网上已经给出的格式即单词首字母大写，形如```import { Button,Row,DatePicker } from 'element-ui'```；还需要在```main.js```全局注册组件，如```Vue.component(Button.name, Button);```，或写为```Vue.use(Button)```。```Button.name```其实就是```<el-button>```，可以把```Button.name```修改为自己想要的名字然后把对应的html标签名也对应的修改掉。
+    + 不需要在```main.js```引入样式，脚手架会自动帮我们处理。
+    
+    > 注意，使用最新版本的vue-cli生成的工程文件夹中没有文件```.babelrc```，而是```babel.config.js```。
+    > 修改时也应注意细节，比如"plugins"和“presets”同级。
+
+一个修改后的```babel.config.js```文件示例，注意第四行需要把官网写的```"es2015"```替换为```"@babel/preset-env"```：
+```javascript
+module.exports = {
+  presets: [
+    '@vue/cli-plugin-babel/preset',
+    ["@babel/preset-env", { "modules": false }]
+  ],
+  plugins: [
+    [
+      "component",
+      {
+        "libraryName": "element-ui",
+        "styleLibraryName": "theme-chalk"
+      }
+    ]
+  ]
+}
+```
+
+### 可能存在的问题
++ 按需引入时错误```xxx not found```解决：这可能是因为脚手架已经更新但UI官网还没有更新。根据报错提示安装对应的包```npm i xxx```即可。
++ 错误```Cannot find module '@babel-preset-env/babel-preset'```解决：换成```['@babel/env', { modules: false }]```。
+
+
+
+
+
+
+
+
+
+
+
