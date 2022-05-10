@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/5.0.0-alpha.5'>
-  <meta name="generator" content="Hexo 5.4.0">
+  <meta name="generator" content="Hexo 6.0.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
@@ -20,7 +20,7 @@
   <meta content="一之碎片" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1646144217383" as="style">
+  <link rel="preload" href="/css/style.css" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -1778,8 +1778,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1646144217383" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1646144217383"></noscript>
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2943,10 +2943,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h3 id="安装和切换node版本"><a href="#安装和切换node版本" class="headerlink" title="安装和切换node版本"></a>安装和切换node版本</h3><p>可能要求权限，在命令前加<code>sudo</code>即可。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出所有node版本</span></span><br><span class="line">n ls </span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装某个版本</span></span><br><span class="line">n xx.xx.x (版本号)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换node版本(通过上下键盘加回车选择)</span></span><br><span class="line">n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除某个版本</span></span><br><span class="line">n rm xx.xx.x</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用某个版本来运行脚本</span></span><br><span class="line">n use xx.xx.x a.js</span><br></pre></td></tr></table></figure>
 
-</div><h2 id="Windows-macOS：使用-nvs-版本管理工具"><a href="#Windows-macOS：使用-nvs-版本管理工具" class="headerlink" title="Windows/macOS：使用 nvs 版本管理工具"></a>Windows/macOS：使用 nvs 版本管理工具</h2><div class="story post-story"><h3 id="安装nvs"><a href="#安装nvs" class="headerlink" title="安装nvs"></a>安装nvs</h3><blockquote>
+</div><h2 id="Windows-x2F-macOS：使用-nvs-版本管理工具"><a href="#Windows-x2F-macOS：使用-nvs-版本管理工具" class="headerlink" title="Windows&#x2F;macOS：使用 nvs 版本管理工具"></a>Windows&#x2F;macOS：使用 nvs 版本管理工具</h2><div class="story post-story"><h3 id="安装nvs"><a href="#安装nvs" class="headerlink" title="安装nvs"></a>安装nvs</h3><blockquote>
 <p>nvs的设置参考<a target="_blank" rel="noopener" href="https://github.com/jasongin/nvs/blob/master/doc/SETUP.md#manual-setup---command-prompt">官方说明</a></p>
 </blockquote>
-<p>在<a target="_blank" rel="noopener" href="https://github.com/jasongin/nvs/releases">nvs/releases</a> 下载最新版本的 nvs.msi，双击安装。<br>添加环境变量：</p>
+<p>在<a target="_blank" rel="noopener" href="https://github.com/jasongin/nvs/releases">nvs&#x2F;releases</a> 下载最新版本的 nvs.msi，双击安装。<br>添加环境变量：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NVS_HOME=%LOCALAPPDATA%\nvs</span><br></pre></td></tr></table></figure>
 <p>下面是一些基本命令。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化并使用 NVS</span></span><br><span class="line">nvs install	</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从 profile 和 environment 中移除 NVS</span></span><br><span class="line">nvs uninstall	</span><br><span class="line"></span><br><span class="line"><span class="comment"># 展示 NVS 版本</span></span><br><span class="line">nvs --version	</span><br></pre></td></tr></table></figure>
@@ -2975,10 +2975,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h3 id="VS-Code-支持nvs"><a href="#VS-Code-支持nvs" class="headerlink" title="VS Code 支持nvs"></a>VS Code 支持nvs</h3><blockquote>
 <p>这部分参考<a target="_blank" rel="noopener" href="https://gitee.com/wsz7777/nvs/blob/gitee/doc/VSCODE.md">官方说明</a></p>
 </blockquote>
-<p>VS Code可以使用 NVS 选择启动或调试时要使用的 Node.js 版本。在launch.json（位于项目根目录的.vscode文件夹中）添加一个“runtimeArgs”属性，该属性包含一个NVS可识别的版本字符串，以及一个“runtimeExecutable”属性，该属性指向nvs.cmd（Windows）或nvs（Mac, Linux）。<br>对于多平台开发，可以为每个平台自定义配置。如果 NVS 不在 VS Code 的 PATH 环境变量中，则可能需要指定一个绝对路径，例如”${env:HOME}/.nvs/nvs”)<br>配置示例：配置launch.json，以便VS Code使用NVS启动节点版本6.10：</p>
+<p>VS Code可以使用 NVS 选择启动或调试时要使用的 Node.js 版本。在launch.json（位于项目根目录的.vscode文件夹中）添加一个“runtimeArgs”属性，该属性包含一个NVS可识别的版本字符串，以及一个“runtimeExecutable”属性，该属性指向nvs.cmd（Windows）或nvs（Mac, Linux）。<br>对于多平台开发，可以为每个平台自定义配置。如果 NVS 不在 VS Code 的 PATH 环境变量中，则可能需要指定一个绝对路径，例如”${env:HOME}&#x2F;.nvs&#x2F;nvs”)<br>配置示例：配置launch.json，以便VS Code使用NVS启动节点版本6.10：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;configurations&quot;</span>: [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Launch Program&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;program&quot;</span>: <span class="string">&quot;$&#123;file&#125;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;args&quot;</span>: [ ],</span><br><span class="line">    <span class="attr">&quot;runtimeArgs&quot;</span>: [ <span class="string">&quot;6.10&quot;</span> ],</span><br><span class="line">    <span class="attr">&quot;windows&quot;</span>: &#123; <span class="attr">&quot;runtimeExecutable&quot;</span>: <span class="string">&quot;nvs.cmd&quot;</span> &#125;,</span><br><span class="line">    <span class="attr">&quot;osx&quot;</span>: &#123; <span class="attr">&quot;runtimeExecutable&quot;</span>: <span class="string">&quot;nvs&quot;</span> &#125;,</span><br><span class="line">    <span class="attr">&quot;linux&quot;</span>: &#123; <span class="attr">&quot;runtimeExecutable&quot;</span>: <span class="string">&quot;nvs&quot;</span> &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
-<p>“runtimeArgs”中的NVS版本字符串值由完整或部分语义版本号或版本标签（“lts”、“latest”、“Argon”等）组成，可选前跟远程名称，可选后跟处理器架构或位数（“x86”、“x64”、“32”、“64”），用斜杠分隔。当部分版本与多个可用版本匹配时，会自动选择最新版本。示例：“节点/lts”、“4.6.0”、“6/x86”、“节点/6.7/x64”。NVS别名也可以代替版本字符串。</p>
+<p>“runtimeArgs”中的NVS版本字符串值由完整或部分语义版本号或版本标签（“lts”、“latest”、“Argon”等）组成，可选前跟远程名称，可选后跟处理器架构或位数（“x86”、“x64”、“32”、“64”），用斜杠分隔。当部分版本与多个可用版本匹配时，会自动选择最新版本。示例：“节点&#x2F;lts”、“4.6.0”、“6&#x2F;x86”、“节点&#x2F;6.7&#x2F;x64”。NVS别名也可以代替版本字符串。</p>
 <p>或者”runtimeArgs”中的版本字符串可能会被省略（相当于“auto”），在这种情况下，NVS搜索项目目录或父目录中最近的.node-version文件。如果找到，则下载（如有必要）并启动文件中指定的版本。如果没有找到.node-version文件，则将启动默认（链接）版本（如果有的话）。</p>
 <p>当不将自动模式与.node-version文件一起使用时，launch.json中指定的节点版本必须已经使用nvs add命令下载。否则，启动将失败，NVS打印错误信息“未找到指定版本”。 </p>
 <p>有关更多详细信息，请参见<a target="_blank" rel="noopener" href="https://gitee.com/wsz7777/nvs/blob/gitee/doc/VSCODE.md">NVS VS Code文档</a>。或者执行命令<code>nvs help vscode</code>。</p>
@@ -3108,10 +3108,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <p class='content'>
 
 官方文档
-  VS Code下 cmake 配置C++环境（windows）
+VS Code下 cmake 配置C++环境（windows）
 
 
-下载 Mingw-w64下载MinGW-w64 - for 32 and 64 bit Windows。往下...</p>
+下载 Mingw-w64下载MinGW-w64 - for 32 and 64 bit Windows。往下翻一...</p>
         </a>
       
       
@@ -3171,7 +3171,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#macOS%EF%BC%9A%E4%BD%BF%E7%94%A8-n-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">1.</span> <span class="toc-text">macOS：使用 n 版本管理工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5node%E5%8F%8Anpm%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.</span> <span class="toc-text">检查node及npm环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97n"><span class="toc-number">1.2.</span> <span class="toc-text">安装node版本管理模块n</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2node%E7%89%88%E6%9C%AC"><span class="toc-number">1.3.</span> <span class="toc-text">安装和切换node版本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows-macOS%EF%BC%9A%E4%BD%BF%E7%94%A8-nvs-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">Windows&#x2F;macOS：使用 nvs 版本管理工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85nvs"><span class="toc-number">2.1.</span> <span class="toc-text">安装nvs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%95%9C%E5%83%8F%E5%9C%B0%E5%9D%80"><span class="toc-number">2.2.</span> <span class="toc-text">配置镜像地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2node%E7%89%88%E6%9C%AC-1"><span class="toc-number">2.3.</span> <span class="toc-text">安装和切换node版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E7%9B%AE%E5%BD%95%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2%E7%89%88%E6%9C%AC"><span class="toc-number">2.4.</span> <span class="toc-text">根据目录自动切换版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VS-Code-%E6%94%AF%E6%8C%81nvs"><span class="toc-number">2.5.</span> <span class="toc-text">VS Code 支持nvs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows%EF%BC%9A%E4%BD%BF%E7%94%A8-nvm-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">Windows：使用 nvm 版本管理工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Bnvm%E7%89%88%E6%9C%AC"><span class="toc-number">3.1.</span> <span class="toc-text">查看nvm版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2node%E7%89%88%E6%9C%AC-2"><span class="toc-number">3.2.</span> <span class="toc-text">安装和切换node版本</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#macOS%EF%BC%9A%E4%BD%BF%E7%94%A8-n-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">1.</span> <span class="toc-text">macOS：使用 n 版本管理工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5node%E5%8F%8Anpm%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.</span> <span class="toc-text">检查node及npm环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97n"><span class="toc-number">1.2.</span> <span class="toc-text">安装node版本管理模块n</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2node%E7%89%88%E6%9C%AC"><span class="toc-number">1.3.</span> <span class="toc-text">安装和切换node版本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows-x2F-macOS%EF%BC%9A%E4%BD%BF%E7%94%A8-nvs-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">Windows&#x2F;macOS：使用 nvs 版本管理工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85nvs"><span class="toc-number">2.1.</span> <span class="toc-text">安装nvs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%95%9C%E5%83%8F%E5%9C%B0%E5%9D%80"><span class="toc-number">2.2.</span> <span class="toc-text">配置镜像地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2node%E7%89%88%E6%9C%AC-1"><span class="toc-number">2.3.</span> <span class="toc-text">安装和切换node版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E7%9B%AE%E5%BD%95%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2%E7%89%88%E6%9C%AC"><span class="toc-number">2.4.</span> <span class="toc-text">根据目录自动切换版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VS-Code-%E6%94%AF%E6%8C%81nvs"><span class="toc-number">2.5.</span> <span class="toc-text">VS Code 支持nvs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows%EF%BC%9A%E4%BD%BF%E7%94%A8-nvm-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">Windows：使用 nvm 版本管理工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Bnvm%E7%89%88%E6%9C%AC"><span class="toc-number">3.1.</span> <span class="toc-text">查看nvm版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2node%E7%89%88%E6%9C%AC-2"><span class="toc-number">3.2.</span> <span class="toc-text">安装和切换node版本</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3389,8 +3389,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1646144217383')
-      volantis.js('/js/thirdparty/message.js?time=1646144217383', () => {
+      volantis.css('/css/message.css?time=1652153490105')
+      volantis.js('https://cdn.jsdelivr.net/npm/hexo-theme-volantis@5.0.0-alpha.5/source/js/thirdparty/message.js?time=1652153490105', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3435,8 +3435,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1646144217383')
-      volantis.js('/js/thirdparty/message.js?time=1646144217383', () => {
+      volantis.css('/css/message.css?time=1652153490105')
+      volantis.js('https://cdn.jsdelivr.net/npm/hexo-theme-volantis@5.0.0-alpha.5/source/js/thirdparty/message.js?time=1652153490105', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3495,8 +3495,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1646144217383')
-      volantis.js('/js/thirdparty/message.js?time=1646144217383', () => {
+      volantis.css('/css/message.css?time=1652153490105')
+      volantis.js('https://cdn.jsdelivr.net/npm/hexo-theme-volantis@5.0.0-alpha.5/source/js/thirdparty/message.js?time=1652153490105', () => {
         hideMessage(done);
       });
     } else {
@@ -3761,7 +3761,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1646144217383')
+    volantis.js('https://cdn.jsdelivr.net/npm/hexo-theme-volantis@5.0.0-alpha.5/source/js/plugins/rightMenu.js?time=1652153490105')
   </script>
 
 
@@ -3891,19 +3891,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1646144217383")
+        volantis.js("https://cdn.jsdelivr.net/npm/hexo-theme-volantis@5.0.0-alpha.5/source/js/plugins/sites.js?time=1652153490105")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1646144217383")
+        volantis.js("https://cdn.jsdelivr.net/npm/hexo-theme-volantis@5.0.0-alpha.5/source/js/plugins/friends.js?time=1652153490105")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1646144217383")
+        volantis.js("https://cdn.jsdelivr.net/npm/hexo-theme-volantis@5.0.0-alpha.5/source/js/plugins/contributors.js?time=1652153490105")
       }
     
   };
@@ -3975,7 +3975,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1646144217385')
+    await volantis.js('https://cdn.jsdelivr.net/npm/hexo-theme-volantis@5.0.0-alpha.5/source/js/plugins/aplayer.js?time=1652153490107')
     volantis.APlayerController.music = true;
   
   })();
@@ -4109,7 +4109,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1646144217383.js"></script>
+<script src="/js/app.js"></script>
 
 
 <!-- optional -->
@@ -4122,7 +4122,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1646144217383");
+    return volantis.js("https://cdn.jsdelivr.net/npm/hexo-theme-volantis@5.0.0-alpha.5/source/js/search/hexo.js?time=1652153490105");
   }
 
   function loadSearchService() {
@@ -4193,7 +4193,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4236,7 +4236,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1646144217383').then(()=>{
+    volantis.js('https://cdn.jsdelivr.net/npm/hexo-theme-volantis@5.0.0-alpha.5/source/js/plugins/parallax.js?time=1652153490105').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
