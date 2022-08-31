@@ -3,19 +3,19 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 一之碎片
-subtitle: '「宠辱不惊 相由心生」' #title下面的一行字
-description: '前端 杂谈'
+title: 一之碎片  #网站标题
+subtitle: '「宠辱不惊 相由心生」' #title下面的一行字（网站副标题）
+description: '前端 杂谈' #主要用于SEO，告诉搜索引擎一个关于本站点的简单描述。通常建议在其中包含网站的关键词
 keywords: 前端 macOS python 网络 
-author: 一之碎片
-language: zh-CN
-timezone: 'Asia/Shanghai'
+author: 一之碎片 #用于主题显示文章作者
+language: zh-CN  #网站语言
+timezone: 'Asia/Shanghai' #网站时区。Hexo 默认使用您脑的时区。比如：America/New_York, Japan, 和 UTC
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://avalooooooon.github.io
-permalink: :year/:month/:day/:title/
-permalink_defaults:
+url: https://avalooooooon.github.io   #这个网站域名
+permalink: :year/:month/:day/:title/  #文章的永久链接格式
+permalink_defaults: 一之碎片       #用于主题显示文章的作者
 pretty_urls:
   trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
   trailing_html: false # Set to false to remove trailing '.html' from permalinks

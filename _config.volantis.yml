@@ -16,7 +16,7 @@ default:
 #
 ############################### Custom css ############################### > start
 custom_css:
-  cursor:
+  cursor:   # 自定义光标样式
     enable: true
     text: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/text.png
     pointer: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/pointer.png
@@ -27,19 +27,19 @@ custom_css:
     grab: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/openhand.png
   font_smoothing: true # font-smoothing for webkit
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
-  scrollbar: 
+  scrollbar:    # 滚动条样式
     size: 5px
     border: 3px
     color: '#2196f3'  # 蓝
     hover: '#ff5722'  # 橘红
-  navbar:
+  navbar:   # 导航栏的高度以及视觉特效
     height: 64px
     width: auto # auto, max
     effect: [shadow, blur, floatable] # [shadow, floatable, blur]
-  sidebar:
-    effect: [shadow, blur] # [shadow, floatable, blur]
-  body:
-    effect: [shadow, blur] # [shadow, floatable, blur]
+  sidebar:   # 侧边栏样式
+    effect: [shadow, floatable] # [shadow, floatable, blur]
+  body:   # 正文区域样式
+    effect: [shadow, floatable] # [shadow, floatable, blur]
     highlight:
       language: true # show language of codeblock
       grayscale: true # Enable grayscale effect
@@ -192,54 +192,117 @@ color_scheme:
     brightness: 70%
 ############################### Color Scheme ############################### > end
 
-############################### Rightmenu ############################### > start
+############################### Rightmenu（新版本） ############################### > start
 # 自定义右键菜单
-rightmenu:
+rightmenus:
   enable: true
-  faicon: fa              # 公共图标类型 fa fal fas fad
-  # hr: 分割线, music: 音乐控制器
-  layout: [home, hr, help, examples, contributors, hr, source_docs, source_theme, hr, print, darkmode, reading, music]
-  ### 可选功能项 ###
-  print:                  # 只有文章页才允许自定义打印
-    name: 打印页面
-    icon: fa fa-print
-    defaultStyles: true   # 是否使用预制的打印样式
-    # js:                 # 自定义 js ，可用于修饰打印样式~， 右键剔除了对 Jquery 的依赖，所以此处你只能使用原生 js
-    #  - document.querySelector('article#comments').remove()  # 移除评论
-  darkmode:        # 需开启 plugins.darkmodejs
-    name: 暗黑模式
-    icon: fa fa-moon
-  reading:
-    name: 阅读模式
-    icon: fa fa-book-open
-  customPicUrl:    # 右键的图片复制：只有 Chrome 支持，且只支持 PNG 格式的图片。
-    enable: false  # 如果使用了对象存储且开启了自适应 Webp，那么可以提供额外的链接用以替换图片的访问地址
-    old: #https://static.inkss.cn/img/article/
-    new: #https://cdn.jsdelivr.net/gh/inkss/inkss-cdn@master/img/article/
-  music:           # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
-    alwaysShow: true
-  ### 自定义菜单 ###
-  help:
-    name: 常见问题
-    icon: fa fa-question
-    url: https://volantis.js.org/faqs/
-  examples:
-    name: 示例博客
-    icon: fa fa-rss
-    url: https://volantis.js.org/examples/
-  contributors:
-    name: 加入社区
-    icon: fa fa-fan fa-spin
-    url: https://volantis.js.org/contributors/
-  source_docs:
-    name: 本站源码
-    icon: fa fa-code-branch
-    url: https://github.com/volantis-x/volantis-docs/
-  source_theme:
-    name: 主题源码
-    icon: fa fa-code-branch
-    url: https://github.com/volantis-x/hexo-theme-volantis/
-############################### Rightmenu ############################### > end
+  order:
+    - plugins.navigation  
+    - hr
+    - plugins.inputBox
+    - plugins.seletctText
+    - plugins.elementCheck
+    - plugins.elementImage
+    - hr
+    - menus.prevNext
+    - hr
+    - menus.links
+    - hr
+    - menus.darkMode
+    - hr
+    - plugins.articlePage
+    - hr
+    - music
+  options:
+    iconPrefix: fa-duotone PETERRIVE
+    articleShowLink: true
+  plugins:
+    navigation: 
+      - {id: 'left', name: '转到上一页', icon: 'fa-duotone fa-arrow-left PETERRIVE', event: 'history.back()', group: 'navigation'}
+      - {id: 'right', name: '转到下一页', icon: 'fa-duotone fa-arrow-right PETERRIVE', event: 'history.forward()', group: 'navigation'}
+      - {id: 'redo', name: '刷新当前页面', icon: 'fa-duotone fa-redo PETERRIVE', event: 'window.location.reload()', group: 'navigation'}
+      # - {id: 'home', name: '回到首页', icon: 'fa-duotone fa-home PETERRIVE', link: '/', group: 'navigation'}
+      - {id: 'up', name: '回到顶部', icon: 'fa-duotone fa-arrow-up PETERRIVE', event: 'VolantisApp.scrolltoElement(volantis.dom.bodyAnchor)', group: 'navigation'}
+    articlePage:
+      - {id: 'printMode', name: '打印页面', icon: 'fa-duotone fa-print TURQUOISE', event: 'printMode', group: 'articlePage'}
+      - {id: 'readMode', name: '阅读模式', icon: 'fa-duotone fa-book-open EMERALD', event: 'readMode', group: 'articlePage'}
+    inputBox:
+      - {id: 'copyPaste', name: '粘贴文本', icon: 'fa-duotone PETERRIVE fa-paste', event: 'copyPaste', group: 'inputBox'}
+      - {id: 'copyAll', name: '全选文本', icon: 'fa-duotone PETERRIVE fa-object-ungroup', event: 'copyAll', group: 'inputBox'}
+      - {id: 'copyCut', name: '剪切文本', icon: 'fa-duotone PETERRIVE fa-cut', event: 'copyCut', group: 'inputBox'}
+    seletctText:
+      - {id: 'copyText', name: '复制文本', icon: 'fa-duotone PETERRIVE fa-copy', event: 'copyText', group: 'seletctText'}
+      - {id: 'searchWord', name: '站内搜索', icon: 'fa-duotone PETERRIVE fa-search', event: 'OpenSearch(__text__)', group: 'seletctText'}
+      - {id: 'bingSearch', name: '必应搜索', icon: 'fa-duotone PETERRIVE fa-search', event: 'window.open(`https://cn.bing.com/search?q=${__text__}`)', group: 'seletctText'}
+    elementCheck:
+      - {id: 'openTab', name: '新标签页打开', icon: 'fa-duotone PETERRIVE fa-external-link-square-alt', event: 'window.open(__link__)', group: 'elementCheck'}
+      - {id: 'copyLink', name: '复制链接地址', icon: 'fa-duotone PETERRIVE fa-link', event: 'copyLink', group: 'elementCheck'}
+    elementImage:
+      - {id: 'copyImg', name: '复制图片', icon: 'fa-duotone PETERRIVE fa-image', event: 'copyImg', group: 'elementImage'}
+      - {id: 'googleImg', name: '谷歌识图', icon: 'fa-duotone PETERRIVE fa-images', event: 'window.open(`https://www.google.com/searchbyimage?image_url=${__link__}`)', group: 'elementImage'}
+  menus:
+      links:
+        - {id: 'help', name: '常见问题', icon: 'fa-duotone fa-question EMERALD', link: '/faqs/', group: 'link'}
+        - {id: 'examples', name: '示例博客', icon: 'fa-duotone fa-rss PETERRIVE', link: '/examples/', group: 'link'}
+        - {id: 'contributors', name: '加入社区', icon: 'fa-duotone fa-fan fa-spin AMETHYST', link: '/contributors/', group: 'link'}
+        - hr
+        - {id: 'source_docs', name: '本站源码', icon: 'fa-duotone fa-code-branch WETASPHALT', link: 'https://github.com/volantis-x/volantis-docs/', group: 'link'}
+        - {id: 'source_theme', name: '主题源码', icon: 'fa-duotone fa-code-branch CONCRETE', link: 'https://github.com/volantis-x/hexo-theme-volantis/', group: 'link'}
+      darkMode: 
+        - {id: 'darkMode', name: '暗黑模式', icon: 'fa-duotone fa-eclipse-alt WISTERIA', event: 'volantis.dark.toggle()', group: 'darkMode'}
+      prevNext:
+        - {id: 'prev', name: '查看上一篇', icon: 'fa-duotone fa-angles-left PETERRIVE', event: "volantis.rightmenu.jump('prev')", group: 'prevNext'}
+        - {id: 'next', name: '查看下一篇', icon: 'fa-duotone fa-angles-right PETERRIVE', event: "volantis.rightmenu.jump('next')", group: 'prevNext'}
+############################### Rightmenu（新版本） ############################### > end
+
+############################### Rightmenu（老版本） ############################### > start
+# 自定义右键菜单
+# rightmenu:
+#   enable: false
+#   faicon: fa              # 公共图标类型 fa fal fas fad
+#   # hr: 分割线, music: 音乐控制器
+#   layout: [home, hr, help, examples, contributors, hr, source_docs, source_theme, hr, print, darkmode, reading, music]
+#   ### 可选功能项 ###
+#   print:                  # 只有文章页才允许自定义打印
+#     name: 打印页面
+#     icon: fa fa-print
+#     defaultStyles: true   # 是否使用预制的打印样式
+#     # js:                 # 自定义 js ，可用于修饰打印样式~， 右键剔除了对 Jquery 的依赖，所以此处你只能使用原生 js
+#     #  - document.querySelector('article#comments').remove()  # 移除评论
+#   darkmode:        # 需开启 plugins.darkmodejs
+#     name: 暗黑模式
+#     icon: fa fa-moon
+#   reading:
+#     name: 阅读模式
+#     icon: fa fa-book-open
+#   customPicUrl:    # 右键的图片复制：只有 Chrome 支持，且只支持 PNG 格式的图片。
+#     enable: false  # 如果使用了对象存储且开启了自适应 Webp，那么可以提供额外的链接用以替换图片的访问地址
+#     old: #https://static.inkss.cn/img/article/
+#     new: #https://cdn.jsdelivr.net/gh/inkss/inkss-cdn@master/img/article/
+#   music:           # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
+#     alwaysShow: true
+#   ### 自定义菜单 ###
+#   help:
+#     name: 常见问题
+#     icon: fa fa-question
+#     url: https://volantis.js.org/faqs/
+#   examples:
+#     name: 示例博客
+#     icon: fa fa-rss
+#     url: https://volantis.js.org/examples/
+#   contributors:
+#     name: 加入社区
+#     icon: fa fa-fan fa-spin
+#     url: https://volantis.js.org/contributors/
+#   source_docs:
+#     name: 本站源码
+#     icon: fa fa-code-branch
+#     url: https://github.com/volantis-x/volantis-docs/
+#   source_theme:
+#     name: 主题源码
+#     icon: fa fa-code-branch
+#     url: https://github.com/volantis-x/hexo-theme-volantis/
+############################### Rightmenu（老版本） ############################### > end
 
 ############################### Navigation Bar ############################### > start
 # 注意事项：建议规范全站路径 URL 最后带一个 "/" 例如 "about/"
