@@ -20,7 +20,7 @@
   <meta content="一之碎片" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1661762658368" as="style">
+  <link rel="preload" href="/css/style.css?time=1661939598651" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2021-12-19T06:53:04.000Z">
-<meta property="article:modified_time" content="2022-01-08T17:11:29.536Z">
+<meta property="article:modified_time" content="2022-08-31T06:19:58.872Z">
 <meta property="article:author" content="一之碎片">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
@@ -1778,8 +1778,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1661762658368" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1661762658368"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1661939598651" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1661939598651"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2869,7 +2869,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable article-type-post" id="post" itemscope itemprop="blogPost">
   <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2021/12/19/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="一之碎片">
@@ -2981,9 +2981,25 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>再往下翻，中间这些都默认就好了。</p>
 <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">theme: landscape </span><br><span class="line"></span><br><span class="line"><span class="section"># Deployment</span></span><br><span class="line"><span class="section">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: <span class="xml"><span class="tag">&lt;<span class="name">repository</span> <span class="attr">url</span>&gt;</span></span></span><br><span class="line">  branch: [branch]</span><br></pre></td></tr></table></figure>
 <p>theme：主题名<br>deploy：网站部署。repo就是仓库(Repository)的简写。branch选择仓库的哪个分支。这个在之前进行github page部署的时候已经修改过了，不再赘述。而这个在后面进行双平台部署的时候会再次用到。</p>
-<h4 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h4><p>Front-matter 是文件最上方以 — 分隔的区域，用于指定个别文件的变量，举例来说：</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: Hello World</span><br><span class="line"><span class="section">date: 2013/7/13 20:46:25</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
-<p>下面是预先定义的参数，在模板中使用这些参数值并加以利用。<br>参数    描述<br>layout    布局<br>title    标题<br>date    建立日期<br>updated    更新日期<br>comments    开启文章的评论功能<br>tags    标签（不适用于分页）。标签没有顺序和层次。<br>categories    分类（不适用于分页）。具有顺序性和层次性，也就是说 Foo, Bar不等于 Bar, Foo。<br>permalink    覆盖文章网址</p>
+<h4 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h4><p>Front-matter 是文件最上方以 <code>—</code> 分隔的区域，用于指定个别文件的变量，就是.md文件最上面的这部分内容(下面的例子是YAML语法）：</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: Hello World</span><br><span class="line">date: 2013/7/13 20:46:25</span><br><span class="line">author:</span><br><span class="line">tags:</span><br><span class="line"><span class="bullet">-</span> PS3</span><br><span class="line"><span class="section">- Games</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+<p><span style="color:red; font-size:25px;">注意，所有文件<code>-</code>后面都必须有个空格!</span><br>基本格式要求：<br>1，YAML大小写敏感；<br>2，使用缩进代表层级关系；<br>3，缩进只能使用空格，不能使用TAB，不要求空格个数，只需要相同层级左对齐（一般2个或4个空格）</p>
+<p>部分标签详解：<br><strong>layout</strong>：布局。指定要使用的模版样式。如果不指定这个将会使用根目录<code>/_config.yml</code>中的默认配置default_layout: post。<br><strong>title</strong>：    标题。默认Markdown的文件标题。<br><strong>date</strong>：    建立日期。默认文件创建时间。<br><strong>author</strong>：     作者。默认根 <code>_config.yml</code>中的 author。<br><strong>img</strong>:           文章特征图。默认featureImages 中的某个值。<br><strong>updated</strong>：    更新日期<br><strong>comments</strong>：    开启文章的评论功能（国内好像用不了disqus？）。hexo默认支持disqus评论功能是<code>comments：true</code><br>需要先去disqus 官网注册一下账号：<a target="_blank" rel="noopener" href="https://disqus.com/profile/signup/">https://disqus.com/profile/signup/</a><br>然后进入到设置：<a target="_blank" rel="noopener" href="https://disqus.com/home/settings/">https://disqus.com/home/settings/</a><br>因为这个评论插件是要登陆评论的，先配置你的个人信息，看左边的第一行Profile和Username，<br>然后在主题<code>_config.yml</code>下面添加<code>disqus_shortname:注册disqus时你自己设置的名字</code>就可以在文章下面看评论功能了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Disqus settings（https://disqus.com/）</span><br><span class="line">disqus_username: 你的Username</span><br></pre></td></tr></table></figure>
+<p>disqus设置时可能需要清除一下缓存，否则可能会出现加载不出来的情况。 通过常用的hexo上传方式(hexo clean，清除hexo缓存 + hexo g，生成对应html文件 + hexo d，将hexo对应的修改上传到git上)。<br><strong>tags</strong>：    给文章添加标签，使其能在标签页中显示。不适用于分页。标签没有顺序和层次。一篇文章可以设置多个标签。<br><strong>categories</strong>：    整体内容基本与 tags一致，区别在于在进行分类管理的时候此标签下的内容是有严格的顺序和层次的，tags没有。不适用于分页。因为hexo的分类具有层次关系，同一文章不能同时存在两个同级分类中，所以下面这种方式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">- Diary</span><br><span class="line">- Life</span><br></pre></td></tr></table></figure>
+<p>会使分类Life成为Diary的子分类，而不是并列分类。因此，有必要为文章选择尽可能准确的分类。</p>
+<p>如果你需要为文章添加多个分类，可以尝试以下 list 中的方法:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">- [Diary, PlayStation]</span><br><span class="line">- [Diary, Games]</span><br><span class="line">- [Life]</span><br></pre></td></tr></table></figure>
+<p>此时这篇文章同时包括三个分类： PlayStation 和 Games 分别都是父分类 Diary 的子分类，同时 Life 是一个没有子分类的分类。<br><strong>permalink</strong>:    覆盖文章网址。直白的说就是静态文件的存放地址。如果不指定这个将会使用根目录<code>/_config.yml</code>中的默认配置<code>permalink: :year/:month/:day/:title/</code>。如果指定的文件夹不存在就会创建一个。这里如何设置最后在页面中使用的连接地址就会是什么样的，例如上面这种方式最终生成的文章的连接地址就是<code>xxx.github.io/2022/08/11/：title/</code>。<br><strong>keywords</strong>：    仅用于 meta 标签和 Open Graph 的关键词（不推荐使用）。用于SEO优化，这篇文章包含哪些关键词。有人百度这些关键词的时候可能就会显示本页面。<br><strong>top</strong>：默认true。推荐文章（文章是否置顶），如果 top 值为 true，则会作为首页推荐文章。<br>配置    默认值   含义<br>cover    false    表示该文章是否需要加入到首页轮播封面中<br>coverImg    无    表示该文章在首页轮播封面需要显示的图片路径，如果没有，则默认使用文章的特色图片<br>password    无    文章阅读密码，如果要对文章设置阅读验证密码的话，就可以设置 password 的值，该值必须是用 SHA256 加密后的密码，防止被他人识破。前提是在主题的 config.yml 中激活了 verifyPassword 选项<br>toc    ture    是否开启 TOC，可以针对某篇文章单独关闭 TOC 的功能。前提是在主题的 config.yml 中激活了 toc 选项<br>mathjax    false    是否开启数学公式支持 ，本文章是否开启 mathjax，且需要在主题的 <code>_config.yml</code>文件中也需要开启才行<br>summary    无    文章摘要，自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要<br>reprintPolicy    无    文章转载规则， 可以是 cc_by, cc_by_nd, cc_by_sa, cc_by_nc, cc_by_nc_nd, cc_by_nc_sa, cc0, noreprint 或 pay 中的一个</p>
+<blockquote>
+<p>文章的front-matter，用 hexo n 新建的时候会自动生成，其他时候手动写。在draft文件夹里面更改post.md可以更改自动生成的模板。</p>
+</blockquote>
+<p>拓展：当前的主题中没有分类页和标签页怎么办？下面是tags创建步骤：<br>根据自己的配置创建文件夹，比如配置中（根目录<code>/_config.yml</code>）设置的标签根目录为<code>tag_dir: tags</code>，所以新建tags目录。<br>1.创建tags文件夹，在命令行中输入：<code>hexo new page &quot;tags&quot;</code>。<br>2.找到新建的文件夹<code>\source\tags</code>下的index.md文件<br>3.修改其front-matter为如下格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2019-08-13 09:39:50</span><br><span class="line">type: tags // 帮助脚本识别这是一个用来创建tags的文档</span><br><span class="line">layout: tag // 我的tags模版标签叫tag你可以根据你的模版名称输入对应的名称</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>4.生成静态文件：hexo g<br>5.通过主题设置<code>/themes/你的主题名称/_config.yml</code>中的配置，在页面指定一个连接指向tags文件夹，就可以在页面中看到标签页了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  # Project:</span><br><span class="line">  #   path: /categories/Projects</span><br><span class="line">  #   card: project-card</span><br><span class="line">  # Stuffs:</span><br><span class="line">  #   path: /tags/Stuffs</span><br><span class="line">  #   card: article-card</span><br><span class="line">  Home: /</span><br><span class="line">  tags: /tags</span><br></pre></td></tr></table></figure>
+
 <h4 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h4><p>使用命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
 <p>它默认使用的是post这个布局，也就是在source文件夹下的_post里面。Hexo 有三种默认布局：post、page 和 draft，它们分别对应不同的路径。<br>自定义的其他布局和 post 相同，都将储存到 source/_posts 文件夹。</p>
@@ -3000,7 +3016,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </div><h2 id="Part3-个性化"><a href="#Part3-个性化" class="headerlink" title="Part3 个性化"></a>Part3 个性化</h2><div class="story post-story"><p><span><a target="_blank" rel="noopener" href="https://hexo.io/themes/">官网上的主题们</a></span><br>我用的是Volantis。在github下载并放到theme文件夹下，然后根目录下的_config.yml中把theme换成那个主题文件夹的名字，它就会自动在theme文件夹中搜索你配置的主题。<br><span><a target="_blank" rel="noopener" href="https://volantis.js.org/v5/theme-settings/">volantis官方文档-主题配置</a></span><br>进入volantis这个文件夹，可以看到里面也有一个配置文件_config.xml，这个配置文件是修改整个主题的配置文件。主题目录下的 _config.yml 文件通常负责主题相关配置，我们强烈建议您使用代替的主题配置文件以防止自己的配置丢失。如何操作呢–参见<span><a target="_blank" rel="noopener" href="https://volantis.js.org/v5/theme-settings/">volantis官方文档-代替主题配置文件 </a></span>。<br>（以后补： default info cdn）</p>
 <p><img src="/2021/12/19/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/volantismenu.png" class="lazyload" data-srcset="/2021/12/19/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/volantismenu.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="volantis菜单栏"><br><span style="color:#ad1457; font-size:19px;font-weight:border">menu</span><br>其中，“关于”是找不到网页的，因为文章中没有about这个东西。如果想要的话，可以执行命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page about</span><br></pre></td></tr></table></figure>
-<p>它就会在根目录下source文件夹中新建一个about文件夹，以及index.md，在index.md中写上你想要写的东西，就可以在网站上展示出来了。<br>如果你想要自己再自定义一个菜单栏的选项，那么就</p>
+<p>它就会在根目录下source文件夹中新建一个about文件夹，以及index.md，在index.md中写上你想要写的东西，就可以在网站上展示出来了。（目前我把关于页挪到了顶部菜单的社交-关于我。在根目录下的<code>_config.volantis.yml</code>的Navigation Bar的menu部分进行相关设置。）</p>
+<p>如果你想要自己再自定义一个菜单栏的选项，那么就</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page yourdiy</span><br></pre></td></tr></table></figure>
 <p>然后在主题配置文件的menu菜单栏里按照其他菜单项的格式添加一个，注意把url改了且格式保持整齐（比如有时候直接回车会出错，要删掉多余的空间然后按空格键调整格式）。然后在languages文件夹中，找到zh-CN.yml，在index中添加yourdiy: ‘中文意思’就可以显示中文了。<br><span style="color:#ad1457; font-size:19px;font-weight:border">启用搜索功能用到的插件</span><br>在主题的config.yml文件中，搜索search关键字，可以看到</p>
 <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># To use hexo search, you need to install the following plugins:</span></span><br><span class="line"><span class="section"># npm i hexo-generator-json-content</span></span><br></pre></td></tr></table></figure>
@@ -3077,10 +3094,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-01-09T01:11:29+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-08-31T14:19:58+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2022年1月9日</p>
+    <p>更新于：2022年8月31日</p>
   </a>
 </div>
 
@@ -3181,7 +3198,7 @@ typora快捷键
   
 
   
-  <article class="post white-box reveal shadow blur" id="comments">
+  <article class="post white-box reveal shadow floatable" id="comments">
     <span hidden>
       <meta itemprop="discussionUrl" content="/2021/12/19/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/#comments">
     </span>
@@ -3206,7 +3223,7 @@ typora快捷键
 
 
 
-  <section class="widget toc-wrapper shadow blur desktop mobile pjax" id="toc-div" >
+  <section class="widget toc-wrapper shadow floatable desktop mobile pjax" id="toc-div" >
     
   <header>
     
@@ -3434,8 +3451,8 @@ typora快捷键
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1661762658368')
-      volantis.js('/js/thirdparty/message.js?time=1661762658368', () => {
+      volantis.css('/css/message.css?time=1661939598651')
+      volantis.js('/js/thirdparty/message.js?time=1661939598651', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3480,8 +3497,8 @@ typora快捷键
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1661762658368')
-      volantis.js('/js/thirdparty/message.js?time=1661762658368', () => {
+      volantis.css('/css/message.css?time=1661939598651')
+      volantis.js('/js/thirdparty/message.js?time=1661939598651', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3540,8 +3557,8 @@ typora快捷键
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1661762658368')
-      volantis.js('/js/thirdparty/message.js?time=1661762658368', () => {
+      volantis.css('/css/message.css?time=1661939598651')
+      volantis.js('/js/thirdparty/message.js?time=1661939598651', () => {
         hideMessage(done);
       });
     } else {
@@ -3806,7 +3823,7 @@ typora快捷键
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1661762658368')
+    volantis.js('/js/plugins/rightMenu.js?time=1661939598651')
   </script>
 
 
@@ -3936,19 +3953,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1661762658368")
+        volantis.js("/js/plugins/sites.js?time=1661939598651")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1661762658368")
+        volantis.js("/js/plugins/friends.js?time=1661939598651")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1661762658368")
+        volantis.js("/js/plugins/contributors.js?time=1661939598651")
       }
     
   };
@@ -4020,7 +4037,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1661762658372')
+    await volantis.js('/js/plugins/aplayer.js?time=1661939598655')
     volantis.APlayerController.music = true;
   
   })();
@@ -4154,7 +4171,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1661762658368.js"></script>
+<script src="/js/app.js?time=1661939598651.js"></script>
 
 
 <!-- optional -->
@@ -4167,7 +4184,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1661762658368");
+    return volantis.js("/js/search/hexo.js?time=1661939598651");
   }
 
   function loadSearchService() {
@@ -4234,7 +4251,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4277,7 +4294,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1661762658368').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1661939598651').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4511,7 +4528,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":3,"item":{"@id":"https://avalooooooon.github.io/2021/12/19/建站记录/","name":"建站记录"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"建站记录","description":"","datePublished":"2021-12-19T06:53:04.000Z","dateModified":"2022-01-08T17:11:29.536Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://avalooooooon.github.io/2021/12/19/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://avalooooooon.github.io/2021/12/19/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/","wordCount":0,"keywords":"hexo","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":3,"item":{"@id":"https://avalooooooon.github.io/2021/12/19/建站记录/","name":"建站记录"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"建站记录","description":"","datePublished":"2021-12-19T06:53:04.000Z","dateModified":"2022-08-31T06:19:58.872Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://avalooooooon.github.io/2021/12/19/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://avalooooooon.github.io/2021/12/19/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/","wordCount":0,"keywords":"hexo","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->
@@ -4586,7 +4603,31 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
       
     </div>
   <!-- Custom Files bodyEnd begin-->
-  
+  <script> 
+  volantis.rightmenu.jump = (type) => { 
+    const selector = type === 'prev' ? 'article .prev-next a.prev' : 'article .prev-next a.next';
+    const item = document.querySelector(selector); 
+    if(!!item) { 
+      if(typeof pjax !== 'undefined') { 
+        pjax.loadUrl(item.href) 
+      } else { 
+        window.location.href = item.href; 
+      } 
+    } 
+  } 
+ 
+  volantis.rightmenu.handle(() => { 
+    const prev = document.querySelector('#prev').parentElement, 
+      next = document.querySelector('#next').parentElement, 
+      articlePrev = document.querySelector('article .prev-next a.prev p.title'), 
+      articleNext = document.querySelector('article .prev-next a.next p.title'); 
+ 
+    prev.style.display = articlePrev ? 'block' : 'none'; 
+    prev.title = articlePrev ? articlePrev.innerText : null; 
+    next.style.display = articleNext ? 'block' : 'none'; 
+    next.title = articleNext ? articleNext.innerText : null; 
+  }, 'prevNext', false) 
+</script> 
   <!-- Custom Files bodyEnd end-->
   </body>
 </html>
