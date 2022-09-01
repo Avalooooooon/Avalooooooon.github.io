@@ -252,7 +252,7 @@ th {
 }
 @font-face {
   font-family: 'Monaco';
-  src: url("https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/Monaco/Monaco.ttf");
+  src: url("volantis-static/media/fonts/Monaco/Monaco.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
@@ -5047,7 +5047,7 @@ div.note::before {
   font-weight: 600;
   line-height: 24px;
   vertical-align: middle;
-  font-family: 'Font Awesome 5 Free';
+  font-family: 'Font Awesome 6 Pro';
 }
 div.note::before {
   color: #64b5f6;
