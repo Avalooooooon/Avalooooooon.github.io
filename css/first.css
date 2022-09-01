@@ -1,17 +1,6 @@
 #safearea {
   display: none;
 }
-/* 
-  * Workaround for Chrome bug, part 1
-  * Chunk rendering for all but the first article.
-  * /layout/_partial/scripts/content-visibility-scroll-fix.ejs
-*/
-.post-story + .post-story,
-article + article,
-.post-wrapper + .post-wrapper {
-  content-visibility: auto;
-  contain-intrinsic-size: 10px 500px;
-}
 :root {
   --color-site-body: #f4f4f4;
   --color-site-bg: #f4f4f4;
@@ -34,6 +23,7 @@ article + article,
   --color-meta: #888;
   --color-read-bkg: #e0d8c8;
   --color-read-post: #f8f1e2;
+  --color-copyright-bkg: #f5f5f5;
 }
 * {
   box-sizing: border-box;
@@ -42,6 +32,22 @@ article + article,
   outline: none;
   margin: 0;
   padding: 0;
+}
+*::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+*::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: #64b5f6;
+  cursor: pointer;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #ff5722;
 }
 html {
   color: var(--color-text);
@@ -745,7 +751,7 @@ button {
     --color-mode: 'dark';
   }
   :root:not([color-scheme]) {
-    --color-site-body: #000;
+    --color-site-body: #121212;
     --color-read-bkg: #171721;
     --color-read-post: #4b4b6c;
     --color-site-bg: #171721;
@@ -767,19 +773,16 @@ button {
     --color-list-hl: #9453a0;
     --color-meta: #888;
     --color-link: #888;
+    --color-copyright-bkg: #21252b;
   }
   :root:not([color-scheme]) img {
     filter: brightness(70%) !important;
   }
-  :root:not([color-scheme]) #wrapper .title {
-    color: var(--color-meta) !important;
-  }
-  :root:not([color-scheme]) .l_header ul.nav-list-h>li>a,
-  :root:not([color-scheme]) ul.list-v >li>a {
-    color: var(--color-list) !important;
-  }
   :root:not([color-scheme]) .blur {
-    background: var(--color-site-bg) !important;
+    background: rgba(23,23,33,0.9) !important;
+  }
+  :root:not([color-scheme]) .white-box.blur {
+    background: rgba(75,75,108,0.9) !important;
   }
   :root:not([color-scheme]) .nav-main .u-search-input {
     background: var(--color-card) !important;
@@ -788,7 +791,7 @@ button {
     background: var(--color-block) !important;
   }
   :root:not([color-scheme]) #l_main .article .prev-next>a:hover {
-    background: var(--color-card) !important;
+    background: var(--color-site-bg) !important;
   }
   :root:not([color-scheme]) .article blockquote {
     background: var(--color-block) !important;
@@ -812,9 +815,15 @@ button {
   :root:not([color-scheme]) #u-search .modal-body .modal-results .result:hover {
     background: var(--color-block) !important;
   }
+  :root:not([color-scheme]) .u-search-input:hover {
+    background: var(--color-block) !important;
+  }
+  :root:not([color-scheme]) .u-search-input:focus {
+    background: var(--color-site-body) !important;
+  }
 }
 [color-scheme='dark'] {
-  --color-site-body: #000;
+  --color-site-body: #121212;
   --color-read-bkg: #171721;
   --color-read-post: #4b4b6c;
   --color-site-bg: #171721;
@@ -836,19 +845,16 @@ button {
   --color-list-hl: #9453a0;
   --color-meta: #888;
   --color-link: #888;
+  --color-copyright-bkg: #21252b;
 }
 [color-scheme='dark'] img {
   filter: brightness(70%) !important;
 }
-[color-scheme='dark'] #wrapper .title {
-  color: var(--color-meta) !important;
-}
-[color-scheme='dark'] .l_header ul.nav-list-h>li>a,
-[color-scheme='dark'] ul.list-v >li>a {
-  color: var(--color-list) !important;
-}
 [color-scheme='dark'] .blur {
-  background: var(--color-site-bg) !important;
+  background: rgba(23,23,33,0.9) !important;
+}
+[color-scheme='dark'] .white-box.blur {
+  background: rgba(75,75,108,0.9) !important;
 }
 [color-scheme='dark'] .nav-main .u-search-input {
   background: var(--color-card) !important;
@@ -857,7 +863,7 @@ button {
   background: var(--color-block) !important;
 }
 [color-scheme='dark'] #l_main .article .prev-next>a:hover {
-  background: var(--color-card) !important;
+  background: var(--color-site-bg) !important;
 }
 [color-scheme='dark'] .article blockquote {
   background: var(--color-block) !important;
@@ -881,6 +887,12 @@ button {
 [color-scheme='dark'] #u-search .modal-body .modal-results .result:hover {
   background: var(--color-block) !important;
 }
+[color-scheme='dark'] .u-search-input:hover {
+  background: var(--color-block) !important;
+}
+[color-scheme='dark'] .u-search-input:focus {
+  background: var(--color-site-body) !important;
+}
 @media screen and (max-width: 500px) {
   [color-scheme='dark'] .l_header .m_search {
     background: var(--color-site-bg) !important;
@@ -888,14 +900,14 @@ button {
 }
 @font-face {
   font-family: 'UbuntuMono';
-  src: url("volantis-static/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf");
+  src: url("https://unpkg.com/volantis-static@0.0.1649552113628media/fonts/UbuntuMono/UbuntuMono-Regular.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
 }
 @font-face {
   font-family: 'Varela Round';
-  src: url("volantis-static/media/fonts/VarelaRound/VarelaRound-Regular.ttf");
+  src: url("https://unpkg.com/volantis-static@0.0.1649552113628media/fonts/VarelaRound/VarelaRound-Regular.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
