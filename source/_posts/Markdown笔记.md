@@ -2,8 +2,8 @@
 title: Markdown笔记
 updated: 2021-12-20 14:12:19
 date: 2021-12-20 14:12:19
-tags:
-categories:
+tags: [markdown]
+categories: [文档编写,.md]
 ---
 
 > [typora快捷键](https://blog.csdn.net/weixin_43314519/article/details/107472017?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1.no_search_link&spm=1001.2101.3001.4242.2)

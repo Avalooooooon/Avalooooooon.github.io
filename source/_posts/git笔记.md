@@ -3,7 +3,7 @@ title: git笔记
 updated: 2021-12-20 15:40:59
 date: 2021-12-20 15:40:59
 tags: [git]
-categories:
+categories: [git]
 ---
 
 

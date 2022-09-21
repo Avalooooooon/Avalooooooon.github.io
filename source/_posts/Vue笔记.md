@@ -2,8 +2,8 @@
 title: Vue笔记
 updated: 2022-01-08 22:33:40
 date: 2022-01-08 22:33:40
-tags:
-categories:
+tags: [Vue]
+categories: [前端,Vue]
 ---
 
 vscode插件：Vue 3 snippets

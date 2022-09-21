@@ -2,8 +2,8 @@
 title: JS笔记
 updated: 2022-01-17 19:45:34
 date: 2022-01-17 19:45:34
-tags:
-categories:
+tags: [JS]
+categories: [前端,JS]
 ---
 
  ***Chrome内运行***

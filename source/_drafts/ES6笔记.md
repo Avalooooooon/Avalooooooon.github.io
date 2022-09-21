@@ -2,8 +2,8 @@
 title: ES6笔记
 updated: 2022-02-11 20:09:44
 date: 2022-02-11 20:09:44
-tags: [Javscsript]
-categories:
+tags: [JS]
+categories: [前端,JS]
 ---
 
 > 在http://kangax.github.io/compat-table/es6中查看ES6的兼容性。

@@ -2,8 +2,8 @@
 title: vscode常用快捷键
 updated: 2022-01-10 00:26:49
 date: 2022-01-10 00:26:49
-tags:
-categories:
+tags: 
+categories: [文档编写,编辑器]
 ---
 
 + vscode通用技巧

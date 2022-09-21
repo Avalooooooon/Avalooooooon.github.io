@@ -3,7 +3,7 @@ title: Linux折腾
 updated: 2022-02-20 09:58:44
 date: 2022-02-20 09:58:44
 tags: [Linux]
-categories:
+categories: [操作系统,Linux]
 
 
 ---

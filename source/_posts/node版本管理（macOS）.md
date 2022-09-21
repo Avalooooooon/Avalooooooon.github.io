@@ -3,7 +3,7 @@ title: node版本管理（macOS和windows）
 tags: [node]
 updated: 2021-12-26 15:53:53
 date: 2021-12-26 15:53:53
-categories:
+categories: [前端,JS]
 ---
 
 >  安装的npm全局模块不会在各个版本的node.js之间共享。还有可能有些npm包不支持当前使用的node版本 

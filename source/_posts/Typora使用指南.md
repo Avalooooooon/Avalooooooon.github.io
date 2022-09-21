@@ -3,9 +3,8 @@ title: Typora使用指南
 updated: 2021-12-20 14:14:27
 date: 2021-12-20 14:14:27
 tags:
-categories:
+categories: [文档编写,编辑器]
 ---
-
 
 [文章参考网址](https://sspai.com/post/54912)
 [官方文档](https://support.typora.io)

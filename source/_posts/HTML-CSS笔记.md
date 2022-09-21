@@ -2,8 +2,8 @@
 title: HTML/CSS笔记
 updated: 2022-01-09 21:41:50
 date: 2022-01-09 21:41:50
-tags:
-categories:
+tags: [HTML,CSS]
+categories: [前端,HTML/CSS]
 ---
 
 ## HTML

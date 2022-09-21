@@ -3,8 +3,8 @@ layout: vs
 title: gcc配置C++环境（Mingw-w64）
 date: 2022-01-06 19:13:53
 updated: 2022-01-06 19:13:53
-tags:
-categories:
+tags: [C++]
+categories: [C++]
 ---
 
 
