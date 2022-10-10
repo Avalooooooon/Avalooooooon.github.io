@@ -11,6 +11,11 @@ categories: [vpn]
 
 虚拟专用网络（VPN，Virtual Private Network）是一种网络底层协议，主机开启 VPN 后，所有网络请求都会先发送到 VPN 服务器，然后 VPN 服务器作为代理帮我们访问敏感资源。本文介绍如何在 Linux（Ubuntu 18.04）服务器上搭建 L2TP/IPsec VPN。
 
+## 1.5 在自己的终端配置
+连接服务器：```ssh root@服务器ip -p 端口号```
+查看配置文件：```cat /etc/ssh/sshd_config```
+修改配置文件：```vim /etc/ssh/sshd_config```
+
 ## 2. IPSec
 
 互联网安全协议（IPsec，Internet Protocol Security）是 OSI 第三层的安全协议，工作分传输模式和隧道模式，传输模式为自己传输信息，隧道模式为给上层协议提供安全隧道。此处使用隧道模式给上层 VPN 协议提供安全隧道。软件使用开源的 libreswan。
