@@ -277,7 +277,7 @@ vim client.csr
 sudo openssl x509 -req -days 36500 -CA ca.crt -CAkey ca.key -CAcreateserial -extfile openvpn.cnf -extensions v3_client -in client.csr -out client.crt
 ```
 
-将`client.crt`及`ca.crt`、`ta.key`拷贝至客户端，直接复制文本内容即可：
+将`client.crt`及`ca.crt`、`ta.key`拷贝至客户端，cat查看后直接复制文本内容即可，用```sudo vim xx.xxx```的格式填入内容：
 ```sh
 cat client.crt
 cat ca.crt
@@ -301,6 +301,69 @@ sudo rm client.csr
 4. 末尾添加：`auth-nocache`以避免在内存中缓存认证信息（否则会报 warning）。
 5. 末尾添加：`redirect-gateway def1 bypass-dhcp`，将系统默认路由网关改为 OpenVPN 虚拟对端网卡。
 6. 末尾添加：`dhcp-option DNS 8.8.8.8`，设置连接 OpenVPN 后使用的 DNS 服务器。
+
+在OpenVPN Connect启动服务。
+
+
+### ios客户端
+安装软件OpenVPN Connect。
+
+修改配置文件client.ovpn之前的工作和mac客户端完全相同。
+
+
+修改配置文件client.ovpn：
+1. 修改 remote 为服务器地址及 port。
+2. 修改协议为 UDP。
+3. 在pc端会指定密钥或证书文件 ca：`ca.crt`、cert：`client.crt`、key：`client.key`、tls-auth：`ta.key`等。但是删除该部分。如果指定了tls-auth ta.key 1，则将其替换为key-direction 1。
+在删除相关内容后，具体的替换操作如下：
+```ovpn
+<ca>
+ca.crt文件内容
+</ca>
+<cert>
+client.crt文件内容
+</cert>
+<key>
+client.key文件内容
+</key>
+key-direction 1
+<tls-auth>
+ta.key文件内容
+</tls-auth>
+```
+4. 末尾添加：`auth-nocache`以避免在内存中缓存认证信息（否则会报 warning）。
+5. 末尾添加：`redirect-gateway def1 bypass-dhcp`，将系统默认路由网关改为 OpenVPN 虚拟对端网卡。
+6. 末尾添加：`dhcp-option DNS 8.8.8.8`，设置连接 OpenVPN 后使用的 DNS 服务器。
+
+这是一个去掉无用注释的正确配置文件格式（具体内容可能有所差别）(网上别人给出来的，我实际用的是从mac的配置文件改的，和这个有点区别）：
+```ovpn
+dev tun
+proto udp
+remote 88.88.88.88 1195
+cipher AES-128-CBC
+auth SHA1
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+client
+verb 3
+<ca>
+-----BEGIN CERTIFICATE-----
+0MC2Hb46TpSi125sC8KKfP
+-----END CERTIFICATE-----
+</ca>
+<cert>
+-----BEGIN CERTIFICATE-----
++mZhYPGRKXKSJI6s0Egg/Cri+Cwk4bjJfrb5
+-----END CERTIFICATE-----
+</cert>
+<key>
+-----BEGIN RSA PRIVATE KEY-----
+wmE9Mmlbq1emDeROivjCfoG
+-----END RSA PRIVATE KEY-----
+</key>
+```
 
 在OpenVPN Connect启动服务。
 
