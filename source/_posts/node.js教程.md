@@ -117,6 +117,8 @@ Buffer是nodejs的核心之一，使用buffer不需要引入模块，直接使�
 
 ## FS（文件系统）
 文件系统简单来说就是通过node来操作系统中的文件。fs模块提供了一些标准文件访问API来打开、读取、写入文件以及与其交互。
+> <span style="color:red">注意在写文件路径时，路径里的单斜杠"\\"可能会被当作转义字符，导致不能正确读取文件路径。把单斜杠变成双斜杠```\\```即可。也可以换成向左的斜杠```/```。</span> 
+
 要使用fs模块，首先需要对其进行加载：```const fs = require("fs")```。fs是核心模块，直接引入而无需下载。（buffer模块甚至不需要引入。）
 
 + fs模块中所有的操作都有两种形式可以选择：<span style="color:red">同步和异步</span>。去官网看它的方法，发现都是一对对的，一个带Sync的（同步方法）和 一个不带的（异步方法）。
@@ -124,7 +126,8 @@ Buffer是nodejs的核心之一，使用buffer不需要引入模块，直接使�
   + 异步文件系统<span style="color:red">不会阻塞</span>程序的执行，而是在操作完成时通过回调函数将结果返回。
   + 在方法的参数中，异步函数通常都有一个回调函数```callback```。因为异步函数需要通过回调函数在操作完成时返回结果，同步函数直接用```return```返回了。
 
-### 同步文件写入
+### 同步和异步文件写入
+#### 同步文件写入
 手动操作的步骤：1.打开文件 2.向文件中写入内容 3.保存并关闭文件。
 用fs，步骤如下：
 1. 打开文件：```fs.openSync(path,flags[,mode])
@@ -140,18 +143,166 @@ Buffer是nodejs的核心之一，使用buffer不需要引入模块，直接使�
 3. 保存并关闭文件：```fs.closeSync(fd)```
 - fd：要关闭的文件的描述符
 
-### 异步文件写入
+#### 异步文件写入
 异步调用的方法，结果都是通过回调函数**的参数**```arguments```返回的。
-回调函数的两个参数：1.```err```：错误对象，没出错则为null 2.```fd```：文件的描述符。
 异步文件写入的步骤如下：
-1. 打开文件：```fs.open(path,flags[,mode],callback)。比同步就多了个callback。
-- callback：不可省略！ 
-2. 向文件中写入内容：```fs.write(fd,string[,position[,encoding]],callback)。
-3. 保存并关闭文件：```fs.close(fd)```  
+1. 打开文件：```fs.open(path,flags[,mode],callback)```。比同步就多了个callback。
+- callback：不可省略！ <span style="color:red">回调函数的两个参数：1.```err```：错误对象，没出错则为null 2.```fd```：文件的描述符。</span>
 
+2. 异步写入文件：```fs.write(fd,string[,position[,encoding]],callback)```。<span style="color:red">在打开文件的回调函数中，如果没有出错，则对文件进行写入操作。</span>
+<span style="color:red">回调函数的两个参数：1.```err```：错误对象，没出错则为null 2.```written```：指定传入的字符串被写入多少字节。3.```string```：写入的内容。</span>后面两个参数意义不大，写入内容在```fs.write```的参数中控制。 
 
+3. 保存并关闭文件：```fs.close(fd)``` 
+- callback：不可省略！ <span style="color:red">回调函数只有一个可能的异常参数。</span>
 
+### 简单文件写入
+第一种：```fs.writeFile(file,data[,options],callback)```
+第二种：```fs.writeFileSync(file,data[,options])```
 
+- file：要操作的文件的路径
+- data：要写入的数据
+- options：选项，可以对写入进行一些设置
+- callback：当写入完成后执行的函数
+
+用法如下：
+```javascript
+var fs = require("fs")
+fs.writeFile("hello.txt", '这是通过writeFile写入的内容', {flag:"w"}, function(err){
+    if(!err){
+        console.log('写入成功！')
+  }
+})；
+```
+
+options的几个可选值如下：
+![打开状态](dakaizhuangtai.png)
+常用的有```r```, ```r+```, ```w```, ```a```。注意w是截断，a可以追加。r+如果输入的内容少于之前的，则从左往右替换，剩余的依然存在；如果多余之前的则全部替换之前的内容；是从头开始替换原文本而非插入。
+
+### 流式文件写入 
+以上几种写入都存在一个问题，就是它们是一次性的将一个内容写入一个文件里，因此在写入之前需要把要写入的东西一下子全部准备好。如果文件过大、内容过多，就会导致占用内存过大。
+<span style="color:red">同步、异步和简单文件写入，都不适合大文件的写入。</span>性能较差，容易导致内存溢出。
+流式文件写入就相当于往文件上加了个水管。只要水管还在，就可以一直输送内容。
+
+1. 创建一个可写流：```fs.createWriteStream(path[,options])```。
+
+- path：文件路径
+- options：配置的参数
+
+可以通过监听流的```open```.```close```事件来监听流的打开和关闭：```流名.on("open",callback)```，或把open换成close。但open事件只会触发一次，因为打开只有一次，而事件触发完之后函数依然在。这就说明，open事件是一个一次性的事件，没有必要用```on```，而是用```流名.once("open",callback)```。close同理。
+
+- ```on(事件字符串，回调函数)```：可以为对象绑定一个事件
+- ```once(事件字符串，回调函数)```：可以为对象绑定一个一次性的事件，该事件将会在触发一次以后自动失效。
+
+> 上面的```on```是jquery里的写法，适用于绑定一个长期有效的事件。而```once```用来绑定一个一次性的事件。在这里使用这两个，运行效果是一样的。
+
+2. 关闭流：```流名.end();```。
+如果把流的传输想象成水缸A的水通过一个管子流向水缸B，这个方法相当于把管子从A拿走了，但另一头还在B，开始传输的东西会继续传输完才会完全关闭流。还有一个方法是```流名.close()```，这个方法就相当于把管子从B拿走，性能和计算机性能有关，性能好的话close()没执行就已经向文件写完了，所以会出现正常全部写入的情况。但性能不好的话，可能就无法传输完要传输的内容，流就已经关闭了。
+
+用法如下：
+```javascript
+var fs = require("fs")
+var ws = fs.createWriteStream("hihi.txt") // 这就创建了可写流
+// 监听可写流的开启和关闭
+ws.once("open", function () { console.log("流打开了"); });
+ws.once("close", function () { console.log("流关闭了"); });
+
+ws.write("通过可写流写入文件的内容")
+ws.write("又写了")
+ws.write("又又写了")
+
+ws.close();
+```
+
+### 同步和异步文件读取
+类似同步和异步文件的写入过程，先open，再```fs.read()```或```fs.readSync()```，再close。
+
+### 简单文件读取
+通过```fs.readFile(path[,options],callback)```和```fs.readFileSync(path[,options])```。
+
+- path：要读取的文件的路径
+- options：读取的选项（操作符、权限等），一般不写
+- callback：回调函数，通过回调函数将读取到的内容返回```(err,data)```
+  - err：错误对象
+  - data：读取到的数据，会返回一个buffer。如果是文本文件，可以通过```data.toString()```来转换成正常的结果。如果是图片等其它类型的文件，就体现出buffer的好处了。
+
+用法如下：
+```javascript
+var fs = require("fs")
+
+fs.readFile("test.jpg",function(err,data){
+    if(!err){
+        // 1.打印读取到的内容：
+        // console.log(data.toString());
+        // 2.将data写入到文件中
+        fs.writeFile("hihi.jpg",data,function(err){
+            if(!err){ console.log("图片文件写入成功！");}
+        })
+    }
+})
+```
+
+### 流式文件读取(初级方法)
+流式文件读取也适用于一些比较大的文件，可以<span style="color:red">分多次将文件读取到内存中。</span>
+如果要读取一个可读流的数据，必须要为可读流绑定一个data事件，data时间绑定完毕，它会自动开始读取数据；<span style="color:red">读取完了还会自动关闭，所以不需要专门去关闭可读流。</span>
+关于读取到的数据的去向，可读流读取到的数据都是通过参数返回的，也就是下面示例的参数```data```（这个名字是我们自己起的）。而且参数是没有err的，因为这个事件一旦触发，就不可能再出错了。如果在打印data的地方同时打印```console.log(data.length)```，会发现结果是65536。
+
+用法如下：
+```javascript
+var fs = require("fs")
+// 创建一个可读流读取数据
+var rs = fs.createReadStream("test.mp3") 
+// 创建一个可写流接收数据
+var ws = fs.createWriteStream("hihi.mp3") 
+
+// 监听【可读】流和【可写】流的开启和关闭
+rs.once("open", function () { console.log("可读流打开了"); });
+rs.once("close", function () { 
+    console.log("可读流关闭了"); 
+    
+    // 数据读取完毕，在这里关闭可写流：
+    ws.end();
+});
+ws.once("open", function () { console.log("可写流打开了"); });
+ws.once("close", function () { console.log("可写流关闭了"); });
+
+rs.on("data",function(data){ 
+    // console.log(data); 
+    // 将读取到的数据写入到可写流
+    ws.write(data)
+    // 不可以在这里关闭可写流ws.end()!这就会导致只读了一条数据就把可写流给关了。
+})
+```
+
+### 流式文件读取(简单方法)
+方法```pipe()```：将可读流中的内容直接输出到可写流中。不需要再额外执行操作关闭可读流和可写流，```pipe()```会自动完成。
+用法如下：
+```javascript
+var fs = require("fs")
+// 创建一个可读流读取数据
+var rs = fs.createReadStream("test.mp3") 
+// 创建一个可写流接收数据
+var ws = fs.createWriteStream("hihi.mp3") 
+
+// 监听【可读】流和【可写】流的开启和关闭
+rs.once("open", function () { console.log("可读流打开了"); });
+rs.once("close", function () { console.log("可读流关闭了"); });
+ws.once("open", function () { console.log("可写流打开了"); });
+ws.once("close", function () { console.log("可写流关闭了"); });
+
+// 简单方法：利用可读流的pipe()方法。在可读流和可写流中间架起一个管道，直接传输。
+rs.pipe(ws);
+```
+
+### fs模块的其他方法
+1. 验证路径是否存在：```fs.existsSync(path)```，返回boolean。可查看文件是否存在。异步方法已经弃用。
+2. 获取文件信息：```fs.stat(path,callback)```和```fs.statSync(path)```，返回一个对象，保存了当前对象状态的相关信息。
+3. 删除文件：```fs.unlink(path,callback)```和```fs.unlinkSync(path)```。
+4. 列出文件：```fs.readdir(path,callback)```和```fs.readdirSync(path[,options])```。读取一个目录的目录结构。回调函数的参数files是一个字符串数组，每一个元素就是一个文件或文件夹的名字。
+5. 截断文件，将文件修改为指定的大小：```fs.truncate(path,len,callback)```和```fs.truncateSync(path,len)```。这里的len是字节数。
+6. 建立目录：```fs.mkdir(path[,mode],callback)```和```fs.mkdirSync(path[,mode])```。
+7. 删除目录：```fs.rmdir(path,callback)```和```fs.rmdirSync(path)```。
+8. 重命名文件和目录：```fs.rename(oldpath,callback)```和```fs.renameSync(path)```。
+9. 监视文件更改写入：```fs.unlink(path,callback)```和```fs.unlinkSync(path)```。
 
 
 
