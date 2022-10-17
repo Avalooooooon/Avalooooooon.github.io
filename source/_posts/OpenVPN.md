@@ -6,11 +6,15 @@ tags: [vpn]
 categories: [vpn]
 ---
 
-##简介
 
+## 简介
 OpenVPN 是基于 TLS 加密层实现 VPN 的开源项目。
 
 ## 安装
+### 在自己的终端配置
+连接服务器：```ssh root@服务器ip -p 端口号```
+查看配置文件：```cat /etc/ssh/sshd_config```
+修改配置文件：```vim /etc/ssh/sshd_config```
 
 ### Linux 服务端(debian10)
 登录服务端：除了ssh方式，也可以通过用户名密码方式。参考了[这篇文章](https://blog.csdn.net/liuxiao723846/article/details/121618772)。端口号可以在服务器后台查阅ssh server。
