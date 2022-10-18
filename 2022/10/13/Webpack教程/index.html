@@ -32,20 +32,20 @@
   <!-- feed -->
   <!-- 页面元数据 -->
   <title>Webpack教程 - 一之碎片</title>
-  <meta name="keywords" content="前端 macOS python 网络">
+  <meta name="keywords" content="Webpack,前端 macOS python 网络">
   <meta desc name="description" content="前端 杂谈 - 一之碎片 - 一之碎片">
   
 <meta property="og:type" content="article">
 <meta property="og:title" content="Webpack教程">
 <meta property="og:url" content="https://avalooooooon.github.io/2022/10/13/Webpack%E6%95%99%E7%A8%8B/">
 <meta property="og:site_name" content="一之碎片">
-<meta property="og:description" content="前端 杂谈">
+<meta property="og:description" content="Webpack是一个静态资源打包工具。以一个或多个文件作为打包的入口，将我们整个项目所有文件编译组合成一个或多个文件输出出去。“打包”，就是编译，把浏览器不识别的语法编译成可以识别的语法。输出的文件就是编译好的文件，就可以在浏览器段运行了。我们将这种 Webpack 输出的文件叫做 bundle。Webpack在线课件  Webpack作用开发时，我们会使用框架（React、Vue），ES6 模">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2022-10-13T04:56:02.000Z">
 <meta property="article:modified_time" content="2022-10-13T04:56:02.000Z">
 <meta property="article:author" content="一之碎片">
-<meta property="article:tag" content="前端 macOS python 网络">
+<meta property="article:tag" content="Webpack">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
   <style>
@@ -1874,7 +1874,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1665998913807),
+    lastupdate: new Date(1666085185658),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -3001,6 +3001,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Webpack/">Webpack</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
+      </span>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E5%89%8D%E7%AB%AF/Webpack/" itemprop="url"><span itemprop="name">Webpack</span></a>
+      </span>
+    
+  </div>
+
 
           
         
@@ -3031,7 +3045,87 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    
+    <blockquote>
+<p>Webpack是一个静态资源打包工具。以一个或多个文件作为打包的入口，将我们整个项目所有文件编译组合成一个或多个文件输出出去。<br>“打包”，就是编译，把浏览器不识别的语法编译成可以识别的语法。输出的文件就是编译好的文件，就可以在浏览器段运行了。<br>我们将这种 Webpack 输出的文件叫做 bundle。<br><a target="_blank" rel="noopener" href="https://yk2012.github.io/sgg_webpack5/base">Webpack在线课件</a></p>
+</blockquote>
+<h2 id="Webpack作用"><a href="#Webpack作用" class="headerlink" title="Webpack作用"></a>Webpack作用</h2><p>开发时，我们会使用框架（React、Vue），ES6 模块化语法，Less&#x2F;Sass 等 css 预处理器等语法进行开发。这样的代码要想运行，必须经过编译，编译成浏览器能识别的 JS、Css 等语法，才能运行。<br>所以我们需要打包工具帮我们把框架什么的语法编译成浏览器可以识别的语法，最终才能在浏览器中运行。<br>打包工具还能压缩代码、做兼容性处理、提升代码性能等。<br>除了最常用的Webpack外，比较常见的打包工具还有Grunt、Gulp、Parcel、Rollup、Vite等。</p>
+<p>Webpack 本身是不能识别样式资源的，所以需要借助 Loader 来帮助 Webpack 解析样式资源。找 Loader 都应该去官方文档中找到对应的 Loader后使用。官方文档找不到的话，可以从社区 Github 中搜索查询。<br><a target="_blank" rel="noopener" href="https://webpack.docschina.org/loaders/">Webpack 官方 Loader 文档</a></p>
+<blockquote>
+<p>不过官网可能存在一个问题，在“快速开始”的第一步中，<code>npm install --save-dev xxx</code>中的xxx可能未完整包含所需要的依赖。所以在我们使用的时候还需要观察官网在<code>webpack.config.js</code>中的module - rules - use字段中用了哪些loader，就去下载这些loader。<br>或者根据<code>npx webpack</code>后的报错里<code>Can&#39;t resolve xxx</code>，无脑  去下载这里提到的loader就行。</p>
+</blockquote>
+<p><span style="color:red">想要webpack打包资源，必须得在入口文件中引入该资源。</span>所以，想要处理什么资源，就要先创建这个资源，并且要在入口文件中import引入，它才会被打包。有些类型的文件，比如css，直接打包会报错，因为webpack不能处理这种资源。这时候就要去配置loader，让它可以处理这些资源。去官方文档下载依赖、进行依赖配置。</p>
+<p>在<code>index.html</code>中<span style="color:red">引入打包后的js文件</span>，才能看到效果。</p>
+<p>运行指令<code>npx webpack</code>，打开 index.html 页面查看效果。</p>
+<h2 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h2><p>Webpack 本身功能是有限的，有两种模式:<br>开发模式：仅能编译 JS 中的 ES Module 语法。在项目开发过程中使用的模式。<br>生产模式：除能编译 JS 中的 ES Module 语法外，还能压缩 JS 代码。代码要部署上线时使用的模式。<br>所以它本身能处理的文件只有JS文件，样式文件遇到就会报错，处理不了。所以需要学习Webpack的其他配置来让它的功能变得强大。</p>
+<p>在项目根目录中，如果没有package.json，则需要执行<code>npm init -y</code>命令生成package.json并对其进行初始化。此时会生成一个基础的package.json文件。执行<code>npm i webpack webpack-cli -D</code>下载依赖（这里的<code>-D</code>是把依赖安装到开发依赖的意思）。</p>
+<ul>
+<li><p>执行<code>npx webpack ./src/main.js --mode=development</code>开始打包，该命令指定环境为开发环境。</p>
+<ul>
+<li>命令<code>npx webpack</code>: 是用来运行本地安装 Webpack 包的。</li>
+<li>命令<code>./src/main.js</code>: 指定 Webpack 从哪个文件作为入口开始打包。不但会打包入口文件main.js，还会将其依赖也一起打包进来。</li>
+<li>命令<code>--mode=xxx</code>：指定模式（环境）。</li>
+</ul>
+</li>
+<li><p>打包完成后会生成一个<code>dist</code>目录，打包出来的文件会输出到这个文件夹中。打开<code>main.js</code>，可以发现webpack把一些ES6的语法编译成了__webpack_modules__、__webpack_exports__等变量。此外还可以发现，每一个.js文件资源都被一个<code>eval()</code>函数包起来了。</p>
+</li>
+</ul>
+<blockquote>
+<p>需要注意的是，在开发环境中webpack只能编译ES6的<strong>模块化</strong>语法，<code>...</code>和箭头函数等其他语法并不能编译。</p>
+</blockquote>
+<ul>
+<li><p>编译完成后，把入口文件<code>index.html</code>中引入的src中的<code>main.js</code>换成dist文件夹中的<code>main.js</code>再运行，打开控制台，会发现没有报错了。（直接运行src中的main.js，会报错：<code>Cannot use import statement outside a module</code>，因为导入文件模块是es6模块化语法，而浏览器并不支持es6语法。）</p>
+</li>
+<li><p>上面的例子是在开发环境下进行编译。如果在生产环境中进行打包，指令变为<code>npx webpack ./src/main.js --mode=production</code>。此时webpack也会把结果输出到dist文件夹中，但会进行压缩，生成非常简单的代码。</p>
+</li>
+</ul>
+<h2 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h2><ul>
+<li>5大核心概念如下：</li>
+</ul>
+<ol>
+<li><p>entry（入口）：指示 Webpack 从哪个文件开始打包。Webpack 会以一个或多个文件作为入口。</p>
+<blockquote>
+<p>entry里的路径需要用<span style="color:red">相对路径</span>。</p>
+</blockquote>
+</li>
+<li><p>output（输出）：指示 Webpack 打包完的文件输出到哪里去，如何命名等。如果不指定也会有一个默认值，但不推荐，因为将来大概率需要对打包后的文件进行一些操作。</p>
+<blockquote>
+<p>注意需要指定输出的两个细节：<code>path</code>和<code>filename</code>。 分别是输出路径和输出名称。</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>output里的路径需要用<span style="color:red">绝对路径</span>。需要用到node.js的核心模块：<code>path</code>，该模块专门用来处理路径问题。<br>使用path模块的一个方法：<code>path.resolve()</code>，该方法返回一个绝对路径。<code>__dirname</code>变量是node环境下的一个变量，表示当前文件所在的文件夹的路径，可以直接使用。</p>
+</blockquote>
+<ol start="3">
+<li><p>loader（加载器）：webpack 本身只能处理 js、json 等资源，样式、图片等其他资源需要借助 loader，Webpack 才能解析。</p>
+<blockquote>
+<p>在<code>webpack.config.js</code>中加载器的名字叫<code>module</code>，里面写着<code>rules</code>。<br>rules是一个数组，其内部要写的是loader的规则。</p>
+</blockquote>
+</li>
+<li><p>plugins（插件）：扩展 Webpack 的功能。是一个数组。</p>
+</li>
+<li><p>mode（模式）：主要由两种模式：开发模式development；生产模式production。</p>
+</li>
+</ol>
+<ul>
+<li><p>开发模式主要在开发过程中使用，代码能运行即可。这个模式下我们主要做两件事：</p>
+<ol>
+<li>编译代码，使浏览器能识别运行：webpack 本来只能处理js资源，然而开发时还有样式资源、字体图标、图片资源、html 资源等，webpack 默认都不能处理这些资源，所以要加载配置来编译这些资源。</li>
+<li>代码质量检查，树立代码规范：可以借助一些工具，如ESLint，提前检查代码的一些隐患。提前检查代码规范和格式，统一团队编码风格，让代码更优雅美观。</li>
+</ol>
+</li>
+<li><p>而生产模式就需要对代码进行各种优化。</p>
+</li>
+</ul>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p><span style="color:red">配置文件：<code>webpack.config.js</code>一定位于项目的根目录下！</span>由于Webpack 是基于 Node.js 运行的，所以采用 Common.js 模块化规范：<code>module.exports = &#123;&#125;</code>。基本格式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>)  <span class="comment">// nodejs核心模块</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="comment">// 入口。注意是相对路径。</span></span><br><span class="line">    <span class="attr">entry</span>: <span class="string">&quot;./src/main.js&quot;</span>,</span><br><span class="line">    <span class="comment">// 输出。注意是绝对路径。</span></span><br><span class="line">    <span class="attr">output</span>: &#123;</span><br><span class="line">        <span class="attr">path</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&quot;dist&quot;</span>),</span><br><span class="line">        <span class="attr">filename</span>: <span class="string">&#x27;main.js&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 加载器</span></span><br><span class="line">    <span class="attr">module</span>: &#123;</span><br><span class="line">        <span class="attr">rules</span>: [</span><br><span class="line">            <span class="comment">// loader的配置</span></span><br><span class="line">        ],</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 插件</span></span><br><span class="line">    <span class="attr">plugins</span>: [</span><br><span class="line">        <span class="comment">// plugin的配置</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// 模式</span></span><br><span class="line">    <span class="attr">mode</span>: <span class="string">&quot;development&quot;</span>,  <span class="comment">// 此处指定的是开发环境。</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>写好配置文件后，在控制台运行webpack。命令由<code>npx webpack ./src/main.js --mode=development</code>变成了<code>npx webpack</code>。</p>
+<figure class="highlight plaintext"><figcaption><span>webpack```命令会去当前运行所在的目录中找```webpack.config.js```文件，读取里面的配置，按照里面的配置执行相应的打包操作。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">类似```npx webpack ./src/main.js --mode=development```，如果在```npx webpack```后面加了指令，则会按加的指令执行相应的操作。</span><br><span class="line">总之就是，如果有配置文件，就```npx webpack```；没配置文件就手动加指令，用```npx webpack ./src/main.js --mode=development```。</span><br><span class="line"></span><br><span class="line">## 处理CSS资源</span><br><span class="line">1. 下载CSS Loader及其它处理CSS需要用到的loader：```npm i css-loader style-loader -D```。这里具体下载哪几个需要去官网查看其配置文件中module - rules - use都有什么。</span><br><span class="line">  - css-loader：先执行。将css资源编译成commonjs的模块到js中，即负责将 Css 文件编译成 Webpack 能识别的模块。</span><br><span class="line">  - style-loader：在css-loader后执行。会动态创建一个 Style 标签，里面放置 Webpack 中 Css 模块内容。需要先把css打包到js中。</span><br><span class="line">  下载好后样式就会以 Style 标签的形式在页面上生效。</span><br><span class="line">2. 在配置文件中的配置如下：</span><br><span class="line">```javascript</span><br><span class="line">const path = require(&quot;path&quot;)  // nodejs核心模块</span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry: &quot;./src/main.js&quot;,  // 入口。注意是相对路径。</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, &quot;dist&quot;),  // 输出。注意是绝对路径。</span><br><span class="line">        filename: &#x27;main.js&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    // 加载器</span><br><span class="line">    module: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            // loader的配置。test里面是想要这个loader对那些文件生效。</span><br><span class="line">            &#123;</span><br><span class="line">                test: /\.css$/, // 只检测.css文件，并对其使用下面的规则</span><br><span class="line">                use: [   </span><br><span class="line">                    // 使用什么loader去处理。执行顺序是从后到前。</span><br><span class="line">                    &quot;style-loader&quot;,  // 通过动态创建style标签使样式生效。</span><br><span class="line">                    &quot;css-loader&quot;, // 把css打包到js中。</span><br><span class="line">                ],</span><br><span class="line">            &#125;,</span><br><span class="line">        ],</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [],</span><br><span class="line">    mode: &quot;development&quot;,  // 此处指定的是开发环境。</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>添加好CSS资源，并在入口文件<code>main.js</code>引入 Css 资源，Webpack才会对其打包。在<code>index.html</code>中引入打包后的js文件<code>../dist/main.js</code>，才能看到效果。</li>
+<li>运行指令<code>npx webpack</code>，打开 index.html 页面查看效果。</li>
+</ol>
+<h2 id="处理Less资源"><a href="#处理Less资源" class="headerlink" title="处理Less资源"></a>处理Less资源</h2><h2 id="处理Sass和Scss资源"><a href="#处理Sass和Scss资源" class="headerlink" title="处理Sass和Scss资源"></a>处理Sass和Scss资源</h2><h2 id="处理Styl资源"><a href="#处理Styl资源" class="headerlink" title="处理Styl资源"></a>处理Styl资源</h2>
   </div>
   
   
@@ -3083,6 +3177,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Webpack/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Webpack</p></a></div>
+  <span hidden itemprop="keywords">Webpack</span>
+
 
         
       
@@ -3204,9 +3302,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
 
 
-  <div class="">
-    <!-- pjax占位 -->
-  </div>
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Webpack%E4%BD%9C%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">Webpack作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">开始使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">基本配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">配置文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%84%E7%90%86Less%E8%B5%84%E6%BA%90"><span class="toc-number">4.</span> <span class="toc-text">处理Less资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%84%E7%90%86Sass%E5%92%8CScss%E8%B5%84%E6%BA%90"><span class="toc-number">5.</span> <span class="toc-text">处理Sass和Scss资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%84%E7%90%86Styl%E8%B5%84%E6%BA%90"><span class="toc-number">6.</span> <span class="toc-text">处理Styl资源</span></a></li></ol>
+    </div>
+  </section>
 
   
 
@@ -4246,7 +4354,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp"];
+  let imgs = ["https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4475,7 +4583,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":3,"item":{"@id":"https://avalooooooon.github.io/2022/10/13/Webpack教程/","name":"Webpack教程"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"一之碎片","url":"https://avalooooooon.github.io/","keywords":"前端 macOS python 网络","description":"前端 杂谈","author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","description":"前端 杂谈"},"publisher":{"@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://avalooooooon.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Webpack教程","description":"前端 杂谈","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://avalooooooon.github.io/2022/10/13/Webpack%E6%95%99%E7%A8%8B/"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://avalooooooon.github.io/2022/10/13/Webpack%E6%95%99%E7%A8%8B/","wordCount":0,"datePublished":"2022-10-13T04:56:02.000Z","dateModified":"2022-10-13T04:56:02.000Z","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":2,"item":{"@id":"https://avalooooooon.github.io/categories/前端/","name":"前端"}},{"@type":"ListItem","position":2,"item":{"@id":"https://avalooooooon.github.io/categories/前端/Webpack/","name":"Webpack"}},{"@type":"ListItem","position":3,"item":{"@id":"https://avalooooooon.github.io/2022/10/13/Webpack教程/","name":"Webpack教程"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"一之碎片","url":"https://avalooooooon.github.io/","keywords":"前端 macOS python 网络","description":"前端 杂谈","author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","description":"前端 杂谈"},"publisher":{"@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://avalooooooon.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Webpack教程","description":"前端 杂谈","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://avalooooooon.github.io/2022/10/13/Webpack%E6%95%99%E7%A8%8B/"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://avalooooooon.github.io/2022/10/13/Webpack%E6%95%99%E7%A8%8B/","wordCount":0,"datePublished":"2022-10-13T04:56:02.000Z","dateModified":"2022-10-13T04:56:02.000Z","articleSection":"前端","keywords":"Webpack","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
