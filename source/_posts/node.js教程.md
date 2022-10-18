@@ -65,10 +65,14 @@ ES标准的缺陷：没有模块系统（ES6新增）、标准库较少、没有
 ## npm和包
 包实际上就是一个压缩文件，解压后还原为目录。CommonJS的包规范由**包结构**（用于组织包中的各种文件）和**包描述文件**（描述包的相关信息，以供外部读取分析）两个部分组成。 符合规范的目录应该包含如下文件：
 ——**package.json** 描述文件（只有这个是必须的，其他四个可选）。里面的字段有name、description、version等。可以通过```npm init```生成。
+> ```npm init```和```npm init -y```命令的作用是： 对项目进行初始化操作，对包进行管理。
+> -y 的含义：yes的意思，在init的时候省去了敲回车的步骤，生成的都是默认的package.json。
+
 ——bin 可执行二进制文件
 ——lib JS代码
 ——doc 文档
 ——test 单元测试
+
 > .json文件中不支持写注释。
 
 NPM（Node Package Manager）：帮助Node完成了第三方模块的发布、安装和依赖等。它不需要安装，安装完node之后自带npm。**通过npm下载的包都放到node_modules文件夹中，**通过npm下载的包直接通过包名引入即可。
@@ -79,11 +83,35 @@ node在使用模块名字来引入模块时，它会首先在当前目录的node
 ——```npm install 包名 -g```：全局模式安装包。全局安装的包一般都是一些工具。 
 ——```npm remove 包名```：删除包
 **——```npm install 包名 --save```：安装包并添加到依赖中（package.json--dependencies)。再配合```npm install```可直接下载当前项目所依赖的包并创建node_modules文件夹**。```npm remove 包名 --save```类似，也是从依赖中同时删除。
+> 需要注意 package.json 中 name 字段不能和取成包的名字！ 否则下载同样名字的包时会报错。
+
 ——```npm config set registry 地址```：设置镜像源
 ——```npm install 包名 -registry=地址```：从镜像源安装
 
 > cnpm
 > npm服务器在美国，在下载包的时候可能会遇到一些问题。可以直接搜索淘宝的cnpm查看教程。
+
+## 补充：npx
+> npx侧重于执行命令——执行某个模块命令。虽然会自动安装模块，但是重在执行某个命令。
+> npm侧重于安装或者卸载某个模块的。重在安装，并不具备执行某个模块的功能。
+
+npm从5.25.2版开始，增加了 npx 命令，方便在项目中使用全局包。Node安装后自带npm模块，可以直接使用npx命令。如果不能使用，就要手动安装一下：```npm install -g npx```。
+
+npx想要解决的主要问题就是调用项目内部安装的模块。npx 的原理很简单，就是运行的时候，会到node_modules/.bin路径和环境变量$PATH里面，检查命令是否存在。
+
+比如，项目内部安装了测试工具webpack：```npm install webpack -D```（这里的```-D```是把依赖安装到开发依赖的意思）。如果我们使用webpack，只能在项目脚本的 package.json 中的scripts字段里面， 如果想在命令行下调用，必须像这样：```node-modules/.bin/webpack -v```。
+而npx 可以让项目内部安装的模块用起来更方便，只要像下面这样调用就行了：```npx webpack -v```。
+下载全局模块时，npx 允许指定版本：```npx webpack@4.44.1 ./src/index.js -o ./dist/main.js```。此代码指定使用 4.44.1 版本的webpack进行打包操作。
+
+注意，只要 npx 后面的模块无法在本地发现，就会下载同名模块。比如，本地没有安装webpack-dev-server模块，```npx webpack-dev-server```命令会自动下载该模块，在当前目录启动一个 Webpack dev 服务。
+如果想让 npx 强制使用本地模块，不下载远程模块，可以使用--no-install参数。如果本地不存在该模块，就会报错。```npx --no-install webpack-dev-server```。
+反过来，如果忽略本地的同名模块，强制安装使用远程模块，可以使用```--ignore-existing```参数。比如，本地已经全局安装了create-react-app，但还是想使用远程模块，就用这个参数：```npx --ignore-existing create-react-app my-react-app```。
+
+由于 npx 会检查环境变量$PATH，所以系统命令也可以调用：```npx ls // 等同于ls命令```。
+
+另外,使用npx可以避免全局安装模块，比如，```create-react-app```这个模块是全局安装，npx 可以运行它，而且不进行全局安装：```npx create-react-app my-react-app```。上面代码运行时，npx 将create-react-app**下载到一个临时目录，使用以后再删除。所以，以后再次执行上面的命令，会重新下载**create-react-app。
+
+还可以利用 npx 指定某个版本的 Node 运行脚本。```npx node@14.10.0 -v```命令会使用 14.10.0 版本的 Node 执行脚本。原理是从 npm 下载这个版本的 node，使用后再删掉。某些场景下，这个方法用来切换 Node 版本，要比 nvm 那样的版本管理器方便一些。
 
 ## Buffer（缓冲区）
 > JS已经有数组了，为什么还需要Buffer？
@@ -301,9 +329,8 @@ rs.pipe(ws);
 5. 截断文件，将文件修改为指定的大小：```fs.truncate(path,len,callback)```和```fs.truncateSync(path,len)```。这里的len是字节数。
 6. 建立目录：```fs.mkdir(path[,mode],callback)```和```fs.mkdirSync(path[,mode])```。
 7. 删除目录：```fs.rmdir(path,callback)```和```fs.rmdirSync(path)```。
-8. 重命名文件和目录：```fs.rename(oldpath,callback)```和```fs.renameSync(path)```。
-9. 监视文件更改写入：```fs.unlink(path,callback)```和```fs.unlinkSync(path)```。
-
+8. 重命名文件和目录：```fs.rename(oldpath,newpath,callback)```和```fs.renameSync(oldpath,newpath)```。
+9. 监视文件修改：```fs.watchFile(filename[,options],listener)```。
 
 
 
