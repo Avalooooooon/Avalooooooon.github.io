@@ -17,7 +17,7 @@ categories: [前端,Webpack]
 打包工具还能压缩代码、做兼容性处理、提升代码性能等。
 除了最常用的Webpack外，比较常见的打包工具还有Grunt、Gulp、Parcel、Rollup、Vite等。
 
-Webpack 本身是不能识别样式资源的，所以需要借助 Loader 来帮助 Webpack 解析样式资源。找 Loader 都应该去官方文档中找到对应的 Loader后使用。官方文档找不到的话，可以从社区 Github 中搜索查询。
+Webpack 本身是不能识别样式资源的，所以需要借助 Loader 来帮助 Webpack 解析样式资源。找 Loader 都应该去官方文档中找到对应的 Loader后使用。官方文档找不到的话，可以从社区 Github 中搜索查询。基本流程都是一样的，下载依赖->在webpack.config.js中配置，还有创建资源 ，同时要记得引入。
 [Webpack 官方 Loader 文档](https://webpack.docschina.org/loaders/)
 > 不过官网可能存在一个问题，在“快速开始”的第一步中，```npm install --save-dev xxx```中的xxx可能未完整包含所需要的依赖。所以在我们使用的时候还需要观察官网在```webpack.config.js```中的module - rules - use字段中用了哪些loader，就去下载这些loader。
 > 或者根据```npx webpack```后的报错里```Can't resolve xxx```，无脑  去下载这里提到的loader就行。
@@ -137,28 +137,199 @@ module.exports = {
     mode: "development",  // 此处指定的是开发环境。
 };
 ```
+注意官方文档中是```test: /\.css$/i```。
+正则的i是修饰符，意思是不区分大小写，也就是你的文件是LESS还是less都能匹配上。但是不写i就要求一定得是less。
+此外，官方文档的配置有的将```use```写为了```loader```。它们的区别是```loader:'xxx'```只能使用一个loader。可能需要我们自行将其修改为use。
 3. 添加好CSS资源，并在入口文件```main.js```引入 Css 资源，Webpack才会对其打包。在```index.html```中引入打包后的js文件```../dist/main.js```，才能看到效果。
 4. 运行指令```npx webpack```，打开 index.html 页面查看效果。
 
-## 处理Less资源
+### 处理Less资源
+less是css的一个预处理器，是 CSS 上的一种抽象层。 Less 是一种动态样式语言，将 CSS 赋予了动态语言的特性，如混合语法、变量，继承，运算， 函数，LESS 既可以在客户端上运行 (支持 IE 6+, Webkit, Firefox)，也可以在服务端运行 (借助 Node.js)。 
 
-## 处理Sass和Scss资源
+- less-loader：将less编译成css文件。
 
-## 处理Styl资源
+### 处理Sass、Scss、Styl资源
+类似less。
+
+## 处理图片资源
+过去在 Webpack4 时，我们处理图片资源通过 file-loader 和 url-loader 进行处理：
+
+- file-loader：将文件资源原封不动的输出出去，在过程中会将它编译成webpack能识别的资源
+- url-loader：在file-loader的基础上，将小于某个大小的文件转化成base64，对图片资源做了一些优化。
+现在 Webpack5 已经将两个 Loader 功能内置到 Webpack 里了，我们只需要简单配置即可处理图片资源。处理图片并不需要下载什么loader。
+
+在```webpack.config.js```添加配置：
+```javascript
+{
+  test: /\.(png|jpe?g|gif|webp)$/,
+  type: "asset",
+},
+```
+这里的```type: "asset"```即相当于使用了url-loader，能够帮助我们对图片进行处理。
+
+各项配置好后再运行```npx webpack```，打开 index.html 页面查看输出资源情况，此时如果查看 dist 目录的话，会发现多了几张图片资源，也就是我们之前放到images文件夹然后引入了的几张图片，因为 Webpack 会将所有打包好的资源输出到 dist 目录下。
+但为什么样式资源没有呢？因为经过 style-loader 的处理，样式资源打包到 main.js 里面去了，所以没有额外输出出来。
+
+### 对图片资源进行优化
+比如将小于某个大小的图片转化成 data URI 形式（Base64 格式）。
+> 将图片转化为Base64 格式（DataUrl）的优势是会直接渲染图片，减少图片的请求数量，从而降低服务器压力。
+> 图片转化为Base64 后体积会变大。图片原体积越大，转换成Base64后增加的体积越多，所以一般只会对小图片（5kb）进行这种处理。
+
+在官方文档中搜索“asset”， 进入资源模块。可以看到很多种asset资源模块类型的多种形式。在通用资源类型中找到base64处理的相关配置，将其添加到处理图片原有的配置项里。如下：
+```javascript
+{
+  test: /\.(png|jpe?g|gif|webp)$/,
+  type: "asset",
+  parser: {  // 添加的配置项
+    dataUrlCondition: {
+    maxSize: 10 * 1024 // 小于10kb的图片会被base64处理
+    }
+  }
+},
+```
+
+配置完成后，就可以在打包时看到结果。注意他不会删除已经打包输出的文件，所以需要将上次打包生成的文件清空，再重新打包才有效果。
+
+## 修改输出资源的名称和路径
+到目前为止，可以看到所有打包好的资源都是同级的放在dist文件中，不利于很好的按js、img、css等文件类型整理文件。
+在webpack.config.js文件中，output中的path——```path: path.resolve(__dirname, "dist")```，是所有文件的输出目录，所有打包的文件都在这；而filename——```filename: 'main.js'```是入口文件打包输出的文件名，只有入口文件打包出来放在这个目录。正确的修改方式如下：
+
+- 将 js 文件输出到 static/js 目录中：```filename: "static/js/main.js"```
+- 将图片文件输出到 static/imgs 目录中，在官方文档中搜索“asset”，找到“自定义输出文件名”，将```generator```配置项添加到图片资源的配置项中，也就是与图片配置项中的test、type、parser同级的位置。在dist文件夹中可以看到图片会有一个id，这个id对于webpack是一个哈希值，是唯一的：
+```javascript
+generator: {
+  // 将图片文件命名 [hash:8][ext][query]
+  // [hash:8]: hash值取8位
+  // [ext]: 使用之前的文件扩展名
+  // [query]: 添加之前的query参数
+  filename: "static/imgs/[hash:8][ext][query]",
+},
+```
+
+## 自动清空上次打包资源
+只需在webpack.config.js文件中，output配置项中添加配置```clean: true```即可。作用就是在打包前把```path```文件夹整个清空再打包。
+```javascript
+output: {
+  path: path.resolve(__dirname, "dist"),
+  filename: "static/js/main.js",
+  clean: true, // 自动将上次打包目录资源清空
+},
+```
+
+## 处理字体图标资源
+图标的三种使用方法：Unicode、Font class、Symbol。Font class用法简单，最常用。
+先下载字体图标文件，再在自己的项目中添加字体图标资源并引入（注意字体文件路径需要修改）。比如使用阿里巴巴矢量图标库，需要添加的资源就有```src/fonts/iconfont.ttf```、```src/fonts/iconfont.woff```、```src/fonts/iconfont.woff2```、```src/css/iconfont.css```。
+在webpack配置文件中的配置类似图片，依然是在generator中国呢改变输出名称。如下：
+```javascript
+{
+  test: /\.(ttf|woff2?)$/,
+  type: "asset/resource",
+  generator: {
+    filename: "static/media/[hash:8][ext][query]",
+  },
+},
+```
+
++ 注意```type: "asset/resource"```和```type: "asset"```的区别：
+1. ```type: "asset/resource"``` 相当于file-loader, 只会将文件转化成 Webpack 能识别的资源，其他不做处理。我们的字体文件不需要进行base64的转换，所以用这个。
+2. ```type: "asset"``` 相当于url-loader, 将文件转化成 Webpack 能识别的资源，同时小于某个大小的资源会处理成 data URI 形式
 
 
+## 处理音视频等其它资源
+在处理字体图标资源基础上增加其他文件类型，统一处理即可。
+```javascript
+{
+  test: /\.(ttf|woff2?|map4|map3|avi)$/,
+  type: "asset/resource",
+  generator: {
+    filename: "static/media/[hash:8][ext][query]",
+  },
+}
+```
 
+## 处理js资源
+js 资源 Webpack 不能已经处理了吗，为什么还要处理呢？
+首先Webpack 对 js 处理是有限的，只能编译 js 中 ES 模块化语法，不能编译其他语法，导致 js 不能在 IE 等浏览器运行，因为ie不认识任何ES6语法，所以我们希望做一些兼容性处理；其次开发中，团队对代码格式是有严格要求的，我们不能由肉眼去检测代码格式，需要使用专业的工具来检测。
 
++ 针对 js 兼容性处理，我们使用 Babel 来完成；针对代码格式，我们使用 Eslint 来完成
++ 我们先完成 Eslint，检测代码格式无误后，在由 Babel 做代码兼容性处理
 
+### Eslint
+可组装的 JavaScript 和 JSX （react的语法就是JSX）检查工具。也就是说它是用来检测 js 和 jsx 语法的工具，可以配置各项功能。
+> 原生支持react；要想支持vue，需要安点别的插件。
 
+使用 Eslint关键是写 Eslint 配置文件，里面写上各种 rules 规则，将来运行 Eslint 时就会以写的规则对代码进行检查。  
 
++ 配置文件有很多种写法：
+1. ```.eslintrc.*```：新建文件，位于项目根目录。这几个的区别在于配置格式不一样。
+  + ```.eslintrc```
+  + ```.eslintrc.js```
+  + ```.eslintrc.json```
+2. 在```package.json``` 中配置```eslintConfig```：不需要创建文件，在原有文件基础上写。
 
+ESLint 会查找和自动读取它们，所以以上配置文件只需要存在一个即可。下面以```.eslintrc.js```为例：
+```javascript
+module.exports = {
+  // 解析选项
+  parserOptions: {},
+  // 具体检查规则
+  rules: {},
+  // 继承其他规则
+  extends: [],
+  // ...
+  // 其他规则详见：https://eslint.bootcss.com/docs/user-guide/configuring
+};
+```
+1. parserOptions 解析选项。是
+```javascript
+parserOptions: {
+  ecmaVersion: 6, // ES 语法版本
+  sourceType: "module", // ES 模块化
+  ecmaFeatures: { // ES 其他特性
+    jsx: true // 如果是 React 项目，就需要开启 jsx 语法
+  }
+}
+```
+2. rules 具体规则
++ "off" 或 0 ：关闭规则
++ "warn" 或 1：开启规则，使用警告级别的错误：warn (不会导致程序退出)
++ "error" 或 2：开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)
+```javascript
+rules: {
+  semi: "error", // 禁止使用分号
+  'array-callback-return': 'warn', // 强制数组方法的回调函数中有 return 语句，否则警告
+  'default-case': [
+    'warn', // 要求 switch 语句中有 default 分支，否则警告
+    { commentPattern: '^no default$' } // 允许在最后注释 no default, 就不会有警告了
+  ],
+  eqeqeq: [
+    'warn', // 强制使用 === 和 !==，否则警告
+    'smart' // https://eslint.bootcss.com/docs/rules/eqeqeq#smart 除了少数情况下不会有警告
+  ],
+}
+```
+更多规则详见：[规则文档](https://eslint.bootcss.com/docs/rules/)
+3. extends 继承
+开发中一点点写 rules 规则太费劲了，所以有更好的办法，继承现有的规则。现有以下较为有名的规则：
 
++ [Eslint 官方的规则](https://eslint.bootcss.com/docs/rules/)：eslint:recommended
++ [Vue Cli 官方的规则](https://yk2012.github.io/sgg_webpack5/base/javascript.html#_2-具体配置)：plugin:vue/essential
++ [React Cli 官方的规则](https://yk2012.github.io/sgg_webpack5/base/javascript.html#_2-具体配置)：react-app
+```javascript
+// 例如在React项目中，我们可以这样写配置
+module.exports = {
+  extends: ["react-app"],
+  rules: {
+    // 我们的规则会覆盖掉react-app的规则
+    // 所以想要修改规则直接改就是了
+    eqeqeq: ["warn", "smart"],
+  },
+};
+```
 
-
-
-
-
+要在webpack中使用，首先还是下载包：```
+### Babel
+JavaScript 编译器。主要用于将 ES6 语法编写的代码转换为向后兼容的 JavaScript 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。
 
 
 
