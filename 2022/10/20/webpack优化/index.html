@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.7.5">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://avalooooooon.github.io/tags/node/"/>
+  
+  <link rel="canonical" href="https://avalooooooon.github.io/2022/10/20/webpack优化/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -31,19 +31,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>标签：node - 一之碎片</title>
-  <meta name="keywords" content="前端 macOS python 网络">
+  <title>webpack优化 - 一之碎片</title>
+  <meta name="keywords" content="Webpack,前端 macOS python 网络">
   <meta desc name="description" content="前端 杂谈 - 一之碎片 - 一之碎片">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="一之碎片">
-<meta property="og:url" content="https://avalooooooon.github.io/tags/node/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack优化">
+<meta property="og:url" content="https://avalooooooon.github.io/2022/10/20/webpack%E4%BC%98%E5%8C%96/">
 <meta property="og:site_name" content="一之碎片">
-<meta property="og:description" content="前端 杂谈">
+<meta property="og:description" content="提升开发体验SourceMapSourceMap（源代码映射）是一个用来生成源代码与构建后代码一一映射的文件的方案。它会生成一个 xxx.map 文件，里面包含源代码和构建后代码每一行、每一列的映射关系。当构建后代码出错了，会通过 xxx.map 文件，从构建后代码出错位置找到映射后源代码出错位置，从而让浏览器提示源代码文件出错位置，帮助我们更快的找到错误根源。 开发时我们运行的代码是经过 web">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2022-10-20T09:01:48.000Z">
+<meta property="article:modified_time" content="2022-10-20T09:01:48.000Z">
 <meta property="article:author" content="一之碎片">
-<meta property="article:tag" content="前端 macOS python 网络">
+<meta property="article:tag" content="Webpack">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
   <style>
@@ -2890,7 +2892,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper  dock' style="display: none;">
+      <div id="none" class='cover-wrapper post dock' style="display: none;">
         
   <div id="parallax-window"></div>
 
@@ -2959,25 +2961,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-
 <div id="l_main" class=''>
-  
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2021/12/26/node版本管理（macOS）/">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/10/20/webpack优化/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="一之碎片">
   </span>
@@ -2986,79 +2972,264 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="前端 杂谈">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2021/12/26/node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%EF%BC%88macOS%EF%BC%89/"  itemprop="url">
-        node版本管理（macOS和windows）
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      
-        
- 安装的npm全局模块不会在各个版本的node.js之间共享。还有可能有些npm包不支持当前使用的node版本 
- 不要使用单数的node版本！
-
-macOS：使用 n 版本管理工具检查node及npm环境12node -vnpm -v
-
-安装node版本管理模块n12sudo npm i -g n n -V
-
-安装和切换node版本可能要求权限，在命令前加sudo即可。
-12345678...
-      
     
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+      <h1 class="title" itemprop="name headline">
+        webpack优化
+      </h1>
+      <div class='new-meta-box'>
         
-        <time itemprop="dateCreated datePublished" datetime="2021-12-26T15:53:53+08:00">2021-12-26</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/JS/">JS</a>
           
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/JS/" itemprop="url"><span itemprop="name">JS</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/12/26/node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%EF%BC%88macOS%EF%BC%89/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="/" class="lazyload" data-srcset="/" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">一之碎片</p>
+  </a>
 </div>
 
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Webpack/">Webpack</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
+      </span>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E5%89%8D%E7%AB%AF/Webpack/" itemprop="url"><span itemprop="name">Webpack</span></a>
+      </span>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2022-10-20T17:01:48+08:00">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2022年10月20日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h2 id="提升开发体验"><a href="#提升开发体验" class="headerlink" title="提升开发体验"></a>提升开发体验</h2><h3 id="SourceMap"><a href="#SourceMap" class="headerlink" title="SourceMap"></a>SourceMap</h3><p>SourceMap（源代码映射）是一个用来生成源代码与构建后代码一一映射的文件的方案。<br>它会生成一个 xxx.map 文件，里面包含源代码和构建后代码每一行、每一列的映射关系。当构建后代码出错了，会通过 xxx.map 文件，从构建后代码出错位置找到映射后源代码出错位置，从而让浏览器提示源代码文件出错位置，帮助我们更快的找到错误根源。</p>
+<p>开发时我们运行的代码是经过 webpack 编译后的，所有 css 和 js 合并成了一个文件，并且多了其他代码。此时如果代码运行出错那么提示代码错误位置我们是看不懂的。一旦将来开发代码文件很多，那么很难去发现错误出现在哪里。所以我们需要更加准确的错误提示，来帮助我们更好的开发代码。</p>
+<p>不搞SourceMap的话大概长下面这个样子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * ATTENTION: The... ).</span></span><br><span class="line"><span class="comment"> ...</span></span><br><span class="line"><span class="comment"> * If y...n&quot; (https://webpack.js.org/configuration/mode/).</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/******/</span> (<span class="function">() =&gt;</span> &#123; <span class="comment">// webpackBootstrap</span></span><br><span class="line"><span class="comment">/******/</span> 	<span class="string">&quot;use strict&quot;</span>;</span><br><span class="line"><span class="comment">/******/</span> 	<span class="keyword">var</span> __webpack_modules__ = (&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">/***/</span> <span class="string">&quot;./node_modules/css-loader/dist/cjs.js!./node_modules/less-loader/dist/cjs.js!./src/less/index.less&quot;</span>:</span><br><span class="line"><span class="comment">/*!****************************************************************/</span></span><br><span class="line"><span class="comment">/***/</span> (<span class="function">(<span class="params"><span class="variable language_">module</span>, __webpack_exports__, __webpack_require__</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span>(<span class="string">&quot;__webpack_require_......&quot;</span>);</span><br><span class="line"><span class="comment">/***/</span> &#125;),</span><br></pre></td></tr></table></figure>
+
+<p>通过查看<a target="_blank" rel="noopener" href="https://webpack.docschina.org/configuration/devtool/">Webpack DevTool文档</a>可知，SourceMap 的值有很多种情况。但实际开发时我们只需要关注两种情况即可：</p>
+<ul>
+<li><p>开发模式：cheap-module-source-map</p>
+<ul>
+<li>优点：打包编译速度快，只包含行映射</li>
+<li>缺点：没有列映射<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// 其他省略</span></span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&quot;development&quot;</span>,</span><br><span class="line">  <span class="attr">devtool</span>: <span class="string">&quot;cheap-module-source-map&quot;</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>生产模式：source-map</p>
+<ul>
+<li>优点：包含行&#x2F;列映射</li>
+<li>缺点：打包编译速度更慢<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// 其他省略</span></span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&quot;production&quot;</span>,</span><br><span class="line">  <span class="attr">devtool</span>: <span class="string">&quot;source-map&quot;</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="提升打包构建速度"><a href="#提升打包构建速度" class="headerlink" title="提升打包构建速度"></a>提升打包构建速度</h2><h3 id="HotModuleReplacement"><a href="#HotModuleReplacement" class="headerlink" title="HotModuleReplacement"></a>HotModuleReplacement</h3>HotModuleReplacement（HMR&#x2F;热模块替换）：在程序运行中，替换、添加或删除模块，而无需重新加载整个页面。<br>开发时我们修改了其中一个模块代码，Webpack 默认会将所有模块全部重新打包编译，速度很慢。所以我们需要做到修改某个模块代码，就只有这个模块代码需要重新打包编译，其他模块不变，这样打包速度就能很快。</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>基本配置<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// 其他省略</span></span><br><span class="line">  <span class="attr">devServer</span>: &#123;</span><br><span class="line">    <span class="attr">host</span>: <span class="string">&quot;localhost&quot;</span>, <span class="comment">// 启动服务器域名</span></span><br><span class="line">    <span class="attr">port</span>: <span class="string">&quot;3000&quot;</span>, <span class="comment">// 启动服务器端口号</span></span><br><span class="line">    <span class="attr">open</span>: <span class="literal">true</span>, <span class="comment">// 是否自动打开浏览器</span></span><br><span class="line">    <span class="attr">hot</span>: <span class="literal">true</span>, <span class="comment">// 开启HMR功能（只能用于开发环境，生产环境不需要了）</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+此时 css 样式经过 style-loader 处理，已经具备 HMR 功能了。 但是 js 还不行。</li>
+<li>JS配置<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> count <span class="keyword">from</span> <span class="string">&quot;./js/count&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> sum <span class="keyword">from</span> <span class="string">&quot;./js/sum&quot;</span>;</span><br><span class="line"><span class="comment">// 引入资源，Webpack才会对其打包</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./css/iconfont.css&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./css/index.css&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./less/index.less&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./sass/index.sass&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./sass/index.scss&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./styl/index.styl&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result1 = <span class="title function_">count</span>(<span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result1);</span><br><span class="line"><span class="keyword">const</span> result2 = <span class="title function_">sum</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断是否支持HMR功能</span></span><br><span class="line"><span class="keyword">if</span> (<span class="variable language_">module</span>.<span class="property">hot</span>) &#123;</span><br><span class="line">  <span class="variable language_">module</span>.<span class="property">hot</span>.<span class="title function_">accept</span>(<span class="string">&quot;./js/count.js&quot;</span>, <span class="keyword">function</span> (<span class="params">count</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> result1 = <span class="title function_">count</span>(<span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(result1);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">module</span>.<span class="property">hot</span>.<span class="title function_">accept</span>(<span class="string">&quot;./js/sum.js&quot;</span>, <span class="keyword">function</span> (<span class="params">sum</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> result2 = <span class="title function_">sum</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(result2);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+上面这样写会很麻烦，所以实际开发我们会使用其他 loader 来解决。比如<a href>vue-loader</a>open in new window, react-hot-loaderopen in new window。</li>
+</ol>
+<h3 id="Oneof"><a href="#Oneof" class="headerlink" title="Oneof"></a>Oneof</h3><h3 id="Include-x2F-Exclude"><a href="#Include-x2F-Exclude" class="headerlink" title="Include&#x2F;Exclude"></a>Include&#x2F;Exclude</h3><h3 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h3><h3 id="Thead"><a href="#Thead" class="headerlink" title="Thead"></a>Thead</h3><h2 id="减少代码体积"><a href="#减少代码体积" class="headerlink" title="减少代码体积"></a>减少代码体积</h2><h3 id="Tree-Shaking"><a href="#Tree-Shaking" class="headerlink" title="Tree Shaking"></a>Tree Shaking</h3><h3 id="Babel"><a href="#Babel" class="headerlink" title="Babel"></a>Babel</h3><h3 id="Image-Minimizer"><a href="#Image-Minimizer" class="headerlink" title="Image Minimizer"></a>Image Minimizer</h3><h2 id="优化代码运行性能"><a href="#优化代码运行性能" class="headerlink" title="优化代码运行性能"></a>优化代码运行性能</h2><h3 id="Code-Split"><a href="#Code-Split" class="headerlink" title="Code Split"></a>Code Split</h3><h3 id="Preload-x2F-Prefetch"><a href="#Preload-x2F-Prefetch" class="headerlink" title="Preload&#x2F;Prefetch"></a>Preload&#x2F;Prefetch</h3><h3 id="Network-Cache"><a href="#Network-Cache" class="headerlink" title="Network Cache"></a>Network Cache</h3><h3 id="Core-js"><a href="#Core-js" class="headerlink" title="Core-js"></a>Core-js</h3><h3 id="PWA"><a href="#PWA" class="headerlink" title="PWA"></a>PWA</h3>
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
+      
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+        
+          <div class='copyright'>
+            <blockquote>
+              
+                
+                  <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+                
+              
+                
+                  <p>本文永久链接是：<a href="https://avalooooooon.github.io/2022/10/20/webpack优化/">https://avalooooooon.github.io/2022/10/20/webpack优化/</a></p>
+                
+              
+            </blockquote>
           </div>
         
       
-    
-  </section>
+      <!-- 打赏组件 -->
+      
+    </div>
+  
   
     
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-10-20T17:01:48+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2022年10月20日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Webpack/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Webpack</p></a></div>
+  <span hidden itemprop="keywords">Webpack</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://avalooooooon.github.io/2022/10/20/webpack%E4%BC%98%E5%8C%96/&title=webpack优化 - 一之碎片&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://avalooooooon.github.io/2022/10/20/webpack%E4%BC%98%E5%8C%96/&title=webpack优化 - 一之碎片&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://avalooooooon.github.io/2022/10/20/webpack%E4%BC%98%E5%8C%96/&title=webpack优化 - 一之碎片&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2022/10/13/Webpack%E6%95%99%E7%A8%8B/'>
+          <p class='title'>Webpack教程<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
+Webpack是一个静态资源打包工具。以一个或多个文件作为打包的入口，将我们整个项目所有文件编译组合成一个或多个文件输出出去。“打包”，就是编译，把浏览器不识别的语法编译成可以识别的语法。输出...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
   
 
 
+  <article class="post white-box shadow floatable" id="comments">
+    <span hidden>
+      <meta itemprop="discussionUrl" content="/2022/10/20/webpack%E4%BC%98%E5%8C%96/#comments">
+    </span>
+    <p ct><i class='fas fa-comments'></i> 评论</p>
     
-  
+
+    <div id="layoutHelper-comments"></div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -3067,203 +3238,48 @@ macOS：使用 n 版本管理工具检查node及npm环境12node -vnpm -v
     
     
       
-<section class="widget blogger desktop mobile pjax">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/mishanwu.JPG'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>The pieces of one.</h2>
-        
-        
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget category desktop pjax">
-    
-  <header>
-    
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/C/" href="/categories/C/"
-            active-action="action-categoriesC"
-            ><div class='name'>C++</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/git/" href="/categories/git/"
-            active-action="action-categoriesgit"
-            ><div class='name'>git</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/leetcode/" href="/categories/leetcode/"
-            active-action="action-categoriesleetcode"
-            ><div class='name'>leetcode</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/shell/" href="/categories/shell/"
-            active-action="action-categoriesshell"
-            ><div class='name'>shell</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/vpn/" href="/categories/vpn/"
-            active-action="action-categoriesvpn"
-            ><div class='name'>vpn</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
-            active-action="action-categoriesE5898DE7ABAF"
-            ><div class='name'>前端</div><div class='badge'>(6)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/HTML-CSS/" href="/categories/%E5%89%8D%E7%AB%AF/HTML-CSS/"
-            active-action="action-categoriesE5898DE7ABAFHTML-CSS"
-            ><div class='name'>HTML/CSS</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/JS/" href="/categories/%E5%89%8D%E7%AB%AF/JS/"
-            active-action="action-categoriesE5898DE7ABAFJS"
-            ><div class='name'>JS</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/Vue/" href="/categories/%E5%89%8D%E7%AB%AF/Vue/"
-            active-action="action-categoriesE5898DE7ABAFVue"
-            ><div class='name'>Vue</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/Webpack/" href="/categories/%E5%89%8D%E7%AB%AF/Webpack/"
-            active-action="action-categoriesE5898DE7ABAFWebpack"
-            ><div class='name'>Webpack</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%90%8E%E7%AB%AF/" href="/categories/%E5%90%8E%E7%AB%AF/"
-            active-action="action-categoriesE5908EE7ABAF"
-            ><div class='name'>后端</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%90%8E%E7%AB%AF/node-js/" href="/categories/%E5%90%8E%E7%AB%AF/node-js/"
-            active-action="action-categoriesE5908EE7ABAFnode-js"
-            ><div class='name'>node.js</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/" href="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/"
-            active-action="action-categoriesE69687E6A1A3E7BC96E58699"
-            ><div class='name'>文档编写</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/md/" href="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/md/"
-            active-action="action-categoriesE69687E6A1A3E7BC96E58699md"
-            ><div class='name'>.md</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/%E7%BC%96%E8%BE%91%E5%99%A8/" href="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/%E7%BC%96%E8%BE%91%E5%99%A8/"
-            active-action="action-categoriesE69687E6A1A3E7BC96E58699E7BC96E8BE91E599A8"
-            ><div class='name'>编辑器</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/CSS/" style="font-size: 14px; color: #999">CSS</a> <a href="/tags/HTML/" style="font-size: 14px; color: #999">HTML</a> <a href="/tags/JS/" style="font-size: 14px; color: #999">JS</a> <a href="/tags/Vue/" style="font-size: 14px; color: #999">Vue</a> <a href="/tags/Webpack/" style="font-size: 24px; color: #555">Webpack</a> <a href="/tags/git/" style="font-size: 24px; color: #555">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/leetcode/" style="font-size: 14px; color: #999">leetcode</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/node/" style="font-size: 14px; color: #999">node</a> <a href="/tags/node-js/" style="font-size: 14px; color: #999">node.js</a> <a href="/tags/shell/" style="font-size: 14px; color: #999">shell</a> <a href="/tags/vpn/" style="font-size: 24px; color: #555">vpn</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 14px; color: #999">操作系统</a>
-    </div>
-  </section>
-
-
-    
-  
-
   
 
 
 <div class="widget-sticky pjax">
 
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E5%8D%87%E5%BC%80%E5%8F%91%E4%BD%93%E9%AA%8C"><span class="toc-number">1.</span> <span class="toc-text">提升开发体验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SourceMap"><span class="toc-number">1.1.</span> <span class="toc-text">SourceMap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E5%8D%87%E6%89%93%E5%8C%85%E6%9E%84%E5%BB%BA%E9%80%9F%E5%BA%A6"><span class="toc-number">2.</span> <span class="toc-text">提升打包构建速度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HotModuleReplacement"><span class="toc-number">2.1.</span> <span class="toc-text">HotModuleReplacement</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Oneof"><span class="toc-number">2.2.</span> <span class="toc-text">Oneof</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Include-x2F-Exclude"><span class="toc-number">2.3.</span> <span class="toc-text">Include&#x2F;Exclude</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cache"><span class="toc-number">2.4.</span> <span class="toc-text">Cache</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thead"><span class="toc-number">2.5.</span> <span class="toc-text">Thead</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%8F%E5%B0%91%E4%BB%A3%E7%A0%81%E4%BD%93%E7%A7%AF"><span class="toc-number">3.</span> <span class="toc-text">减少代码体积</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tree-Shaking"><span class="toc-number">3.1.</span> <span class="toc-text">Tree Shaking</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Babel"><span class="toc-number">3.2.</span> <span class="toc-text">Babel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Image-Minimizer"><span class="toc-number">3.3.</span> <span class="toc-text">Image Minimizer</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81%E8%BF%90%E8%A1%8C%E6%80%A7%E8%83%BD"><span class="toc-number">4.</span> <span class="toc-text">优化代码运行性能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Code-Split"><span class="toc-number">4.1.</span> <span class="toc-text">Code Split</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Preload-x2F-Prefetch"><span class="toc-number">4.2.</span> <span class="toc-text">Preload&#x2F;Prefetch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Network-Cache"><span class="toc-number">4.3.</span> <span class="toc-text">Network Cache</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Core-js"><span class="toc-number">4.4.</span> <span class="toc-text">Core-js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PWA"><span class="toc-number">4.5.</span> <span class="toc-text">PWA</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+  
+
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -3291,13 +3307,14 @@ macOS：使用 n 版本管理工具检查node及npm环境12node -vnpm -v
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -4512,7 +4529,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":2,"item":{"@id":"https://avalooooooon.github.io/tags/node/","name":"node"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"一之碎片","url":"https://avalooooooon.github.io/","keywords":"前端 macOS python 网络","description":"前端 杂谈","author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","description":"前端 杂谈"},"publisher":{"@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://avalooooooon.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"前端 杂谈","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":2,"item":{"@id":"https://avalooooooon.github.io/categories/前端/","name":"前端"}},{"@type":"ListItem","position":2,"item":{"@id":"https://avalooooooon.github.io/categories/前端/Webpack/","name":"Webpack"}},{"@type":"ListItem","position":3,"item":{"@id":"https://avalooooooon.github.io/2022/10/20/webpack优化/","name":"webpack优化"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"一之碎片","url":"https://avalooooooon.github.io/","keywords":"前端 macOS python 网络","description":"前端 杂谈","author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","description":"前端 杂谈"},"publisher":{"@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://avalooooooon.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"webpack优化","description":"前端 杂谈","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://avalooooooon.github.io/2022/10/20/webpack%E4%BC%98%E5%8C%96/"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://avalooooooon.github.io/2022/10/20/webpack%E4%BC%98%E5%8C%96/","wordCount":0,"datePublished":"2022-10-20T09:01:48.000Z","dateModified":"2022-10-20T09:01:48.000Z","articleSection":"前端","keywords":"Webpack","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
