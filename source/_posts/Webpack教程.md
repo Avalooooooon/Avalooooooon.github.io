@@ -258,7 +258,7 @@ js 资源 Webpack 不能已经处理了吗，为什么还要处理呢？
 可组装的 JavaScript 和 JSX （react的语法就是JSX）检查工具。也就是说它是用来检测 js 和 jsx 语法的工具，可以配置各项功能。
 > 原生支持react；要想支持vue，需要安点别的插件。
 
-使用 Eslint关键是写 Eslint 配置文件，里面写上各种 rules 规则，将来运行 Eslint 时就会以写的规则对代码进行检查。  
+<span style="color:red">使用 Eslint关键是写 Eslint 配置文件</span>，里面写上各种 rules 规则，将来运行 Eslint 时就会以写的规则对代码进行检查。  
 
 + 配置文件有很多种写法：
 1. ```.eslintrc.*```：新建文件，位于项目根目录。这几个的区别在于配置格式不一样。
@@ -280,7 +280,8 @@ module.exports = {
   // 其他规则详见：https://eslint.bootcss.com/docs/user-guide/configuring
 };
 ```
-1. parserOptions 解析选项。是
+还有```env```指的是在eslint的检查中，一些node和浏览器的全局变量能不能直接用，比如window、console等。
+1. parserOptions 解析选项。指示ESlint检查的ES语法版本、什么样的模块化、用了什么其他特性。
 ```javascript
 parserOptions: {
   ecmaVersion: 6, // ES 语法版本
@@ -291,7 +292,7 @@ parserOptions: {
 }
 ```
 2. rules 具体规则
-+ "off" 或 0 ：关闭规则
++ "off" 或 0 ：关闭规则，也就是没有用这个规则。很少用，基本用来覆盖规则。
 + "warn" 或 1：开启规则，使用警告级别的错误：warn (不会导致程序退出)
 + "error" 或 2：开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)
 ```javascript
@@ -313,23 +314,368 @@ rules: {
 开发中一点点写 rules 规则太费劲了，所以有更好的办法，继承现有的规则。现有以下较为有名的规则：
 
 + [Eslint 官方的规则](https://eslint.bootcss.com/docs/rules/)：eslint:recommended
-+ [Vue Cli 官方的规则](https://yk2012.github.io/sgg_webpack5/base/javascript.html#_2-具体配置)：plugin:vue/essential
-+ [React Cli 官方的规则](https://yk2012.github.io/sgg_webpack5/base/javascript.html#_2-具体配置)：react-app
++ [Vue Cli 官方的规则](https://github.com/vuejs/vue-cli/tree/dev/packages/@vue/cli-plugin-eslint)：plugin:vue/essential
++ [React Cli 官方的规则](https://github.com/facebook/create-react-app/tree/main/packages/eslint-config-react-app)：react-app
+此外， 我们自己写的规则优先级会更高，会覆盖掉react-app的规则。所以想要修改规则直接改即可。
 ```javascript
 // 例如在React项目中，我们可以这样写配置
 module.exports = {
   extends: ["react-app"],
   rules: {
-    // 我们的规则会覆盖掉react-app的规则
-    // 所以想要修改规则直接改就是了
     eqeqeq: ["warn", "smart"],
   },
 };
 ```
 
-要在webpack中使用，首先还是下载包：```
+ESlint在webpack4中是loader，现在在webpack5中是插件。在官方文档中的Plugin->EslintWebpackPlugin中即可查看详情。
+要在webpack中使用，首先还是下载eslint和eslint插件：```npm i eslint-webpack-plugin eslint -D```。安装完成后引入插件，因为插件的写法和其它loader的写法不太一样，插件必须引入才能使用，在webpack.config.js中添加```const ESLintWebpackPlugin = require("eslint-webpack-plugin");```；引入完成后，在配置文件中的plugins中添加插件，由于所有插件都是构造函数，所以都是通过```[new ESLintWebpackPlugin(options)]```使用，在webpack.config.js中添加
+
+```javascript
+plugins: [
+  new ESLintPlugin({
+    // 指定检查文件的根目录
+    context: path.resolve(__dirname, "src"),
+  }),
+],
+```
+上面的```(options)```是一些可以传入的eslint参数，如选项```context```的含义就是哪些文件需要做检查，这里可以用绝对路径来完成。
+
+记得使用eslint必须创建eslint配置文件。在根目录新建文件```.eslintrc.js```，它和webpack的配置文件同级。写入内容如下：
+```javascript
+module.exports = {
+    // 继承 Eslint 规则
+    extends: ["eslint:recommended"],
+    env: {  
+        node: true, // 启用node中全局变量
+        browser: true, // 启用浏览器中全局变量
+    },
+    parserOptions: {
+        ecmaVersion: 6,
+        sourceType: "module",
+    },
+    rules: {
+        "no-var": 2, // 禁止使用 var 定义变量
+    },
+};
+```
+在vscode下载 Eslint 插件，即可不用编译就能看到错误，可以提前解决。但是此时就会对项目所有文件默认进行 Eslint 检查了， dist 目录下的打包后文件就会报错。但是我们只需要检查 src 下面的文件，不需要检查 dist 下面的文件。这一点，webpack知道，但下载的eslint插件不知道，所以可以使用 Eslint 忽略文件解决。在项目根目录新建:```.eslintignore```，进行如下配置：
+
+```eslintignore
+#忽略dist目录下所有文件
+dist
+```
+
 ### Babel
 JavaScript 编译器。主要用于将 ES6 语法编写的代码转换为向后兼容的 JavaScript 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。
+
++ 配置文件有很多种写法：
+1. ```babel.config.*```：新建文件，位于项目根目录。这几个的区别在于配置格式不一样。
+  + ```babel.config.js```
+  + ```babel.config.json```
+2. ```.babelrc.*```：新建文件，位于项目根目录。这几个的区别在于配置格式不一样。
+  + ```.babelrc```
+  + ```.babelrc.js```
+  + ```.babelrc.json```
+3. 在```package.json``` 中配置```babel```：不需要创建文件，在原有文件基础上写。
+
+Babel会查找和自动读取它们，所以以上配置文件只需要存在一个即可。下面以```babel.config.js```为例：
+```javascript
+module.exports = {
+  // 预设
+  presets: [],
+};
+```
+1. presets 预设是重点。简单理解：就是一组 Babel 插件, 扩展 Babel 功能。
+
+- ```@babel/preset-env```: 一个智能预设，允许您使用最新的 JavaScript。可以吧ES6的一些语法（如箭头函数等）编译成ES5的语法。
+
+- ```@babel/preset-react```：一个用来编译 React jsx 语法的预设
+
+- ```@babel/preset-typescript```：一个用来编译 TypeScript 语法的预设
+
+    预设可以加载多个，也可以加载一个。用几个就加载几个。
+
+
+Babel在webpack5中是loader。在官方文档中的loader->babel-loader中即可查看详情。
+要在webpack中使用，首先还是下载包：```npm i babel-loader @babel/core @babel/preset-env -D```。安装完成定义 Babel 配置文件```babel.config.js```并在其中添加：
+```javascript
+module.exports = {
+  presets: ["@babel/preset-env"],
+};
+```
+再在```webpack.config.js```的module列表中添加配置：
+```javascript
+module: {
+  rules: [{
+      test: /\.js$/,
+      exclude: /node_modules/, // 排除node_modules中的js文件（这些文件不会处理）
+      //use: {
+      loader: 'babel-loader',
+      //options: {
+        //presets: ['@babel/preset-env']
+      //}
+      //}
+    }]
+}
+```
+
+上面的```use{}```内的内容可以拿出来直接写（不用写use字段）。```loader```得在这里写，但下面的```options```可以在这写，胜在方便；也可以拿出来写到单独的配置文件```babel.config.js```里，方便之后进行修改等工作。在根目录新建文件```babel.config.js```，它和webpack的配置文件同级。写入内容如下：
+```javascript
+module.exports = {
+    // 智能预设，能够编译ES6的语法。
+    presets: ['@babel/preset-env']
+}
+```
+
+## 处理Html资源
+目前每次打包完成之后的文件都是在```index.html```手工引入的，用的是语句```    <script src="../dist/static/js/main.js"></script>```，这样做可能存在的问题是以后我们打包生成的文件可能不叫```main.js```，另外还可能打包生成好多js和css文件，不可能手动一个个引入，他们之间可能还存在依赖关系，引错了位置还会报错。
+希望它可以自动引入。 查阅官方文档的plugin->HtmlWebpackPlugin，按照上面的步骤进行下载、引入等操作。
+
+- 下载：```npm i html-webpack-plugin -D```
+- 在```webpack.config.js```配置：
+```javascript
+  const HtmlWebpackPlugin = require("html-webpack-plugin");
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "public/index.html"),
+    }),
+  ],
+```
+  上面的配置项```template:```意味模版， 以 ```public/index.html```为模板创建新的html文件。新的html文件有两个特点：1. dom结构和内容和源文件一致 2. 自动引入打包生成的js等资源。另外，由于希望让它自动引入，所以修改 index.html，去掉引入的 js 文件：```<script src="../dist/static/js/main.js"></script>```，再运行```npx webpack```，即可看到结果，dist文件中生成了另外一个html文件，且需要的资源都已经被自动引入。
+
+## 开发服务器&自动化
+现在每次写完代码都需要手动输入指令才能编译代码，太麻烦了，我们希望一切自动化。
+利用webpack-dev-server。它可以在webpack里搭建一个服务器，自动监视src目录下的文件，一旦发生变化就会再自动打包一次。
+
+- 下载：```npm i webpack-dev-server -D```
+- 在```webpack.config.js```配置，```devServer```和plugins、mode同级：
+```javascript
+  // 开发服务器
+  devServer: {
+    host: "localhost", // 启动服务器域名
+    port: "3000", // 启动服务器端口号
+    open: true, // 是否自动打开浏览器
+  },
+```
+需要注意的是，开发服务器并不会输出资源，它是在内存中进行编译打包的；也就是哪怕清空dist目录，也不会报错，也不会重新生成文件进入dist目录。
+- 运行指令：```npx webpack serve```。一旦启用了devserver，那么启动指令也会发生变化，需要在后面加上```serve```。
+
+## 生产模式介绍
+生产模式是开发完成代码后，我们需要得到代码将来部署上线。这个模式下我们主要对代码进行优化，让其运行性能更好。
+优化主要从两个角度出发：1. 优化代码运行性能  2. 优化代码打包速度
+
+我们分别准备两个配置文件来放不同的配置。也就是开发模式有开发模式的配置文件；生产模式有生产模式的配置文件，它们分别独立互不干扰。
+文件目录如下：
+├── webpack-test (项目根目录)
+  ├── <span style="color:red">config</span> (Webpack配置文件目录)
+  │    ├── <span style="color:red">webpack.dev.js</span>(开发模式配置文件)
+  │    └── <span style="color:red">webpack.prod.js</span>(生产模式配置文件)
+  ├── node_modules (下载包存放目录)
+  ├── src (项目源码目录，除了html其他都在src里面)
+  │    └── 略
+  ├── public (项目html文件)
+  │    └── index.html
+  ├── .eslintrc.js(Eslint配置文件)
+  ├── babel.config.js(Babel配置文件)
+  └── package.json (包的依赖管理配置文件)
+  
+在项目根目录下新建```config```文件夹，将```webpack.config.js```移进去，然后改名成 ```webpack.dev.js```。把这个文件复制一个，然后改名成```webpack.prod.js```。
+
+### 开发模式准备
+修改```webpack.dev.js```。因为开发模式没有输出，所以不需要指定输出目录；此外，由于文件目录变了，所以所有绝对路径需要回退一层目录才能找到对应的文件，不过由于运行实际上是在根目录中运行，所以入口的相对路径不需要改变，依然可以找得到需要的文件：
+```javascript
+...
+// 入口。注意是相对路径。
+    entry: "./src/main.js",
+// 输出
+output: {
+    path: undefined, // 开发模式没有输出，不需要指定输出目录
+    filename: "static/js/main.js", // 将 js 文件输出到 static/js 目录中
+    // clean: true, // 开发模式没有输出，不需要清空输出结果
+},
+plugins: [
+    new ESLintWebpackPlugin({
+      // 指定检查文件的根目录
+      context: path.resolve(__dirname, "../src"),
+    }),
+    new HtmlWebpackPlugin({
+      // 以 public/index.html 为模板创建文件
+      // 新的html文件有两个特点：1. 内容和源文件一致 2. 自动引入打包生成的js等资源
+      template: path.resolve(__dirname, "../public/index.html"),
+    }),
+  ],
+...
+```
+修改好后，运行**开发模式的指令**：```npx webpack serve --config ./config/webpack.dev.js```。
+
+- ```--config```：指定要运行的配置文件在哪里。后面是路径。
+
+### 生产模式准备
+修改```webpack.prod.js```。因为生产模式有输出，所以需要指定输出目录，输出目录的绝对路径需要回退一层；此外，由于文件目录变了，所以所有绝对路径需要回退一层目录才能找到对应的文件，不过由于运行实际上是在根目录中运行，所以入口的相对路径不需要改变，依然可以找得到需要的文件。生产模式还不需要devserver，它只打包输出文件即可。：
+```javascript
+...
+// 入口。注意是相对路径。
+    entry: "./src/main.js",
+// 输出
+output: {
+    path: path.resolve(__dirname, "../dist"), // 生产模式需要输出
+    filename: "static/js/main.js", // 将 js 文件输出到 static/js 目录中
+    clean: true, // 开发模式有输出，需要清空输出结果
+},
+plugins: [
+    new ESLintWebpackPlugin({
+      // 指定检查文件的根目录
+      context: path.resolve(__dirname, "../src"),
+    }),
+    new HtmlWebpackPlugin({
+      // 以 public/index.html 为模板创建文件
+      // 新的html文件有两个特点：1. 内容和源文件一致 2. 自动引入打包生成的js等资源
+      template: path.resolve(__dirname, "../public/index.html"),
+    }),
+  ],
+// devServer: {
+//     host: "localhost", // 启动服务器域名
+//     port: "3000", // 启动服务器端口号
+//     open: true, // 是否自动打开浏览器
+// },
+// 模式
+    mode: "production",  // 此处指定的是开发环境。
+...
+```
+修改好后，运行**生产模式的指令**：```npx webpack --config ./config/webpack.prod.js```。可以看到dist文件夹被重新生成了，html和打包生成的js都被压缩了。
+
+### 配置运行指令
+为了方便运行不同模式的指令，我们将指令定义在 package.json 中 scripts 里面
+```json
+// package.json
+{
+  // 其他省略
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "npx webpack serve --config ./config/webpack.dev.js",
+    "build": "npx webpack --config ./config/webpack.prod.js"
+  }
+}
+```
+
+以后启动指令，开发模式：```npm start``` 或 ```npm run dev```；生产模式：```npm run build```。```start```存放的是最常用的指令，除了start，别的都得加个```run```。
+
+## Css处理
+### 提取 Css 成单独文件
+Css 文件目前被打包到 js 文件中，当 js 文件加载时，会创建一个 style 标签来生成样式，也就是先加载js文件再生成样式。大概过程是，运行一个html文件，它会首先解析html代码，解析时会把所有结构渲染上去。下一阶段，会发现关于样式的div之类的也没有渲染，原因是浏览器此时正在解析js。等js文件开始解析后，在创建一个style标签再插入到页面上【style样式是js运行时动态生成插入的】。这样对于网站来说，会出现闪屏现象，用户体验不好。
+应该**单独**打包生成 Css 文件，通过 link 标签加载性能才好。在官方文档plugin->MiniCssExtractPlugin。本插件会将 CSS 提取到单独的文件中，为每个包含 CSS 的 JS 文件创建一个 CSS 文件，并且支持 CSS 和 SourceMaps 的按需加载。本插件基于 webpack v5 的新特性构建，并且需要 webpack 5 才能正常工作。
+
+1. 安装插件：```npm i mini-css-extract-plugin -D```
+2. 在```webpack.prod.js```引入插件：
+```javascript
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+```
+3. 运行指令：```npm run build```。
+
+### Css兼容性处理
+js有兼容性问题，用babel处理。css也有兼容性问题。
+1. 下载包：```npm i postcss-loader postcss postcss-preset-env -D```。主要用的包是postcss-loader，它依赖于postcss，而postcss需要用上postcss-preset-env这个智能预设来解决样式的兼容性问题。
+2. 在```webpack.prod.js```配置。注意postcss-loader要在"css-loader"的后面、"less-loader"等的前面进行配置：
+```javascript
+MiniCssExtractPlugin.loader,
+'css-loader',
+{
+  loader: "postcss-loader",
+  options: {
+    postcssOptions: {
+      plugins: [
+        "postcss-preset-env", // 能解决大多数样式兼容性问题
+      ],
+    },
+  },
+},
+'less-loader',
+```
+写的时候写成对象形式，这样可以用option对loader写其他配置。
+3. 控制兼容性：我们可以在 package.json 文件中添加 browserslist 来控制样式的兼容性做到什么程度。
+```json
+{
+  // 其他省略
+  "browserslist": ["ie >= 8"]
+}
+```
+想要知道更多的 browserslist 配置，查看[browserslist文档](https://github.com/browserslist/browserslist)。
+以上为了测试兼容性所以设置兼容浏览器 ie8 以上。实际开发中我们一般不考虑旧版本浏览器了，所以我们可以这样设置：
+```json
+{
+  // 其他省略
+  "browserslist": ["last 2 version", "> 1%", "not dead"]
+}
+```
+```"last 2 version"```的意思是市面上所有浏览器都只能用最近两个版本；```"> 1%"```覆盖99%的浏览器，冷门的不要了；```"not dead"```指在发行中已经死了的，也不要。这三个取交集。
+4. 合并配置：到此为止，配置文件中还有很多重复代码。
+在```webpack.prod.js```中定义函数：
+```javascript
+// 获取处理样式的Loaders
+const getStyleLoaders = (preProcessor) => {
+  return [
+    MiniCssExtractPlugin.loader,
+    "css-loader",
+    {
+      loader: "postcss-loader",
+      options: {
+        postcssOptions: {
+          plugins: [
+            "postcss-preset-env", // 能解决大多数样式兼容性问题
+          ],
+        },
+      },
+    },
+    preProcessor,
+  ].filter(Boolean);
+};
+```
+然后把用到这个返回值的所有地方替换成```getStyleLoaders(xxx)```即可。如
+```javascript
+{
+  test: /\.css$/, // 只检测.css文件，并对其使用下面的规则
+  use: getStyleLoaders(),
+},
+{
+  test: /\.less$/,
+  use: getStyleLoaders("less-loader")
+},
+// 其他省略
+```
+上面函数中的```(preProcessor)```和过滤器是为了处理除了返回值中的两个loader还有其它loader的情况，如less-loader等。如果没有传参，后面的preProcessor就是undefined，filter的作用就是过滤掉这些undefined，传一个boolean作为参数即可。
+5. 运行指令：```npm run build```。
+
+### Css压缩
+官方文档plugin->CssMinimizerWebpackPlugin。
+1. 安装插件：```npm i css-minimizer-webpack-plugin -D```
+2. 在```webpack.prod.js```引入插件：
+```javascript
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+
+plugins: [
+    ...
+    // css压缩
+    new CssMinimizerPlugin(),
+  ],
+```
+3. 运行指令：```npm run build```。
+
+
+## Html压缩
+至于html文件和js文件，默认生产模式已经开启了html 压缩和 js 压缩。不需要额外进行配置。
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
