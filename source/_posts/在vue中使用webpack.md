@@ -26,7 +26,7 @@ const getStyleLoaders = (preProcessor) => {
       options: {
         postcssOptions: {
           plugins: [
-            "postcss-preset-env", // 能解决大多数样式兼容性问题
+            "postcss-preset-env", // 能解决多数样式兼容性问题
           ],
         },
       },
