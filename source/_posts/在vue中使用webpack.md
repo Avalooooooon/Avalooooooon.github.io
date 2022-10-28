@@ -3,10 +3,12 @@ title: 在vue中使用webpack
 updated: 2022-10-24 17:26:39
 date: 2022-10-24 17:26:39
 tags: [Vue,Webpack]
-categories: [前端]
+categories: [前端,Webpack]
 ---
 
+
 ## 开发模式配置
+
 下面是```webpack.dev.js```文件：
 ```javascript
 // webpack.dev.js

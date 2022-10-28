@@ -12,6 +12,7 @@ categories: [前端,Webpack]
 [Webpack在线课件](https://yk2012.github.io/sgg_webpack5/base)
 
 ## Webpack作用
+
 开发时，我们会使用框架（React、Vue），ES6 模块化语法，Less/Sass 等 css 预处理器等语法进行开发。这样的代码要想运行，必须经过编译，编译成浏览器能识别的 JS、Css 等语法，才能运行。 
 所以我们需要打包工具帮我们把框架什么的语法编译成浏览器可以识别的语法，最终才能在浏览器中运行。
 打包工具还能压缩代码、做兼容性处理、提升代码性能等。
@@ -478,7 +479,7 @@ module.exports = {
   ├── .eslintrc.js(Eslint配置文件)
   ├── babel.config.js(Babel配置文件)
   └── package.json (包的依赖管理配置文件)
-  
+
 在项目根目录下新建```config```文件夹，将```webpack.config.js```移进去，然后改名成 ```webpack.dev.js```。把这个文件复制一个，然后改名成```webpack.prod.js```。
 
 ### 开发模式准备
@@ -663,7 +664,6 @@ plugins: [
 
 ## Html压缩
 至于html文件和js文件，默认生产模式已经开启了html 压缩和 js 压缩。不需要额外进行配置。
-
 
 
 

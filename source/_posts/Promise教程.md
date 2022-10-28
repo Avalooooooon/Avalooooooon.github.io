@@ -187,6 +187,10 @@ c. ```reject```函数: 内部定义失败时调用——```reason => {}```
 a. ```onResolved```函数: 成功的回调函数——```(value) => {}```
 b. ```onRejected```函数: 失败的回调函数——```(reason) => {}```
 > 说明: 指定用于得到成功value值的成功回调和用于得到失败reason值的失败回调，<span style="color:red">返回一个新的```promise```对象</span>。
+>
+> 关于```then()```方法的返回结果，<span style="color:red">是由它指定的回调函数的执行结果决定的</span>：   
+>  >  回调函数返回了一个非```promise```类型的数据（number、string、undefined...），```then()```的返回结果就是一个成功的promise，它的Result就是回调函数返回的东西；
+>  >  回调函数返回的是一个promise，那这个返回的```promise```就决定了```then()```返回的promise。
 
 ### catch方法
 ```Promise.prototype.catch()```方法——```(onRejected) => {}```
@@ -645,172 +649,237 @@ Promise.prototype.then = function (onResolved, onRejected) {
 ```
 
 
-### 异步任务 then 方法实现
-此处对于5有四处修改，下面上js代码
+### 异步任务回调的执行
+现在要把执行器函数中的```then()```由同步变成异步。就是不直接用```resolve('OK');```改变代码状态了，而是把它放进一个异步，可能是文件/数据库/网络请求的IO，先用```setTimeout```进行模拟。在上节代码上进行模拟，会发现不能正常实现功能，原因在于当执行函数内部是一个异步任务的时候，且已经提前指定好了回调函数，运行异步代码后，执行器内部代码还未返回(因为用了定时器,里面的代码进入了异步队列)，所以当下面的```.then()```运行时，p为```pending```状态，所以根本不会执行```resolve```与```reject```方法。正确的应该是等执行器函数执行完毕改变状态之后，在执行指定的回调函数。
 
-当我运行异步代码后,我的执行器内部代码还未返回(因为用了定时器,里面的代码进入了异步队列),所以当我下面的.then()运行时:我的p为pending状态,所以根本不会执行resolve与reject方法
++ 所以为了让回调函数可以正确执行，还需要进行一个状态是pending的判断。
 
-解:添加判断pending状态,将当前回调函数保存到实例对象(存到实例上是为了更方便)中,这样后续改变状态时候才调用得到
+那么重点来了，这个判断内部的逻辑需要写些什么呢？这里需要思考一下回调的执行时机。如果说上面是一个同步任务，可以立即执行，那then里的回调是在then调用的时候立即执行的；如果上面是异步任务，那就应该是改变状态的时候再执行回调。改变状态在哪里？是在声明构造函数中的```resolve```、```reject```内部。所以<span style="color:red">真正调用回调函数的位置应该也是在```resolve```、```reject```内部。</span>可是在它们内部怎么调到then里的两个参数函数呢？
 
-为什么要将回调保存到实例上而不是直接调用?
-理由:因为我的回调函数需要在我的promise状态改变后(成功或者失败),再根据状态选择运行哪个函数 所以当你调用then()时却检测到状态为pending,说明这时候的promise在异步队列 不能直接运行成功或者失败函数
++ 解：在then方法中<span style="color:red">保存回调函数。</span>
++ 将当前回调函数保存到实例对象（存到实例上是为了更方便）中，为promise对象增加一个属性：```this.callback = {}```，然后在then方法判断pending状态内增加```this.callback = { onResolved,onRejected }```。在这样后续改变状态时候才调用得到。
 
-解决:因为resolve与reject方法与then()不在同一个作用域中,并不能共享then(成功回调,失败回调)的参数,所以在判断状态为pending时将回调保存到实例对象上.然后将回调函数的调用放在resolve()与reject()中
+那么为什么要将回调保存到实例上而不是直接调用?
 
-这样当我代码运行到异步队列的resolve()或reject()时,就可以在这个函数中运行回调函数,实现异步then
++ 因为回调函数需要在promise**状态改变后**（成功或者失败），再根据状态选择运行哪个函数。
++ 所以当调用```then()```时却检测到状态为```pending```，说明这时候的promise在异步队列不能直接运行成功或者失败函数。
++ 解决：因为```resolve```与```reject```方法与```then()```不在同一个作用域中，不能共享```then(成功回调,失败回调)```的参数，所以在判断状态为```pending```时将回调保存到实例对象上，然后将回调函数的调用放在```resolve()```与```reject()```中。
 
-此处的then仍有瑕疵,需要继续完善
-html调用------------------------------------------------------------
+这样当代码运行到异步队列的```resolve()```或```reject()```时，就可以在这个函数中运行回调函数，实现异步then。
+此处对于上一小节有四处修改，代码如下（此处的then仍有瑕疵,需要继续完善）。
+
+html调用：
+```javascript
  //实例化对象
-    let p = new Promise((resolve, reject) => {
-      setTimeout(() => {reject("error"); /* resolve('OK');*/}, 1000);
-    });
-    p.then(value => {console.log(value);},reason => { console.warn(reason);});
-    console.log(p);
+let p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('OK');
+    }, 1000)
+});
+p.then(
+    value => { console.log(value); },
+    reason => { console.warn(reason); }
+)
+console.log(p);
+```
 
-promise.js修改与实现-----------------------------------------------------
-//声明构造函数
+promise.js修改与实现：
+```javascript
 function Promise(executor) {
-  this.PromiseState = 'pending'; this.PromiseResult = null;
-  // 声明属性     
-  this.callback = {};			-----------新添加1
-  const self = this; 
+    // 添加属性
+    this.PromiseState = 'pending';
+    this.PromiseResult = null;
+    this.callback = {};			// -----------新添加1
+
+    const self = this;
+    // resolve 函数
+    function resolve(data) {
+        //判断状态
+        if (self.PromiseState !== 'pending') return;
+        // 1. 修改对象的状态 (promiseState)、设置对象结果值 (promiseResult)
+        self.PromiseState = 'fulfilled'; 
+        self.PromiseResult = data;
+        // 调用成功的回调函数
+        // -----------------------------新添加2 最重要 
+        if (self.callback.onResolved) {
+            self.callback.onResolved(data);
+        }
+    }
     
-  //resolve 函数
-  function resolve(data) {
-    //判断状态
-    if (self.PromiseState !== 'pending') return;
-    self.PromiseState = 'fulfilled'; self.PromiseResult = data;
-    //调用成功的回调函数  加判断的原因是防止无回调报错
-    if (self.callback.onResolved) { self.callback.onResolved(data); }  ------------新添加2 最重要 
-  }
-    
-  //reject 函数
-  function reject(data) {
-    if (self.PromiseState !== 'pending') return;
-    self.PromiseState = 'rejected'; self.PromiseResult = data;
-    //执行回调						
-    if (self.callback.onResolved) { self.callback.onResolved(data);}  ------------新添加3
-  }
-  try {executor(resolve, reject);} catch (e) {reject(e);}
+    function reject(data) {
+        if (self.PromiseState !== 'pending') return;
+        self.PromiseState = 'rejected'; 
+        self.PromiseResult = data;
+        // 调用失败的回调函数
+        // -----------------------------新添加3 最重要 
+        if (self.callback.onRejected) {
+            self.callback.onRejected(data);
+        }
+    }
+    try {
+        executor(resolve, reject);
+    } catch (e) {
+        reject(e);
+    }
 }
 
-//添加 then 方法
+// 添加 then 方法
 Promise.prototype.then = function (onResolved, onRejected) {
-  //调用回调函数  PromiseState
-  if (this.PromiseState === 'fulfilled') {onResolved(this.PromiseResult);}
-  if (this.PromiseState === 'rejected') { onRejected(this.PromiseResult);}
-  //判断 pending 状态
-  if (this.PromiseState === 'pending') {  ------------新添加4
-    //保存回调函数
-    this.callback = {
-      onResolved: onResolved,
-      onRejected: onRejected
+    // 调用回调函数
+    if (this.PromiseState === 'fulfilled') {
+        onResolved(this.PromiseResult);
     }
-  }
-}
-7 - 指定多个回调
-
-基于6代码进行修改 只展示修改部分代码
-
-6中保存回调函数的方式有BUG,如果我有多个.then(),后面加载的回调函数会覆盖之前的回调函数,导致最后回调函数有且只有最后一个
-
-解:使用数组的方式进行存储回调函数,调用时也是用数组循环取出
-
-此处的then仍有瑕疵,需要继续完善
-html调用------------------------------------------------------------
-//实例化对象
-   let p = new Promise((resolve, reject) => {setTimeout(() => {reject('No');}, 1000);});
-   p.then(value => { console.log(value);}, reason=>{console.warn(reason);});
-   p.then(value => { alert(value);}, reason=>{ alert(reason);});
-   console.log(p);
-
-promise.js修改与实现-----------------------------------------------------
-Promise.prototype.then = function (onResolved, onRejected) {
-       //resolve 函数
-    function resolve(data){
-  		.....
-        //调用成功的回调函数
-        // if (self.callback.onResolved) { self.callback.onResolved(data); } 
-        self.callbacks.forEach(item => {   --------修改1
-            item.onResolved(data);
-        });
+    if (this.PromiseState === 'rejected') {
+        onRejected(this.PromiseResult);
     }
-    //reject 函数
-    function reject(data){
-     	 ......
-        //执行失败的回调
-        // if (self.callback.onResolved) { self.callback.onResolved(data);}
-        self.callbacks.forEach(item => {		------修改2
-            item.onRejected(data);
-        });
-    }
-    
-  //添加 then 方法
-Promise.prototype.then = function(onResolved, onRejected){
-    ........
-    //判断 pending 状态
-    if(this.PromiseState === 'pending'){
+    // 判断 pending 状态
+    // ------------新添加4
+    if (this.PromiseState === 'pending') {
         //保存回调函数
-        //  this.callback = { onResolved: onResolved, onRejected: onRejected }
-        this.callbacks.push({					--------修改3
+        this.callback = {
+            onResolved: onResolved,
+            onRejected: onRejected
+        }
+    }
+}
+```
+
+### 指定多个回调
+上一小节中保存回调函数的方式有BUG，就是在异步的情况下，如果有多个```.then()```，后面加载的回调函数会覆盖之前的回调函数，导致最后回调函数有且只有最后一个。
+
++ 原因在于保存回调的时候，保存了两次，第二次保存的就把第一次的覆盖了，等异步完了再回来只有最后一次的回调。
++ 解决：使用数组的方式进行存储回调函数，调用时也是用数组循环取出
+
+代码如下（此处的then仍有瑕疵,需要继续完善）：
+html调用：
+```javascript
+//实例化对象
+let p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('OK');
+        // reject('error~~~')
+    }, 1000)
+});
+p.then(value => { console.log(value);}, reason=>{console.warn(reason);});
+p.then(value => { alert(value);}, reason=>{ alert(reason);});
+console.log(p);
+```
+
+promise.js修改与实现（只展示部分）：
+```javascript
+function Promise(executor) {
+    // -------------------------------修改1 改为复数+数组
+    this.callbacks = [];  
+    function resolve(data) {
+        // 省略
+        // 调用成功的回调函数
+        // ---------------------------修改2 改为遍历调用
+        self.callbacks.forEach(item => {
+            item.onResolved(data);
+        })
+    }
+    function reject(data) {
+        // 省略
+        // 调用失败的回调函数
+        // ---------------------------修改3 改为遍历调用
+        self.callbacks.forEach(item => {
+            item.onRejected(data);
+        })
+    }
+    // 省略
+}
+    
+Promise.prototype.then = function (onResolved, onRejected) {
+    // 省略
+    if (this.PromiseState === 'pending') {
+        // 保存回调函数
+        // ---------------------------修改4 改为加入数组
+        this.callbacks.push({
             onResolved: onResolved,
             onRejected: onRejected
         });
     }
 }
-8 - 同步任务 then 返回结果
+```
 
-在之前的then运行结果中得知,我们使用 [ then ] 后的返回结果是其回调函数的返回结果,而我们需要的返回结果是一个新的promise对象
-解:所以我们在then中return new Promise(),使其得到的是一个新的promise对象
+### 同步任务 then 返回结果
+同步任务，即在执行器函数中直接调```resolve()```/```reject()```或用```throw```改变状态。
+运行html文件测试代码，查看使用```then()```后的返回结果：
+```javascript
+let p = new Promise((resolve, reject) => {
+    resolve('OK');
+    // reject('error~~~')
+});
+const res = p.then(
+    value => {
+        // console.log(value); 
+        // return 'hello promise~!'
+        // return new Promise((resolve, reject) => {
+        //     // resolve("success~~~~")
+        //     // reject('oh NO~~~')
+        // })
+        // 抛出异常
+        throw "FAIL!!!"
+    },
+    reason => { console.warn(reason); }
+)
+console.log(res)
+```
+发现使用```then()```后的返回结果是其回调函数的返回结果，而我们需要的返回结果是一个新的promise对象。并且<span style="color:red">最终返回状态==回调函数中的新promise状态</span>。
 
-在为解决问题1后产生一个新问题:新的promise对象因为没有用rejerect与resolve方法,导致返回的状态一直是pending
-解:在新的promise中判断运行回调函数后的返回值是什么,然后根据其不同类型给其赋予不同状态
++ 解：```then()```中```return new Promise()```，使其返回个新的promise对象
 
- Ⅰ-if(result instanceof Promise):返回值一个新的②promise对象(因为是新的promise的回调函数返回值,称②promise对象),在返回值(因为是promise对象)的.then()回调函数中使用rejerect与resolve方法,将其自身的状态赋予外层的promise,
+新问题：新的promise对象因为没有用```reject()```与```resolve()```方法（这里的```reject()```与```resolve()```是then返回的新promise的！不是上面定义好的！），导致返回的状态一直是```pending```。
 
- 即 回调函数中的promise 赋值 给then返回值 , 所以 最终返回状态==回调函数中的新promise状态
++ 解：根据```then()```的回调函数的执行结果改变新的promise的状态。判断运行回调函数后的返回值是什么，然后根据其不同类型给其赋予不同状态
 
- Ⅱ-如果返回值是一个非promise对象,返回状态设置为成功
+那么```then()```的回调函数是在哪里执行的呢？假如实例化对象中的同步任务为```resolve('OK');```，就意味着执行的是then里的第一个回调函数，这个回调函数执行完后我们自己的promise实例的状态已经成功变为‘fulfilled’，就说明一定会走我们自定义的then方法中的```onResolved(this.PromiseResult);```。在这就可以拿到回调函数的执行结果，用result保存。接下来判断这个结果类型即可。
+> 注：关于```then()```方法的返回结果，<span style="color:red">是由它指定的回调函数的执行结果决定的</span>：   
+>  >  回调函数返回了一个非```promise```类型的数据（number、string、undefined...），```then()```的返回结果就是一个成功的promise，它的Result就是回调函数返回的东西；
+>  >  回调函数返回的是一个promise，那这个返回的```promise```就决定了```then()```返回的promise。
 
- Ⅲ-如果返回值是一个异常,返回状态设置为失败
+那么怎样才能改变这个```then()```方法返回对象结果（即```res```）的状态呢？事实上，```res```其实就是我们自己写的then方法中return的```new Promise()```=>改变返回对象结果（即```res```）的状态，就是改变我们自己写的then方法中return的```new Promise()```的状态=>要在我们自己写的then方法中return的```new Promise()```的执行器函数内部调用```resolve()```或者```reject()```。
 
-html调用------------------------------------------------------------
-  //实例化对象
-    let p = new Promise((resolve, reject) => {resolve('OK');});
-    //执行 then 方法
-    const res = p.then(
-     value => { throw "FAIL";},
-    reason => { console.warn(reason);});
-    console.log(res);
++ .html文件中```then()```方法回调函数里return的```new Promise()```是成功，```res```就是成功；.html文件中```then()```方法回调函数里return的```new Promise()```成功的结果，就是```res```成功的结果。
++ 现在要解决的问题是，让```res```从pending变成成功且有正确的成功结果；转化为让.html文件中```then()```方法回调函数里return的```new Promise()```的状态变成成功且有正确的成功结果。
++ 又因为.html文件中```then()```方法回调函数里return的```new Promise()```，就是我们自己写的then方法中的```result```；问题又转化为让我们自己写的then方法中的```result```的状态变成成功且有正确的成功结果。
++ 我们自己写的then方法中的```result```是个promise，那就肯定有```then()```方法；我们自己写的then方法中的```result```成功了，就会走这个```result```自己的then方法中处理成功的逻辑，在```result.then()```里面走```resolve()```逻辑，就会让这个```result```的状态变成成功且有正确的成功结果。
 
-promise.js修改与实现-----------------------------------------------------
-//添加 then 方法
-Promise.prototype.then = function(onResolved, onRejected){
+promise.js修改与实现：
+```javascript
+Promise.prototype.then = function (onResolved, onRejected) {
+    // -------------------------------------------修改1
     return new Promise((resolve, reject) => {
-        //调用回调函数  PromiseState
- //  if(this.PromiseState === 'fulfilled'){ onResolved(this.PromiseResult);} 未修改时代码
-        if(this.PromiseState === 'fulfilled'){    -------修改1 
-            try{
-                //获取回调函数的执行结果
+        if (this.PromiseState === 'fulfilled') {
+            // -------------------------------------------修改2
+            try {
+                // 获取回调函数的执行结果
                 let result = onResolved(this.PromiseResult);
-                //判断
-                if(result instanceof Promise){//如果是 Promise 类型的对象,我就将下一个promise结果赋予外层
-                    result.then(v => {  resolve(v); },r=>{reject(r);})
-                }else{resolve(result);}  //如果返回的不是promise对象,都将其赋予成功状态
-            }catch(e){
-                rejerect(e);	//如果出错了,则返回失败状态
+                // 判断
+                if (result instanceof Promise) {
+                    // 如果是Promise类型的对象
+                    result.then(v => {
+                        resolve(v)
+                    }, r => {
+                        reject(r)
+                    })
+                } else {
+                    // 返回的对象状态为成功
+                    resolve(result)
+                }
+            } catch (e) {
+                reject(e)
             }
         }
-        if(this.PromiseState === 'rejected'){ onRejected(this.PromiseResult);}------此部分修改与修改1一样
-        //判断 pending 状态
-        if(this.PromiseState === 'pending'){
-            this.callbacks.push({ onResolved: onResolved, onRejected: onRejected});
+        if (this.PromiseState === 'rejected') {
+            onRejected(this.PromiseResult);
         }
+        // 省略
     })
 }
-9 - 异步任务 then 返回结果
+```
 
+### 异步任务 then 返回结果
 异步任务是修改if(this.PromiseState === 'pending')后面的值,原因参考6,下面代码只举例这部分修改
 
 因为我们需要增加then状态修改,所以在我们保存回调函数这一步我们可以对于回调函数进行加工,添加判断其回调函数的返回值的代码块再存入实例的回调函数中
@@ -818,7 +887,8 @@ Promise.prototype.then = function(onResolved, onRejected){
 Ⅰ-声明一个新的函数:其内部功能->先运行onResolved回调函数,再将其返回值取出,进行判断其返回值(这个过程同8)
 
 Ⅱ-加工后存入实例回调函数数组,之后在resolve与reject方法中调用即可(同6)
-html调用------------------------------------------------------------
+html调用：
+```javascript
    //实例化对象
     let p = new Promise((resolve, reject) => {
       setTimeout(() => {reject("Error");}, 1000)}); // resolve('OK');
@@ -832,8 +902,9 @@ html调用------------------------------------------------------------
       return "sss"   // throw 'error';
     });
     console.log(res);
-
-promise.js修改与实现-----------------------------------------------------
+```
+promise.js修改与实现：
+```javascript
     //判断 pending 状态
     if (this.PromiseState === 'pending') {
       //保存回调函数
@@ -868,14 +939,17 @@ promise.js修改与实现-----------------------------------------------------
         }
       });
     }
-10- then方法代码优化
+```
 
-在8、9、10中可以看出,其判断与改变返回结果状态的代码块是基本重复的,所以可以将其抽出
+### then方法代码优化
+
+在8、9、10中可以看出,其判断与改变返回结果状态的代码块是基本重复的,所以可以将其抽出。在promise.js中修改：
+```javascript
 //添加 then 方法
 Promise.prototype.then = function (onResolved, onRejected) {
   const self = this;
   return new Promise((resolve, reject) => {
-    封装函数----------------------------------------------------------------------------
+    // 封装函数----------------------------------------
     function callback(type) {
       try {
         //获取回调函数的执行结果
@@ -896,7 +970,7 @@ Promise.prototype.then = function (onResolved, onRejected) {
         reject(e);
       }
     }
-  -----------------------------------------------------------------------------------    
+  //----------------------------------------------------
     //调用回调函数  PromiseState
     if (this.PromiseState === 'fulfilled') {
       callback(onResolved);
@@ -918,14 +992,17 @@ Promise.prototype.then = function (onResolved, onRejected) {
     }
   })
 }
-11 - catch 方法与异常穿透与值传递
+```
+
+### catch 方法与异常穿透与值传递
 
 异常穿透:添加catch 方法 ,并且需要进行回调函数为undefined的处理
 
 当我then()中只传一个回调或者不传回调函数时,运行代码会报错,因为运行时调用的回调函数是undefined
 
 解:进行回调函数判断,当其为空时,基于默认回调函数内容:直接往外抛出这样下方的then() or catch()就可以承接到异常或者值
-html调用------------------------------------------------------------  
+html调用：
+```javascript
 //实例化对象
     let p = new Promise((resolve, reject) => {
       setTimeout(() => {resolve('OK'); }, 1000);
@@ -935,7 +1012,10 @@ html调用------------------------------------------------------------
     .then(value => {console.log(222);})
       .then(value => {console.log(333);})
         .catch(reason => {console.warn(reason);});
-promise.js修改与实现-----------------------------------------------------
+```
+
+promise.js修改与实现：
+```javascript
 //添加 then 方法
 Promise.prototype.then = function (onResolved, onRejected) {
 	...				-----------修改1
@@ -947,3 +1027,4 @@ Promise.prototype.then = function (onResolved, onRejected) {
 Promise.prototype.catch = function(onRejected){  ---------------异常穿透 修改2
     return this.then(undefined, onRejected);
 }
+```
