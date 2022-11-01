@@ -49,7 +49,8 @@ ES标准的缺陷：没有模块系统（ES6新增）、标准库较少、没有
 > 一个模块中的变量和函数在其他模块中无法访问。
 
 **通过```require()```函数来引入外部模块。**
-```require()```：可以传递一个文件的路径作为参数，node将会自动根据该路径引入外部模块。注意，如果使用相对路径，必须以```.```或```..```开头（不能随便省略！）。
+
+函数```require()```：可以传递一个文件的路径作为参数，node将会自动根据该路径引入外部模块。注意，如果使用相对路径，必须以```.```或```..```开头（不能随便省略！）。
 使用```require()```引入模块后，该函数会返回一个对象，这个对象（如下面的```md```）代表的是引入的模块。
 ```var md = require("./temp.js")```
 
@@ -59,14 +60,14 @@ ES标准的缺陷：没有模块系统（ES6新增）、标准库较少、没有
 可以通过```exports```来向外部暴露变量和方法，将需要暴露给外部的变量或方法设置为exports的属性即可，即```exports.xxx=...```。
 ```exports.x = "w我是temp.js中的x"```
 
-关于exports 和 module.exports
-```exports```只能使用```.```的方式向外暴露内部变量，如```exports.xxx = xxx```。而```module.exports```既可以通过```.```的方式，也可以直接赋值，如```module.exports.xxx = xxx```或```module.exports = {}```。
++ 关于exports 和 module.exports
++ ```exports```只能使用```.```的方式向外暴露内部变量，如```exports.xxx = xxx```。而```module.exports```既可以通过```.```的方式，也可以直接赋值，如```module.exports.xxx = xxx```或```module.exports = {}```。
 
 ## npm和包
 包实际上就是一个压缩文件，解压后还原为目录。CommonJS的包规范由**包结构**（用于组织包中的各种文件）和**包描述文件**（描述包的相关信息，以供外部读取分析）两个部分组成。 符合规范的目录应该包含如下文件：
 ——**package.json** 描述文件（只有这个是必须的，其他四个可选）。里面的字段有name、description、version等。可以通过```npm init```生成。
-> ```npm init```和```npm init -y```命令的作用是： 对项目进行初始化操作，对包进行管理。
-> -y 的含义：yes的意思，在init的时候省去了敲回车的步骤，生成的都是默认的package.json。
+> 命令```npm init```和```npm init -y```的作用是： 对项目进行初始化操作，对包进行管理。
+> 参数 ```-y``` 的含义：yes的意思，在init的时候省去了敲回车的步骤，生成的都是默认的package.json。
 
 ——bin 可执行二进制文件
 ——lib JS代码
@@ -158,12 +159,12 @@ Buffer是nodejs的核心之一，使用buffer不需要引入模块，直接使�
 #### 同步文件写入
 手动操作的步骤：1.打开文件 2.向文件中写入内容 3.保存并关闭文件。
 用fs，步骤如下：
-1. 打开文件：```fs.openSync(path,flags[,mode])
+1. 打开文件：```fs.openSync(path,flags[,mode])```
 - path：要打开文件的路径
 - flags：打开文件要做的操作的类型。r - 只读的 w - 可写的
 - mode：设置文件的操作权限，一般不传
 - 返回值：该方法会返回一个文件的描述符作为结果，可以通过该描述符对文件进行各种操作。
-2. 向文件中写入内容：```fs.writeSync(fd,string[,position[,encoding]])
+2. 向文件中写入内容：```fs.writeSync(fd,string[,position[,encoding]])```
 - fd：文件的描述符，需要传递要写入的文件的描述符
 - string：要写入的内容
 - position：写入的起始位置，一般不传

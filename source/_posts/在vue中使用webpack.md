@@ -6,6 +6,8 @@ tags: [Vue,Webpack]
 categories: [前端,Webpack]
 ---
 
+给出```webpack.dev.js```文件和```webpack.prod.js```文件。
+<!-- more -->
 
 ## 开发模式配置
 
