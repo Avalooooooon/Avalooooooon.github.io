@@ -7,6 +7,7 @@ categories: [前端,JS]
 ---
 
 [官方文档]( https://github.com/axios/axios)
+[一个开放接口](https://api.apiopen.top/api/sentences)
 ## Production
 axios是前端最流行的 ajax 请求库，react/vue 官方都推荐使用 axios 发 ajax 请求。在浏览器中可以利用axios向服务端发送ajax请求来获取数据，在node环境可以利用axios向远端服务发送HTTP请求。也就是它可以在两个环境中运行。它有以下几个特点：
 
@@ -21,6 +22,7 @@ axios的原理如下图：
 ![axios原理图](yuanli.png)
 
 ## 准备工作：使用 json-server 搭建REST API
+
 [在线文档]( https://github.com/typicode/json-server)
 
 json-server 是一个用来快速搭建REST API 的工具包，它可以快速帮我们搭建一个http服务。
@@ -93,7 +95,7 @@ json-server 是一个用来快速搭建REST API 的工具包，它可以快速�
 
 函数```axios()```的返回类型是一个promise，所以可以通过```then()```指定成功和失败时的回调。
 
-### 使用axios访问测试
+### 示例：使用axios访问上面的json-server服务器并实现增删改查
 > 注意这部分需要开启前文中已经配置好的json-server服务器！
 
 在一个网页放四个按钮，尝试为这四个按钮添加可以实现相关功能的点击事件：点击不同按钮发送不同的ajax请求，包括GET、POST、PUT、DELETE。给上一节实现的json- server发请求，，url是```http://localhost:3000```，这里的端口号是3000。
@@ -160,8 +162,8 @@ function testPost() {
 传递给服务器的就是这个JSON格式的字符串，JSON-Server服务接收到这个东西后会对它进行保存。查看文件```db.json```，可以看到这个id为3的文章就已经添加好了。
 4. PUT，即需要实现更新时的请求类型，打算把刚添加的那篇文章的作者从张三改成李四，<span style = "color:red">PUT除了必须的请求类型和URL外还需要有请求体和id</span>，也就是url的末尾需要添加```/id```：
   ```javascript
-// 更新数据
-function testPut() {
+  // 更新数据
+  function testPut() {
     // 发送AJAX请求
     axios({
         // 请求类型
@@ -176,7 +178,7 @@ function testPut() {
     }).then(response => {
         console.log(response)
     })
-}
+  }
 ```
 按照上面的步骤查看各内容；同时可以发现```db.json```也发生了变化，id3的作者已经成功变为李四。
 5. DELETE，即需要实现删除时的请求类型，打算把之前添加的、在上一步中作者被改成了李四的那篇文章删掉，delete请求不需要请求体，直接把url一放就可以删除指定id的文章：
@@ -261,6 +263,141 @@ function testDelete() {
 ```
 
 ### axios其他方式发送请求
+除了可以使用```axios()```函数发送请求，还可以使用```axios```对象身上的一些方法发送请求。下面给出两个使用示例，其它api的使用方法都类似，在对应的场景中可以选择合适的api使用。
+1. ```axios.request(config)```: 等同于 axios(config)
+它的使用方式和函数```axios()```一模一样，都是接收一个对象作为参数，这个对象里包括很多属性比如请求类型method、url等；它返回的也是一个promise对象。
+把上一节中的GET按钮对应的函数改成如下代码进行测试：
+  ```javascript
+function testGet() {
+    axios.request({
+        method: 'GET',
+        url: 'http://localhost:3000/comments'
+    }).then(response => {
+        console.log(response)
+    })
+}
+```
+> 可以省略配置项名称"method"和“url“，直接写即可。
+
+可打开浏览器，查看控制台和network各个属性情况。
+2. ```axios.post(url[, data, config])```: 发 post 请求
+三个参数分别为url，请求体和config，后两个参数是可选的。
+把上一节中的POST按钮对应的函数改成如下代码进行测试，要实现的功能是为id为2的文章添加评论，根据```db.json```中的格式编写请求体内容，这里省略属性名：
+  ```javascript
+function testPost() {
+    axios.post(
+        'http://localhost:3000/comments',
+        {
+            body: "json-server2的评论",
+            "postId": 2
+        }).then(response => {
+            console.log(response)
+        })
+}
+```
+
+### axios响应结果的结构
+> 响应报文包括四个部分：响应行、响应头、响应空行、响应体。
+
+分别点击上一节中写好的两个按钮：GET和POST。在控制台console中可以看到输出结果（如果输出一闪而过，在右上角设置中勾选“保留日志”），点击response左边的展开按钮可以查看response详情（如果点击展开按钮无效，不要在live server运行.html文件，而是直接在文件管理器中打开文件）。
+
+以点击GET按钮后的输出结果为例，如下图。
+![响应结果](response.png)
+有以下几种属性：
+
+- config：配置对象，请求类型method、请求url、请求体等内容都在这一项中保存。
+  ![响应：config](responseConfig.png)
+- data：响应体。之所以是一个对象，是因为axios自动对服务器返回结果进行json解析并转化为对象，方便对结果进行处理。
+  ![响应：data](responseData.png)
+- headers：响应头。
+  ![响应：headers](responseHeaders.png)
+- request：原生的AJAX请求对象。axios的作用是发送ajax请求，而发送ajax请求需要用到底层的```XMLHttpRequest```；这个```request```所保存的就是当前axios在发送请求时所创建的那个AJAX请求对象，即```XMLHttpRequest```实例对象。
+  ![响应：request](responseRequest.png)
+- status：响应状态码。
+- statusText：响应状态字符串。
+
+### axios配置对象
+[官方文档](https://github.com/axios/axios#request-config)
+
+就是axios在调用时所接受的参数对象。这个配置对象并不单指```axios()```参数里的对象，还包括```request```、```get```、```POST```，它们当中都会用到这个参数对象；但凡是提到了```config```这个参数，指的其实都是配置对象。查看官方文档，可以看到这个配置对象中可以设置以下几种内容：
+
+- url：指明要给谁发送请求
+- method：设置请求类型，get、post、put什么的就在这设置
+- baseURL：设定URL的基础结构，axios内部会自动将baseURL与url进行结合，形成最终的url结果。在这一项中填写协议、域名、端口，在url中只需填写后续路径即可。如baseURL：```http://localhost:3000```，url：```/comments```。
+- transformRequest：它可以将请求的数据进行处理，再将处理后的结果发送给服务器。
+- transformResponse：它可以将响应的数据进行处理，我们利用自定义的回调处理最后的结果。
+> 以上两个参数分别对请求和响应的数据进行预处理，处理后再进行发送和响应的处理。
+
+- headers：配置请求头信息。某些项目进行身份校验时就要求在头信息中加入一些特殊的标识，再检验请求是否满足条件，此时就可以利用headers控制请求头的信息。
+- params：用来设定url参数，是一个对象。有时向服务端发送请求时需要传递url参数，如```a=100&b=200```，写起来不方便；axios允许我们在配置对象时添加一个属性```params```，可以在对象当中设置这些内容。比如想发对象，在url中写:```url:/posts```；想加参数，写一个```params:{ a:100,b:200 }```，最后这个params对象会变成一个参数字符串缀在url后面，再向服务端发送请求。
+- paramsSerializer：配置参数序列化，用得较少。作用是对请求的参数做序列化，转变成一个字符串。比如请求的参数是```{ a:100,b:200 }```，默认情况下会把这个值转变成```/post?a=100&b=200```。也可能在服务端接口要求这样传：```/post/a/100/b/200```，或者```/post/a.100/b.200```，这种形式就需要对这个对象进行处理转换成正确格式的字符串，与服务器统一。
+- data（对象形式）：设置请求体，有两种形式。如果是对象形式，如```data: { firstName: 'Fred' }```，axios会将其转化成json格式字符串进行传递。
+- data（字符串形式）：设置请求体，有两种形式。如果是字符串形式，如```data: 'Country=Brasil&City=Belo Horizonte'```，axios会将其直接传递。其实就是表单传送方式，键名=键值+```&```符分割。
+> 这两种方式都会经常用到。如果项目中要求请求体为JSON，就用第一种；要求请求体为url的参数传递形式的话就用第二种。
+
+- timeout：发送请求的最大允许超时时间，单位ms。如果超过这个时间请求就会被取消。
+- withCredentials：设置跨域请求时cookie的携带。false是不携带，true则意味着跨域请求时会把cookie携带过去。
+- adapter：设置请求的适配器。有两种，分别是发送AJAX的，和在nodejs中发送http的。两个运行环境。
+- auth：设置请求的基础验证。用户名密码。
+- responseType：设置响应体的结果格式。默认值为JSON，即服务器默认的返回结果是JSON格式的，结果到达后会自动对其做一个转换。
+- responseEncoding：设置响应结果的编码。默认值为```'utf8'```。
+- xsrfCookieName：设置跨站请求的标识：对cookie的名字进行设置。
+- xsrfHeaderName：设置跨站请求的标识：对头信息进行设置。
+> 这两个是安全设置，保证请求是来自自己的客户端而不是一些其他的未知客户端。
+  > 为什么能实现保护作用？需要结合服务器进行说明。服务器在返回结果时会返回一个唯一标识，下次发请求时需要把这个唯一标识再传递过去，服务器认出它、检测没有问题之后才会做响应。
+  > 有些网站页面里会加入一些链接，向我们的服务器发送请求。如果不做唯一标识去检验它，可能这个页面发送的请求就会直接对我们的结果造成影响；加了这个唯一参数后，我们的客户端可以把它加上，而其他客户端没有，就可以有效避免跨站攻击。
+
+- onUploadProgress：上传时的回调。
+- onDownloadProgress：下载时的回调。
+- maxContentLength：设置HTTP响应体的最大尺寸，单位为字节。
+- maxBodyLength：设置HTTP请求体的最大尺寸，单位为字节。
+- validateStatus：设置如何认定响应结果是成功的。一般不改。默认值为```status >= 200 && status < 300```，即响应代码>200并且<300。
+- maxRedirects：最大跳转次数。当我们向一个服务发送请求时它做了跳转，做了跳转后还要不要继续向前进行请求。一般在nodejs用，前端的AJAX用不到。
+- socketPath：设置socket文件的位置。这个文件的作用是向docker的守护进程发送请求，即数据转发。和proxy有先后优先级的关系，如果同时设置了socket和文件代理proxy，优先使用socket
+- httpAgent：设置客户端信息。如```keep-alive```（是否保持连接）。少用。
+- proxy：设置代理。只能在nodejs用。
+> 做爬虫时，如果只用一个ip向目标服务器抓取数据，很可能被别人进到自己的ip。这时就可以借助很多中间代理，不断切换，发送请求。投票等任务同理。
+
+- cancelToken：对AJAX请求做取消的设置。
+- decompress：对响应结果是否进行解压。只能在nodejs用。
+
+### axios默认配置
+[官方文档：Config Defaults](https://github.com/axios/axios#config-defaults)
+它可以把一些重复性的设置配置在默认设置中，从而简化代码。
+思考本章第一小节各个按钮的实现。下面是GET按钮的实现：
+```javascript
+function testGet() {
+  axios({
+      method: 'GET',
+      url: 'http://localhost:3000/posts/2'
+  }).then(response => {
+      console.log(response)
+  })
+}
+```
+在每个按钮的实现中都需要写请求类型```method: 'xxx'```，而且每一次```url```都得写的很长。可以在方法外面添加默认配置：
+```javascript
+axios.defaults.method = 'GET'; // 设置默认的请求类型为GET
+axios.defaults.baseURL = 'http://localhost:3000' // 设置基础URL
+```
+在后续的使用过程中，默认配置中写的内容无需重新配置。GET按钮的实现可以修改为下面这样，效果相同：
+```javascript
+function testGet() {
+    axios.request({
+        url: '/posts'
+    }).then(response => {
+        console.log(response)
+    })
+}
+```
+查看官方文档，可以看到其他可以设置的值。下面测试默认```params```，配置后能否在network里看到请求添加了指定后缀params。设置语句为```axios.defaults.params = { id: 100 };```，可以看到成功配置。
+![配置默认params](defaultParams.png)
+
+### axios创建实例对象发送AJAX请求
+[官方文档：Config Defaults](https://github.com/axios/axios#config-defaults)
+
+
+
 
 ## axios 常用语法
 1. ```axios(config)```: 通用/最本质的发任意类型请求的方式
