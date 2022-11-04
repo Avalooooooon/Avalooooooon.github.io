@@ -8,6 +8,7 @@ categories: [前端,JS]
 
 [官方文档]( https://github.com/axios/axios)
 [一个开放接口](https://api.apiopen.top/api/sentences)
+
 ## Production
 axios是前端最流行的 ajax 请求库，react/vue 官方都推荐使用 axios 发 ajax 请求。在浏览器中可以利用axios向服务端发送ajax请求来获取数据，在node环境可以利用axios向远端服务发送HTTP请求。也就是它可以在两个环境中运行。它有以下几个特点：
 
@@ -393,10 +394,154 @@ function testGet() {
 查看官方文档，可以看到其他可以设置的值。下面测试默认```params```，配置后能否在network里看到请求添加了指定后缀params。设置语句为```axios.defaults.params = { id: 100 };```，可以看到成功配置。
 ![配置默认params](defaultParams.png)
 
+### axios.create(config)
+<span style = "color:red">创建一个拥有通用配置的axios实例:```axios.create([config])```。</span> ```axios.create()```函数接受一个配置对象作为参数，里面可以写```baseurl```、```timeout```等等参数。
+
+即根据指定配置创建一个新的 axios，也就是每个新 axios 都有自己的配置。新 axios 只是没有取消请求和批量发请求的方法，其它所有语法都是一致的。
+
+> 创建实例对象发送请求的优势：
+> 当项目的接口数据服务不只来自于一个单一的服务器，有着不同的协议、域名、端口，此时用默认配置只能省一个事；这时候设置两个不一样名字的axios示例就很合适。
+> 接下来向不同的接口发请求时借用不同的实例对象即可。
+
 ### axios创建实例对象发送AJAX请求
-[官方文档：Config Defaults](https://github.com/axios/axios#config-defaults)
+具体创建如下（只展示了.html文件中的script部分代码）：
+```javascript
+// 创建实例对象
+const duanzi = axios.create({
+    baseURL: 'https://api.apiopen.top',
+    timeout: 2000
+})
+// duanzi 与 axios 对象的功能几近一样
+duanzi({
+    url: '/api/sentences',
+}).then(response => {
+    console.log(response)
+})
+```
+通过```create()```创建出来的对象与axios本身的功能几近一致，这个新创建出来的对象也是当一个函数使用的。示例如下：
+```javascript
+// duanzi 与 axios 对象的功能几近一样
+duanzi({
+    url: '/api/sentences',
+}).then(response => {
+    console.log(response)
+})
+```
 
+除此之外，当然也可以利用封装好的方法发送请求。注意下面打印的结果是我们新创建的接口```duanzi```为我们返回的<span style = "color:red">JSON数据转换后的js对象</span>：
+```javascript
+duanzi.get('/api/sentences').then(response => {
+    console.log(response.data)
+})
+```
 
+### 拦截器（Interceptors）
+[官方文档：Interceptors](https://github.com/axios/axios#interceptors)
+拦截器实际上就是一些函数，即 **满足条件放行** 。它分为两大类：请求拦截器 和 响应拦截器。
+
++ 请求拦截器：发送请求前可以借助一些函数，对请求参数和内容做一些处理和检测，都没问题就去发送请求。如果存在问题，可以直接取消请求。
++ 响应拦截器：服务器返回结果后，我们可以通过自己指定的回调对结果进行处理。响应拦截器可以在我们处理结果之前先对结果预处理，（比如失败则做一个失败结果的提醒、格式化处理数据结果。。。），没问题后再交由我们自己处理。有问题则在响应拦截器中处理掉，我们不需要去处理失败结果。
+
+下面给出示例。复制粘贴官网上的代码放入```<script>```标签。可以看出，函数```axios.interceptors.request.use()```传入了两个函数作为参数，还有成功、失败两种情况的处理，可以知道拦截器的原理也是和promise相关的。
+
+请求拦截器中的参数```config```：配置对象。也就是在请求拦截器中可以调整请求参数，比如可以利用语句```config.params = {a:100}```修改config中的参数。
+响应结果中的```response```：响应结果```response```是axios自动生成的默认的响应结果，里面除了真正的响应结果```data```之外还有很多响应状态码之类的东西。多数情况下不需要获取那些多余的东西，用啥就返回啥，比如可以直接返回```response.data```，这样就只有响应体而没有响应行响应头这些东西。
+```javascript
+// 设置请求拦截器
+axios.interceptors.request.use(function (config) {
+    console.log('请求拦截器 成功')
+    return config;
+}, function (error) {
+    console.log('请求拦截器 失败')
+    return Promise.reject(error);
+});
+//设置响应拦截器
+axios.interceptors.response.use(function (response) {
+    console.log('响应拦截器 成功')
+    return response;
+}, function (error) {
+    console.log('响应拦截器 失败')
+    return Promise.reject(error);
+});
+// 发送请求
+axios({
+    method: 'GET',
+    url: 'http://localhost:3000/posts'
+}).then(response => {
+    console.log(response)
+})
+```
+这段代码的执行顺序应该是先走请求拦截器，成功后发送请求，然后交给响应拦截器初步处理返回结果，最后交给我们自己设定的回调进行处理。可以看到打印的结果如下图：
+![拦截器-处理成功](lanjieqi1.png)
+在代码中进行以下修改，让接受成功的请求拦截器throw一个异常并在我们自己的回调函数逻辑中添加catch：
+```javascript
+axios.interceptors.request.use(function (config) {
+    console.log('请求拦截器 成功')
+    throw '参数出了问题'
+}, function (error) {
+    console.log('请求拦截器 失败')
+    return Promise.reject(error);
+});
+axios.interceptors.response.use(function (response) {
+    console.log('响应拦截器 成功')
+    return response;
+}, function (error) {
+    console.log('响应拦截器 失败')
+    return Promise.reject(error);
+});
+axios({
+    method: 'GET',
+    url: 'http://localhost:3000/posts'
+}).then(response => {
+    console.log(response)
+}).catch(reason => {
+    console.log('自定义失败回调')
+})
+```
+读到```throw '参数出了问题'```时会返回一个失败的 **promise** ，所以在执行后续回调的时候就走不了处理成功的回调了，只能走负责处理失败结果的回调。则执行顺序变为：请求拦截器成功并抛出异常，返回失败promise->响应拦截器收到失败promise，进行异常处理，再返回失败promise->我们自己的回调函数收到失败promise并进行处理。控制台结果如图。
+![拦截器-处理失败](lanjieqi2.png)
+
+> 如果有多个请求，请求拦截器和响应拦截器的执行顺序：请求从外边到里边，最后设置的在最外边（倒序），响应就是里到外（正序）。
+> <span style = "color:red">请求拦截器进入的是堆栈，响应拦截器进入的是队列。</span>
+
+## axios源码
+### 目录结构
+
+├──  /dist/ # 项目输出目录，存放打包后的文件
+│    ├──  axios.js 未压缩的
+│    └── axios.min.js 压缩后的 一般项目引入的是这个
+├──  /lib/ # 项目源码目录 
+│    ├──   /adapters/ # 定义请求的适配器 xhr、http 
+│    │    ├── http.js # 实现 http 适配器(包装 http 包) ，用来在nodejs中向远端服务器发送http请求
+│    │    └──xhr.js # 实现 xhr 适配器(包装 xhr 对象) ，用来在前端中发送AJAX请求
+│    ├──   /cancel/ # 定义取消功能 
+│    │    ├── Cancel.js # Cancel构造函数，用来创建取消时的错误对象
+│    │    ├── CanceToken.js # CancelToken构造函数，用来创建取消请求对象
+│    │    ├── isCance.js # 检测参数是否为取消对象
+│    ├──   /core/ # 一些核心功能 
+│    │    ├── Axios.js # axios 的核心主类。Axios构造函数文件
+│    │    ├── buildFullPath.js # 构建完整URL的函数文件
+│    │    ├── dispatchRequest.js # 用来 **调用** http 请求适配器方法发送请求的函数 
+│    │    ├── InterceptorManager.js # 拦截器的管理器 
+│    │    └── settle.js # 根据 http 响应状态，改变 Promise 的状态 
+│    ├──   /helpers/ # 一些辅助方法 
+│    ├──   axios.js # axios的入口文件。对外暴露接口。
+│    ├──   defaults.js # axios 的默认配置文件（配置对象）
+│    ├──   utils.js # 公用工具 
+├─ package.json # 项目信息 
+├─ index.d.ts # 配置 TypeScript 的声明文件 
+└─ index.js # 是 **整个包** 的入口文件
+
+### axios创建过程
+> axios 与 Axios 的关系:
+> 
+> 1. 从语法上来说: axios 不是 Axios 的实例
+> 2. 从功能上来说: axios 是 Axios 的实例
+> 3. axios 是 Axios.prototype.request 函数 bind()返回的函数
+> 4. axios 作为对象有 Axios 原型对象上的所有方法, 有 Axios 对象上所有属性
+> 
+
+后面再更新；
 
 
 ## axios 常用语法
