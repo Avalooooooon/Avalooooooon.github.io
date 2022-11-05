@@ -47,6 +47,14 @@ XML全都是<span style="color:red"> 自定义标签 </span>，用来表示一�
 3. SEO（搜索引擎优化）不友好
   > 因为网页中的内容都是通过AJAX异步请求、动态创建的，爬虫爬不到。以购物网站为例，也就是源代码第一次请求时，响应体结果里是没有商品信息的
 
+### 区别：一般http请求 与 AJAX请求
+1. AJAX请求是一种特别的 http请求
+2. 对服务器端来说, 没有任何区别, 区别在 <span style='color:red'> **浏览器端** </span>。
+3. 浏览器端发请求: 只有 ```XHR``` 或 ```fetch``` 发出的才是AJAX请求， 其它所有的都是非AJAX请求。
+4. 浏览器端接收到响应
+  1. 一般请求：浏览器一般会直接显示响应体数据，也就是我们常说的刷新/跳转页面
+  2. ajax请求：浏览器不会对界面进行任何更新操作， 只是 <span style='color:red'> **调用监视的回调函数** </span> 并 <span style='color:red'> **传入响应相关数据** </span>。
+
 ## HTTP相关
 即hypertext transport protocol，【超文本传输协议】。详细规定了浏览器和万维网服务器之间互相通信的规则。
 [MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview)
@@ -122,12 +130,16 @@ GET请求体就是空的，如果是POST可以不为空。
 500：Internal Server Error 服务器内部错误，无法完成请求
 
 ### Chrome网络控制台查看通信报文
-Network标签页会列出当前网页在加载过程中所有发送的请求。点进一条，展开新标签页。
-标签```headers```：点开可以看到它包含了请求头和响应头，默认不显示请求行，点击```view source```即可显示请求行；```Query String Parameters```查询字符串参数，是对```url```中的参数做解析，这一项在调试参数中很方便。```response```点开后是响应头信息，也是按照名字冒号空格的格式，点击```view source```即可显示原始的响应报文（只有响应行和响应头）。响应体在下面的和```headers```同级的标签```response```里。
-标签```preview```：是对响应的预览（解析）
-标签```response```：响应体。服务端返回的html内容。
+Network标签页会列出当前网页在加载过程中所有发送的请求。点进一条，会展开新标签页。
+1. 标签```Headers```：
+  1. ```Request headers```点开后是请求头，可以看出都是名字冒号空格的格式，如果没显示请求行，点击```view source```即可显示请求行（方法+url+协议版本）
+  2. ```Query String Parameters```查询字符串参数，是对```url```（也就是请求行里的那个url）中的参数做解析，这一项在调试参数中很方便，可以方便的查看参数有没有成功发送。。
+  3. ```Response headers```点开后是响应头，也是按照名字冒号空格的格式，点击```view source```即可显示原始的响应报文（只有响应行和响应头）。响应体在下面的和```Headers```同级的标签```Response```里。
+  4. ```Form Data```：如果发送的是POST请求，点击```view source```显示的是原始的请求体内容。在我们点击提交按钮之后，浏览器会把原始的HTTP报文封装好，再发送给目标服务器的指定端口进行请求。
+2. 标签```preview```：是对响应的预览（解析）
+3. 标签```Response```：响应体。服务端返回的html内容。如果响应的结果是跳转则此处为空。
 
-
+总之就是，看请求报文，就看标签```Headers```中的```Request headers```和```Query String Parameters```（有参数的GET请求）或```Form Data```（POST请求）；看响应报文就看标签```Headers```中的```Response headers```和标签```Response```
 
 2.8 API 的分类
 REST API: restful （Representational State Transfer (资源)表现层状态转化）
@@ -138,18 +150,89 @@ REST API: restful （Representational State Transfer (资源)表现层状态转�
 (1) 请求方式不决定请求的CRUD 操作
 (2) 一个请求路径只对应一个操作
 (3) 一般只有GET/POST
-2.9 区别 一般http请求 与 ajax请求
 
-ajax请求 是一种特别的 http请求
-对服务器端来说, 没有任何区别, 区别在浏览器端
-浏览器端发请求: 只有XHR 或fetch 发出的才是ajax 请求, 其它所有的都是非ajax 请求
-浏览器端接收到响应
-(1) 一般请求: 浏览器一般会直接显示响应体数据, 也就是我们常说的刷新/跳转页面
-(2) ajax请求: 浏览器不会对界面进行任何更新操作, 只是调用监视的回调函数并传入响应相关数据
-3. 原生AJAX 的基本使用 XHR
+## 原生AJAX的基本使用：XHR
 
+### node环境与express框架
++ 安装node.js：[nodejs官网](http://nodejs.cn/)
++ 安装express（服务端框架）：[express官网](https://www.expressjs.com.cn/)
+  1. 初始化环境（记得是在根目录，目录最外边启动终端）：```npm init --yes```
+  2. 下载express包：```npm install express --save```
+  3. 在文件```express基本使用```中编写js代码：
+  ```javascript
+// 1. 引入express
+const express = require('express');
 
+// 2. 创建应用对象
+const app = express();
 
+// 3. 创建路由规则
+// request 是对请求报文的封装
+// response 是对响应报文的封装
+app.get('/', (request, response) => {
+    //  设置响应
+    response.send("Hello Express");
+});
 
+// 4. 监听端口，启动服务
+app.listen(8000, () => {
+    console.log("服务已经启动, 8000 端口监听中...");
+})
+```
+  4. 运行js程序：```node express基本使用.js```
+运行结果如下：
+![express成功运行](express1.png)
+打开网页```127.0.0.1:8000```，显示页面：
+![express网页显示](express2.png)
+打开NETWORK控制台，调试程序可以查看请求和响应。```Headers```标签页中的```Request headers```是我们刚才向8000端口发送的内容，```Response headers```是8000端口给我们的响应；```Response```标签页是响应体。这两块内容组合起来形成了完整的响应报文。
+![express请求和响应1](express3.png)
+![express请求和响应2](express4.png)
 
+到此，这个HTTP服务就被启动起来了。接下来可以借助这个服务与前端的AJAX进行交互。
 
+### AJAX请求发送前的准备：前端页面和服务端代码
+创建两个文件，浏览器端使用的html文件和服务器端使用的js文件。需要实现的需求是，点击按钮返回响应信息。点击按钮后向服务端发送一个请求，把服务端返回的 <span style='color:red'> **响应体结果** </span>在紫色框呈现出来。
+![页面](yemian.png)
+![准备文件](zhunbeiwenjian.png)
+html文件的基础代码如下：
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajax GET 请求</title>
+  <style>
+    #result {
+      width: 200px;
+      height: 100px;
+      border: solid 1px #90b;
+    }
+  </style>
+</head>
+<body>
+  <button>点击发送请求</button>
+  <div id="result"></div>
+</body>
+</html>
+```
+server.js中的文件在上一部分的express代码基础上进行修改。把创建路由规则中的```app.get()```中的第一个参数改成```/server```，这样当客户端浏览器向服务器发送请求时，如果url的路径（也就是请求行的第二段内容）是```/server```的话，就会执行```app.get()```中的第二个参数也就是回调函数里面的代码，并且由```(request, response)```中的```response```来做出响应。整体代码如下：
+```javascript
+// 1. 引入express
+const express = require('express');
+// 2. 创建应用对象
+const app = express();
+// 3. 创建路由规则
+app.get('/server', (request, response) => {
+    // 设置响应头 设置允许跨域
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    // 设置响应体
+    response.send("Hello Ajax");
+});
+// 4. 监听服务
+app.listen(8000, () => {
+    console.log("服务已经启动, 8000 端口监听中...");
+})
+```
+准备好这两个文件后，在这两个文件所在的文件夹下打开控制台，输入```node server.js```启动服务。
