@@ -12,26 +12,27 @@ date: 2022-09-27 11:42:15
 
 编程语言为js。
 
+
+## 字符操作
+### 编码转换
+1. 转换为Unicode：```stringObject.charCodeAt([index])```，返回字符串中特定位置的字符的Unicode值。如果不提供index参数，则 charCodeAt() 方法将使用 0 作为默认值。常结合```var basecode = "a".charCodeAt()```一起使用。
+
+
 ## 数值操作
 ### 取整
 1. 截取整数+强制类型转换：```parseInt(a)```。将一个字符串中的 ***有效*** 整数拿出。可以用来取整。依次将字符串中从左到右的数字部分转为整数,一旦转换失败，返回NaN。正数向下取整，负数向上。
 可以接收第二个参数，为进制数。
 2. 移位运算符：```>>```或```<<```。以```>>```为例，```(right - left) >> 1```以为在二进制下右移一位并取整。正数向下取整。
-### 防止溢出
+### 溢出
 1. 用```mid = left + ((right - left) / 2)```代替```mid = (left + right) / 2)```。
 2. 
-### 常用常量
-
+### 常量
 1. js的最大安全整数：```Number.MAX_SAFE_INTEGER```。
+2. js的无穷数：```Infinity```，类型为number。它比任何有限数都大，比如最大安全整数。
 
 ### 其它类型转换为Number
 
 
-
-
-## 字符操作
-### 编码转换
-1. 转换为Unicode：```stringObject.charCodeAt([index])```，返回字符串中特定位置的字符的Unicode值。如果不提供index参数，则 charCodeAt() 方法将使用 0 作为默认值。
 
 
 ## 数组方法
@@ -71,6 +72,7 @@ date: 2022-09-27 11:42:15
 
 ## map方法
 > 关键词：key个数不确定；哈希值比较少、特别分散、跨度非常大（此时使用数组作为哈希表会产生很大浪费）；
+> 还可以使用数组、字符串等类型作为map的key值。
 
 通过```new Map()```等方法进行初始化。可以通过```map[key]```获得value。
 1. 查看key的value值/key是否存在：```map.set(tchar, map.has(tchar) ? map.get(tchar) + 1 : 1)```。
@@ -85,6 +87,7 @@ map.forEach(function(value,key){
 2. for-of遍历
 ```javascript
 for(let item of map){  //遍历结果是数组，数组的每一项都是长为2的数组[key,value]
+                       //此时需要获取key就用item[0],value就是item[1]
 }
 for(let item of map.values()){  //遍历属性值
 } 
@@ -107,6 +110,7 @@ for(let item of map.entries()){  //遍历结果同forEach
 
 ## 链表
 注意———需要操作的节点是头节点时如何处理；链表结尾的判定：```currnode.next !== null```；链表中只有一个元素时如何处理；涉及到不容易想清楚的位置变换时记得画图，否则指针一多很容易乱。
+
 使用js时，单链表可以如下定义：
 ```javascript
 function ListNode(val, next) {
@@ -130,6 +134,10 @@ var MyLinkedList = function () {
 ```
 ### 虚拟头节点dummyhead
 常定义一个指向真正头节点的虚拟头节点：```var dummyhead = new ListNode(0,head);dummyhead.next = head```。
+
+> 优势：可以使原链表中的所有节点按统一的方式进行处理，包括头结点。
+> 注意return的是```dummthead.next```。
+
 ### 环形链表
 常涉及到数学运算，如判断是否有环和环入口时。必要时可以考虑将环形链表展开为直线再运算。
 常用方法：快慢双指针。根据是否相遇、何时相遇进行判断。
@@ -140,7 +148,10 @@ var MyLinkedList = function () {
 ### 二分查找
 > 关键字：有序数组、无重复元素、复杂度O(logn)
 
-注意区间开闭。
+
+注意区间开闭（```while (left < right)```、```while(left <= right)```、```right = middle```、```right = middle - 1```？）。
+一般来说有两种常见选择，左闭右闭```[left,right]；while (left <= right)```和左闭右开```[left,right)；while (left < right)```。
+
 ### 双指针
 > 关键字：数组/链表/字符串、不占用额外空间、保持相对顺序、复杂度O(n)
 > 反转问题、反转链表等，判断链表是否有环时也使用了快慢两个指针。
@@ -154,10 +165,12 @@ var MyLinkedList = function () {
 > 关键字：不占用额外空间、保持相对顺序、复杂度O(n)
 
 明确：是以滑动窗口的**起始位置还是终止位置**为for循环的标识。
+
 ### 哈希表
+
 使用哈希法的标志：查询一个元素是否出现过、一个元素是否在集合里。
 #### 数组
-> 关键字：题目都限制了数值的大小，key个数确定（如26个英文字母）；复杂度O(n)
+> 关键字：key个数确定（如26个英文字母、指定较小字符集）；复杂度O(n)
 > ``` const resSet = new Array(26).fill(0);```
 >
 > 缺点：数组大小有限，受到系统栈空间（不是数据结构的栈）的限制；如果数组空间够大但哈希值比较少、特别分散、跨度非常大，数组就会造成空间的极大浪费。
@@ -171,7 +184,7 @@ var MyLinkedList = function () {
 
 #### Set
 Set中的数只会出现一次。
-> 关键词：只需要知道key值是否重复出现；快速判断一个元素是否出现在集合里
+> 关键词：只需要知道key值是否重复出现；**快速判断一个元素是否出现在集合里**
 >
 > 缺点：set是一个集合，里面放的元素只能是一个key，而类似两数之和的题目，不仅要判断y是否存在而且还要记录y的下标位置，所以set 也不能用。
 > 
