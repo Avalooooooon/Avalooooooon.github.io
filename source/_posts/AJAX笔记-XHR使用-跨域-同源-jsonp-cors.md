@@ -99,8 +99,8 @@ GET请求体就是空的，如果是POST可以不为空。
 ### 不同类型的请求及其作用
 1. ```GET```: 从服务器端读取数据（查）
 2. ```POST```: 向服务器端添加新数据 （增）
-```PUT```: 更新服务器端已经数据 （改）
-```DELETE```: 删除服务器端数据 （删）
+3. ```PUT```: 更新服务器端已经数据 （改）
+4. ```DELETE```: 删除服务器端数据 （删）
 
 ### HTTP 响应报文：四部分
 ```
@@ -131,6 +131,8 @@ GET请求体就是空的，如果是POST可以不为空。
 404：Not Found 服务器无法根据客户端的请求找到资源
 500：Internal Server Error 服务器内部错误，无法完成请求
 
+> 事实上，响应状态码 2开头的“2xx”都表示成功！不止200是。
+
 ### Chrome网络控制台查看通信报文
 Network标签页会列出当前网页在加载过程中所有发送的请求。点进一条，会展开新标签页。
 1. 标签```Headers```：
@@ -153,7 +155,7 @@ REST API: restful （Representational State Transfer (资源)表现层状态转�
 (2) 一个请求路径只对应一个操作
 (3) 一般只有GET/POST
 
-## 原生AJAX的基本使用：XHR
+## 原生AJAX的基本使用：XHR，new XMLHttpRequest()
 
 ### node环境与express框架
 + 安装node.js：[nodejs官网](http://nodejs.cn/)
@@ -238,3 +240,77 @@ app.listen(8000, () => {
 })
 ```
 准备好这两个文件后，在这两个文件所在的文件夹下打开控制台，输入```node server.js```启动服务。
+
+> 如果想查看127.0.0.1:8000，记得要在后面加```/server```，和代码一致！！！
+> 即访问地址是```http://127.0.0.1:8000/server```。
+
+### 接上节：完整的html和js代码
+点击按钮后的html页面：
+![页面显示响应体结果](yemian2.png)
+控制台中的输出：
+![控制台结果](yemian3.png)
+
+
+html文件如下。在上一节的基础上，只展示```<body>```内的代码：
+```html
+<body>
+  <button>点击发送请求</button>
+  <div id="result"></div>
+  <script>
+    //获取button元素 getElementsByTagName返回数组的形式所以加0
+    const btn = document.getElementsByTagName('button')[0];
+    const result = document.getElementById('result');
+    //绑定事件
+    btn.onclick = function () {
+      // 1. 创建对象 
+      const xhr = new XMLHttpRequest();
+      // 2. 初始化 设置请求方法和url 此处url前面的部分不可省略
+      xhr.open('GET', 'http://127.0.0.1:8000/server')
+      // 3. 发送
+      xhr.send();
+      // 4. 事件绑定 处理服务端返回的结果
+      xhr.onreadystatechange = function () {
+        // 判断 (服务端返回了所有的结果)
+        if (xhr.readyState === 4) {
+          //判断响应状态码 200  404  403 401 500
+          if (xhr.status >= 200 && xhr.status < 300) {
+            // 处理结果 行 头 空行 体
+            // 响应
+            console.log('状态码', xhr.status); 
+            console.log('状态字符串', xhr.statusText); 
+            console.log('所有响应头', xhr.getAllResponseHeaders()); 
+            console.log('响应体', xhr.response); 
+            //设置 result 的文本
+            result.innerHTML = xhr.response;
+
+            // 结束。可以看出并没有进行页面刷新就拿到了结果。
+          } else {
+          }
+        }
+      }
+    }
+  </script>
+</body>
+```
+server.js文件同上一节。
+
+### readystate
+
+readyState 是 xhr 对象中的属性，表示状态 0 1 2 3 4。
+
+0：未初始化。最开始的readyState状态就是0。
+
+> XMLHttpRequest对象创建完成，还没有调用```open()```方法。
+
+1：```open()```方法调用完毕。
+> XMLHttpRequest对象初始化完成。已调用```send()```方法,正在发送请求。
+
+2： ```send()```方法调用完毕。
+
+>   请求已经发送——```send()```方法完成,已经收到全部响应内容。
+
+3： 服务端返回了部分结果。
+> 服务器返回了数据（但是还没有被解析，可能只一段http报文）——正在解析响应内容。
+
+4： 服务端返回了所有结果。
+> 数据解析完成——响应内容解析完成,可以在客户端调用了。
