@@ -8,11 +8,14 @@ categories: [前端,JS]
 
 ## 1. Ajax概述
 ### AJAX 简介
-AJAX 全称为Asynchronous JavaScript And XML，即异步的JS和XML；不是新的编程语言，而是一种将现有的标准组合在一起使用的新方式。特点就是可以在网页不刷新的情况下向服务端发送HTTP请求并得到HTTP响应。使用HTTP协议。
+AJAX 全称为Asynchronous JavaScript And XML，即异步的JS和XML。特点是可以在网页不刷新的情况下向服务端发送HTTP请求并得到HTTP响应。使用HTTP协议。
 通过AJAX 可以在浏览器中向服务器发送异步请求，最大优势：<span style="color:red"> **无刷新** </span>获取数据。
-AJAX 不是新的编程语言，而是一种将现有的标准组合在一起使用的新方式
+AJAX 不是新的编程语言，而是一种将现有的标准组合在一起使用的新<span style="color:red"> **方式** </span>。
 
 ### XML 简介
+> 之前AJAX在进行数据交换时所使用的格式就是XML，服务端在向客户端返回结果时返回的就是一个XML格式的字符串；前端JS在接受到这个数据之后对这个内容进行解析，把数据提取出来并进行处理。
+> 现在已经被JSON取代了。JSON比XML更简洁，而且在数据转换中可以借助JSON的一些API方法快速将字符串转化为对象，灵活度远胜XML。
+
 XML，即可扩展标记语言(HTML叫做超文本标记语言)。被设计用来传输和存储数据。
 和HTML 类似都是由标签组成的，不同的是HTML 中都是预定义标签，用于在网页当中呈现数据；而XML 中没有预定义标签，用来传输和存储数据。
 XML全都是<span style="color:red"> 自定义标签 </span>，用来表示一些数据。
@@ -26,9 +29,6 @@ XML全都是<span style="color:red"> 自定义标签 </span>，用来表示一�
 	<gender>男</gender>
 </student>
 ```
-
-> 之前AJAX在进行数据交换时所使用的格式就是XML，服务端在向客户端返回结果时返回的就是一个XML格式的字符串；前端JS在接受到这个数据之后对这个内容进行解析，把数据提取出来并进行处理。
-> 现在已经被JSON取代了。JSON比XML更简洁，而且在数据转换中可以借助JSON的一些API方法快速将字符串转化为对象，灵活度远胜XML。
 
 用JSON表示：
 ```JSON
@@ -45,7 +45,7 @@ XML全都是<span style="color:red"> 自定义标签 </span>，用来表示一�
 2. 存在跨域问题(同源)
   > 跨域：在一个服务（a.com）向另一个服务（b.com）发送AJAX请求，默认是不可以的。
 3. SEO（搜索引擎优化）不友好
-  > 因为网页中的内容都是通过AJAX异步请求、动态创建的，爬虫爬不到。以购物网站为例，也就是源代码第一次请求时，响应体结果里是没有商品信息的
+  > 因为网页中的内容都是通过AJAX异步请求、动态创建的，爬虫爬不到。以购物网站为例，也就是源代码第一次请求时，响应体结果里是没有商品信息的。
 
 ### 区别：一般http请求 与 AJAX请求
 1. AJAX请求是一种特别的 http请求
@@ -56,7 +56,9 @@ XML全都是<span style="color:red"> 自定义标签 </span>，用来表示一�
   2. ajax请求：浏览器不会对界面进行任何更新操作， 只是 <span style='color:red'> **调用监视的回调函数** </span> 并 <span style='color:red'> **传入响应相关数据** </span>。
 
 ## HTTP相关
-即hypertext transport protocol，【超文本传输协议】。详细规定了浏览器和万维网服务器之间互相通信的规则。
+
+即 "hypertext transport protocol" ，【超文本传输协议】。详细规定了浏览器和万维网服务器之间互相通信的规则。
+
 [MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview)
 
 ### HTTP请求交互的基本过程
@@ -95,8 +97,8 @@ GET请求体就是空的，如果是POST可以不为空。
 用于文件上传请求。
 
 ### 不同类型的请求及其作用
-```GET```: 从服务器端读取数据（查）
-```POST```: 向服务器端添加新数据 （增）
+1. ```GET```: 从服务器端读取数据（查）
+2. ```POST```: 向服务器端添加新数据 （增）
 ```PUT```: 更新服务器端已经数据 （改）
 ```DELETE```: 删除服务器端数据 （删）
 
@@ -160,8 +162,8 @@ REST API: restful （Representational State Transfer (资源)表现层状态转�
   2. 下载express包：```npm install express --save```
   3. 在文件```express基本使用```中编写js代码：
   ```javascript
-// 1. 引入express
-const express = require('express');
+  // 1. 引入express
+  const express = require('express');
 
 // 2. 创建应用对象
 const app = express();
