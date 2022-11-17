@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.7.5">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://avalooooooon.github.io/tags/git/"/>
+  
+  <link rel="canonical" href="https://avalooooooon.github.io/2022/11/04/node按行读取含分割线的多段log，提取重要信息并写入到另一文件输出/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -31,19 +31,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>标签：git - 一之碎片</title>
-  <meta name="keywords" content="前端 macOS python 网络">
-  <meta desc name="description" content="前端 杂谈 - 一之碎片 - 一之碎片">
+  <title>AJAX笔记-XHR使用-跨域-同源-jsonp-cors - 一之碎片</title>
+  <meta name="keywords" content="JS,前端 macOS python 网络">
+  <meta desc name="description" content="给定一个.log文件，含多段log，每段中包含用户id等信息。从中提取id 时间 ip 响应码 api，项内通过,连接，项之间通过空格连接。时间也按形如2000-10-10 10:34:55的标准格式输出。 - 一之碎片 - 一之碎片">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="一之碎片">
-<meta property="og:url" content="https://avalooooooon.github.io/tags/git/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AJAX笔记-XHR使用-跨域-同源-jsonp-cors">
+<meta property="og:url" content="https://avalooooooon.github.io/2022/11/04/node%E6%8C%89%E8%A1%8C%E8%AF%BB%E5%8F%96%E5%90%AB%E5%88%86%E5%89%B2%E7%BA%BF%E7%9A%84%E5%A4%9A%E6%AE%B5log%EF%BC%8C%E6%8F%90%E5%8F%96%E9%87%8D%E8%A6%81%E4%BF%A1%E6%81%AF%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/">
 <meta property="og:site_name" content="一之碎片">
-<meta property="og:description" content="前端 杂谈">
+<meta property="og:description" content="给定一个.log文件，含多段log，每段中包含用户id等信息。从中提取id 时间 ip 响应码 api，项内通过,连接，项之间通过空格连接。时间也按形如2000-10-10 10:34:55的标准格式输出。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2022-11-04T08:24:23.000Z">
+<meta property="article:modified_time" content="2022-11-04T08:24:23.000Z">
 <meta property="article:author" content="一之碎片">
-<meta property="article:tag" content="前端 macOS python 网络">
+<meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
   <style>
@@ -2890,7 +2892,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper  dock' style="display: none;">
+      <div id="none" class='cover-wrapper post dock' style="display: none;">
         
   <div id="parallax-window"></div>
 
@@ -2959,27 +2961,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-
 <div id="l_main" class=''>
-  
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2021/12/26/gitbook使用教程/">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/11/04/node按行读取含分割线的多段log，提取重要信息并写入到另一文件输出/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="一之碎片">
   </span>
@@ -2988,139 +2972,248 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="前端 杂谈">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2021/12/26/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"  itemprop="url">
-        gitbook使用教程
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      
-        
-参考了这篇文章
-
-检查node环境1node -v
-
-安装gitbook环境安装gitbook-cli工具gitbook-cli是一个在同一系统上安装和使用多个版本的GitBook的实用程序。它将自动安装所需版本的GitBook来构建一本书。打开终端输入npm install gitbook-cli -g进行全局安装：
-12npm install gitbook-cli -g  gitbo...
-      
     
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+      <h1 class="title" itemprop="name headline">
+        AJAX笔记-XHR使用-跨域-同源-jsonp-cors
+      </h1>
+      <div class='new-meta-box'>
         
-        <time itemprop="dateCreated datePublished" datetime="2021-12-26T14:39:24+08:00">2021-12-26</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/git/">git</a>
           
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/git/" itemprop="url"><span itemprop="name">git</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/12/26/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="/" class="lazyload" data-srcset="/" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">一之碎片</p>
+  </a>
 </div>
 
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/JS/">JS</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
+      </span>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E5%89%8D%E7%AB%AF/JS/" itemprop="url"><span itemprop="name">JS</span></a>
+      </span>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2022-11-04T16:24:23+08:00">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2022年11月4日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <p>给定一个<code>.log</code>文件，含多段log，每段中包含用户id等信息。<br>从中提取id 时间 ip 响应码 api，项内通过<code>,</code>连接，项之间通过空格连接。时间也按形如<code>2000-10-10 10:34:55</code>的标准格式输出。</p>
+<span id="more"></span>
+
+<h2 id="log文件"><a href="#log文件" class="headerlink" title="log文件"></a>log文件</h2><p>origin.log文件。部分如下：<br><img src="/2022/11/04/node%E6%8C%89%E8%A1%8C%E8%AF%BB%E5%8F%96%E5%90%AB%E5%88%86%E5%89%B2%E7%BA%BF%E7%9A%84%E5%A4%9A%E6%AE%B5log%EF%BC%8C%E6%8F%90%E5%8F%96%E9%87%8D%E8%A6%81%E4%BF%A1%E6%81%AF%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/log.png" class="lazyload" data-srcset="/2022/11/04/node%E6%8C%89%E8%A1%8C%E8%AF%BB%E5%8F%96%E5%90%AB%E5%88%86%E5%89%B2%E7%BA%BF%E7%9A%84%E5%A4%9A%E6%AE%B5log%EF%BC%8C%E6%8F%90%E5%8F%96%E9%87%8D%E8%A6%81%E4%BF%A1%E6%81%AF%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/log.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="origin.log"></p>
+<h2 id="输出文件"><a href="#输出文件" class="headerlink" title="输出文件"></a>输出文件</h2><p>final.txt文件。部分输出如下：<br><img src="/2022/11/04/node%E6%8C%89%E8%A1%8C%E8%AF%BB%E5%8F%96%E5%90%AB%E5%88%86%E5%89%B2%E7%BA%BF%E7%9A%84%E5%A4%9A%E6%AE%B5log%EF%BC%8C%E6%8F%90%E5%8F%96%E9%87%8D%E8%A6%81%E4%BF%A1%E6%81%AF%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/final.png" class="lazyload" data-srcset="/2022/11/04/node%E6%8C%89%E8%A1%8C%E8%AF%BB%E5%8F%96%E5%90%AB%E5%88%86%E5%89%B2%E7%BA%BF%E7%9A%84%E5%A4%9A%E6%AE%B5log%EF%BC%8C%E6%8F%90%E5%8F%96%E9%87%8D%E8%A6%81%E4%BF%A1%E6%81%AF%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/final.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="final.txt"></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>analyze.js文件。整体代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// id 时间 ip 响应码 api FROM【xxx，】  </span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> rs = fs.<span class="title function_">createReadStream</span>(<span class="string">&#x27;origin.log&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> ws = fs.<span class="title function_">createWriteStream</span>(<span class="string">&#x27;final.txt&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">    <span class="attr">input</span>: rs,</span><br><span class="line">    <span class="attr">terminal</span>: <span class="literal">false</span>,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> reg = <span class="regexp">/^.*[/-]&#123;28,&#125;$/g</span>  <span class="comment">// 正则：是否为分割行</span></span><br><span class="line"><span class="keyword">let</span> totalLog = <span class="number">0</span> <span class="comment">// 计算log总数:通过计算分割线总数</span></span><br><span class="line"><span class="keyword">let</span> section = &#123;&#125; <span class="comment">// 存放每段log</span></span><br><span class="line"><span class="keyword">let</span> countPerLog = <span class="number">0</span> <span class="comment">// section中的item数量</span></span><br><span class="line"><span class="keyword">let</span> tempJSONstr = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将对象类型的section转化为 JSON string 并写入文件</span></span><br><span class="line"><span class="keyword">const</span> sectionToString = <span class="keyword">function</span> (<span class="params">section</span>) &#123;</span><br><span class="line">    section = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(section)</span><br><span class="line">    <span class="keyword">return</span> section</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取id</span></span><br><span class="line"><span class="keyword">const</span> addId = <span class="keyword">function</span> (<span class="params">obj</span>) &#123;</span><br><span class="line">    obj = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(obj)</span><br><span class="line">    <span class="keyword">let</span> length = <span class="title class_">Object</span>.<span class="title function_">keys</span>(obj).<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">let</span> arr = obj[length - <span class="number">1</span>]</span><br><span class="line">    <span class="comment">// console.log(arr)</span></span><br><span class="line">    <span class="keyword">let</span> regID = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&quot;(^|[&amp;?])&quot;</span> + <span class="string">&#x27;user_id=&#x27;</span> + <span class="string">&quot;([0-9]*)(.*|$)&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (arr.<span class="title function_">includes</span>(<span class="string">&#x27;user_id&#x27;</span>)) &#123;</span><br><span class="line">        <span class="keyword">let</span> strLine = arr.<span class="title function_">match</span>(regID)</span><br><span class="line">        idres = strLine[[<span class="number">2</span>]]</span><br><span class="line">        <span class="comment">// return &quot;id:&quot; + idres</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;idres&#125;</span>`</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`n`</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取时间和ip</span></span><br><span class="line"><span class="keyword">const</span> addTimeIp = <span class="keyword">function</span> (<span class="params">obj</span>) &#123;</span><br><span class="line">    obj = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(obj)</span><br><span class="line">    <span class="keyword">let</span> arr = obj[<span class="number">0</span>].<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>) <span class="comment">// arr是.log中的第一行</span></span><br><span class="line">    <span class="keyword">let</span> length = arr.<span class="property">length</span></span><br><span class="line">    <span class="keyword">let</span> time = <span class="string">`20<span class="subst">$&#123;arr[<span class="number">1</span>].slice(<span class="number">0</span>, <span class="number">2</span>)&#125;</span>-<span class="subst">$&#123;arr[<span class="number">1</span>].slice(<span class="number">2</span>, <span class="number">4</span>)&#125;</span>-<span class="subst">$&#123;arr[<span class="number">1</span>].slice(<span class="number">4</span>, <span class="number">6</span>)&#125;</span> <span class="subst">$&#123;arr[<span class="number">2</span>]&#125;</span>`</span> <span class="comment">// 访问时间</span></span><br><span class="line">    <span class="keyword">let</span> ip = arr[length - <span class="number">1</span>] <span class="comment">// 用户ip</span></span><br><span class="line">    <span class="comment">// let strLine = `时间:$&#123;time&#125; ip:$&#123;ip&#125;`</span></span><br><span class="line">    <span class="keyword">let</span> strLine = <span class="string">`<span class="subst">$&#123;time&#125;</span> <span class="subst">$&#123;ip&#125;</span>`</span></span><br><span class="line">    <span class="keyword">return</span> strLine</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取响应码和api</span></span><br><span class="line"><span class="keyword">const</span> addCodeApi = <span class="keyword">function</span> (<span class="params">obj</span>) &#123;</span><br><span class="line">    obj = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(obj)</span><br><span class="line">    <span class="keyword">let</span> strLine = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">let</span> length = <span class="title class_">Object</span>.<span class="title function_">keys</span>(obj).<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">let</span> arr = obj[length - <span class="number">1</span>].<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>) <span class="comment">// arr是.log中的最后一行</span></span><br><span class="line">    <span class="keyword">let</span> code = arr[<span class="number">4</span>]</span><br><span class="line">    <span class="keyword">let</span> regApi = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&quot;(^/.+)&quot;</span> + <span class="string">&quot;(\\?)&quot;</span> + <span class="string">&quot;(.*|$)&quot;</span>);</span><br><span class="line">    <span class="comment">// console.log(arr[6])</span></span><br><span class="line">    <span class="keyword">let</span> api = arr[<span class="number">6</span>].<span class="title function_">match</span>(regApi)</span><br><span class="line">    <span class="keyword">if</span> (!api) &#123;</span><br><span class="line">        <span class="comment">// strLine = `响应码:$&#123;code&#125;  API:$&#123;arr[6]&#125;`</span></span><br><span class="line">        strLine = <span class="string">`<span class="subst">$&#123;code&#125;</span> <span class="subst">$&#123;arr[<span class="number">6</span>]&#125;</span>`</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// strLine = `响应码:$&#123;code&#125;  API:$&#123;api[1]&#125;`</span></span><br><span class="line">        strLine = <span class="string">`<span class="subst">$&#123;code&#125;</span> <span class="subst">$&#123;api[<span class="number">1</span>]&#125;</span>`</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> strLine</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取访问的数据库</span></span><br><span class="line"><span class="keyword">const</span> addDB = <span class="keyword">function</span> (<span class="params">obj</span>) &#123;</span><br><span class="line">    obj = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(obj)</span><br><span class="line">    <span class="keyword">let</span> <span class="title class_">DBSet</span> = <span class="keyword">new</span> <span class="title class_">Set</span>()</span><br><span class="line">    <span class="keyword">let</span> length = <span class="title class_">Object</span>.<span class="title function_">keys</span>(obj).<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> arr = obj[i].<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>) <span class="comment">// arr是.log中的第i行</span></span><br><span class="line">        <span class="comment">// console.log(arr)</span></span><br><span class="line">        <span class="keyword">if</span> (arr.<span class="title function_">includes</span>(<span class="string">&#x27;FROM&#x27;</span>)) &#123;</span><br><span class="line">            <span class="keyword">let</span> <span class="title class_">DBindex</span> = arr.<span class="title function_">indexOf</span>(<span class="string">&#x27;FROM&#x27;</span>) + <span class="number">1</span>;</span><br><span class="line">            <span class="comment">// console.log(DBindex)</span></span><br><span class="line">            <span class="title class_">DBSet</span>.<span class="title function_">add</span>(arr[<span class="title class_">DBindex</span>])</span><br><span class="line">            <span class="comment">// console.log(arr[DBindex])</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="title class_">DBSet</span>.<span class="property">size</span>) &#123;</span><br><span class="line">        <span class="comment">// return &#x27;DB:n                &#x27;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;n&#x27;</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="title class_">DBSet</span> = [...<span class="title class_">DBSet</span>].<span class="title function_">join</span>(<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">        <span class="comment">// return `DB:$&#123;DBSet&#125;`</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;DBSet&#125;</span>`</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 按行读原始log并以json形式存入tempJSONstr</span></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="function"><span class="params">line</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!reg.<span class="title function_">test</span>(line)) &#123;  <span class="comment">// 当前行不是&quot;...----&quot;的分割行</span></span><br><span class="line">        section[countPerLog] = line</span><br><span class="line">        countPerLog++</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;  <span class="comment">// 当前行是&quot;----&quot;分割行</span></span><br><span class="line">        totalLog++</span><br><span class="line">        <span class="keyword">if</span> (<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(section) !== <span class="string">&#x27;&#123;&#125;&#x27;</span>) &#123;</span><br><span class="line">            section = <span class="title function_">sectionToString</span>(section)</span><br><span class="line">            <span class="comment">// console.log(section)</span></span><br><span class="line">            tempJSONstr = tempJSONstr + section + <span class="string">&#x27;@&#x27;</span></span><br><span class="line">            section = &#123;&#125;</span><br><span class="line">            countPerLog = <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// console.log(line, &quot;\n&quot;)</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 由于最后一段log下没有分割线，在此处加入输出文件。</span></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    section = <span class="title function_">sectionToString</span>(section)</span><br><span class="line">    <span class="comment">// console.log(section)</span></span><br><span class="line">    tempJSONstr = tempJSONstr + section</span><br><span class="line">    <span class="keyword">let</span> obj = tempJSONstr.<span class="title function_">split</span>(<span class="string">&#x27;@&#x27;</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;readline close...&#x27;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;@@@@@@@@@@@ totalLog:&quot;</span> + totalLog)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;@@@@@@@@@@@@@@obj.length = &quot;</span> + obj.<span class="property">length</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; obj.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="comment">// if (obj[i].includes(id)) &#123;</span></span><br><span class="line">        <span class="keyword">let</span> resline = <span class="title function_">addId</span>(obj[i])</span><br><span class="line">        resline = <span class="string">`<span class="subst">$&#123;resline&#125;</span> <span class="subst">$&#123;addTimeIp(obj[i])&#125;</span>`</span></span><br><span class="line">        resline = <span class="string">`<span class="subst">$&#123;resline&#125;</span> <span class="subst">$&#123;addCodeApi(obj[i])&#125;</span>`</span></span><br><span class="line">        resline = <span class="string">`<span class="subst">$&#123;resline&#125;</span> <span class="subst">$&#123;addDB(obj[i])&#125;</span>`</span></span><br><span class="line">        ws.<span class="title function_">write</span>(resline + <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
+      
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+        
+          <div class='copyright'>
+            <blockquote>
+              
+                
+                  <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+                
+              
+                
+                  <p>本文永久链接是：<a href="https://avalooooooon.github.io/2022/11/04/node按行读取含分割线的多段log，提取重要信息并写入到另一文件输出/">https://avalooooooon.github.io/2022/11/04/node按行读取含分割线的多段log，提取重要信息并写入到另一文件输出/</a></p>
+                
+              
+            </blockquote>
           </div>
         
       
+      <!-- 打赏组件 -->
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2021/12/20/git笔记/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="一之碎片">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="一之碎片">
-    <meta itemprop="description" content="前端 杂谈">
-  </span>
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-11-04T16:24:23+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2022年11月4日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/JS/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>JS</p></a></div>
+  <span hidden itemprop="keywords">JS</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://avalooooooon.github.io/2022/11/04/node%E6%8C%89%E8%A1%8C%E8%AF%BB%E5%8F%96%E5%90%AB%E5%88%86%E5%89%B2%E7%BA%BF%E7%9A%84%E5%A4%9A%E6%AE%B5log%EF%BC%8C%E6%8F%90%E5%8F%96%E9%87%8D%E8%A6%81%E4%BF%A1%E6%81%AF%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/&title=AJAX笔记-XHR使用-跨域-同源-jsonp-cors - 一之碎片&summary=给定一个.log文件，含多段log，每段中包含用户id等信息。从中提取id 时间 ip 响应码 api，项内通过,连接，项之间通过空格连接。时间也按形如2000-10-10 10:34:55的标准格式输出。"
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://avalooooooon.github.io/2022/11/04/node%E6%8C%89%E8%A1%8C%E8%AF%BB%E5%8F%96%E5%90%AB%E5%88%86%E5%89%B2%E7%BA%BF%E7%9A%84%E5%A4%9A%E6%AE%B5log%EF%BC%8C%E6%8F%90%E5%8F%96%E9%87%8D%E8%A6%81%E4%BF%A1%E6%81%AF%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/&title=AJAX笔记-XHR使用-跨域-同源-jsonp-cors - 一之碎片&summary=给定一个.log文件，含多段log，每段中包含用户id等信息。从中提取id 时间 ip 响应码 api，项内通过,连接，项之间通过空格连接。时间也按形如2000-10-10 10:34:55的标准格式输出。"
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://avalooooooon.github.io/2022/11/04/node%E6%8C%89%E8%A1%8C%E8%AF%BB%E5%8F%96%E5%90%AB%E5%88%86%E5%89%B2%E7%BA%BF%E7%9A%84%E5%A4%9A%E6%AE%B5log%EF%BC%8C%E6%8F%90%E5%8F%96%E9%87%8D%E8%A6%81%E4%BF%A1%E6%81%AF%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/&title=AJAX笔记-XHR使用-跨域-同源-jsonp-cors - 一之碎片&summary=给定一个.log文件，含多段log，每段中包含用户id等信息。从中提取id 时间 ip 响应码 api，项内通过,连接，项之间通过空格连接。时间也按形如2000-10-10 10:34:55的标准格式输出。"
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
   
   
+
   
+    <div class="prev-next">
+      
+        <a class='prev' href='/2022/11/04/AJAX%E7%AC%94%E8%AE%B0-XHR%E4%BD%BF%E7%94%A8-%E8%B7%A8%E5%9F%9F-%E5%90%8C%E6%BA%90-jsonp-cors/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>AJAX笔记-XHR使用-跨域-同源-jsonp-cors</p>
+          <p class='content'>1. Ajax概述AJAX 简介AJAX 全称为Asynchronous JavaScript And XML，即异步的JS和XML。特点是可以在网页不刷新的情况下向服务端发送HTTP请求并得到...</p>
+        </a>
+      
+      
+        <a class='next' href='/2022/11/01/axios%E7%AC%94%E8%AE%B0/'>
+          <p class='title'>axios笔记<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>官方文档一个开放接口
+Productionaxios是前端最流行的 ajax 请求库，react&#x2F;vue 官方都推荐使用 axios 发 ajax 请求。在浏览器中可以利用axios向...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable" id="comments">
     <span hidden>
-      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/2022/11/04/node%E6%8C%89%E8%A1%8C%E8%AF%BB%E5%8F%96%E5%90%AB%E5%88%86%E5%89%B2%E7%BA%BF%E7%9A%84%E5%A4%9A%E6%AE%B5log%EF%BC%8C%E6%8F%90%E5%8F%96%E9%87%8D%E8%A6%81%E4%BF%A1%E6%81%AF%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/#comments">
     </span>
-  
-  
+    <p ct><i class='fas fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2021/12/20/git%E7%AC%94%E8%AE%B0/"  itemprop="url">
-        git笔记
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        查看完整教程：Git-scm
-查看版本&#x2F;日志123# 项目所在目录git log：查看提交日志（查看版本号）git log		git reflog 		# 查看版本号  
-不传入任何参数的默认情况下，git log 会按时间先后顺序列出所有的提交，最近的更新排在最上面。git log 有许多选项可以帮助你搜寻你所要找的提交，下面是最常用的几个：
 
--p 或 &#96;&#96;–p...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2021-12-20T15:40:59+08:00">2021-12-20</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/git/">git</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/git/" itemprop="url"><span itemprop="name">git</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/12/20/git%E7%AC%94%E8%AE%B0/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
+    <div id="layoutHelper-comments"></div>
 
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-    
-  
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -3129,203 +3222,48 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       
-<section class="widget blogger desktop mobile pjax">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/mishanwu.JPG'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>The pieces of one.</h2>
-        
-        
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget category desktop pjax">
-    
-  <header>
-    
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/C/" href="/categories/C/"
-            active-action="action-categoriesC"
-            ><div class='name'>C++</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/git/" href="/categories/git/"
-            active-action="action-categoriesgit"
-            ><div class='name'>git</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/leetcode/" href="/categories/leetcode/"
-            active-action="action-categoriesleetcode"
-            ><div class='name'>leetcode</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/shell/" href="/categories/shell/"
-            active-action="action-categoriesshell"
-            ><div class='name'>shell</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/vpn/" href="/categories/vpn/"
-            active-action="action-categoriesvpn"
-            ><div class='name'>vpn</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
-            active-action="action-categoriesE5898DE7ABAF"
-            ><div class='name'>前端</div><div class='badge'>(13)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/HTML-CSS/" href="/categories/%E5%89%8D%E7%AB%AF/HTML-CSS/"
-            active-action="action-categoriesE5898DE7ABAFHTML-CSS"
-            ><div class='name'>HTML/CSS</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/JS/" href="/categories/%E5%89%8D%E7%AB%AF/JS/"
-            active-action="action-categoriesE5898DE7ABAFJS"
-            ><div class='name'>JS</div><div class='badge'>(8)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/Vue/" href="/categories/%E5%89%8D%E7%AB%AF/Vue/"
-            active-action="action-categoriesE5898DE7ABAFVue"
-            ><div class='name'>Vue</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/Webpack/" href="/categories/%E5%89%8D%E7%AB%AF/Webpack/"
-            active-action="action-categoriesE5898DE7ABAFWebpack"
-            ><div class='name'>Webpack</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%90%8E%E7%AB%AF/" href="/categories/%E5%90%8E%E7%AB%AF/"
-            active-action="action-categoriesE5908EE7ABAF"
-            ><div class='name'>后端</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%90%8E%E7%AB%AF/node-js/" href="/categories/%E5%90%8E%E7%AB%AF/node-js/"
-            active-action="action-categoriesE5908EE7ABAFnode-js"
-            ><div class='name'>node.js</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/" href="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/"
-            active-action="action-categoriesE69687E6A1A3E7BC96E58699"
-            ><div class='name'>文档编写</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/md/" href="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/md/"
-            active-action="action-categoriesE69687E6A1A3E7BC96E58699md"
-            ><div class='name'>.md</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/%E7%BC%96%E8%BE%91%E5%99%A8/" href="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/%E7%BC%96%E8%BE%91%E5%99%A8/"
-            active-action="action-categoriesE69687E6A1A3E7BC96E58699E7BC96E8BE91E599A8"
-            ><div class='name'>编辑器</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/CSS/" style="font-size: 14px; color: #999">CSS</a> <a href="/tags/HTML/" style="font-size: 14px; color: #999">HTML</a> <a href="/tags/JS/" style="font-size: 24px; color: #555">JS</a> <a href="/tags/Vue/" style="font-size: 17.33px; color: #828282">Vue</a> <a href="/tags/Webpack/" style="font-size: 20.67px; color: #6c6c6c">Webpack</a> <a href="/tags/git/" style="font-size: 17.33px; color: #828282">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/leetcode/" style="font-size: 14px; color: #999">leetcode</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/node/" style="font-size: 14px; color: #999">node</a> <a href="/tags/node-js/" style="font-size: 14px; color: #999">node.js</a> <a href="/tags/shell/" style="font-size: 17.33px; color: #828282">shell</a> <a href="/tags/vpn/" style="font-size: 17.33px; color: #828282">vpn</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 17.33px; color: #828282">操作系统</a>
-    </div>
-  </section>
-
-
-    
-  
-
   
 
 
 <div class="widget-sticky pjax">
 
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#log%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">log文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">输出文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">代码</span></a></li></ol>
+    </div>
+  </section>
+
+  
+
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -3353,13 +3291,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -4574,7 +4513,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":2,"item":{"@id":"https://avalooooooon.github.io/tags/git/","name":"git"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"一之碎片","url":"https://avalooooooon.github.io/","keywords":"前端 macOS python 网络","description":"前端 杂谈","author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","description":"前端 杂谈"},"publisher":{"@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://avalooooooon.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"前端 杂谈","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":2,"item":{"@id":"https://avalooooooon.github.io/categories/前端/","name":"前端"}},{"@type":"ListItem","position":2,"item":{"@id":"https://avalooooooon.github.io/categories/前端/JS/","name":"JS"}},{"@type":"ListItem","position":3,"item":{"@id":"https://avalooooooon.github.io/2022/11/04/node按行读取含分割线的多段log，提取重要信息并写入到另一文件输出/","name":"AJAX笔记-XHR使用-跨域-同源-jsonp-cors"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"一之碎片","url":"https://avalooooooon.github.io/","keywords":"前端 macOS python 网络","description":"前端 杂谈","author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","description":"前端 杂谈"},"publisher":{"@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://avalooooooon.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"AJAX笔记-XHR使用-跨域-同源-jsonp-cors","description":"给定一个.log文件，含多段log，每段中包含用户id等信息。从中提取id 时间 ip 响应码 api，项内通过,连接，项之间通过空格连接。时间也按形如2000-10-10 10:34:55的标准格式输出。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://avalooooooon.github.io/2022/11/04/node%E6%8C%89%E8%A1%8C%E8%AF%BB%E5%8F%96%E5%90%AB%E5%88%86%E5%89%B2%E7%BA%BF%E7%9A%84%E5%A4%9A%E6%AE%B5log%EF%BC%8C%E6%8F%90%E5%8F%96%E9%87%8D%E8%A6%81%E4%BF%A1%E6%81%AF%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://avalooooooon.github.io/2022/11/04/node%E6%8C%89%E8%A1%8C%E8%AF%BB%E5%8F%96%E5%90%AB%E5%88%86%E5%89%B2%E7%BA%BF%E7%9A%84%E5%A4%9A%E6%AE%B5log%EF%BC%8C%E6%8F%90%E5%8F%96%E9%87%8D%E8%A6%81%E4%BF%A1%E6%81%AF%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/","wordCount":103,"datePublished":"2022-11-04T08:24:23.000Z","dateModified":"2022-11-04T08:24:23.000Z","articleSection":"前端","keywords":"JS","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
