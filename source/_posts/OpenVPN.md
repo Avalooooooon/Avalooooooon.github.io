@@ -373,6 +373,14 @@ wmE9Mmlbq1emDeROivjCfoG
 
 ## 使用
 
+## 快速修改远程服务器的ssh端口
+通过ssh连接服务器：```ssh root@ip -p 端口号```
+注意这里的端口号是服务器端口号，而不是下面的ssh端口号！常用28060
+修改配置文件：```vim /etc/openvpn/server.conf```
+在其中修改端口号
+重启服务：```systemctl restart openvpn@server```
+在服务端的配置文件中把端口号修改为同样的即可。
+
 ### 系统服务开机自启
 
 开机自启脚本`/etc/init.d/openvpn`会扫描`/etc/openvpn/xxx.conf`并为每个配置文件启动一个同名的 openvpn@xxx 系统服务。可编辑`/etc/default/openvpn`文件的 AUTOSTART 项，选择性地开启配置自启。
