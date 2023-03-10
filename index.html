@@ -1872,7 +1872,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1678355668088),
+    lastupdate: new Date(1678442442721),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -3020,9 +3020,231 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
+          
+        
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/03/10/vue-config-js前端代理/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="一之碎片">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="一之碎片">
+    <meta itemprop="description" content="前端 杂谈">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/03/10/vue-config-js%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%90%86/"  itemprop="url">
+        vue.config.js前端代理
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        
+vue项目根目录下找到vue.config.js文件（如果没有该文件则自己创建），在proxy中设置跨域。解决的问题是前后端分离而产生的本地开发跨域问题。
+注意，该文件修改后必须重新启动服务才能生效！
+
+同源和跨域同源策略：两个页面拥有相同的协议（protocol）、域名&#x2F;主机（host）、端口号（port）是浏览器方的策略。
+也正是因为它是浏览器方的策略，所以只有浏览器和服务器...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-03-10T11:42:26+08:00">2023-03-10</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" itemprop="url"><span itemprop="name">Vue</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/03/10/vue-config-js%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%90%86/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/03/10/Webpack在vue-config-js中的配置/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="一之碎片">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="一之碎片">
+    <meta itemprop="description" content="前端 杂谈">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/03/10/Webpack%E5%9C%A8vue-config-js%E4%B8%AD%E7%9A%84%E9%85%8D%E7%BD%AE/"  itemprop="url">
+        Webpack在vue.config.js中的配置
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        
+configureWebpack与chainWebpack的作用相同，唯一的区别就是他们修改webpack配置方式不同：configureWebpack通过操作对象的形式来修改默认的webpack配置，该对象将会通过webpack-merge合并入最终的webpack配置；chainWebpack通过链式编程的形式来修改默认的webpack配置。
+详细使用说明参考vue-cli官网。
+
+
+...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-03-10T11:19:20+08:00">2023-03-10</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Webpack/">Webpack</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/Webpack/" itemprop="url"><span itemprop="name">Webpack</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/03/10/Webpack%E5%9C%A8vue-config-js%E4%B8%AD%E7%9A%84%E9%85%8D%E7%BD%AE/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/03/07/vue-nodejs实现单点登录/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="一之碎片">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="一之碎片">
+    <meta itemprop="description" content="前端 杂谈">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/03/07/vue-nodejs%E5%AE%9E%E7%8E%B0%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/"  itemprop="url">
+        vue+nodejs实现单点登录
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        参考博客：https://blog.csdn.net/qq_45453266/article/details/117066170
+同源和跨域同源策略：两个页面拥有相同的协议（protocol）、域名&#x2F;主机（host）、端口号（port）
+
+同源策略是 **浏览器 ** 的安全功能。
+
+tokentoken的意思是“令牌”，是 服务端 生成的一串字符串，作为客户端进行请求的一个标识。...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-03-07T15:37:45+08:00">2023-03-07</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" itemprop="url"><span itemprop="name">Vue</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/03/07/vue-nodejs%E5%AE%9E%E7%8E%B0%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -3490,208 +3712,6 @@ Productionaxios是前端最流行的 ajax 请求库，react&#x2F;vue 官方都�
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/10/25/Promise教程/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="一之碎片">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="一之碎片">
-    <meta itemprop="description" content="前端 杂谈">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/10/25/Promise%E6%95%99%E7%A8%8B/"  itemprop="url">
-        Promise教程
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Productionpromise是什么ES6引入的异步编程的新解决方案（旧方案是单纯使用回调函数）。语法上看，promise是一个构造函数；功能上，promise是一个对象，通常用来封装一个异步任务，提供承诺结果（其成功&#x2F;失败）。
-
-常见的异步编程：fs文件操作：require(&#39;fs&#39;).readFile(&#39;./index.html&#39;,(err,...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-10-25T17:02:31+08:00">2022-10-25</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/JS/">JS</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/JS/" itemprop="url"><span itemprop="name">JS</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/10/25/Promise%E6%95%99%E7%A8%8B/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/10/24/在vue中使用webpack/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="一之碎片">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="一之碎片">
-    <meta itemprop="description" content="前端 杂谈">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/10/24/%E5%9C%A8vue%E4%B8%AD%E4%BD%BF%E7%94%A8webpack/"  itemprop="url">
-        在vue中使用webpack
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      <p>给出<code>webpack.dev.js</code>文件和<code>webpack.prod.js</code>文件。</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-10-24T17:26:39+08:00">2022-10-24</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Webpack/">Webpack</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/Webpack/" itemprop="url"><span itemprop="name">Webpack</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/10/24/%E5%9C%A8vue%E4%B8%AD%E4%BD%BF%E7%94%A8webpack/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/10/20/webpack优化/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="一之碎片">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="一之碎片">
-    <meta itemprop="description" content="前端 杂谈">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/10/20/webpack%E4%BC%98%E5%8C%96/"  itemprop="url">
-        webpack优化
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        提升开发体验——SourceMapSourceMap（源代码映射）是一个用来生成源代码与构建后代码一一映射的文件的方案。它会生成一个 xxx.map 文件，里面包含源代码和构建后代码每一行、每一列的映射关系。当构建后代码出错了，会通过 xxx.map 文件，从构建后代码出错位置找到映射后源代码出错位置，从而让浏览器提示源代码文件出错位置，帮助我们更快的找到错误根源。
-开发时我们运行的代码是经...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-10-20T17:01:48+08:00">2022-10-20</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Webpack/">Webpack</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/Webpack/" itemprop="url"><span itemprop="name">Webpack</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/10/20/webpack%E4%BC%98%E5%8C%96/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -3837,7 +3857,7 @@ Productionaxios是前端最流行的 ajax 请求库，react&#x2F;vue 官方都�
           <li><a class="flat-box"
             title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
             active-action="action-categoriesE5898DE7ABAF"
-            ><div class='name'>前端</div><div class='badge'>(13)</div></a></li>
+            ><div class='name'>前端</div><div class='badge'>(16)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/%E5%89%8D%E7%AB%AF/HTML-CSS/" href="/categories/%E5%89%8D%E7%AB%AF/HTML-CSS/"
@@ -3852,12 +3872,12 @@ Productionaxios是前端最流行的 ajax 请求库，react&#x2F;vue 官方都�
           <li><a class="flat-box child"
             title="/categories/%E5%89%8D%E7%AB%AF/Vue/" href="/categories/%E5%89%8D%E7%AB%AF/Vue/"
             active-action="action-categoriesE5898DE7ABAFVue"
-            ><div class='name'>Vue</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>Vue</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/%E5%89%8D%E7%AB%AF/Webpack/" href="/categories/%E5%89%8D%E7%AB%AF/Webpack/"
             active-action="action-categoriesE5898DE7ABAFWebpack"
-            ><div class='name'>Webpack</div><div class='badge'>(3)</div></a></li>
+            ><div class='name'>Webpack</div><div class='badge'>(4)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/%E5%90%8E%E7%AB%AF/" href="/categories/%E5%90%8E%E7%AB%AF/"
@@ -3907,7 +3927,7 @@ Productionaxios是前端最流行的 ajax 请求库，react&#x2F;vue 官方都�
 
 
     <div class='content'>
-      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/CSS/" style="font-size: 14px; color: #999">CSS</a> <a href="/tags/HTML/" style="font-size: 14px; color: #999">HTML</a> <a href="/tags/JS/" style="font-size: 24px; color: #555">JS</a> <a href="/tags/MacOS/" style="font-size: 14px; color: #999">MacOS</a> <a href="/tags/Vue/" style="font-size: 17.33px; color: #828282">Vue</a> <a href="/tags/Webpack/" style="font-size: 20.67px; color: #6c6c6c">Webpack</a> <a href="/tags/git/" style="font-size: 17.33px; color: #828282">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/leetcode/" style="font-size: 14px; color: #999">leetcode</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/node/" style="font-size: 14px; color: #999">node</a> <a href="/tags/node-js/" style="font-size: 14px; color: #999">node.js</a> <a href="/tags/shell/" style="font-size: 17.33px; color: #828282">shell</a> <a href="/tags/vpn/" style="font-size: 17.33px; color: #828282">vpn</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 17.33px; color: #828282">操作系统</a>
+      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/CSS/" style="font-size: 14px; color: #999">CSS</a> <a href="/tags/HTML/" style="font-size: 14px; color: #999">HTML</a> <a href="/tags/JS/" style="font-size: 24px; color: #555">JS</a> <a href="/tags/MacOS/" style="font-size: 14px; color: #999">MacOS</a> <a href="/tags/Vue/" style="font-size: 19px; color: #777">Vue</a> <a href="/tags/Webpack/" style="font-size: 21.5px; color: #666">Webpack</a> <a href="/tags/git/" style="font-size: 16.5px; color: #888">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/leetcode/" style="font-size: 14px; color: #999">leetcode</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/node/" style="font-size: 16.5px; color: #888">node</a> <a href="/tags/node-js/" style="font-size: 14px; color: #999">node.js</a> <a href="/tags/shell/" style="font-size: 16.5px; color: #888">shell</a> <a href="/tags/vpn/" style="font-size: 16.5px; color: #888">vpn</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 16.5px; color: #888">操作系统</a>
     </div>
   </section>
 
@@ -4944,7 +4964,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp"];
+  let imgs = ["https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp"];
   let index = 0;
   let IntervalParallax = null;
 
