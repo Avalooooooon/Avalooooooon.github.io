@@ -68,6 +68,7 @@ XML全都是<span style="color:red"> 自定义标签 </span>，用来表示一�
 3. 浏览器端接收到响应，解析显示响应体/调用监视回调
 
 ### HTTP 请求报文：四部分
+
 ```
 行       GET /s?ie=utf-8 HTTP/1.1
 头       Host: www.baidu.com

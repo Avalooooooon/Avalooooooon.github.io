@@ -1,6 +1,6 @@
 ---
 title: git笔记
-updated: 2021-12-20 15:40:59
+updated: 2023-02-28 21:40:59
 date: 2021-12-20 15:40:59
 tags: [git]
 categories: [git]
@@ -9,6 +9,11 @@ categories: [git]
 
 
 查看完整教程：[Git-scm](https://git-scm.com/book/zh/v2/起步-关于版本控制)
+
+## 常用
+
+### git reset
+
 
 ## 查看版本/日志
 
@@ -20,9 +25,14 @@ git reflog 		# 查看版本号
 不传入任何参数的默认情况下，git log 会按时间先后顺序列出所有的提交，最近的更新排在最上面。 
 git log 有许多选项可以帮助你搜寻你所要找的提交，下面是最常用的几个：
 
-+ `-p` 或 ``--patch` ：显示每次提交所引入的差异（按补丁的格式输出）
-+ `-<n>` :仅显示最近的 `n` 条提交。
++ `-p` 或 `--patch` ：显示每次提交所引入的差异（按补丁的格式输出）
+
++ `-<n>` : 仅显示最近的 `n` 条提交。
+
++ `--stat`: 看到每次提交的简略统计信息，同样包含commit id、message等信息。此外，还可以列出所有被修改过的文件、有多少文件被修改了（`1 file changed, 1 insertion(+), 1 deletion(-)`）以及被修改过的文件的哪些行被移除或是添加了。 在每次提交的最后还有一个总结。
+
 + `--since` 和 `--until` ：按照时间作限制。
+  
   ```bash
   # 列出最近两周的所有提交
   $ git log --since=2.weeks
@@ -30,27 +40,21 @@ git log 有许多选项可以帮助你搜寻你所要找的提交，下面是最
   
 
 该命令可用的格式十分丰富——可以是类似 `"2008-01-15"` 的具体的某一天，也可以是类似 `"2 years 1 day 3 minutes ago"` 的相对日期。
-+ `--author` : 指定作者
-
-+ `--grep` : 搜索提交说明中的关键字
-
-+ `--stat`：显示每次提交的简略统计信息。`--stat` 选项在每次提交的下面列出所有被修改过的文件、有多少文件被修改了以及被修改过的文件的哪些行被移除或是添加了。 在每次提交的最后还有一个总结。
-
-+ `--pretty`：使用不同于默认格式的方式展示提交历史。 这个选项有一些内建的子选项供你使用。 比如 `oneline` 会将每个提交放在一行显示，在浏览大量的提交时非常有用。
++ `--pretty`：使用不同于默认格式的方式展示提交历史。 这个选项有一些内建的子选项供你使用。 比如 `oneline` 会将每个提交放在一行显示，在浏览大量的提交时非常有用。如`git log --pretty=oneline`。
 
   > 当 `oneline` 或 `format` 与另一个 `log` 选项 `--graph` 结合使用时尤其有用。 这个选项添加了一些 ASCII 字符串来形象地展示你的分支、合并历史。
 
    另外还有 `short`，`full` 和 `fuller` 选项，它们展示信息的格式基本一致，但是详尽程度不一。
 
 + `format` ：可以定制记录的显示格式。 这样的输出对后期提取分析格外有用——因为你知道输出的格式不会随着 Git 的更新而发生改变：
-  
+
   ```bash
   $ git log --pretty=format:"%h - %an, %ar : %s"
   ca82a6d - Scott Chacon, 6 years ago : changed the version number
   085bb3b - Scott Chacon, 6 years ago : removed unnecessary test
   a11bef0 - Scott Chacon, 6 years ago : first commit
   ```
-  
+
   [`git log --pretty=format` 常用的选项](https://git-scm.com/book/zh/v2/ch00/pretty_format) 列出了 `format` 接受的常用格式占位符的写法及其代表的意义。
 
 更详细的选项说明可以参考[`git log` 的常用选项](https://git-scm.com/book/zh/v2/ch00/log_options) 。
@@ -375,6 +379,8 @@ git push -u origin dev       #【提交dev分支到线上dev】
 ```console
 $ git commit --amend
 ```
+
+相当于是用新的提交替换了旧的。commid也只有一个。
 
 这个命令会将暂存区中的文件提交。 如果自上次提交以来你还未做任何修改（例如，在上次提交后马上执行了此命令）， 那么快照会保持不变，而你所修改的只是提交信息。文本编辑器启动后，可以看到之前的提交信息。 编辑后保存会覆盖原来的提交信息，也即用一个**新的提交**替换旧的提交。
 
