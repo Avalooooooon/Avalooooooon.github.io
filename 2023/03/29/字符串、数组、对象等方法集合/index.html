@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.7.5">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://avalooooooon.github.io/tags/vpn/"/>
+  
+  <link rel="canonical" href="https://avalooooooon.github.io/2023/03/29/字符串、数组、对象等方法集合/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -31,19 +31,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>标签：vpn - 一之碎片</title>
-  <meta name="keywords" content="前端 macOS python 网络">
+  <title>字符串、数组、对象等方法集合 - 一之碎片</title>
+  <meta name="keywords" content="JS,前端 macOS python 网络">
   <meta desc name="description" content="前端 杂谈 - 一之碎片 - 一之碎片">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="一之碎片">
-<meta property="og:url" content="https://avalooooooon.github.io/tags/vpn/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符串、数组、对象等方法集合">
+<meta property="og:url" content="https://avalooooooon.github.io/2023/03/29/%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E5%AF%B9%E8%B1%A1%E7%AD%89%E6%96%B9%E6%B3%95%E9%9B%86%E5%90%88/">
 <meta property="og:site_name" content="一之碎片">
-<meta property="og:description" content="前端 杂谈">
+<meta property="og:description" content="字符串方法 都不改变原字符串！只返回新字符串&#x2F;数组。   concat()：连接两个或多个字符串。str1.concat(str2,str3)。  split(delimiter, [limit])：把字符串分割成字符串数组并返回。返回的数组中的字串不包括 delimiter（分割的标识符，如-）。 可选的“limit”是指定要返回的数组的最大元素个数。str.split(&#39;-&amp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2023-03-29T09:19:50.000Z">
+<meta property="article:modified_time" content="2023-03-29T09:19:50.000Z">
 <meta property="article:author" content="一之碎片">
-<meta property="article:tag" content="前端 macOS python 网络">
+<meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
   <style>
@@ -2890,7 +2892,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper  dock' style="display: none;">
+      <div id="none" class='cover-wrapper post dock' style="display: none;">
         
   <div id="parallax-window"></div>
 
@@ -2959,27 +2961,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-
 <div id="l_main" class=''>
-  
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/02/20/搭建L2TP-IPsec/">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/03/29/字符串、数组、对象等方法集合/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="一之碎片">
   </span>
@@ -2988,132 +2972,312 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="前端 杂谈">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/02/20/%E6%90%AD%E5%BB%BAL2TP-IPsec/"  itemprop="url">
-        搭建L2TP-IPsec
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      
-        1. 前言虚拟专用网络（VPN，Virtual Private Network）是一种网络底层协议，主机开启 VPN 后，所有网络请求都会先发送到 VPN 服务器，然后 VPN 服务器作为代理帮我们访问敏感资源。本文介绍如何在 Linux（Ubuntu 18.04）服务器上搭建 L2TP&#x2F;IPsec VPN。
-1.5 在自己的终端配置连接服务器：ssh root@服务器ip -p ...
-      
     
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+      <h1 class="title" itemprop="name headline">
+        字符串、数组、对象等方法集合
+      </h1>
+      <div class='new-meta-box'>
         
-        <time itemprop="dateCreated datePublished" datetime="2022-02-20T15:20:43+08:00">2022-02-20</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/vpn/">vpn</a>
           
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/vpn/" itemprop="url"><span itemprop="name">vpn</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/02/20/%E6%90%AD%E5%BB%BAL2TP-IPsec/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="/" class="lazyload" data-srcset="/" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">一之碎片</p>
+  </a>
 </div>
 
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/JS/">JS</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
+      </span>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E5%89%8D%E7%AB%AF/JS/" itemprop="url"><span itemprop="name">JS</span></a>
+      </span>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2023-03-29T17:19:50+08:00">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2023年3月29日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h2 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h2><blockquote>
+<p>都不改变原字符串！只返回新字符串&#x2F;数组。</p>
+</blockquote>
+<ol>
+<li><p><code>concat()</code>：连接两个或多个字符串。<code>str1.concat(str2,str3)</code>。</p>
+</li>
+<li><p><code>split(delimiter, [limit])</code>：把字符串分割成字符串数组并返回。返回的数组中的字串不包括 delimiter（分割的标识符，如<code>-</code>）。 可选的“limit”是指定要返回的数组的最大元素个数。<code>str.split(&#39;-&#39;)</code>。</p>
+</li>
+<li><p><code>slice(start, [end])</code>：截取[start,end)的所有字符，没有end则默认到结尾。<code>str.slice(5,9)</code>。</p>
+</li>
+<li><p><code>substr(start, [length])</code>：截取[start]（含 start ） 开始的 length 个字符的字符串并返回。如果没有指定 length，那么返回的字符串包含从 start 到该字符串的结尾。<code>str.substr(5,2)</code>。</p>
+</li>
+<li><p><code>substring(start,stop)</code>：截取[start,end)间的字符。<code>str.substr(5,7)</code>。</p>
+</li>
+<li><p><code>toLowerCase()</code>：把字符串转换为小写。<code>str.toLowerCase()</code>。</p>
+</li>
+<li><p><code>includes()</code>：检查字符串是否包含指定的字符串或字符。<code>str.includes(&#39;hello&#39;)</code>。</p>
+</li>
+<li><p><code>endsWith()</code>：检查字符串是否以指定的字符串或字符结束。<code>str.endsWith(&#39;hello&#39;)</code>。</p>
+</li>
+<li><p><code>indexOf(substr, [start])</code>：返回指定的字符串首次出现的索引，没找到则返回 -1。<code>str.indexOf(&quot;hello&quot;,1)</code></p>
+</li>
+<li><p><code>lastIndexOf(substr, [start])</code>：返回指定字符串最后一次出现的索引，没找到则返回 -1。用法同上。</p>
+</li>
+<li><p><code>charAt(x)</code>：返回指定字符的索引。下标从0开始。<code>str.charAt(3)</code>。</p>
+</li>
+<li><p><code>charCodeAt(x)</code>：返回字符串中指定位置字符的unicode值。<code>str.charAt(3)</code>。  </p>
+<p>逆方法<code>fromCharcode()</code>：将一组Unicode码转换为字符。<code>String.fromCharcode(97，98，99) // abc</code></p>
+</li>
+</ol>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="改变原数组的"><a href="#改变原数组的" class="headerlink" title="改变原数组的"></a>改变原数组的</h3><ol>
+<li><code>push/pop()</code>：在数组末尾增元素，返回长度&#x2F;减元素，返回被删除的元素</li>
+<li><code>unshift/shift()</code>：在数组开头增元素，返回长度&#x2F;减元素，返回被删除的元素</li>
+<li><code>reverse()</code>：将数组倒序。</li>
+<li><code>sort()</code>：按字符串Unicode码排序。<strong>参数是一个函数</strong>，返回值&gt;0则颠倒顺序。如从小到大排序：<code>arr.sort((a,b) =&gt; a-b)</code>，从大到小里面就是<code>b-a</code>。</li>
+<li><code>splice(index,howmany,arr1,arr2…)</code> ：添加或删除元素。从index位置开始删除howmany个元素，并将arr1、arr2…数据从index位置依次插入。howmany为0时，则不删除元素。</li>
+</ol>
+<h3 id="不改变原数组"><a href="#不改变原数组" class="headerlink" title="不改变原数组"></a>不改变原数组</h3><ol>
+<li><code>concat(arr1,arr2)</code>：直接合并数组，返回新数组。<code>arr.concat(arr1,arr2)</code>。</li>
+<li><code>join(&#39;-&#39;)</code>：以指定连接符把数组连接成字符串。默认连接符为逗号。<code>arr.join(&#39;@&#39;)</code>。</li>
+<li><code>slice(1,3)</code>：根据传入的参数截取数组中的指定内容。<code>arr.slice(x,y)</code>：截取[x,y)的内容，如只给一个参数则截取到末尾，可以利用此特性用<code>arr.slice(0)</code>复制数组。支持负参数，即倒数第几项。</li>
+<li><code>forEach(function(cur,index))</code>：遍历方法，调用数组的每个元素并将元素传给回调函数。（注意该方法和map的区别——forEach不能return、没有返回值！若直接打印Array.forEach，结果为undefined）。</li>
+<li><code>map(function(cur,index))</code>：遍历方法，调用数组的每个元素并将元素传给回调函数。原数组的每一项执行函数后，返回一个新的数组。注意该方法和forEach的区别——map可以return、有返回值！相当于克隆了一份原数组）。</li>
+<li><code>reduce(function(pre,cur,index,arr))</code>：迭代方法，接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。<br>  <img src="/2023/03/29/%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E5%AF%B9%E8%B1%A1%E7%AD%89%E6%96%B9%E6%B3%95%E9%9B%86%E5%90%88/reduce.png" class="lazyload" data-srcset="/2023/03/29/%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E5%AF%B9%E8%B1%A1%E7%AD%89%E6%96%B9%E6%B3%95%E9%9B%86%E5%90%88/reduce.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="reduce方法"><blockquote>
+<p>关于<code>reduce(function(pre,cur,index,arr)&#123;&#125;,init)</code>的function：其中pre和cur必须，index、arr、init可选。</p>
+<p>prev：累计器累计回调的返回值。表示上一次调用回调时的返回值，或者初始值 init<br>cur：表示当前正在处理的数组元素<br>index：表示当前正在处理的数组元素的索引；若提供 init 值，则起始索引为- 0，否则起始索引为1<br>arr：表示原数组<br>init：表示初始值。</p>
+<p>如果没有设置初始值init，则默认值就是数组的第零项，即pre为arr[0],index为1。</p>
+</blockquote>
+</li>
+<li><code>filter(function(cur, index, arr))</code>：过滤数组中符合条件的元素并返回一个新数组。</li>
+<li><code>every(function(cur))</code>：对数组中的每一项进行判断，若都符合则返回true，否则返回false。</li>
+<li><code>some(function(cur))</code>：对数组中的每一项进行判断，若都不符合则返回false，否则返回true。</li>
+</ol>
+<blockquote>
+<p>其实从4 forEach起，除了reduce，它们作为参数的函数都是形如</p>
+<figure class="highlight plaintext"><figcaption><span>thisValue```。只有第一个参数cur是必传的。thisValue为可选参数，回调函数中的this会指向该参数对象。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">一般cur和index就足够了。</span><br><span class="line"></span><br><span class="line">10. ```indexOf(item,start)```：检测当前值在数组中第一次出现的位置索引。item:查找的元素，start:字符串中开始检索的位置。未找到返回-1。</span><br><span class="line">11. ```includes()```：判断一个数组是否包含一个指定的值。参数为指定的内容，返回布尔值。</span><br><span class="line"></span><br><span class="line">### forEach与for的区别</span><br><span class="line"></span><br><span class="line">一、性能区别</span><br><span class="line">1、性能：for &gt; forEach</span><br><span class="line">2、for语法糖循环最简单，它没有任何额外的函数调用和上下文</span><br><span class="line">3、```forEach```函数签名更为复杂。```array.forEach(function(currentValue, index, arr), thisValue)```，有诸多参数和上下文在执行时需考虑，性能可能减弱</span><br><span class="line"></span><br><span class="line">二、循环设置与跳出区别</span><br><span class="line">1、for可用continue跳出当次循环，使用break跳出整个循环，forEach不行；</span><br><span class="line">2、for可控制循环起点i，```forEach```只能默认从0开始；</span><br><span class="line">3、for可在循环中修改i，```forEach```不行（底层隐式控制index 自增，无法操作）</span><br><span class="line"></span><br><span class="line">三、对全局变量的影响区别</span><br><span class="line">1、```forEach()```传入的是一个回调函数，因而形成一个作用域，其内部所定义的变量不会像for 循环一样污染全局变量</span><br><span class="line"></span><br><span class="line">四、循环跳出方式</span><br><span class="line">1、for : continue、break</span><br><span class="line">2、```forEach```：需结合```try catch```操作，通过return跳出当次循环，通过抛出异常```throw Error()```的方式跳出整个循环</span><br><span class="line"></span><br><span class="line">## 类数组和数组转化</span><br><span class="line"></span><br><span class="line">### 类数组转数组</span><br><span class="line"></span><br><span class="line">1. ```Array.from(arrayLike)```</span><br><span class="line">1. ```Array.prototype.slice.call(arrayLike)```。slice方法如只给一个参数则截取到末尾，可以利用此特性用```arr.slice(0)```复制数组。</span><br><span class="line">2. ```Array.prototype.splice.call(arrayLike, 0)```。从0位置开始删除howmany个元素，howmany为0时，则不删除元素。</span><br><span class="line">3. ```Array.prototype.concat.apply([], arrayLike)```。合并空数组[]和类数组arrayLike，返回数组。</span><br><span class="line"></span><br><span class="line">### map转数组</span><br><span class="line"></span><br><span class="line">1. 展开运算符```[...map.keys()]```</span><br><span class="line"></span><br><span class="line">### 数组转其它</span><br><span class="line"></span><br><span class="line">1. 转Map：二维数组可以用```let map = new Map(arr)```。一般数组还是建议用```map.has()```、```map.set()```、```map.get()```结合来将数组转map结构。</span><br><span class="line">2. 转Set：```let set = new Set(arr)```。同样有```set.has()```方法。**注意arr中的重复元素在set中会只剩一个。**</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 对象</span><br><span class="line"></span><br><span class="line">### 对象遍历</span><br><span class="line"></span><br><span class="line">1. ```for in```</span><br><span class="line">2. ```Object.values(myobj)```</span><br><span class="line">3. ```Object.keys(myobj)```,【只有可枚举属性】</span><br><span class="line">4. ```Object.entries(myobj)```</span><br><span class="line">5. ```Object.getOwnPropertyNames(myobj)```，【只有不可枚举属性】</span><br><span class="line"></span><br><span class="line">### 创建对象</span><br><span class="line"></span><br><span class="line">(1) 通过工厂方法创建：用&lt;span style=&quot;color:red&quot;&gt;函数来封装创建对象的细节，从而通过调用函数来达到复用的目的。&lt;/span&gt;可大批量地创建对象，尤其是具有**相同属性名、不同属性值**的。但创建的对象**都是Object类**，导致无法区分多种不同类型的对象。</span><br><span class="line">注意调用方式：和构造函数不同，和普通函数一样，不需要使用 **new关键字** 调用！</span><br><span class="line">```javascript</span><br><span class="line">function createPerson(name,age,gender)&#123;</span><br><span class="line"> var obj = new Object();  // 创建一个新的对象</span><br><span class="line"> obj.name = name;  // 向对象中添加属性</span><br><span class="line"> obj.age = age;</span><br><span class="line"> obj.gender = gender;</span><br><span class="line"> obj.sayName = function()&#123;</span><br><span class="line">   alert(this.name);</span><br><span class="line"> &#125;;</span><br><span class="line"> // 注意---------------------------将新的对象返回</span><br><span class="line"> return obj;</span><br><span class="line">&#125;</span><br><span class="line">var obj2 = createPerson(&quot;张三&quot;，18，“男”)；</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>(2) 构造函数：创建方式除了<strong>首字母大写</strong>之外和普通函数一样。使用同一个构造函数创建对象称为一 <strong>类</strong> 对象，也将一个构造函数称为一个 <strong>类</strong> 。将 <span style="color:red">**通过同一个构造函数创建的对象称为该类的实例 **。</span></p>
+<p>缺点是造成了<span style="color:red">不必要的函数对象</span>的创建，因为在 js 中<span style="color:red">函数也是一个对象</span>，因此如果对象属性中如果包含函数的话，那么每次都会新建一个函数对象，浪费了不必要的内存空间，因为函数是所有的实例都可以通用的。</p>
+<blockquote>
+<p>注意调用方式：普通函数是直接调用，而构造函数需要使用 <strong>new关键字</strong> 调用！<br>在这里就需要使用 <span style="color:red">this</span>关键字了。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name,age</span>)&#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">sayName</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="variable language_">this</span>.<span class="property">name</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 注意---------------------------没有返回值</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> per = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Bob&quot;</span>,<span class="number">18</span>);</span><br><span class="line">per.<span class="title function_">sayName</span>();  <span class="comment">// Bob</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>构造函数的执行流程：</li>
+</ul>
+<ol>
+<li>一出现new，就会 <span style="color:red">立刻创建一个新的函数对象</span>，在堆内存开辟出一个<span style="color:red">新的内存空间</span>。这片空间保存Person()函数（构造函数）中的内容。</li>
+<li>将新建的对象设置为构造函数中的this。在构造函数中可以使用this来引用新建的对象。也就是新开辟出的堆内存空间的地址赋值给变量per，this保存着per的地址，指向per这块对象内存。(this 是保存在栈中的, 执行构造函数的时候, this也保存了那片区域的地址)</li>
+<li>逐行执行函数中的代码。（只有这一步是我们写的，其他都是浏览器干的）</li>
+<li>将新建的对象作为返回值返回。</li>
+</ol>
+<p>(3) 通过原型对象prototype创建：因为每一个函数都有原型对象prototype，它包含了通过构造函数创建的所有实例都能共享的属性和方法，因此可以<span style="color:red">使用原型对象来添加公用属性和方法，</span>从而实现代码复用。<br>原型对象方式相对于构造函数模式来说，<span style="color:red">解决了函数对象的复用问题。</span>但是这种模式也存在一些问题，一个是没有办法通过传入参数来初始化值，另一个是如果存在一个引用类型如 Array 这样的值，那么所有的实例将共享一个对象，一个实例对引用类型值的改变会影响所有的实例。</p>
+<p>(4) 组合构造函数方式和原型方式【创建自定义类型的最常见方式】：<span style="color:red">构造函数</span>来初始化对象的<span style="color:red">属性</span>，<span style="color:red">原型对象</span>来实现<span style="color:red">函数方法的复用。</span><br>这种方法很好的解决了两种模式单独使用时的缺点，但是有一点不足的就是，因为使用了两种不同的模式，所以对于代码的封装性不够好。</p>
+<p>(5) 动态原型方式<br>(6) 寄生构造函数方式</p>
+
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
+      
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+        
+          <div class='copyright'>
+            <blockquote>
+              
+                
+                  <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+                
+              
+                
+                  <p>本文永久链接是：<a href="https://avalooooooon.github.io/2023/03/29/字符串、数组、对象等方法集合/">https://avalooooooon.github.io/2023/03/29/字符串、数组、对象等方法集合/</a></p>
+                
+              
+            </blockquote>
           </div>
         
       
+      <!-- 打赏组件 -->
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/02/20/OpenVPN/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="一之碎片">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="一之碎片">
-    <meta itemprop="description" content="前端 杂谈">
-  </span>
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-03-29T17:19:50+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2023年3月29日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/JS/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>JS</p></a></div>
+  <span hidden itemprop="keywords">JS</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://avalooooooon.github.io/2023/03/29/%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E5%AF%B9%E8%B1%A1%E7%AD%89%E6%96%B9%E6%B3%95%E9%9B%86%E5%90%88/&title=字符串、数组、对象等方法集合 - 一之碎片&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://avalooooooon.github.io/2023/03/29/%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E5%AF%B9%E8%B1%A1%E7%AD%89%E6%96%B9%E6%B3%95%E9%9B%86%E5%90%88/&title=字符串、数组、对象等方法集合 - 一之碎片&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://avalooooooon.github.io/2023/03/29/%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E5%AF%B9%E8%B1%A1%E7%AD%89%E6%96%B9%E6%B3%95%E9%9B%86%E5%90%88/&title=字符串、数组、对象等方法集合 - 一之碎片&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
   
   
+
   
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2023/03/29/%E9%9D%A2%E8%AF%95-%E9%83%A8%E5%88%86%E6%96%B9%E6%B3%95%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E5%92%8C%E9%87%8D%E5%86%99/'>
+          <p class='title'>面试-部分方法代码实现和重写<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>JS基础1. call、apply和bind，即实现Function.prototype.xxx = function(context) &#123;&#125;。都是JS函数公有的内部方法。是...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable" id="comments">
     <span hidden>
-      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/2023/03/29/%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E5%AF%B9%E8%B1%A1%E7%AD%89%E6%96%B9%E6%B3%95%E9%9B%86%E5%90%88/#comments">
     </span>
-  
-  
+    <p ct><i class='fas fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/02/20/OpenVPN/"  itemprop="url">
-        OpenVPN
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        简介OpenVPN 是基于 TLS 加密层实现 VPN 的开源项目。
-安装在自己的终端配置连接服务器：ssh root@服务器ip -p 端口号查看配置文件：cat /etc/ssh/sshd_config修改配置文件：vim /etc/ssh/sshd_config
-Linux 服务端(debian10)登录服务端：除了ssh方式，也可以通过用户名密码方式。参考了这篇文章。端口号可以在服务...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-02-20T14:10:04+08:00">2022-02-20</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/vpn/">vpn</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/vpn/" itemprop="url"><span itemprop="name">vpn</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/02/20/OpenVPN/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
+    <div id="layoutHelper-comments"></div>
 
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-    
-  
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -3122,213 +3286,48 @@ Linux 服务端(debian10)登录服务端：除了ssh方式，也可以通过用�
     
     
       
-<section class="widget blogger desktop mobile pjax">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/mishanwu.JPG'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>The pieces of one.</h2>
-        
-        
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget category desktop pjax">
-    
-  <header>
-    
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/C/" href="/categories/C/"
-            active-action="action-categoriesC"
-            ><div class='name'>C++</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/MacOS/" href="/categories/MacOS/"
-            active-action="action-categoriesMacOS"
-            ><div class='name'>MacOS</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/git/" href="/categories/git/"
-            active-action="action-categoriesgit"
-            ><div class='name'>git</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/leetcode/" href="/categories/leetcode/"
-            active-action="action-categoriesleetcode"
-            ><div class='name'>leetcode</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/shell/" href="/categories/shell/"
-            active-action="action-categoriesshell"
-            ><div class='name'>shell</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/vpn/" href="/categories/vpn/"
-            active-action="action-categoriesvpn"
-            ><div class='name'>vpn</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
-            active-action="action-categoriesE5898DE7ABAF"
-            ><div class='name'>前端</div><div class='badge'>(19)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/HTML-CSS/" href="/categories/%E5%89%8D%E7%AB%AF/HTML-CSS/"
-            active-action="action-categoriesE5898DE7ABAFHTML-CSS"
-            ><div class='name'>HTML/CSS</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/JS/" href="/categories/%E5%89%8D%E7%AB%AF/JS/"
-            active-action="action-categoriesE5898DE7ABAFJS"
-            ><div class='name'>JS</div><div class='badge'>(10)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/Vue/" href="/categories/%E5%89%8D%E7%AB%AF/Vue/"
-            active-action="action-categoriesE5898DE7ABAFVue"
-            ><div class='name'>Vue</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/Webpack/" href="/categories/%E5%89%8D%E7%AB%AF/Webpack/"
-            active-action="action-categoriesE5898DE7ABAFWebpack"
-            ><div class='name'>Webpack</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%90%8E%E7%AB%AF/" href="/categories/%E5%90%8E%E7%AB%AF/"
-            active-action="action-categoriesE5908EE7ABAF"
-            ><div class='name'>后端</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%90%8E%E7%AB%AF/node-js/" href="/categories/%E5%90%8E%E7%AB%AF/node-js/"
-            active-action="action-categoriesE5908EE7ABAFnode-js"
-            ><div class='name'>node.js</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/" href="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/"
-            active-action="action-categoriesE69687E6A1A3E7BC96E58699"
-            ><div class='name'>文档编写</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/md/" href="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/md/"
-            active-action="action-categoriesE69687E6A1A3E7BC96E58699md"
-            ><div class='name'>.md</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/%E7%BC%96%E8%BE%91%E5%99%A8/" href="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/%E7%BC%96%E8%BE%91%E5%99%A8/"
-            active-action="action-categoriesE69687E6A1A3E7BC96E58699E7BC96E8BE91E599A8"
-            ><div class='name'>编辑器</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E9%9D%A2%E7%BB%8F%EF%BC%8C%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/" href="/categories/%E9%9D%A2%E7%BB%8F%EF%BC%8C%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/"
-            active-action="action-categoriesE99DA2E7BB8FEFBC8CE6898BE58699E4BBA3E7A081"
-            ><div class='name'>面经，手写代码</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/CSS/" style="font-size: 14px; color: #999">CSS</a> <a href="/tags/HTML/" style="font-size: 14px; color: #999">HTML</a> <a href="/tags/JS/" style="font-size: 24px; color: #555">JS</a> <a href="/tags/MacOS/" style="font-size: 14px; color: #999">MacOS</a> <a href="/tags/Vue/" style="font-size: 20.67px; color: #6c6c6c">Vue</a> <a href="/tags/Webpack/" style="font-size: 20.67px; color: #6c6c6c">Webpack</a> <a href="/tags/git/" style="font-size: 17.33px; color: #828282">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/leetcode/" style="font-size: 14px; color: #999">leetcode</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/node/" style="font-size: 17.33px; color: #828282">node</a> <a href="/tags/node-js/" style="font-size: 14px; color: #999">node.js</a> <a href="/tags/shell/" style="font-size: 17.33px; color: #828282">shell</a> <a href="/tags/vpn/" style="font-size: 17.33px; color: #828282">vpn</a> <a href="/tags/%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/" style="font-size: 14px; color: #999">手写代码</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 17.33px; color: #828282">操作系统</a>
-    </div>
-  </section>
-
-
-    
-  
-
   
 
 
 <div class="widget-sticky pjax">
 
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">字符串方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">2.</span> <span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E5%8E%9F%E6%95%B0%E7%BB%84%E7%9A%84"><span class="toc-number">2.1.</span> <span class="toc-text">改变原数组的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E6%94%B9%E5%8F%98%E5%8E%9F%E6%95%B0%E7%BB%84"><span class="toc-number">2.2.</span> <span class="toc-text">不改变原数组</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+  
+
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -3356,13 +3355,14 @@ Linux 服务端(debian10)登录服务端：除了ssh方式，也可以通过用�
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -4577,7 +4577,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":2,"item":{"@id":"https://avalooooooon.github.io/tags/vpn/","name":"vpn"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"一之碎片","url":"https://avalooooooon.github.io/","keywords":"前端 macOS python 网络","description":"前端 杂谈","author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","description":"前端 杂谈"},"publisher":{"@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://avalooooooon.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"前端 杂谈","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":2,"item":{"@id":"https://avalooooooon.github.io/categories/前端/","name":"前端"}},{"@type":"ListItem","position":2,"item":{"@id":"https://avalooooooon.github.io/categories/前端/JS/","name":"JS"}},{"@type":"ListItem","position":3,"item":{"@id":"https://avalooooooon.github.io/2023/03/29/字符串、数组、对象等方法集合/","name":"字符串、数组、对象等方法集合"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"一之碎片","url":"https://avalooooooon.github.io/","keywords":"前端 macOS python 网络","description":"前端 杂谈","author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","description":"前端 杂谈"},"publisher":{"@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://avalooooooon.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"字符串、数组、对象等方法集合","description":"前端 杂谈","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://avalooooooon.github.io/2023/03/29/%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E5%AF%B9%E8%B1%A1%E7%AD%89%E6%96%B9%E6%B3%95%E9%9B%86%E5%90%88/"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://avalooooooon.github.io/2023/03/29/%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E5%AF%B9%E8%B1%A1%E7%AD%89%E6%96%B9%E6%B3%95%E9%9B%86%E5%90%88/","wordCount":0,"datePublished":"2023-03-29T09:19:50.000Z","dateModified":"2023-03-29T09:19:50.000Z","articleSection":"前端","keywords":"JS","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
