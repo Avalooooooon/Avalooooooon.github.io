@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.7.5">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://avalooooooon.github.io/tags/node-js/"/>
+  
+  <link rel="canonical" href="https://avalooooooon.github.io/2023/05/13/在mac上使用nvm/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -31,19 +31,22 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>标签：node.js - 一之碎片</title>
-  <meta name="keywords" content="前端 macOS python 网络">
+  <title>在mac上使用nvm - 一之碎片</title>
+  <meta name="keywords" content="MacOS,shell,前端 macOS python 网络">
   <meta desc name="description" content="前端 杂谈 - 一之碎片 - 一之碎片">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="一之碎片">
-<meta property="og:url" content="https://avalooooooon.github.io/tags/node-js/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在mac上使用nvm">
+<meta property="og:url" content="https://avalooooooon.github.io/2023/05/13/%E5%9C%A8mac%E4%B8%8A%E4%BD%BF%E7%94%A8nvm/">
 <meta property="og:site_name" content="一之碎片">
-<meta property="og:description" content="前端 杂谈">
+<meta property="og:description" content="安装nvm 在控制台执行git clone https:&#x2F;&#x2F;github.com&#x2F;nvm-sh&#x2F;nvm.git，下载nvm仓库到 ~&#x2F;目录  进入刚刚clone的nvm目录，直接将文件install.sh拖入终端然后回车，等待执行完成  （可选）如果没有配置文件~&#x2F;.bash_profile，通过命令touch ~&#x2F;.bash_profile新建配置文件  在终端输入touch">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2023-05-13T09:36:24.000Z">
+<meta property="article:modified_time" content="2023-05-13T09:36:24.000Z">
 <meta property="article:author" content="一之碎片">
-<meta property="article:tag" content="前端 macOS python 网络">
+<meta property="article:tag" content="MacOS">
+<meta property="article:tag" content="shell">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
   <style>
@@ -2890,7 +2893,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper  dock' style="display: none;">
+      <div id="none" class='cover-wrapper post dock' style="display: none;">
         
   <div id="parallax-window"></div>
 
@@ -2959,25 +2962,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-
 <div id="l_main" class=''>
-  
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/09/21/node.js教程/">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/05/13/在mac上使用nvm/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="一之碎片">
   </span>
@@ -2986,74 +2973,261 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="前端 杂谈">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/09/21/node.js%E6%95%99%E7%A8%8B/"  itemprop="url">
-        node.js教程
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      
-        简介Node.js是一个能够在服务器端运行JS的开放源代码的跨平台的JS运行环境。它基于谷歌的V8引擎，使用事件驱动、非阻塞和异步I&#x2F;O模型等技术来提高性能，可优化应用程序的传输量和规模。在nodejs出现之前，JS通常作为客户端程序设计语言使用，以JS写出的程序常在用户的浏览器上运行。
-
-传统服务器一般都是多线程，每进来一个请求就会创建一个线程。
-
-但服务器返回响应之前需要先和数...
-      
     
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+      <h1 class="title" itemprop="name headline">
+        在mac上使用nvm
+      </h1>
+      <div class='new-meta-box'>
         
-        <time itemprop="dateCreated datePublished" datetime="2022-09-21T16:23:17+08:00">2022-09-21</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/node-js/">node.js</a>
           
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url"><span itemprop="name">后端</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%90%8E%E7%AB%AF/node-js/" itemprop="url"><span itemprop="name">node.js</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/09/21/node.js%E6%95%99%E7%A8%8B/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="/" class="lazyload" data-srcset="/" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">一之碎片</p>
+  </a>
 </div>
 
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/MacOS/">MacOS</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/MacOS/" itemprop="url"><span itemprop="name">MacOS</span></a>
+      </span>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2023-05-13T17:36:24+08:00">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2023年5月13日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h2 id="安装nvm"><a href="#安装nvm" class="headerlink" title="安装nvm"></a>安装nvm</h2><ol>
+<li><p>在控制台执行<code>git clone https://github.com/nvm-sh/nvm.git</code>，下载nvm仓库到 ~&#x2F;目录</p>
+</li>
+<li><p>进入刚刚clone的nvm目录，直接将文件install.sh拖入终端然后回车，等待执行完成</p>
+</li>
+<li><p>（可选）如果没有配置文件~&#x2F;.bash_profile，通过命令<code>touch ~/.bash_profile</code>新建配置文件</p>
+</li>
+<li><p>在终端输入<code>touch ~/.bash_profile</code>，将下述代码添加进去（命令行会有提示需要添加什么代码）：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/.nvm&quot;</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> <span class="comment"># This loads nvm</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在终端输入<code>source ~/.bash_profile</code></p>
+</li>
+<li><p>执行<code>nvm --version</code>是否可以正常输出，若不行则重启终端再次尝试</p>
+</li>
+</ol>
+<h2 id="使用nvm操作node"><a href="#使用nvm操作node" class="headerlink" title="使用nvm操作node"></a>使用nvm操作node</h2><ol>
+<li>安装指定版本的node： <code>nvm install 18.13.0 </code></li>
+<li>检查Node是否已成功安装：<code>node --version</code></li>
+<li>查看当前安装的node版本：<code>nvm list</code>  或 <code>nvm ls</code></li>
+<li>切换当前使用的node：<code>nvm use 18.13.0</code></li>
+<li>指定默认打开终端时的node版本：<code>nvm alias default 18.13.0</code></li>
+<li>删除某node.js版本：<code>nvm uninstall 18.13.0</code></li>
+</ol>
+
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
+      
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+        
+          <div class='copyright'>
+            <blockquote>
+              
+                
+                  <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+                
+              
+                
+                  <p>本文永久链接是：<a href="https://avalooooooon.github.io/2023/05/13/在mac上使用nvm/">https://avalooooooon.github.io/2023/05/13/在mac上使用nvm/</a></p>
+                
+              
+            </blockquote>
           </div>
         
       
-    
-  </section>
+      <!-- 打赏组件 -->
+      
+    </div>
+  
   
     
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-05-13T17:36:24+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2023年5月13日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/MacOS/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>MacOS</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/shell/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>shell</p></a></div>
+  <span hidden itemprop="keywords">MacOS shell</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://avalooooooon.github.io/2023/05/13/%E5%9C%A8mac%E4%B8%8A%E4%BD%BF%E7%94%A8nvm/&title=在mac上使用nvm - 一之碎片&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://avalooooooon.github.io/2023/05/13/%E5%9C%A8mac%E4%B8%8A%E4%BD%BF%E7%94%A8nvm/&title=在mac上使用nvm - 一之碎片&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://avalooooooon.github.io/2023/05/13/%E5%9C%A8mac%E4%B8%8A%E4%BD%BF%E7%94%A8nvm/&title=在mac上使用nvm - 一之碎片&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2023/05/13/%E4%BC%98%E5%8C%96%E5%A4%9A%E5%B1%82%E5%B5%8C%E5%A5%97%E7%9A%84if-else/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>优化多层嵌套的if-else</p>
+          <p class='content'>1. 基于配置表Map的优化可读性高。
+先来回顾一下Map对象。new Map([array1,array2])语法是ES6中诞生的，主要功能是将多个键值对数组合并成一个新的Map对象。Map ...</p>
+        </a>
+      
+      
+        <a class='next' href='/2023/05/13/%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9A%E6%97%A5%E6%9C%9F%E7%9A%84%E5%89%8D%E5%87%A0%E5%A4%A9%E6%88%96%E8%80%85%E5%90%8E%E5%87%A0%E5%A4%A9%E7%9A%84%E6%97%A5%E6%9C%9F/'>
+          <p class='title'>获取指定日期的前几天或者后几天的日期<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>123456789101112131415161718192021222324/** * 获取指定日期的前几天或者后几天的日期 * @param date &#123;string&#125; ...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
   
 
 
+  <article class="post white-box shadow floatable" id="comments">
+    <span hidden>
+      <meta itemprop="discussionUrl" content="/2023/05/13/%E5%9C%A8mac%E4%B8%8A%E4%BD%BF%E7%94%A8nvm/#comments">
+    </span>
+    <p ct><i class='fas fa-comments'></i> 评论</p>
     
-  
+
+    <div id="layoutHelper-comments"></div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -3062,223 +3236,48 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       
-<section class="widget blogger desktop mobile pjax">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/mishanwu.JPG'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>The pieces of one.</h2>
-        
-        
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget category desktop pjax">
-    
-  <header>
-    
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/C/" href="/categories/C/"
-            active-action="action-categoriesC"
-            ><div class='name'>C++</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/MacOS/" href="/categories/MacOS/"
-            active-action="action-categoriesMacOS"
-            ><div class='name'>MacOS</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/git/" href="/categories/git/"
-            active-action="action-categoriesgit"
-            ><div class='name'>git</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/leetcode/" href="/categories/leetcode/"
-            active-action="action-categoriesleetcode"
-            ><div class='name'>leetcode</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/shell/" href="/categories/shell/"
-            active-action="action-categoriesshell"
-            ><div class='name'>shell</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/vpn/" href="/categories/vpn/"
-            active-action="action-categoriesvpn"
-            ><div class='name'>vpn</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
-            active-action="action-categoriesE5898DE7ABAF"
-            ><div class='name'>前端</div><div class='badge'>(27)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/HTML-CSS/" href="/categories/%E5%89%8D%E7%AB%AF/HTML-CSS/"
-            active-action="action-categoriesE5898DE7ABAFHTML-CSS"
-            ><div class='name'>HTML/CSS</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/JS/" href="/categories/%E5%89%8D%E7%AB%AF/JS/"
-            active-action="action-categoriesE5898DE7ABAFJS"
-            ><div class='name'>JS</div><div class='badge'>(11)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/Vue/" href="/categories/%E5%89%8D%E7%AB%AF/Vue/"
-            active-action="action-categoriesE5898DE7ABAFVue"
-            ><div class='name'>Vue</div><div class='badge'>(11)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/Vue/%E7%BB%84%E4%BB%B6/" href="/categories/%E5%89%8D%E7%AB%AF/Vue/%E7%BB%84%E4%BB%B6/"
-            active-action="action-categoriesE5898DE7ABAFVueE7BB84E4BBB6"
-            ><div class='name'>组件</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/Webpack/" href="/categories/%E5%89%8D%E7%AB%AF/Webpack/"
-            active-action="action-categoriesE5898DE7ABAFWebpack"
-            ><div class='name'>Webpack</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%90%8E%E7%AB%AF/" href="/categories/%E5%90%8E%E7%AB%AF/"
-            active-action="action-categoriesE5908EE7ABAF"
-            ><div class='name'>后端</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%90%8E%E7%AB%AF/node-js/" href="/categories/%E5%90%8E%E7%AB%AF/node-js/"
-            active-action="action-categoriesE5908EE7ABAFnode-js"
-            ><div class='name'>node.js</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/" href="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/"
-            active-action="action-categoriesE69687E6A1A3E7BC96E58699"
-            ><div class='name'>文档编写</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/md/" href="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/md/"
-            active-action="action-categoriesE69687E6A1A3E7BC96E58699md"
-            ><div class='name'>.md</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/%E7%BC%96%E8%BE%91%E5%99%A8/" href="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/%E7%BC%96%E8%BE%91%E5%99%A8/"
-            active-action="action-categoriesE69687E6A1A3E7BC96E58699E7BC96E8BE91E599A8"
-            ><div class='name'>编辑器</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E9%9D%A2%E7%BB%8F/" href="/categories/%E9%9D%A2%E7%BB%8F/"
-            active-action="action-categoriesE99DA2E7BB8F"
-            ><div class='name'>面经</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E9%9D%A2%E7%BB%8F/%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/" href="/categories/%E9%9D%A2%E7%BB%8F/%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/"
-            active-action="action-categoriesE99DA2E7BB8FE6898BE58699E4BBA3E7A081"
-            ><div class='name'>手写代码</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/CSS/" style="font-size: 14px; color: #999">CSS</a> <a href="/tags/HTML/" style="font-size: 14px; color: #999">HTML</a> <a href="/tags/JS/" style="font-size: 22px; color: #636363">JS</a> <a href="/tags/MacOS/" style="font-size: 16px; color: #8b8b8b">MacOS</a> <a href="/tags/Vue/" style="font-size: 24px; color: #555">Vue</a> <a href="/tags/Webpack/" style="font-size: 20px; color: #707070">Webpack</a> <a href="/tags/git/" style="font-size: 16px; color: #8b8b8b">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/leetcode/" style="font-size: 14px; color: #999">leetcode</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/node/" style="font-size: 16px; color: #8b8b8b">node</a> <a href="/tags/node-js/" style="font-size: 14px; color: #999">node.js</a> <a href="/tags/shell/" style="font-size: 18px; color: #7e7e7e">shell</a> <a href="/tags/vpn/" style="font-size: 16px; color: #8b8b8b">vpn</a> <a href="/tags/%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/" style="font-size: 14px; color: #999">手写代码</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 16px; color: #8b8b8b">操作系统</a>
-    </div>
-  </section>
-
-
-    
-  
-
   
 
 
 <div class="widget-sticky pjax">
 
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85nvm"><span class="toc-number">1.</span> <span class="toc-text">安装nvm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8nvm%E6%93%8D%E4%BD%9Cnode"><span class="toc-number">2.</span> <span class="toc-text">使用nvm操作node</span></a></li></ol>
+    </div>
+  </section>
+
+  
+
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -3306,13 +3305,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -4527,7 +4527,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":2,"item":{"@id":"https://avalooooooon.github.io/tags/node.js/","name":"node.js"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"一之碎片","url":"https://avalooooooon.github.io/","keywords":"前端 macOS python 网络","description":"前端 杂谈","author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","description":"前端 杂谈"},"publisher":{"@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://avalooooooon.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"前端 杂谈","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":2,"item":{"@id":"https://avalooooooon.github.io/categories/MacOS/","name":"MacOS"}},{"@type":"ListItem","position":3,"item":{"@id":"https://avalooooooon.github.io/2023/05/13/在mac上使用nvm/","name":"在mac上使用nvm"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"一之碎片","url":"https://avalooooooon.github.io/","keywords":"前端 macOS python 网络","description":"前端 杂谈","author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","description":"前端 杂谈"},"publisher":{"@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://avalooooooon.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"在mac上使用nvm","description":"前端 杂谈","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://avalooooooon.github.io/2023/05/13/%E5%9C%A8mac%E4%B8%8A%E4%BD%BF%E7%94%A8nvm/"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://avalooooooon.github.io/2023/05/13/%E5%9C%A8mac%E4%B8%8A%E4%BD%BF%E7%94%A8nvm/","wordCount":0,"datePublished":"2023-05-13T09:36:24.000Z","dateModified":"2023-05-13T09:36:24.000Z","articleSection":"MacOS","keywords":"MacOS,shell","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
