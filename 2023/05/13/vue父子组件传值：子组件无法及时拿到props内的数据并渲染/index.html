@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.7.5">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://avalooooooon.github.io/categories/面经，手写代码/"/>
+  
+  <link rel="canonical" href="https://avalooooooon.github.io/2023/05/13/vue父子组件传值：子组件无法及时拿到props内的数据并渲染/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -31,19 +31,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>分类：面经，手写代码 - 一之碎片</title>
-  <meta name="keywords" content="前端 macOS python 网络">
+  <title>vue父子组件传值：子组件无法及时拿到props内的数据并渲染 - 一之碎片</title>
+  <meta name="keywords" content="Vue,前端 macOS python 网络">
   <meta desc name="description" content="前端 杂谈 - 一之碎片 - 一之碎片">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="一之碎片">
-<meta property="og:url" content="https://avalooooooon.github.io/categories/%E9%9D%A2%E7%BB%8F%EF%BC%8C%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue父子组件传值：子组件无法及时拿到props内的数据并渲染">
+<meta property="og:url" content="https://avalooooooon.github.io/2023/05/13/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC%EF%BC%9A%E5%AD%90%E7%BB%84%E4%BB%B6%E6%97%A0%E6%B3%95%E5%8F%8A%E6%97%B6%E6%8B%BF%E5%88%B0props%E5%86%85%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B9%B6%E6%B8%B2%E6%9F%93/">
 <meta property="og:site_name" content="一之碎片">
-<meta property="og:description" content="前端 杂谈">
+<meta property="og:description" content="问题描述父子组件通过:data和props:&amp;#123;&amp;#125;进行数据的传递与接收。在一些情况下，多数场景是父组件传递的值可能变化且需要子组件及时拿到数据并更新显示时，子组件不能及时将展示的数据替换成新值。 解决方案使用watch实时监控从父组件拿到的数据的变化，必要时可使用immediate: true。示例如下： 1234567891011121314151617181920212223">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2023-05-13T09:38:47.000Z">
+<meta property="article:modified_time" content="2023-05-13T09:38:47.000Z">
 <meta property="article:author" content="一之碎片">
-<meta property="article:tag" content="前端 macOS python 网络">
+<meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
   <style>
@@ -1872,7 +1874,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1680082736602),
+    lastupdate: new Date(1683970974818),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2890,7 +2892,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper  dock' style="display: none;">
+      <div id="none" class='cover-wrapper post dock' style="display: none;">
         
   <div id="parallax-window"></div>
 
@@ -2959,25 +2961,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-
 <div id="l_main" class=''>
-  
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/03/29/面试-部分方法代码实现和重写/">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/05/13/vue父子组件传值：子组件无法及时拿到props内的数据并渲染/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="一之碎片">
   </span>
@@ -2986,67 +2972,246 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="前端 杂谈">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/03/29/%E9%9D%A2%E8%AF%95-%E9%83%A8%E5%88%86%E6%96%B9%E6%B3%95%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E5%92%8C%E9%87%8D%E5%86%99/"  itemprop="url">
-        面试-部分方法代码实现和重写
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      
-        JS基础1. call、apply和bind，即实现Function.prototype.xxx = function(context) &#123;&#125;。都是JS函数公有的内部方法。是JS为我们提供的几种调用函数的方式，从而可以显示地指定任何对象作为函数的上下文。
-call和apply是用来调用函数，bind是创建一个新的函数；call和apply作用一样，只不过call参数个数不...
-      
     
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+      <h1 class="title" itemprop="name headline">
+        vue父子组件传值：子组件无法及时拿到props内的数据并渲染
+      </h1>
+      <div class='new-meta-box'>
         
-        <time itemprop="dateCreated datePublished" datetime="2023-03-29T17:12:18+08:00">2023-03-29</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E9%9D%A2%E7%BB%8F%EF%BC%8C%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/">面经，手写代码</a>
           
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E9%9D%A2%E7%BB%8F%EF%BC%8C%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/" itemprop="url"><span itemprop="name">面经，手写代码</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/03/29/%E9%9D%A2%E8%AF%95-%E9%83%A8%E5%88%86%E6%96%B9%E6%B3%95%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E5%92%8C%E9%87%8D%E5%86%99/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="/" class="lazyload" data-srcset="/" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">一之碎片</p>
+  </a>
 </div>
 
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
+      </span>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" itemprop="url"><span itemprop="name">Vue</span></a>
+      </span>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2023-05-13T17:38:47+08:00">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2023年5月13日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>父子组件通过<code>:data</code>和<code>props:&#123;&#125;</code>进行数据的传递与接收。在一些情况下，多数场景是父组件传递的值可能变化且需要子组件及时拿到数据并更新显示时，子组件不能及时将展示的数据替换成新值。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>使用<code>watch</code>实时监控从父组件拿到的数据的变化，必要时可使用<code>immediate: true</code>。<br>示例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">props</span>: &#123;</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="title class_">Object</span>,</span><br><span class="line">        <span class="attr">default</span>: <span class="function">() =&gt;</span> (&#123;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">showData</span>: &#123;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">watch</span>: &#123;</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">        <span class="title function_">handler</span>(<span class="params">newValue</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="title class_">Object</span>.<span class="title function_">keys</span>(newValue).<span class="property">length</span>) &#123; <span class="comment">// 判断是否为空</span></span><br><span class="line">                <span class="variable language_">this</span>.<span class="property">showData</span> = newValue;</span><br><span class="line">                <span class="variable language_">this</span>.<span class="title function_">getShowList</span>(); <span class="comment">// getShowList函数对showData进行进一步处理</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">immediate</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
+      
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+        
+          <div class='copyright'>
+            <blockquote>
+              
+                
+                  <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+                
+              
+                
+                  <p>本文永久链接是：<a href="https://avalooooooon.github.io/2023/05/13/vue父子组件传值：子组件无法及时拿到props内的数据并渲染/">https://avalooooooon.github.io/2023/05/13/vue父子组件传值：子组件无法及时拿到props内的数据并渲染/</a></p>
+                
+              
+            </blockquote>
           </div>
         
       
-    
-  </section>
+      <!-- 打赏组件 -->
+      
+    </div>
+  
   
     
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-05-13T17:38:47+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2023年5月13日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Vue/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Vue</p></a></div>
+  <span hidden itemprop="keywords">Vue</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://avalooooooon.github.io/2023/05/13/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC%EF%BC%9A%E5%AD%90%E7%BB%84%E4%BB%B6%E6%97%A0%E6%B3%95%E5%8F%8A%E6%97%B6%E6%8B%BF%E5%88%B0props%E5%86%85%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B9%B6%E6%B8%B2%E6%9F%93/&title=vue父子组件传值：子组件无法及时拿到props内的数据并渲染 - 一之碎片&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://avalooooooon.github.io/2023/05/13/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC%EF%BC%9A%E5%AD%90%E7%BB%84%E4%BB%B6%E6%97%A0%E6%B3%95%E5%8F%8A%E6%97%B6%E6%8B%BF%E5%88%B0props%E5%86%85%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B9%B6%E6%B8%B2%E6%9F%93/&title=vue父子组件传值：子组件无法及时拿到props内的数据并渲染 - 一之碎片&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://avalooooooon.github.io/2023/05/13/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC%EF%BC%9A%E5%AD%90%E7%BB%84%E4%BB%B6%E6%97%A0%E6%B3%95%E5%8F%8A%E6%97%B6%E6%8B%BF%E5%88%B0props%E5%86%85%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B9%B6%E6%B8%B2%E6%9F%93/&title=vue父子组件传值：子组件无法及时拿到props内的数据并渲染 - 一之碎片&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2023/05/13/pinia/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>pinia</p>
+          <p class='content'>pinia：https://www.ainyi.com/124
+pinia模块：不再有 modules 的嵌套结构，但可以通过在另一个 Store 中导入和 使用 来隐式嵌套 。在vue项目中，...</p>
+        </a>
+      
+      
+        <a class='next' href='/2023/05/13/%E4%BC%98%E5%8C%96%E5%A4%9A%E5%B1%82%E5%B5%8C%E5%A5%97%E7%9A%84if-else/'>
+          <p class='title'>优化多层嵌套的if-else<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>1. 基于配置表Map的优化可读性高。
+先来回顾一下Map对象。new Map([array1,array2])语法是ES6中诞生的，主要功能是将多个键值对数组合并成一个新的Map对象。Map ...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
   
 
 
+  <article class="post white-box shadow floatable" id="comments">
+    <span hidden>
+      <meta itemprop="discussionUrl" content="/2023/05/13/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC%EF%BC%9A%E5%AD%90%E7%BB%84%E4%BB%B6%E6%97%A0%E6%B3%95%E5%8F%8A%E6%97%B6%E6%8B%BF%E5%88%B0props%E5%86%85%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B9%B6%E6%B8%B2%E6%9F%93/#comments">
+    </span>
+    <p ct><i class='fas fa-comments'></i> 评论</p>
     
-  
+
+    <div id="layoutHelper-comments"></div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -3055,213 +3220,48 @@ call和apply是用来调用函数，bind是创建一个新的函数；call和app
     
     
       
-<section class="widget blogger desktop mobile pjax">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/mishanwu.JPG'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>The pieces of one.</h2>
-        
-        
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget category desktop pjax">
-    
-  <header>
-    
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/C/" href="/categories/C/"
-            active-action="action-categoriesC"
-            ><div class='name'>C++</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/MacOS/" href="/categories/MacOS/"
-            active-action="action-categoriesMacOS"
-            ><div class='name'>MacOS</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/git/" href="/categories/git/"
-            active-action="action-categoriesgit"
-            ><div class='name'>git</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/leetcode/" href="/categories/leetcode/"
-            active-action="action-categoriesleetcode"
-            ><div class='name'>leetcode</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/shell/" href="/categories/shell/"
-            active-action="action-categoriesshell"
-            ><div class='name'>shell</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/vpn/" href="/categories/vpn/"
-            active-action="action-categoriesvpn"
-            ><div class='name'>vpn</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
-            active-action="action-categoriesE5898DE7ABAF"
-            ><div class='name'>前端</div><div class='badge'>(19)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/HTML-CSS/" href="/categories/%E5%89%8D%E7%AB%AF/HTML-CSS/"
-            active-action="action-categoriesE5898DE7ABAFHTML-CSS"
-            ><div class='name'>HTML/CSS</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/JS/" href="/categories/%E5%89%8D%E7%AB%AF/JS/"
-            active-action="action-categoriesE5898DE7ABAFJS"
-            ><div class='name'>JS</div><div class='badge'>(10)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/Vue/" href="/categories/%E5%89%8D%E7%AB%AF/Vue/"
-            active-action="action-categoriesE5898DE7ABAFVue"
-            ><div class='name'>Vue</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%89%8D%E7%AB%AF/Webpack/" href="/categories/%E5%89%8D%E7%AB%AF/Webpack/"
-            active-action="action-categoriesE5898DE7ABAFWebpack"
-            ><div class='name'>Webpack</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%90%8E%E7%AB%AF/" href="/categories/%E5%90%8E%E7%AB%AF/"
-            active-action="action-categoriesE5908EE7ABAF"
-            ><div class='name'>后端</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%90%8E%E7%AB%AF/node-js/" href="/categories/%E5%90%8E%E7%AB%AF/node-js/"
-            active-action="action-categoriesE5908EE7ABAFnode-js"
-            ><div class='name'>node.js</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/" href="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/"
-            active-action="action-categoriesE69687E6A1A3E7BC96E58699"
-            ><div class='name'>文档编写</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/md/" href="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/md/"
-            active-action="action-categoriesE69687E6A1A3E7BC96E58699md"
-            ><div class='name'>.md</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/%E7%BC%96%E8%BE%91%E5%99%A8/" href="/categories/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99/%E7%BC%96%E8%BE%91%E5%99%A8/"
-            active-action="action-categoriesE69687E6A1A3E7BC96E58699E7BC96E8BE91E599A8"
-            ><div class='name'>编辑器</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E9%9D%A2%E7%BB%8F%EF%BC%8C%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/" href="/categories/%E9%9D%A2%E7%BB%8F%EF%BC%8C%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/"
-            active-action="action-categoriesE99DA2E7BB8FEFBC8CE6898BE58699E4BBA3E7A081"
-            ><div class='name'>面经，手写代码</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/CSS/" style="font-size: 14px; color: #999">CSS</a> <a href="/tags/HTML/" style="font-size: 14px; color: #999">HTML</a> <a href="/tags/JS/" style="font-size: 24px; color: #555">JS</a> <a href="/tags/MacOS/" style="font-size: 14px; color: #999">MacOS</a> <a href="/tags/Vue/" style="font-size: 20.67px; color: #6c6c6c">Vue</a> <a href="/tags/Webpack/" style="font-size: 20.67px; color: #6c6c6c">Webpack</a> <a href="/tags/git/" style="font-size: 17.33px; color: #828282">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/leetcode/" style="font-size: 14px; color: #999">leetcode</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/node/" style="font-size: 17.33px; color: #828282">node</a> <a href="/tags/node-js/" style="font-size: 14px; color: #999">node.js</a> <a href="/tags/shell/" style="font-size: 17.33px; color: #828282">shell</a> <a href="/tags/vpn/" style="font-size: 17.33px; color: #828282">vpn</a> <a href="/tags/%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/" style="font-size: 14px; color: #999">手写代码</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 17.33px; color: #828282">操作系统</a>
-    </div>
-  </section>
-
-
-    
-  
-
   
 
 
 <div class="widget-sticky pjax">
 
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">2.</span> <span class="toc-text">解决方案</span></a></li></ol>
+    </div>
+  </section>
+
+  
+
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -3289,13 +3289,14 @@ call和apply是用来调用函数，bind是创建一个新的函数；call和app
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -4281,7 +4282,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp"];
+  let imgs = ["https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4510,7 +4511,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":2,"item":{"@id":"https://avalooooooon.github.io/categories/面经，手写代码/","name":"面经，手写代码"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"一之碎片","url":"https://avalooooooon.github.io/","keywords":"前端 macOS python 网络","description":"前端 杂谈","author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","description":"前端 杂谈"},"publisher":{"@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://avalooooooon.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"前端 杂谈","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","sameAs":["https://github.com/volantis-x"],"description":"前端 杂谈"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://avalooooooon.github.io/","name":"一之碎片"}},{"@type":"ListItem","position":2,"item":{"@id":"https://avalooooooon.github.io/categories/前端/","name":"前端"}},{"@type":"ListItem","position":2,"item":{"@id":"https://avalooooooon.github.io/categories/前端/Vue/","name":"Vue"}},{"@type":"ListItem","position":3,"item":{"@id":"https://avalooooooon.github.io/2023/05/13/vue父子组件传值：子组件无法及时拿到props内的数据并渲染/","name":"vue父子组件传值：子组件无法及时拿到props内的数据并渲染"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"一之碎片","url":"https://avalooooooon.github.io/","keywords":"前端 macOS python 网络","description":"前端 杂谈","author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/","description":"前端 杂谈"},"publisher":{"@type":"Organization","name":"一之碎片","url":"https://avalooooooon.github.io/","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://avalooooooon.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"vue父子组件传值：子组件无法及时拿到props内的数据并渲染","description":"前端 杂谈","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://avalooooooon.github.io/2023/05/13/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC%EF%BC%9A%E5%AD%90%E7%BB%84%E4%BB%B6%E6%97%A0%E6%B3%95%E5%8F%8A%E6%97%B6%E6%8B%BF%E5%88%B0props%E5%86%85%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B9%B6%E6%B8%B2%E6%9F%93/"},"author":{"@type":"Person","name":"一之碎片","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png"},"url":"https://avalooooooon.github.io/"},"publisher":{"@type":"Organization","name":"一之碎片","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://avalooooooon.github.io/2023/05/13/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC%EF%BC%9A%E5%AD%90%E7%BB%84%E4%BB%B6%E6%97%A0%E6%B3%95%E5%8F%8A%E6%97%B6%E6%8B%BF%E5%88%B0props%E5%86%85%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B9%B6%E6%B8%B2%E6%9F%93/","wordCount":0,"datePublished":"2023-05-13T09:38:47.000Z","dateModified":"2023-05-13T09:38:47.000Z","articleSection":"前端","keywords":"Vue","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

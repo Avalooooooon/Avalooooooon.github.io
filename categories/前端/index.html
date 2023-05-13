@@ -1872,7 +1872,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1680082736602),
+    lastupdate: new Date(1683970974818),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2995,6 +2995,561 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/05/13/pinia/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="一之碎片">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="一之碎片">
+    <meta itemprop="description" content="前端 杂谈">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/05/13/pinia/"  itemprop="url">
+        pinia
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        pinia：https://www.ainyi.com/124
+pinia模块：不再有 modules 的嵌套结构，但可以通过在另一个 Store 中导入和 使用 来隐式嵌套 。在vue项目中，在src文件夹下面创建一个store文件夹专门来管理 pinia 模块。在文件夹下面我们可以创建多个js文件来对应我们的模块。下面我在 store 文件夹下面创建的一个index.js模块
+Store...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-05-13T17:40:56+08:00">2023-05-13</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" itemprop="url"><span itemprop="name">Vue</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/05/13/pinia/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/05/13/vue父子组件传值：子组件无法及时拿到props内的数据并渲染/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="一之碎片">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="一之碎片">
+    <meta itemprop="description" content="前端 杂谈">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/05/13/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC%EF%BC%9A%E5%AD%90%E7%BB%84%E4%BB%B6%E6%97%A0%E6%B3%95%E5%8F%8A%E6%97%B6%E6%8B%BF%E5%88%B0props%E5%86%85%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B9%B6%E6%B8%B2%E6%9F%93/"  itemprop="url">
+        vue父子组件传值：子组件无法及时拿到props内的数据并渲染
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        问题描述父子组件通过:data和props:&#123;&#125;进行数据的传递与接收。在一些情况下，多数场景是父组件传递的值可能变化且需要子组件及时拿到数据并更新显示时，子组件不能及时将展示的数据替换成新值。
+解决方案使用watch实时监控从父组件拿到的数据的变化，必要时可使用immediate: true。示例如下：
+1234567891011121314151617181920212...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-05-13T17:38:47+08:00">2023-05-13</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" itemprop="url"><span itemprop="name">Vue</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/05/13/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC%EF%BC%9A%E5%AD%90%E7%BB%84%E4%BB%B6%E6%97%A0%E6%B3%95%E5%8F%8A%E6%97%B6%E6%8B%BF%E5%88%B0props%E5%86%85%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B9%B6%E6%B8%B2%E6%9F%93/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/05/13/优化多层嵌套的if-else/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="一之碎片">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="一之碎片">
+    <meta itemprop="description" content="前端 杂谈">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/05/13/%E4%BC%98%E5%8C%96%E5%A4%9A%E5%B1%82%E5%B5%8C%E5%A5%97%E7%9A%84if-else/"  itemprop="url">
+        优化多层嵌套的if-else
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        1. 基于配置表Map的优化可读性高。
+先来回顾一下Map对象。new Map([array1,array2])语法是ES6中诞生的，主要功能是将多个键值对数组合并成一个新的Map对象。Map 对象是键值对的集合。Map 中的一个键只能出现一次；它在 Map 的集合中是独一无二的。Map 对象按键值对迭代——一个for...of循环在每次迭代后会返回一个形式为[key，value]的数组。迭...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-05-13T17:38:04+08:00">2023-05-13</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" itemprop="url"><span itemprop="name">Vue</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/05/13/%E4%BC%98%E5%8C%96%E5%A4%9A%E5%B1%82%E5%B5%8C%E5%A5%97%E7%9A%84if-else/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/05/13/获取指定日期的前几天或者后几天的日期/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="一之碎片">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="一之碎片">
+    <meta itemprop="description" content="前端 杂谈">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/05/13/%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9A%E6%97%A5%E6%9C%9F%E7%9A%84%E5%89%8D%E5%87%A0%E5%A4%A9%E6%88%96%E8%80%85%E5%90%8E%E5%87%A0%E5%A4%A9%E7%9A%84%E6%97%A5%E6%9C%9F/"  itemprop="url">
+        获取指定日期的前几天或者后几天的日期
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        123456789101112131415161718192021222324/** * 获取指定日期的前几天或者后几天的日期 * @param date &#123;string&#125; 日期 如：2021-06-21 * @param day &#123;number&#125; 天数 如：1 后几天|-1 前几天，默认后1天 * @param format &#123;string...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-05-13T17:35:10+08:00">2023-05-13</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/JS/">JS</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/JS/" itemprop="url"><span itemprop="name">JS</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/05/13/%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9A%E6%97%A5%E6%9C%9F%E7%9A%84%E5%89%8D%E5%87%A0%E5%A4%A9%E6%88%96%E8%80%85%E5%90%8E%E5%87%A0%E5%A4%A9%E7%9A%84%E6%97%A5%E6%9C%9F/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/05/13/利用html2canvas和jspdf将当前页面导出成pdf/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="一之碎片">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="一之碎片">
+    <meta itemprop="description" content="前端 杂谈">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/05/13/%E5%88%A9%E7%94%A8html2canvas%E5%92%8Cjspdf%E5%B0%86%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2%E5%AF%BC%E5%87%BA%E6%88%90pdf/"  itemprop="url">
+        利用html2canvas和jspdf将当前页面导出成pdf
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        引入12import html2canvas from &#x27;html2canvas&#x27;;import JsPDF from &#x27;jspdf&#x27;;
+
+方法实现常规场景：页面中不存在横向滚动条。该方法适配长页面截图，不会分页或截断js代码如下：
+1234567891011121314151617181920212223// 生成PDFasync paintPdf(...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-05-13T17:33:55+08:00">2023-05-13</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" itemprop="url"><span itemprop="name">Vue</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/05/13/%E5%88%A9%E7%94%A8html2canvas%E5%92%8Cjspdf%E5%B0%86%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2%E5%AF%BC%E5%87%BA%E6%88%90pdf/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/05/13/vue利用Blob-js和Export2Excel-js导出简单excel/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="一之碎片">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="一之碎片">
+    <meta itemprop="description" content="前端 杂谈">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/05/13/vue%E5%88%A9%E7%94%A8Blob-js%E5%92%8CExport2Excel-js%E5%AF%BC%E5%87%BA%E7%AE%80%E5%8D%95excel/"  itemprop="url">
+        vue利用Blob.js和Export2Excel.js导出简单excel
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        安装依赖123npm install -S file-savernpm install -S xlsxnpm install -D script-loader  
+
+下载导入Blob.js和 Export2Excel.js,将其放入同一文件夹Blob.js:
+1234567891011121314151617181920212223242526272829303132333435363738...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-05-13T17:32:46+08:00">2023-05-13</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" itemprop="url"><span itemprop="name">Vue</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/05/13/vue%E5%88%A9%E7%94%A8Blob-js%E5%92%8CExport2Excel-js%E5%AF%BC%E5%87%BA%E7%AE%80%E5%8D%95excel/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/05/13/vue纯前端使用vue-json-excel库导出简单excel/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="一之碎片">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="一之碎片">
+    <meta itemprop="description" content="前端 杂谈">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/05/13/vue%E7%BA%AF%E5%89%8D%E7%AB%AF%E4%BD%BF%E7%94%A8vue-json-excel%E5%BA%93%E5%AF%BC%E5%87%BA%E7%AE%80%E5%8D%95excel/"  itemprop="url">
+        vue纯前端使用vue-json-excel库导出简单excel
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        准备安装vue-json-excel：npm install vue-json-excel
+js导入123456import downloadExcel from &#x27;vue-json-excel/JsonExcel&#x27;;export default &#123;    components: &#123;        &#x27;download-excel&#x27;:...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-05-13T17:31:22+08:00">2023-05-13</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" itemprop="url"><span itemprop="name">Vue</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/05/13/vue%E7%BA%AF%E5%89%8D%E7%AB%AF%E4%BD%BF%E7%94%A8vue-json-excel%E5%BA%93%E5%AF%BC%E5%87%BA%E7%AE%80%E5%8D%95excel/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/05/13/vue组件：横向标尺，配合icon显示分数/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="一之碎片">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="一之碎片">
+    <meta itemprop="description" content="前端 杂谈">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/05/13/vue%E7%BB%84%E4%BB%B6%EF%BC%9A%E6%A8%AA%E5%90%91%E6%A0%87%E5%B0%BA%EF%BC%8C%E9%85%8D%E5%90%88icon%E6%98%BE%E7%A4%BA%E5%88%86%E6%95%B0/"  itemprop="url">
+        vue组件：横向标尺，配合icon显示分数
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        横向标尺组件刻度线宽度确定，自适应屏幕大小调整刻度线间距，高亮评分刻度线，分数可精确到小数点后一位。难点：位置计算效果图：
+代码整体为.vue文件。
+html部分：
+12345678910111213141516171819202122232425262728293031323334353637383940414243&lt;template&gt;    &lt;div        id...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-05-13T17:28:12+08:00">2023-05-13</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/%E7%BB%84%E4%BB%B6/">组件</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" itemprop="url"><span itemprop="name">Vue</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/%E7%BB%84%E4%BB%B6/" itemprop="url"><span itemprop="name">组件</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/05/13/vue%E7%BB%84%E4%BB%B6%EF%BC%9A%E6%A8%AA%E5%90%91%E6%A0%87%E5%B0%BA%EF%BC%8C%E9%85%8D%E5%90%88icon%E6%98%BE%E7%A4%BA%E5%88%86%E6%95%B0/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
   <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/03/29/字符串、数组、对象等方法集合/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="一之碎片">
@@ -3134,558 +3689,6 @@ split(delimiter, [limit])：把字符串分割成字符串数组并返回。返�
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/03/20/Vue中的process-env/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="一之碎片">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="一之碎片">
-    <meta itemprop="description" content="前端 杂谈">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/03/20/Vue%E4%B8%AD%E7%9A%84process-env/"  itemprop="url">
-        Vue中的process.env
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        参考：https://www.cnblogs.com/crcce-dncs/p/14175275.html
-node环境变量process.envprocess对象是一个全局变量，提供了有关当前Node.js进程的信息并对其进行控制。作为全局变量，它始终可供 Node.js 应用程序使用，无需使用 require()。它也可以使用 require() 显式地访问：const process ...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-03-20T16:02:52+08:00">2023-03-20</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" itemprop="url"><span itemprop="name">Vue</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/03/20/Vue%E4%B8%AD%E7%9A%84process-env/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/03/10/vue-config-js前端代理/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="一之碎片">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="一之碎片">
-    <meta itemprop="description" content="前端 杂谈">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/03/10/vue-config-js%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%90%86/"  itemprop="url">
-        vue.config.js前端代理
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        
-vue项目根目录下找到vue.config.js文件（如果没有该文件则自己创建），在proxy中设置跨域。解决的问题是前后端分离而产生的本地开发跨域问题。
-注意，该文件修改后必须重新启动服务才能生效！
-
-同源和跨域同源策略：两个页面拥有相同的协议（protocol）、域名&#x2F;主机（host）、端口号（port）是浏览器方的策略。
-也正是因为它是浏览器方的策略，所以只有浏览器和服务器...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-03-10T11:42:26+08:00">2023-03-10</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" itemprop="url"><span itemprop="name">Vue</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/03/10/vue-config-js%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%90%86/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/03/10/Webpack在vue-config-js中的配置/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="一之碎片">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="一之碎片">
-    <meta itemprop="description" content="前端 杂谈">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/03/10/Webpack%E5%9C%A8vue-config-js%E4%B8%AD%E7%9A%84%E9%85%8D%E7%BD%AE/"  itemprop="url">
-        Webpack在vue.config.js中的配置
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        
-configureWebpack与chainWebpack的作用相同，唯一的区别就是他们修改webpack配置方式不同：configureWebpack通过操作对象的形式来修改默认的webpack配置，该对象将会通过webpack-merge合并入最终的webpack配置；chainWebpack通过链式编程的形式来修改默认的webpack配置。
-详细使用说明参考vue-cli官网。
-
-
-...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-03-10T11:19:20+08:00">2023-03-10</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Webpack/">Webpack</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/Webpack/" itemprop="url"><span itemprop="name">Webpack</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/03/10/Webpack%E5%9C%A8vue-config-js%E4%B8%AD%E7%9A%84%E9%85%8D%E7%BD%AE/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2023/03/07/vue-nodejs实现单点登录/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="一之碎片">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="一之碎片">
-    <meta itemprop="description" content="前端 杂谈">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/03/07/vue-nodejs%E5%AE%9E%E7%8E%B0%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/"  itemprop="url">
-        vue+nodejs实现单点登录
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        参考博客：https://blog.csdn.net/qq_45453266/article/details/117066170
-同源和跨域同源策略：两个页面拥有相同的协议（protocol）、域名&#x2F;主机（host）、端口号（port）
-
-同源策略是 **浏览器 ** 的安全功能。
-
-tokentoken的意思是“令牌”，是 服务端 生成的一串字符串，作为客户端进行请求的一个标识。...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-03-07T15:37:45+08:00">2023-03-07</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" itemprop="url"><span itemprop="name">Vue</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/03/07/vue-nodejs%E5%AE%9E%E7%8E%B0%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/11/17/node按行读取含分割线的多段log，提取重要信息并写入到另一文件输出/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="一之碎片">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="一之碎片">
-    <meta itemprop="description" content="前端 杂谈">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/11/17/node%E6%8C%89%E8%A1%8C%E8%AF%BB%E5%8F%96%E5%90%AB%E5%88%86%E5%89%B2%E7%BA%BF%E7%9A%84%E5%A4%9A%E6%AE%B5log%EF%BC%8C%E6%8F%90%E5%8F%96%E9%87%8D%E8%A6%81%E4%BF%A1%E6%81%AF%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/"  itemprop="url">
-        node按行读取含分割线的多段log，提取重要信息并写入到另一文件输出
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      <p>给定一个<code>.log</code>文件，含多段log，每段中包含用户id等信息。<br>从中提取id 时间 ip 响应码 api，项内通过<code>,</code>连接，项之间通过空格连接。时间也按形如<code>2000-10-10 10:34:55</code>的标准格式输出。在输出一整条完整信息之前不换行。</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-11-17T14:24:23+08:00">2022-11-17</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/JS/">JS</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/JS/" itemprop="url"><span itemprop="name">JS</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/11/17/node%E6%8C%89%E8%A1%8C%E8%AF%BB%E5%8F%96%E5%90%AB%E5%88%86%E5%89%B2%E7%BA%BF%E7%9A%84%E5%A4%9A%E6%AE%B5log%EF%BC%8C%E6%8F%90%E5%8F%96%E9%87%8D%E8%A6%81%E4%BF%A1%E6%81%AF%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E6%96%87%E4%BB%B6%E8%BE%93%E5%87%BA/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/11/04/AJAX笔记-XHR使用-跨域-同源-jsonp-cors/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="一之碎片">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="一之碎片">
-    <meta itemprop="description" content="前端 杂谈">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/11/04/AJAX%E7%AC%94%E8%AE%B0-XHR%E4%BD%BF%E7%94%A8-%E8%B7%A8%E5%9F%9F-%E5%90%8C%E6%BA%90-jsonp-cors/"  itemprop="url">
-        AJAX笔记-XHR使用-跨域-同源-jsonp-cors
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        1. Ajax概述AJAX 简介AJAX 全称为Asynchronous JavaScript And XML，即异步的JS和XML。特点是可以在网页不刷新的情况下向服务端发送HTTP请求并得到HTTP响应。使用HTTP协议。通过AJAX 可以在浏览器中向服务器发送异步请求，最大优势： 无刷新 获取数据。AJAX 不是新的编程语言，而是一种将现有的标准组合在一起使用的新 方式 。
-XML 简...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-11-04T16:24:23+08:00">2022-11-04</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/JS/">JS</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/JS/" itemprop="url"><span itemprop="name">JS</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/11/04/AJAX%E7%AC%94%E8%AE%B0-XHR%E4%BD%BF%E7%94%A8-%E8%B7%A8%E5%9F%9F-%E5%90%8C%E6%BA%90-jsonp-cors/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/11/01/axios笔记/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="一之碎片">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="一之碎片">
-    <meta itemprop="description" content="前端 杂谈">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/11/01/axios%E7%AC%94%E8%AE%B0/"  itemprop="url">
-        axios笔记
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        官方文档一个开放接口
-Productionaxios是前端最流行的 ajax 请求库，react&#x2F;vue 官方都推荐使用 axios 发 ajax 请求。在浏览器中可以利用axios向服务端发送ajax请求来获取数据，在node环境可以利用axios向远端服务发送HTTP请求。也就是它可以在两个环境中运行。它有以下几个特点：
-
-基于 xhr + promise 的异步 ajax 请...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-11-01T15:44:59+08:00">2022-11-01</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/JS/">JS</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/JS/" itemprop="url"><span itemprop="name">JS</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/11/01/axios%E7%AC%94%E8%AE%B0/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://avalooooooon.github.io/2022/11/01/手写promise/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="一之碎片">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="一之碎片">
-    <meta itemprop="description" content="前端 杂谈">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://raw.githubusercontent.com/Avalooooooon/blog_image/main/static/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/11/01/%E6%89%8B%E5%86%99promise/"  itemprop="url">
-        手写promise
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      <p>从初识结构开始，依次实现Promise的实例方法、静态方法、then方法指定的回调函数的异步执行和封装成class。</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-11-01T11:32:14+08:00">2022-11-01</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/JS/">JS</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/JS/" itemprop="url"><span itemprop="name">JS</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/11/01/%E6%89%8B%E5%86%99promise/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -3694,7 +3697,7 @@ Productionaxios是前端最流行的 ajax 请求库，react&#x2F;vue 官方都�
       <div class="prev-next">
         
         <p class="current">
-          1 / 2
+          1 / 3
         </p>
         
           <a class="next" rel="next" href="/categories/%E5%89%8D%E7%AB%AF/page/2/">
@@ -3833,7 +3836,7 @@ Productionaxios是前端最流行的 ajax 请求库，react&#x2F;vue 官方都�
           <li><a class="flat-box"
             title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
             active-action="action-categoriesE5898DE7ABAF"
-            ><div class='name'>前端</div><div class='badge'>(19)</div></a></li>
+            ><div class='name'>前端</div><div class='badge'>(27)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/%E5%89%8D%E7%AB%AF/HTML-CSS/" href="/categories/%E5%89%8D%E7%AB%AF/HTML-CSS/"
@@ -3843,12 +3846,17 @@ Productionaxios是前端最流行的 ajax 请求库，react&#x2F;vue 官方都�
           <li><a class="flat-box child"
             title="/categories/%E5%89%8D%E7%AB%AF/JS/" href="/categories/%E5%89%8D%E7%AB%AF/JS/"
             active-action="action-categoriesE5898DE7ABAFJS"
-            ><div class='name'>JS</div><div class='badge'>(10)</div></a></li>
+            ><div class='name'>JS</div><div class='badge'>(11)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/%E5%89%8D%E7%AB%AF/Vue/" href="/categories/%E5%89%8D%E7%AB%AF/Vue/"
             active-action="action-categoriesE5898DE7ABAFVue"
-            ><div class='name'>Vue</div><div class='badge'>(4)</div></a></li>
+            ><div class='name'>Vue</div><div class='badge'>(11)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%89%8D%E7%AB%AF/Vue/%E7%BB%84%E4%BB%B6/" href="/categories/%E5%89%8D%E7%AB%AF/Vue/%E7%BB%84%E4%BB%B6/"
+            active-action="action-categoriesE5898DE7ABAFVueE7BB84E4BBB6"
+            ><div class='name'>组件</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/%E5%89%8D%E7%AB%AF/Webpack/" href="/categories/%E5%89%8D%E7%AB%AF/Webpack/"
@@ -3881,9 +3889,14 @@ Productionaxios是前端最流行的 ajax 请求库，react&#x2F;vue 官方都�
             ><div class='name'>编辑器</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
-            title="/categories/%E9%9D%A2%E7%BB%8F%EF%BC%8C%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/" href="/categories/%E9%9D%A2%E7%BB%8F%EF%BC%8C%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/"
-            active-action="action-categoriesE99DA2E7BB8FEFBC8CE6898BE58699E4BBA3E7A081"
-            ><div class='name'>面经，手写代码</div><div class='badge'>(1)</div></a></li>
+            title="/categories/%E9%9D%A2%E7%BB%8F/" href="/categories/%E9%9D%A2%E7%BB%8F/"
+            active-action="action-categoriesE99DA2E7BB8F"
+            ><div class='name'>面经</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E9%9D%A2%E7%BB%8F/%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/" href="/categories/%E9%9D%A2%E7%BB%8F/%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/"
+            active-action="action-categoriesE99DA2E7BB8FE6898BE58699E4BBA3E7A081"
+            ><div class='name'>手写代码</div><div class='badge'>(1)</div></a></li>
         
       </ul>
     </div>
@@ -3908,7 +3921,7 @@ Productionaxios是前端最流行的 ajax 请求库，react&#x2F;vue 官方都�
 
 
     <div class='content'>
-      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/CSS/" style="font-size: 14px; color: #999">CSS</a> <a href="/tags/HTML/" style="font-size: 14px; color: #999">HTML</a> <a href="/tags/JS/" style="font-size: 24px; color: #555">JS</a> <a href="/tags/MacOS/" style="font-size: 14px; color: #999">MacOS</a> <a href="/tags/Vue/" style="font-size: 20.67px; color: #6c6c6c">Vue</a> <a href="/tags/Webpack/" style="font-size: 20.67px; color: #6c6c6c">Webpack</a> <a href="/tags/git/" style="font-size: 17.33px; color: #828282">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/leetcode/" style="font-size: 14px; color: #999">leetcode</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/node/" style="font-size: 17.33px; color: #828282">node</a> <a href="/tags/node-js/" style="font-size: 14px; color: #999">node.js</a> <a href="/tags/shell/" style="font-size: 17.33px; color: #828282">shell</a> <a href="/tags/vpn/" style="font-size: 17.33px; color: #828282">vpn</a> <a href="/tags/%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/" style="font-size: 14px; color: #999">手写代码</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 17.33px; color: #828282">操作系统</a>
+      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/CSS/" style="font-size: 14px; color: #999">CSS</a> <a href="/tags/HTML/" style="font-size: 14px; color: #999">HTML</a> <a href="/tags/JS/" style="font-size: 21.5px; color: #666">JS</a> <a href="/tags/MacOS/" style="font-size: 14px; color: #999">MacOS</a> <a href="/tags/Vue/" style="font-size: 24px; color: #555">Vue</a> <a href="/tags/Webpack/" style="font-size: 19px; color: #777">Webpack</a> <a href="/tags/git/" style="font-size: 16.5px; color: #888">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/leetcode/" style="font-size: 14px; color: #999">leetcode</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/node/" style="font-size: 16.5px; color: #888">node</a> <a href="/tags/node-js/" style="font-size: 14px; color: #999">node.js</a> <a href="/tags/shell/" style="font-size: 16.5px; color: #888">shell</a> <a href="/tags/vpn/" style="font-size: 16.5px; color: #888">vpn</a> <a href="/tags/%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/" style="font-size: 14px; color: #999">手写代码</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 16.5px; color: #888">操作系统</a>
     </div>
   </section>
 
@@ -4944,7 +4957,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp"];
+  let imgs = ["https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/015.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/007.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/028.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/048.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/021.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/009.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/036.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/014.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/055.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/045.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/049.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/018.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/040.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/032.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/031.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/026.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/030.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/037.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/044.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/017.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/043.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/029.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/024.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/027.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/013.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/022.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/011.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/010.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/023.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/047.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/008.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/020.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/041.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/053.webp","https://gcore.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.webp"];
   let index = 0;
   let IntervalParallax = null;
 
